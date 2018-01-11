@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数据挖掘,概览,web挖掘," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="自Web2.0时代开始，网站提供的功能不在仅仅是页面信息的展示了。更多的是与用户的交互，而在与用户的交互的过程中，又会产生很多的数据。 因此，一些公司就针对Web的数据进行了数据挖掘和分析。 针对Web2.0时代的网站数据分析，主要有：内容挖掘，结构挖掘和日志挖掘三种挖掘方向。 其中，内容挖掘，包括文本挖掘和多媒体挖掘；Web结构挖掘，包括URL挖掘和内外结构挖掘；Web日志挖掘包括一般访问模式追">
+<meta name="keywords" content="数据挖掘,概览,web挖掘">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web挖掘概述">
+<meta property="og:url" content="http://yoursite.com/2018/01/11/webmining/index.html">
+<meta property="og:site_name" content="坚守本心">
+<meta property="og:description" content="自Web2.0时代开始，网站提供的功能不在仅仅是页面信息的展示了。更多的是与用户的交互，而在与用户的交互的过程中，又会产生很多的数据。 因此，一些公司就针对Web的数据进行了数据挖掘和分析。 针对Web2.0时代的网站数据分析，主要有：内容挖掘，结构挖掘和日志挖掘三种挖掘方向。 其中，内容挖掘，包括文本挖掘和多媒体挖掘；Web结构挖掘，包括URL挖掘和内外结构挖掘；Web日志挖掘包括一般访问模式追">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-11T11:52:11.168Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Web挖掘概述">
+<meta name="twitter:description" content="自Web2.0时代开始，网站提供的功能不在仅仅是页面信息的展示了。更多的是与用户的交互，而在与用户的交互的过程中，又会产生很多的数据。 因此，一些公司就针对Web的数据进行了数据挖掘和分析。 针对Web2.0时代的网站数据分析，主要有：内容挖掘，结构挖掘和日志挖掘三种挖掘方向。 其中，内容挖掘，包括文本挖掘和多媒体挖掘；Web结构挖掘，包括URL挖掘和内外结构挖掘；Web日志挖掘包括一般访问模式追">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/11/webmining/"/>
+
+
+
+
+
+  <title>Web挖掘概述 | 坚守本心</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">坚守本心</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">坚守本心，方为长久</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/11/webmining/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jackence">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="坚守本心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Web挖掘概述</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-11T20:21:30+08:00">
+                2018-01-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>自Web2.0时代开始，网站提供的功能不在仅仅是页面信息的展示了。更多的是与用户的交互，而在与用户的交互的过程中，又会产生很多的数据。</p>
+<p>因此，一些公司就针对Web的数据进行了数据挖掘和分析。</p>
+<p>针对Web2.0时代的网站数据分析，主要有：内容挖掘，结构挖掘和日志挖掘三种挖掘方向。</p>
+<p>其中，内容挖掘，包括文本挖掘和多媒体挖掘；Web结构挖掘，包括URL挖掘和内外结构挖掘；Web日志挖掘包括一般访问模式追踪和个性访问模式追踪。</p>
+<p>Web挖掘的基本步骤主要包括：<br>    数据预处理，包括数据的清洗、用户识别、会话识别和事务识别等过程，对原始Web日志文件中的数据进行提取、分解和合并，转化成合适Web挖掘的的数据格式。</p>
+<pre><code>模式识别，模式识别对预处理后的数据进行分析，从中挖掘出潜在的模式。
+
+模式分析，主要任务是从预处理的数据集中过滤掉用户不感兴趣的模式，发现有价值的指示。
+
+可视化技术呈现Web挖掘的结果。
+</code></pre><p>Web内容挖掘主要包括文本挖掘和多媒体挖掘两类，其挖掘对象包括文本、图像、音频、视频和其他各类型的数据。</p>
+<p>这里的内容既包括网页，也包括搜索引擎的结果。对非结构化的文本进行Web挖掘，称为文本挖掘，是Web挖掘中比较重要的领域。</p>
+<p>Web多媒体数据挖掘可以从多媒体数据中提取隐藏的知识、多媒体数据关联或者说其他没有直接存错在多媒体数据库中的模式，Web多媒体挖掘首先进行多媒体文件的特征选取，然后再用传统的数据挖掘方法进行下一步分析。</p>
+<p>Web文本挖掘的方法主要包括文本概括、文本分类和文本聚类等。</p>
+<p>文本概括是指从文本集中抽取关键信息，用简洁的形式总结文本集的主题内容。</p>
+<p>文本分类是把一些被标记的文本作为训练集，找到文本属性和文本类别之间的关系模式，然后利用这种关系模型来判断新文本的类别。情感分析是文本分类的热点应用领域，</p>
+<p>文本聚类是指根据文本的不同特征划分为不同的类，目的是使属于同一类的文本之间的差别尽可能小，而不同类别的文本之间的差异尽可能大。</p>
+<p>文本聚类和分类之间的区别是分类学习的样本有类别标记，二聚类的样本没有确定的类别。<br>此外，Web挖掘还包括从大量文档中发现一对词语出现模式的关联分析以及特定数据在未来的情况预测。</p>
+<p>关于聚类分析的使用，首先是需要进行分词和数据清洗，去掉停用词<br>而后再进行关联分析。</p>
+<p>简要介绍典型的文档聚类的过程：首先利用网络爬虫搜索相关网站，下载数据并将其转换成文本数据，然后搜索其中的关键词，选择一定数量的关键词组成文档向量，利用聚类算法对这些文档进行聚类，对每一类文档也可以抽取其中的高频词汇。当用关键词查询的时候，就能够查询出相关主题的一组文档了。</p>
+<p>TF-IDF算法（term frequence -inverse document frequence）<br>TF-IDF算法是文档特征项（关键词）权重计算的一种重要方法，用于计算每个词对文档的描述能力，其基本思想是某个词在文档中出现的频率越高，且在其他文档中很少出现，则该词对该文档的描述能力越强。该算法多用于信息检索、文本挖掘、文本分类等领域。</p>
+<p>理解反转：<br>区分是表明差异性的，如果用（ 某词在某文档中出现的次数/总文档数 ）这一指标来衡量，只能发现，该数据越大，说明不能显示该词的特殊性和概括性，因此用起倒数，倒数的值越大，说明该词在所有文档中出现的次数不多，而且集中在该文档中，就更能显示出该词的特殊性了。<br>TF 计算词频<br>tf=某词的频数/文档中出现次数最多的词的词频</p>
+<p>IDF<br>idf=log(总文档数/包含某词的文档数)</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据挖掘/" rel="tag"># 数据挖掘</a>
+          
+            <a href="/tags/概览/" rel="tag"># 概览</a>
+          
+            <a href="/tags/web挖掘/" rel="tag"># web挖掘</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/11/top10datamining/" rel="next" title="数据挖掘十大算法">
+                <i class="fa fa-chevron-left"></i> 数据挖掘十大算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Jackence</p>
+              <p class="site-description motion-element" itemprop="description">一路以来，总需要坚持着。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jackence</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="搜索,工具," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="经过实际使用的体验，国内的搜索引擎–百度和搜狗的搜索体验不佳。因此，尝试使用国外的google搜索，经过试用，体验效果比较良好。 以下内容参考自：http://coderschool.cn/1853.html科学上网-轻松访问Google(持续更新-解决Google打不开)—————————————————————————————————————————————————— 搜索https://gu">
+<meta name="keywords" content="搜索,工具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="科学上网">
+<meta property="og:url" content="http://yoursite.com/2018/01/11/searchonscience/index.html">
+<meta property="og:site_name" content="坚守本心">
+<meta property="og:description" content="经过实际使用的体验，国内的搜索引擎–百度和搜狗的搜索体验不佳。因此，尝试使用国外的google搜索，经过试用，体验效果比较良好。 以下内容参考自：http://coderschool.cn/1853.html科学上网-轻松访问Google(持续更新-解决Google打不开)—————————————————————————————————————————————————— 搜索https://gu">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-11T09:57:02.007Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="科学上网">
+<meta name="twitter:description" content="经过实际使用的体验，国内的搜索引擎–百度和搜狗的搜索体验不佳。因此，尝试使用国外的google搜索，经过试用，体验效果比较良好。 以下内容参考自：http://coderschool.cn/1853.html科学上网-轻松访问Google(持续更新-解决Google打不开)—————————————————————————————————————————————————— 搜索https://gu">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/11/searchonscience/"/>
+
+
+
+
+
+  <title>科学上网 | 坚守本心</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">坚守本心</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">坚守本心，方为长久</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/11/searchonscience/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jackence">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="坚守本心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">科学上网</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-11T20:21:30+08:00">
+                2018-01-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/生活/" itemprop="url" rel="index">
+                    <span itemprop="name">生活</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>经过实际使用的体验，国内的搜索引擎–百度和搜狗的搜索体验不佳。因此，尝试使用国外的google搜索，经过试用，体验效果比较良好。</p>
+<p>以下内容参考自：<a href="http://coderschool.cn/1853.html" target="_blank" rel="noopener">http://coderschool.cn/1853.html</a><br>科学上网-轻松访问Google(持续更新-解决Google打不开)<br>——————————————————————————————————————————————————</p>
+<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><p><a href="https://gufen.ga/" target="_blank" rel="noopener">https://gufen.ga/</a> （无广告，原guso.ml,ggso.ga,guge.ga）<br><a href="https://www.aiguso.ga/" target="_blank" rel="noopener">https://www.aiguso.ga/</a> （无广告，体验良好）<br><a href="https://gg.cellmean.com" target="_blank" rel="noopener">https://gg.cellmean.com</a> （无广告，体验良好）<br><a href="https://google.gg-g.org/" target="_blank" rel="noopener">https://google.gg-g.org/</a> （无广告，体验良好）<br><a href="https://cc.qqmmgj.com" target="_blank" rel="noopener">https://cc.qqmmgj.com</a>  （无广告，体验良好）<br><a href="https://www.xichuan.pub/" target="_blank" rel="noopener">https://www.xichuan.pub/</a> （无广告，体验良好）<br><a href="https://freedo.ga/" target="_blank" rel="noopener">https://freedo.ga/</a> （流量快耗尽，随时可能关掉）<br><a href="https://b.ggkai.men/" target="_blank" rel="noopener">https://b.ggkai.men/</a>  （有广告，体验一般）<br><a href="http://g.suconghou.cn" target="_blank" rel="noopener">http://g.suconghou.cn</a> （无广告，体验良好）<br><a href="http://google.suanfazu.com/" target="_blank" rel="noopener">http://google.suanfazu.com/</a> （整合搜索，非原版）<br><a href="https://kuaiguge.info" target="_blank" rel="noopener">https://kuaiguge.info</a> （无广告，体验良好）<br><a href="https://g.zmirrordemo.com/" target="_blank" rel="noopener">https://g.zmirrordemo.com/</a> （第一次访问需验证,部分地区被qiang）<br><a href="https://google.speeder.cf/" target="_blank" rel="noopener">https://google.speeder.cf/</a>  （第一次访问需验证）<br><a href="https://www.inrealm.xyz" target="_blank" rel="noopener">https://www.inrealm.xyz</a> （无广告，体验良好）</p>
+<h2 id="谷歌学术"><a href="#谷歌学术" class="headerlink" title="谷歌学术"></a>谷歌学术</h2><p><a href="https://xues.glgoo.com/" target="_blank" rel="noopener">https://xues.glgoo.com/</a><br><a href="https://b.ggkai.men/scholar" target="_blank" rel="noopener">https://b.ggkai.men/scholar</a><br><a href="http://g.suconghou.cn/scholar" target="_blank" rel="noopener">http://g.suconghou.cn/scholar</a><br><a href="http://a.a.88dr.com/" target="_blank" rel="noopener">http://a.a.88dr.com/</a><br><a href="http://www.tmeishi.com/xs/" target="_blank" rel="noopener">http://www.tmeishi.com/xs/</a><br><a href="https://www.scholar.live/" target="_blank" rel="noopener">https://www.scholar.live/</a><br><a href="https://www.xichuan.pub/scholar" target="_blank" rel="noopener">https://www.xichuan.pub/scholar</a><br><a href="https://a.ggkai.men/…/scholar.google.com/" target="_blank" rel="noopener">https://a.ggkai.men/…/scholar.google.com/</a><br><a href="https://google.speeder.cf/…scholar.google.com/" target="_blank" rel="noopener">https://google.speeder.cf/…scholar.google.com/</a><br><a href="https://xue.glgoo.com" target="_blank" rel="noopener">https://xue.glgoo.com</a></p>
+<h2 id="变种网页："><a href="#变种网页：" class="headerlink" title="变种网页："></a>变种网页：</h2><p><a href="http://www.tmeishi.com/" target="_blank" rel="noopener">http://www.tmeishi.com/</a> （无广告，搜索体验良好）<br><a href="http://www.ibying.com/" target="_blank" rel="noopener">http://www.ibying.com/</a> （无广告，搜索体验良好）<br><a href="http://search.twcc.com/" target="_blank" rel="noopener">http://search.twcc.com/</a>  （无广告，体验良好）<br><a href="https://www.tlss.space/" target="_blank" rel="noopener">https://www.tlss.space/</a> （无广告，体验良好）<br><a href="http://googlebridge.com/" target="_blank" rel="noopener">http://googlebridge.com/</a> （无广告，体验良好）<br><a href="http://www.yegoogle.com/" target="_blank" rel="noopener">http://www.yegoogle.com/</a> （无广告，体验良好）<br><a href="https://www.sov5.com/" target="_blank" rel="noopener">https://www.sov5.com/</a> （无广告，体验良好）<br><a href="http://www.gycc.com/" target="_blank" rel="noopener">http://www.gycc.com/</a> （无广告，体验良好）<br><a href="http://www.gfsoso.me/" target="_blank" rel="noopener">http://www.gfsoso.me/</a> （有广告，体验一般）<br><a href="http://www.17soso.cn/" target="_blank" rel="noopener">http://www.17soso.cn/</a> （无广告，搜索体验良好）<br><a href="http://www.aifago.com/" target="_blank" rel="noopener">http://www.aifago.com/</a> （无广告，搜索体验良好）<br><a href="https://www.dcrss.net" target="_blank" rel="noopener">https://www.dcrss.net</a> （无广告，搜索体验良好）<br><a href="https://www.dcrss.com/" target="_blank" rel="noopener">https://www.dcrss.com/</a> （google学术和网页）<br><a href="http://www.daysou.com/" target="_blank" rel="noopener">http://www.daysou.com/</a> （有广告，体验一般）<br><a href="http://www.lstsrw.org/" target="_blank" rel="noopener">http://www.lstsrw.org/</a> （有广告，体验一般）</p>
+<p>该网站也有大神总结的优秀资源汇总：<br><a href="http://gufenso.coderschool.cn/" target="_blank" rel="noopener">http://gufenso.coderschool.cn/</a></p>
+<p>以下的搜索引擎也可以使用：<br><a href="https://www.googto.org" target="_blank" rel="noopener">https://www.googto.org</a>  构图搜索<br><a href="https://www.googto.info" target="_blank" rel="noopener">https://www.googto.info</a> 构图搜索</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/搜索/" rel="tag"># 搜索</a>
+          
+            <a href="/tags/工具/" rel="tag"># 工具</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/11/searchbook/" rel="next" title="搜书网站概览">
+                <i class="fa fa-chevron-left"></i> 搜书网站概览
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/11/top10datamining/" rel="prev" title="数据挖掘十大算法">
+                数据挖掘十大算法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Jackence</p>
+              <p class="site-description motion-element" itemprop="description">一路以来，总需要坚持着。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#搜索"><span class="nav-number">1.</span> <span class="nav-text">搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#谷歌学术"><span class="nav-number">2.</span> <span class="nav-text">谷歌学术</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变种网页："><span class="nav-number">3.</span> <span class="nav-text">变种网页：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jackence</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
