@@ -260,7 +260,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/11/webmining/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/kmpagl/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jackence">
@@ -279,7 +279,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/11/webmining/" itemprop="url">Web挖掘概述</a></h1>
+                <a class="post-title-link" href="/2018/01/12/kmpagl/" itemprop="url">KMP算法概览</a></h1>
         
 
         <div class="post-meta">
@@ -291,8 +291,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-11T20:21:30+08:00">
-                2018-01-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-12T16:35:02+08:00">
+                2018-01-12
               </time>
             
 
@@ -353,29 +353,24 @@
       
         
           
-            <p>自Web2.0时代开始，网站提供的功能不在仅仅是页面信息的展示了。更多的是与用户的交互，而在与用户的交互的过程中，又会产生很多的数据。</p>
-<p>因此，一些公司就针对Web的数据进行了数据挖掘和分析。</p>
-<p>针对Web2.0时代的网站数据分析，主要有：内容挖掘，结构挖掘和日志挖掘三种挖掘方向。</p>
-<p>其中，内容挖掘，包括文本挖掘和多媒体挖掘；Web结构挖掘，包括URL挖掘和内外结构挖掘；Web日志挖掘包括一般访问模式追踪和个性访问模式追踪。</p>
-<p>Web挖掘的基本步骤主要包括：<br>    数据预处理，包括数据的清洗、用户识别、会话识别和事务识别等过程，对原始Web日志文件中的数据进行提取、分解和合并，转化成合适Web挖掘的的数据格式。</p>
-<pre><code>模式识别，模式识别对预处理后的数据进行分析，从中挖掘出潜在的模式。
-
-模式分析，主要任务是从预处理的数据集中过滤掉用户不感兴趣的模式，发现有价值的指示。
-
-可视化技术呈现Web挖掘的结果。
-</code></pre><p>Web内容挖掘主要包括文本挖掘和多媒体挖掘两类，其挖掘对象包括文本、图像、音频、视频和其他各类型的数据。</p>
-<p>这里的内容既包括网页，也包括搜索引擎的结果。对非结构化的文本进行Web挖掘，称为文本挖掘，是Web挖掘中比较重要的领域。</p>
-<p>Web多媒体数据挖掘可以从多媒体数据中提取隐藏的知识、多媒体数据关联或者说其他没有直接存错在多媒体数据库中的模式，Web多媒体挖掘首先进行多媒体文件的特征选取，然后再用传统的数据挖掘方法进行下一步分析。</p>
-<p>Web文本挖掘的方法主要包括文本概括、文本分类和文本聚类等。</p>
-<p>文本概括是指从文本集中抽取关键信息，用简洁的形式总结文本集的主题内容。</p>
-<p>文本分类是把一些被标记的文本作为训练集，找到文本属性和文本类别之间的关系模式，然后利用这种关系模型来判断新文本的类别。情感分析是文本分类的热点应用领域，</p>
-<p>文本聚类是指根据文本的不同特征划分为不同的类，目的是使属于同一类的文本之间的差别尽可能小，而不同类别的文本之间的差异尽可能大。</p>
-<p>文本聚类和分类之间的区别是分类学习的样本有类别标记，二聚类的样本没有确定的类别。<br>此外，Web挖掘还包括从大量文档中发现一对词语出现模式的关联分析以及特定数据在未来的情况预测。</p>
-<p>关于聚类分析的使用，首先是需要进行分词和数据清洗，去掉停用词<br>而后再进行关联分析。</p>
-<p>简要介绍典型的文档聚类的过程：首先利用网络爬虫搜索相关网站，下载数据并将其转换成文本数据，然后搜索其中的关键词，选择一定数量的关键词组成文档向量，利用聚类算法对这些文档进行聚类，对每一类文档也可以抽取其中的高频词汇。当用关键词查询的时候，就能够查询出相关主题的一组文档了。</p>
-<p>TF-IDF算法（term frequence -inverse document frequence）<br>TF-IDF算法是文档特征项（关键词）权重计算的一种重要方法，用于计算每个词对文档的描述能力，其基本思想是某个词在文档中出现的频率越高，且在其他文档中很少出现，则该词对该文档的描述能力越强。该算法多用于信息检索、文本挖掘、文本分类等领域。</p>
-<p>理解反转：<br>区分是表明差异性的，如果用（ 某词在某文档中出现的次数/总文档数 ）这一指标来衡量，只能发现，该数据越大，说明不能显示该词的特殊性和概括性，因此用起倒数，倒数的值越大，说明该词在所有文档中出现的次数不多，而且集中在该文档中，就更能显示出该词的特殊性了。<br>TF 计算词频<br>tf=某词的频数/文档中出现次数最多的词的词频</p>
-<p>IDF<br>idf=log(总文档数/包含某词的文档数)</p>
+            <p>在用匹配字符串(A)对目标字符串(B)进行匹配的过程中，会出现多次遍历的情况，当A越长，要进行匹配的次数越多，且一旦匹配失效，其时间成本在急剧上升。<br>在这里，结合其他前辈的经验，理解一下大名鼎鼎的KMP算法的思路吧。</p>
+<p>解决思路：<br>    在进行匹配之前，需要计算匹配字符串的部分匹配值。<br>    1.查找目标字符串中第一个与匹配字符串中第一个字符相等的位置，将A移动到该位置，开始匹配；<br>    2.若匹配字符串的第N（N&gt;=2）个字符能匹配目标字符串，则继续匹配，直至，<br>        若（1）在目标字符串中找到匹配字符串，则结束此轮查找；<br>        若（2）在目标字符串中没有查找到匹配字符串，记录当前已成功匹配的数量x和匹配字符串该位置下的部分匹配值t,计算移动位数k=x-t，移动k位，进行下一轮匹配，执行1,2</p>
+<p>字符串A:ABCDABD<br>字符串B：AHADABFABCDABCDABD</p>
+<p>有两个概念：已匹配字符数和对应的部分匹配值<br>已匹配的字符数：在字符串B中，找到已匹配字符串A的数量<br>对应的部分匹配值：字符串A中，到达某位置时，该部分的字符串的前缀和后缀的公共字符串的长度。</p>
+<p>前缀：某字符串除开尾字符外的顺序字符串的集合。<br>后缀：某字符串除开首字符串的顺序字符串的集合。</p>
+<p>以A为例：ABCDABD<br>到达A时：前缀和后缀都为0,公共字符串长度为0</p>
+<p>到达AB时：<br>前缀：A<br>后缀：B<br>公共字符串长度为0</p>
+<p>到达ABC时：<br>前缀：A,AB<br>后缀：BC,C<br>公共字符串长度为0</p>
+<p>到达ABCD时：<br>前缀：A,AB,ABC<br>后缀：D,CD,BCD<br>公共字符串长度为0</p>
+<p>到达ABCDA时：<br>前缀：A,AB,ABC,ABCD<br>后缀：A,DA,CDA,BCDA<br>公共字符串长度为1，为A</p>
+<p>到达ABCDAB时：<br>前缀：A,AB,ABC,ABCD,ABCDA<br>后缀：B,AB,DAB,CDAB,BCDAB<br>公共字符串长度为2，为AB</p>
+<p>到达ABCDABD时：<br>前缀：A,AB,ABC,ABCD,ABCDA,ABCDAB<br>后缀：D,BD,ABD,DABD,CDABD,BCDABD<br>公共字符串长度为0</p>
+<p>还是以开头的字符串为例：<br>匹配字符串：ABCDABD<br>目标字符串：AHADABFABCDABCDABD<br>当开始匹配时：<br>1.A匹配A，匹配数为1，部分匹配值为0，移动位数为1-0=1，B不与H匹配，往前移动1位，<br>2.A不与H匹配，往前移动1位,<br>3.A与A匹配，B与D不匹配，匹配数为1，部分匹配值为0，移动位数为1-0=1，往前移动1位<br>4.D与A不匹配，往前移动1位，<br>5.A与A匹配，B与B匹配，F与C不匹配，匹配数为2，部分匹配值为0，往前移动2-0=2位，<br>6.A与A匹配，B与B匹配，C与C匹配，D与D匹配，A与A匹配，B与B匹配,C与D不匹配，匹配数为6，部分匹配值为2，移动位数为6-2=4位，</p>
+<ol>
+<li>A与A匹配,B与B匹配,C与C匹配，D与D匹配，A与A匹配，B与B匹配,D与D匹配，匹配成功。距离为1+1+1+1+2+4=10</li>
+</ol>
+<p>“部分匹配”的实质是，有时候，字符串头部和尾部会有重复。</p>
+<p>参考资料：阮一峰的博客。</p>
 
           
         
@@ -424,7 +419,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/11/top10datamining/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/EDA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jackence">
@@ -443,7 +438,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/11/top10datamining/" itemprop="url">数据挖掘十大算法</a></h1>
+                <a class="post-title-link" href="/2018/01/12/EDA/" itemprop="url">数据分析之探索性分析</a></h1>
         
 
         <div class="post-meta">
@@ -455,8 +450,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-11T20:21:30+08:00">
-                2018-01-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-12T16:35:02+08:00">
+                2018-01-12
               </time>
             
 
@@ -517,8 +512,16 @@
       
         
           
-            <p>2006年，在香港举办的IEEE数据挖掘国际会议上，与会专家遴选出十个最具影响力的数据挖掘算法。包括C4.5，K-means，SVM，Apriori，EM，PageRank，AdaBoost，KNN，Navie Bayes和CART算法。</p>
-<p>其中，<br>C4.5，SVM， KNN， Navie Bayes，CART 算法是分类算法<br>K-means是聚类分析算法<br>Apriori 是关联分析算法<br>EM 极大似然算法<br>Pagerank Web链接分析法<br>AdaBoost  泛化</p>
+            <p>探索性数据分析是指对已有数据通过作图、制表、计算特征量等手段探索数据的结构和规律的一种数据分析方法。特别是当我们队这些数据中的信息没有足够的经验，不知道该用何种传统统计方法进行分析是，探索性数据分析就会非常有效。课程内容主要包括描述性统计分析、多维数据的可视化、降维技术、数据模型的可视化。</p>
+<p>描述统计分析：以揭示数据分布特性的方式汇总并表达定量数据的方法。</p>
+<p>包括数据的频数分析、数据的集中趋势分析、数据的离散程度分析、数据的分布以及一些基本的统计图形。描述性统计是一类统计方法的汇总，作用是提供了一种概括和表征数据的有效且相对简便的方法。通常用图示法来表述，易于看懂，能发现质量特性值的分布状况、趋势走向的一些规律，便于采取措施。用于汇总和表征数据，通常是对数据进一步定量分析的基础，或是对推断性统计方法的有效补充。</p>
+<p>常见的描述性统计方法分为三类：<br>    数据的统计量描述，如均值、方差。<br>    图示技术描述，如直方图、散布图、趋势图、排列图、条形图和饼分图<br>    文字语言分析和描述，如统计分析表、分层、因果图、亲和图和流程图。</p>
+<p>常见的描述性统计的应用范围：适用于能够收集到定量数据的所有领域，提供有关产品、过程或质量管理体系的信息，也用于管理。</p>
+<p>多元数据和多维数据的区别？</p>
+<p>以下方法来自：<a href="http://staff.ustc.edu.cn/~zwp/teach/MVA/Lec2_slides.pdf" target="_blank" rel="noopener">http://staff.ustc.edu.cn/~zwp/teach/MVA/Lec2_slides.pdf</a><br>多元数据的可视化方法：<br>1.几何投影方法<br>2.基于像素的可视化技术<br>3.层次可视化技术<br>4.基于图标的可视化结束</p>
+<p>以下方法来自：<a href="http://www.afenxi.com/post/1643" target="_blank" rel="noopener">http://www.afenxi.com/post/1643</a><br>降维技术的方法：<br>缺失值比率<br>低方差滤波<br>高相关滤波<br>随机森林/组合树<br>主成分分析<br>反向特征消除<br>前向特征构造</p>
+<p>数据模型的可视化</p>
+<p>——————————<br>未完待续……</p>
 
           
         
@@ -567,7 +570,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/11/searchonscience/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/HTTP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jackence">
@@ -586,7 +589,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/11/searchonscience/" itemprop="url">科学上网</a></h1>
+                <a class="post-title-link" href="/2018/01/12/HTTP/" itemprop="url">计算机网络初探——HTTP协议</a></h1>
         
 
         <div class="post-meta">
@@ -598,8 +601,319 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-11T20:21:30+08:00">
-                2018-01-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-12T16:35:02+08:00">
+                2018-01-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>HTTP协议构建于TCP/IP协议之上，默认端口号是80。</p>
+<p>HTTP协议是无连接无状态的。</p>
+<p>HTTP协议是以ASCII码传输，建立在TCP/IP协议上的规范。</p>
+<p>HTTP报文（请求和响应）</p>
+<p>请求报文</p>
+<p>报文分为三部分：状态行、请求头、消息主体。</p>
+<p>HTTP定义了四种客户端与服务器端交互的方法：</p>
+<p>GET/POST/PUT/DELETE,对应着四种操作：查、增、改、删。</p>
+<p>1.GET用于信息获取，有URL长度的限制<br>2.POST可能修改服务器上的资源请求，大小没有限制，但是出于安全考虑。服务器在实现时会做一定的限制。</p>
+<p>响应报文</p>
+<p>报文也由三部分组成：状态行、响应头、响应正文</p>
+<p>常见的响应状态码：</p>
+<p>200   客户端请求成功，服务端发送正常数据<br>301   客户端请求失败，请求被永久重定向<br>302   客户端请求失败，请求被暂时重定向<br>304   文件未修改，可以直接使用缓存文件<br>400   请求错误，服务器无法解析<br>401   请求未经授权， 这个状态代码必须和WWW-Authenticate报头域一起使用<br>403   服务器收到请求，但是拒绝提供服务<br>404   服务器收到请求，但是服务器上没有资源<br>500   服务器发生不可预知的错误，导致无法完成客户端的请求<br>503   服务器当前不能处理客户端的请求，一段时间后，可能会恢复正常</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/crawl0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jackence">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="坚守本心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/12/crawl0/" itemprop="url">动手写爬虫概览</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-12T16:35:02+08:00">
+                2018-01-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>编写的爬虫代码的主要涉及的过程：</p>
+<p>获取网页数据–提取数据–数据的清洗和处理–数据存储。</p>
+<p>以下是编写爬虫程序所需要安装的库。在这里，默认大家在安装Python之时已经安装好pip这个工具。</p>
+<p>1.获取网页数据阶段，可能会用到的库：requests,urllib2</p>
+<p>进入控制台界面：</p>
+<pre><code>pip install urllib2
+
+pip install requests
+</code></pre><p>2.提取数据需要用到的库：bs4,re,lxml</p>
+<pre><code>pip install bs4
+</code></pre><p>3.数据清洗和处理：re,JSON</p>
+<p>4.数据存储：mysqldb（SQL数据库）,pymongo（NOSQL）,xlwt（excel）</p>
+<pre><code>pip install pymongo
+
+pip install xlwt
+</code></pre><p>mysqldb的库需要去其他地方下载：<a href="https://sourceforge.net/projects/mysql-python/" target="_blank" rel="noopener">https://sourceforge.net/projects/mysql-python/</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/moviecomments1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jackence">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="坚守本心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/12/moviecomments1/" itemprop="url">《釜山行影评》</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-12T16:35:02+08:00">
+                2018-01-12
               </time>
             
 
@@ -660,13 +974,46 @@
       
         
           
-            <p>经过实际使用的体验，国内的搜索引擎–百度和搜狗的搜索体验不佳。因此，尝试使用国外的google搜索，经过试用，体验效果比较良好。</p>
-<p>以下内容参考自：<a href="http://coderschool.cn/1853.html" target="_blank" rel="noopener">http://coderschool.cn/1853.html</a><br>科学上网-轻松访问Google(持续更新-解决Google打不开)<br>——————————————————————————————————————————————————</p>
-<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><p><a href="https://gufen.ga/" target="_blank" rel="noopener">https://gufen.ga/</a> （无广告，原guso.ml,ggso.ga,guge.ga）<br><a href="https://www.aiguso.ga/" target="_blank" rel="noopener">https://www.aiguso.ga/</a> （无广告，体验良好）<br><a href="https://gg.cellmean.com" target="_blank" rel="noopener">https://gg.cellmean.com</a> （无广告，体验良好）<br><a href="https://google.gg-g.org/" target="_blank" rel="noopener">https://google.gg-g.org/</a> （无广告，体验良好）<br><a href="https://cc.qqmmgj.com" target="_blank" rel="noopener">https://cc.qqmmgj.com</a>  （无广告，体验良好）<br><a href="https://www.xichuan.pub/" target="_blank" rel="noopener">https://www.xichuan.pub/</a> （无广告，体验良好）<br><a href="https://freedo.ga/" target="_blank" rel="noopener">https://freedo.ga/</a> （流量快耗尽，随时可能关掉）<br><a href="https://b.ggkai.men/" target="_blank" rel="noopener">https://b.ggkai.men/</a>  （有广告，体验一般）<br><a href="http://g.suconghou.cn" target="_blank" rel="noopener">http://g.suconghou.cn</a> （无广告，体验良好）<br><a href="http://google.suanfazu.com/" target="_blank" rel="noopener">http://google.suanfazu.com/</a> （整合搜索，非原版）<br><a href="https://kuaiguge.info" target="_blank" rel="noopener">https://kuaiguge.info</a> （无广告，体验良好）<br><a href="https://g.zmirrordemo.com/" target="_blank" rel="noopener">https://g.zmirrordemo.com/</a> （第一次访问需验证,部分地区被qiang）<br><a href="https://google.speeder.cf/" target="_blank" rel="noopener">https://google.speeder.cf/</a>  （第一次访问需验证）<br><a href="https://www.inrealm.xyz" target="_blank" rel="noopener">https://www.inrealm.xyz</a> （无广告，体验良好）</p>
-<h2 id="谷歌学术"><a href="#谷歌学术" class="headerlink" title="谷歌学术"></a>谷歌学术</h2><p><a href="https://xues.glgoo.com/" target="_blank" rel="noopener">https://xues.glgoo.com/</a><br><a href="https://b.ggkai.men/scholar" target="_blank" rel="noopener">https://b.ggkai.men/scholar</a><br><a href="http://g.suconghou.cn/scholar" target="_blank" rel="noopener">http://g.suconghou.cn/scholar</a><br><a href="http://a.a.88dr.com/" target="_blank" rel="noopener">http://a.a.88dr.com/</a><br><a href="http://www.tmeishi.com/xs/" target="_blank" rel="noopener">http://www.tmeishi.com/xs/</a><br><a href="https://www.scholar.live/" target="_blank" rel="noopener">https://www.scholar.live/</a><br><a href="https://www.xichuan.pub/scholar" target="_blank" rel="noopener">https://www.xichuan.pub/scholar</a><br><a href="https://a.ggkai.men/…/scholar.google.com/" target="_blank" rel="noopener">https://a.ggkai.men/…/scholar.google.com/</a><br><a href="https://google.speeder.cf/…scholar.google.com/" target="_blank" rel="noopener">https://google.speeder.cf/…scholar.google.com/</a><br><a href="https://xue.glgoo.com" target="_blank" rel="noopener">https://xue.glgoo.com</a></p>
-<h2 id="变种网页："><a href="#变种网页：" class="headerlink" title="变种网页："></a>变种网页：</h2><p><a href="http://www.tmeishi.com/" target="_blank" rel="noopener">http://www.tmeishi.com/</a> （无广告，搜索体验良好）<br><a href="http://www.ibying.com/" target="_blank" rel="noopener">http://www.ibying.com/</a> （无广告，搜索体验良好）<br><a href="http://search.twcc.com/" target="_blank" rel="noopener">http://search.twcc.com/</a>  （无广告，体验良好）<br><a href="https://www.tlss.space/" target="_blank" rel="noopener">https://www.tlss.space/</a> （无广告，体验良好）<br><a href="http://googlebridge.com/" target="_blank" rel="noopener">http://googlebridge.com/</a> （无广告，体验良好）<br><a href="http://www.yegoogle.com/" target="_blank" rel="noopener">http://www.yegoogle.com/</a> （无广告，体验良好）<br><a href="https://www.sov5.com/" target="_blank" rel="noopener">https://www.sov5.com/</a> （无广告，体验良好）<br><a href="http://www.gycc.com/" target="_blank" rel="noopener">http://www.gycc.com/</a> （无广告，体验良好）<br><a href="http://www.gfsoso.me/" target="_blank" rel="noopener">http://www.gfsoso.me/</a> （有广告，体验一般）<br><a href="http://www.17soso.cn/" target="_blank" rel="noopener">http://www.17soso.cn/</a> （无广告，搜索体验良好）<br><a href="http://www.aifago.com/" target="_blank" rel="noopener">http://www.aifago.com/</a> （无广告，搜索体验良好）<br><a href="https://www.dcrss.net" target="_blank" rel="noopener">https://www.dcrss.net</a> （无广告，搜索体验良好）<br><a href="https://www.dcrss.com/" target="_blank" rel="noopener">https://www.dcrss.com/</a> （google学术和网页）<br><a href="http://www.daysou.com/" target="_blank" rel="noopener">http://www.daysou.com/</a> （有广告，体验一般）<br><a href="http://www.lstsrw.org/" target="_blank" rel="noopener">http://www.lstsrw.org/</a> （有广告，体验一般）</p>
-<p>该网站也有大神总结的优秀资源汇总：<br><a href="http://gufenso.coderschool.cn/" target="_blank" rel="noopener">http://gufenso.coderschool.cn/</a></p>
-<p>以下的搜索引擎也可以使用：<br><a href="https://www.googto.org" target="_blank" rel="noopener">https://www.googto.org</a>  构图搜索<br><a href="https://www.googto.info" target="_blank" rel="noopener">https://www.googto.info</a> 构图搜索</p>
+            <p>电影很好看，故事发生在韩国，以丧尸感染人类为背景。</p>
+<p>故事开头是发生在白天，一司机在收费站经历消毒之后，回家路上因为要接电话分神，开车撞死了一头鹿，下车之后，但是司机就检查了一下，然后开车走了。之后，等司机离开，死去的鹿，抽搐了两下就站立起来。</p>
+<p>男主（一基金公司的经理）的公司似乎是做了什么不可告人的项目，男主让下属（金代理）处理好，虽然说是不知道什么内容，但是写在这里，应该是有意图的。在处理好公事后，询问金代理最近孩子们都喜欢什么。最后，男主回家带回来一份儿童节就已经送过的礼物，但男主并不知道，等女儿指出来，父女俩就很尴尬了。与此同时，男主的女儿想去见远在釜山的母亲，因为明天就是她的生日，而妻子也想见见女儿。而男主为何会和妻子分开，电影中借孩子的口吻反映出来一部分原因：基金公司的经理，在长期的工作习惯中，一直是趋利避害，努力在保证着自己的利益–也就是所谓的自私，自私的性格，让两人分开。</p>
+<p>男主的母亲告诉男主昨天发生在学校开家长会的事情，并把录好了的录影机交给男主。在看完视频之后，男主经过反复思考，决定陪女儿去釜山。半夜开车去车站，准备送到女儿后，中午回来继续工作。由此，父女俩踏上了死亡列车（或者说是希望列车）。但是，在列车开动之前，发生了意外，但也是必然吧：一被感染的人上了车。故事就由此正式展开 。</p>
+<p>开车后，小萝莉（男主的女儿）发现车站的工作人员被扑倒，被吓了，但是，没有告诉熟睡中的父亲。转而起身去上厕所，遇到了男二号，成庆（貌似姓金）和他妻子。电影中的富贵男，发现了流浪汉长期呆在厕所里，就转告乘务人员，乘务人员就在这里处理这个事情，富贵男告诉小萝莉（秀安）如果不好好学习，以后就会成为像流浪汉一样的人（这时在输出他自己的价值观），而秀安反驳到，妈妈说这种话的人，都不是好人（事实上故事中他的行为证明了这一点）。与此同时，女乘务员发现了被感染的那个女子。在呼叫列车乘务长的过程中，女子彻底被感染，开始撕咬人类。由于都没有防备，被感染的人类快速尸变，并快速蔓延开来，很快，整个车厢里就感染了好几节。男主被电话吵醒，在接完电话后，发现女儿不见了。就起身找女儿，在寻找的过程中，发现了车厢中的动荡，在一探究竟之后，发现了丧尸，转身往回跑的过程，发现女儿，抱起女儿往回跑，但是没想到，回来的路也有了丧尸，在男二（成庆）的掩护之下，成功躲过一劫，但是男主在跑到安全车厢后（也就是没有人被感染的车厢时），立马把门关上，把成庆和他媳妇儿留在外面，幸亏成庆手快，打开了门，进去之后快速锁好了门。男主发现丧尸的智慧低下，不能开门，就提醒成庆，可以把手从门上拿下来。这时成庆开始发飙：你小子跑路的时候，我给你打掩护，结果你先到了，竟然还把门关上了，成庆的媳妇就拉住他，提醒他别说了。而他们发现，丧尸只攻击看到的人，于是，成庆媳妇儿就用报纸和水把透明的车厢门封上了，丧尸的动静马上安静下来。</p>
+<p>第一部分的高潮到此结束。</p>
+<p>在众人逐渐安定下来的时候，石安告诉女儿，在危险的情况下，自己永远是最重要的，不要给别人让座，要学会保护好自己。</p>
+<p>之后，男主接到了母亲打来的电话，母亲问他们的行程情况，并让他（石安）照顾好女儿。呼吸变重，挂掉了电话（推测应该也是被感染了，但是石安也没仔细想）。</p>
+<p>众人通过各种手段，了解到国内发生的情形，发言人声明国内只是在发生暴乱，请国民安心，不要随便外出，不要相信各种谣言。但是众人也已经知道事实，人心惶惶。</p>
+<p>列车长告诉乘客，将在天安鞍山站停靠，所有人下车。但是，当列车逐渐开到车站的时候，发现，车站已被丧尸占领，列车只好往前开。列车长告诉乘客：下一站停靠大田站，有乘客下车，将会有军队和警车保卫他们离开。石安通过联系公司在大田的人员（闵大尉），了解到，大田将会对他们进行隔离。石安以利诱，让闵大尉安排他们让他们父女俩不被隔离。闵大尉答应了，告诉他们下车出站之后，不要走主广场，走旁边的通道。</p>
+<p>第二波高潮来了：</p>
+<p>当众人听从列车员的安排，都下车出站时，石安和秀安走的旁边的通道，而众人走的是主通道。秀安问为什么不和众人走在一起时，秀安指责父亲的自私。而那位流浪汉在乘乱逃出，听到石安和闵大尉的谈话之后，跟随他们走的旁边的通道。当众人坐电梯下楼时，发现了尸变了的警察和军队。可是这个时候，已经晚了，众人开始往回逃。流浪汉在看到警察之后，往警察那边跑，却发现警察尸变了，吓得腿软了。石安发现之后，往回跑，提醒女儿快跑，发现尸变了的警察已经跑到了女儿的身边，多亏了男二号成庆和他媳妇，救了孩子一命。众人就开始抵御丧尸的攻击，石安也在此时受到了攻击，多亏流浪汉用大衣遮住丧尸的脸，石安得以逃过一劫。在几个棒球队员、石安和成庆的合力辅助下，大部分没被感染的人已经安全上车了。但是富贵男提醒乘务员让列车长开车，棒球队的啦啦队队长珍熙坚决反对，因为她的朋友们还没上车。乘务员绝对让列车长发车。棒球队员等人觉得拖延时间够了，就转身去赶车，但是车已经发动了，车站上的人已经被感染，咬伤了几个人，最后，经过一番搏斗，几个人里只剩下了三个人：石安、成庆和珍熙的男友（虽说他没表白，但两人的关系在几人上车的时候，就已经表明）。</p>
+<p>在之后的联系中，发现：秀安和成庆的媳妇儿，以及故事中的姐妹花中的姐姐，被困在十三节车厢，而他们在第九节车厢，珍熙和大部分人在第十五节车厢。几人商议决定：一起前往十三节，救出几人，然后去十五节车厢和大部分人会合。</p>
+<p>第二波高潮结束<br>在角色分配上：成庆自己排在第一，棒球男排在第二，石安殿后。在经历了与一节车厢丧尸的搏斗之后，体力不足。但是他们发现丧尸不能在暗的环境下看见，但能听见。于是石安心生一计:在火车过隧道的时候，用手机吸引丧尸的注意力，乘机跑过去。</p>
+<p>于是，三人就以这种方式跑到了第十三节车厢。棒球男联系珍熙，珍熙告诉列车员情况，一群人会过去。但是此时的富贵男从中作梗，或者说说出了其他人的心声：这些人从那边跑过来，谁知道有没有被感染，于是坚决反对。并将珍熙绑住，把门用衣服领带给固定住，不让他们过来，但是此时，被困到第十四节车厢的他们，车门还没被关紧，几个人负责堵住丧尸，一个人负责砸门。为了掩护石安，成庆被丧尸咬了，门终于关上了。但是成庆也被感染了，成庆将怀孕的妻子托付给石安，请求他照顾好，并让他赶紧带着其他人跑向刚砸开的门。其他人都安全地离开了。但是此时，姐妹花中的姐姐却被困住了，在门关上时，被丧尸感染了。其他人一致要求刚进来的人走向第十六节车厢，要求把他们隔离。姐妹花中的妹妹发现因为这群人的原因，自己的姐姐本来可以进来，却被感染了，心里捣鼓了几句，乘其他人在封锁第十五、十六节车厢的车门的时候，打开了第十四、十五节车厢的车门。</p>
+<p>第三波高潮结束</p>
+<p>而第十五节中，只有两个人没被感染：富贵男和一乘务员，和秀安他们一样，因为躲在厕所而幸免。</p>
+<p>列车继续前进。第十六节车厢里只剩了：珍熙（在众人要求石安和棒球男等人离开，被隔离时同棒球男一同离开）、成庆的媳妇儿、棒球男、石安、流浪汉和秀安。整趟列车中只有这些人和列车长没被感染。而此时石安接到了金代理的电话，此次事件可能是由于他们在那个项目中的打捞的油轮上带起来的病毒引起的。金代理表示很后悔，不知道这件事对不对，石安听到消息后，很震惊，之后，听金代理说釜山已经安全了。军队掌管了所有权，已经安全隔离了。金代理挂了电话之后，石安拼命清洗手上的血污。</p>
+<p>列车在前进的过程中，到站了，是不打算停的，但是列车长发现了道路被出轨的列车挡住了。列车长决定换车。列车长在启动机车之后，下车提醒其他人（安全的）坐火车头去釜山。此时对面冲过来一辆火车头，撞翻了一辆满载着丧尸的列车，丧尸就快冲出来了。而石安、秀安、流浪汉和成庆媳妇被压在两辆车之间，天无绝人之路，石安发现了一个车轱辘之间的缝隙可以通行，于是先爬出来，看清楚周围没有丧尸之后，让其他人赶紧爬过去。而此时丧尸从被压碎的玻璃窗中跑出来了。流浪汉挡住了他们，让秀安和孕妇爬了出去。</p>
+<p>富贵男在出卖乘务员之后，冲出了列车（没关车门），导致身后一大波丧尸跟随。首先遇到了珍熙和棒球男，打开他们关上的车门，没有关，反而把一旁在等男友砸开车窗的珍熙推给了丧尸，棒球男发现之后，就停止了砸窗，转身去救珍熙，而此时富贵男就趁机撞开车窗，跑了出去。珍熙被感染之后，棒球男就一直抱着她，直到自己被感染……</p>
+<p>列车长在遇到富贵男时，就起身与富贵男身后的丧尸搏斗，结果也被感染了。富贵男独自一人趁机爬上了车头。石安、秀安与成庆媳妇看到了行进中的车头，起身追赶。逐渐追上了，而身后的丧尸也追了上来。于是看到了一场类似于打群架的情形：一群人追着几个人。身后的丧尸在扒上了车头之后，由于人数过多，都拖在地上，都开始让列车减速。于是石安就开始用脚踢这些丧尸。渐渐地，丧尸的数量少了，速度提起来了，最后，丧尸就完全被驱逐干净了。</p>
+<p>三人在走向驾驶室时，发现了已经被感染的富贵男。富贵男说明想回家，想石安带他回家，但是很快就尸变了，尸变之后，两人开始搏斗。在搏斗的过程中，石安不幸被感染。</p>
+<p>石安为了两人的安全，将两人锁在驾驶室，期望成庆的媳妇儿照顾好女儿之后，自己跳下了车头，跳下车头之前，石安是愉悦的：回忆起女儿刚出生时的情形，自己十分高兴。</p>
+<p>两人安全到达隔离带，士兵请求上级如何处置未知人士时，上峰命令击毙。而秀安在此时唱起了歌曲：那首她在学校没唱完的歌曲，狙击手没有开枪，故事在一群士兵包围两人的情形中结束。<br>嗯，三千六百多字的故事梗概，内容不是特别详细。</p>
+<p>就自己看完这部电影，觉得在故事中，涉及到了一下几部分的内容：</p>
+<pre><code>1. 资本的力量的强大，在爆发问题时，资本的力量，可以让有钱人权贵可以暂时免受灾难的侵扰。但是当灾难无法避免和消除时，只能保留一部分的安全，甚至这一部分人的安全也不能保证。资本可以让人享受特权对待。
+
+2. 人性是不可考验的，在故事中，石安对成庆的所作所为，以及众人对石安、成庆等人的隔离、姐妹花妹妹为了和姐姐团聚打开车门，富贵男的自私等等，都是基于人性在面对危难时的个人反映。
+
+人性有好有坏，在面对危难境地时，看站在人们面前的是哪种，是哪种人提出来的，在关键时刻提出来的声音，往往会成为人们共同的心声（人们在有多个选择时，更多的时候，会被周围人感染，大众心理会倾向于一种发声）。
+
+3. 人性的自私，在危难时刻最容易体现。资本是自私的，但资本却是由人掌控的。权贵是自私的，因为他们有钱、权，在正常的时候，他们可以享受更高质量的生活。因此，他们不希望改变，人性中的自私会更充分体现。
+</code></pre><p>故事中也有很多美好：</p>
+<p>石安母亲对石安的爱，石安对秀安的爱（父女，母子的亲情）；</p>
+<p>成庆对妻子的爱，表面上是妻管严，实际上对妻子的爱，无以言表；</p>
+<p>棒球男对珍熙的爱，虽说没有说出口，但是却陪伴到最后；</p>
+<p>姐妹花中妹妹对姐姐的依恋，对姐姐生活地同情与爱等等。</p>
+<p>在这些人一同前进的时候，我也感受到了人性的美好，人性中的善良。哪怕刚开始，石安对成庆的所作所为，但是毕竟后面石安还是改过来了。当三人前往十三节车厢救人时，棒球男没有勇气对自己昔日的队友下手，哪怕其他两人已经深陷困境，这之间的犹豫，也很美好。</p>
+<p>尽管电影中，每当他们深陷困境时，总有好运降临，助他们躲过重重劫难。艺术做到这里也就足够了，虽说有些假。</p>
+<p>总之，<br>这部电影真的很好看。<br>这部电影真的很好看。<br>这部电影真的很好看。</p>
 
           
         
@@ -715,7 +1062,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/11/searchbook/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/crawl1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jackence">
@@ -734,7 +1081,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/11/searchbook/" itemprop="url">搜书网站概览</a></h1>
+                <a class="post-title-link" href="/2018/01/12/crawl1/" itemprop="url">动手写爬虫总结1</a></h1>
         
 
         <div class="post-meta">
@@ -746,8 +1093,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-11T20:21:30+08:00">
-                2018-01-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-12T16:35:02+08:00">
+                2018-01-12
               </time>
             
 
@@ -769,8 +1116,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生活/" itemprop="url" rel="index">
-                    <span itemprop="name">生活</span>
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
                   </a>
                 </span>
 
@@ -808,36 +1155,22 @@
       
         
           
-            <p>按照使用方式和突破限制的方式分类如下：</p>
-<h3 id="不需要登录注册"><a href="#不需要登录注册" class="headerlink" title="不需要登录注册"></a>不需要登录注册</h3><p><a href="http://manybooks.net/" target="_blank" rel="noopener">http://manybooks.net/</a>          英文</p>
-<p><a href="http://www.allitebooks.com/" target="_blank" rel="noopener">http://www.allitebooks.com/</a> IT类型英文书籍，可以下载，可以在线阅读</p>
-<p><a href="http://libgen.io/" target="_blank" rel="noopener">http://libgen.io/</a>      可以使用，不用注册</p>
-<p><a href="https://www.jiumodiary.com/" target="_blank" rel="noopener">https://www.jiumodiary.com/</a>  鸠摩搜书，可以使用，不用注册</p>
-<p><a href="http://www.inien.com/" target="_blank" rel="noopener">http://www.inien.com/</a>  可以使用，提供在线阅读，可以提供搜索、制作下载，不用注册</p>
-<p><a href="http://xidong.net/" target="_blank" rel="noopener">http://xidong.net/</a>  可以使用</p>
-<p><a href="http://www.gutenberg.org/browse/languages/zh" target="_blank" rel="noopener">http://www.gutenberg.org/browse/languages/zh</a>  古登堡计划，可以使用</p>
-<p><a href="http://haodoo.net/" target="_blank" rel="noopener">http://haodoo.net/</a>  繁体书，可以使用</p>
-<p><a href="https://1bookcase.com/" target="_blank" rel="noopener">https://1bookcase.com/</a>   英文书下载网站</p>
-<p><a href="http://www.verycd.com/archives/" target="_blank" rel="noopener">http://www.verycd.com/archives/</a>   资源较多，较杂的网站</p>
-<h3 id="可以使用需要登录注册"><a href="#可以使用需要登录注册" class="headerlink" title="可以使用需要登录注册"></a>可以使用需要登录注册</h3><p><a href="http://ebook3000.com/" target="_blank" rel="noopener">http://ebook3000.com/</a>   电子书，貌似有问题的网站，广告比较多，下载需要注册</p>
-<p><a href="http://www.hi-pda.com/forum/viewthread.php?tid=569396&amp;extra=page%3D1" target="_blank" rel="noopener">http://www.hi-pda.com/forum/viewthread.php?tid=569396&amp;extra=page%3D1</a>  资源多，但要登录的网站</p>
-<p><a href="http://www.wmwk.org/" target="_blank" rel="noopener">http://www.wmwk.org/</a>   需要注册</p>
-<p><a href="http://www.cnepub.com" target="_blank" rel="noopener">http://www.cnepub.com</a>   需要注册，可以搜索，可以阅读，但是无法保证所有搜到的书都可以阅读</p>
-<p><a href="http://www.douban.com/group/12509/" target="_blank" rel="noopener">http://www.douban.com/group/12509/</a>   豆瓣登录访问</p>
-<p><a href="http://www.douban.com/group/ebex/" target="_blank" rel="noopener">http://www.douban.com/group/ebex/</a>  豆瓣登录访问</p>
-<p><a href="http://www.douban.com/group/txtbook/" target="_blank" rel="noopener">http://www.douban.com/group/txtbook/</a>  豆瓣登录访问</p>
-<p><a href="http://www.douban.com/group/pdf/" target="_blank" rel="noopener">http://www.douban.com/group/pdf/</a>  豆瓣登录访问</p>
-<p><a href="http://www.douban.com/group/appleibooks/" target="_blank" rel="noopener">http://www.douban.com/group/appleibooks/</a>  加入豆瓣小组</p>
-<p><a href="http://www.epub5.com/" target="_blank" rel="noopener">http://www.epub5.com/</a>    需要注册,资源不是很多</p>
-<p><a href="http://www.11dream.net/" target="_blank" rel="noopener">http://www.11dream.net/</a>  需要注册，资源不是很多</p>
-<h3 id="需要搭梯子使用的网站"><a href="#需要搭梯子使用的网站" class="headerlink" title="需要搭梯子使用的网站"></a>需要搭梯子使用的网站</h3><p><a href="http://forfrigg.com/" target="_blank" rel="noopener">http://forfrigg.com/</a>   可能需要搭梯子，类似于鸠摩搜书，复合搜索</p>
-<p><a href="http://www.google.com/cse/home?cx=005194810162718251859%3Ao8kqt8bibjo" target="_blank" rel="noopener">http://www.google.com/cse/home?cx=005194810162718251859%3Ao8kqt8bibjo</a>   豆瓣电子书搜索，需搭梯子</p>
-<p><a href="http://wpsoso.com/" target="_blank" rel="noopener">http://wpsoso.com/</a>   网盘soso，貌似需要搭梯子</p>
-<p><a href="http://www.lepdf.com/" target="_blank" rel="noopener">http://www.lepdf.com/</a>   搜索，可能需要搭梯子，类似于<a href="http://forfrigg.com/" target="_blank" rel="noopener">http://forfrigg.com/</a></p>
-<h3 id="彩蛋：一些阅读材料"><a href="#彩蛋：一些阅读材料" class="headerlink" title="彩蛋：一些阅读材料"></a>彩蛋：一些阅读材料</h3><p>kindle 使用技巧及推荐多看阅读</p>
-<p><a href="http://www.hi-pda.com/forum/viewthread.php?tid=526444&amp;extra=page%3D1&amp;sid=bTuoBx" target="_blank" rel="noopener">kindle 使用技巧</a></p>
-<p><a href="http://www.douban.com/group/topic/19630427/" target="_blank" rel="noopener">kindle 使用技巧</a></p>
-<p><a href="http://www.duokan.com/forum/forum-16-1.html" target="_blank" rel="noopener">多看阅读，小米旗下的电子书网站</a></p>
+            <p>爬虫总结：</p>
+<p>自2016年十月中旬至此，前后花费了一个半月写爬虫，也是平时零零散散写的爬虫，从最简单的页面获取，到页面数据解析，再到后面的翻页，保存到Excel中，再到获取动态网页，加载JSON数据，到最后的将数据保存到数据库，中间踩的坑又不少，最近就开始简单的总结吧。</p>
+<p>自己当初使用的是Python 2.7的环境</p>
+<p>1.从最简单的页面获取而言，有几个库（模块）的使用，用到了urllib2,urllib,requests等。</p>
+<p>具体的使用，通过urllib2获取网页的HTML代码，使用的过程中，为了防止爬虫被ban，在获取某些页面的过程中，添加了浏览器的headers，将爬虫伪装成浏览器去访问页面，常见的伪装就是加上USER-AGENT（UA）,也有部分网页即使加上了headers也没用，这个时候，就要往爬虫的headers方面去下功夫，到底是什么限制了爬虫的访问。</p>
+<p>目前，在爬取个人的关注方面出现了问题。为了更像浏览器，在获取多个页面的时候，就要提前设置访问的间隔时间，使用time()这个系统库，再利用的是random()库，获取任意的（0.0-1）时间，用获取到的时间进行处理，最后，间隔时间在5s以上为佳。</p>
+<p>2.在页面获取之后，要对页面的数据（html代码）进行处理。</p>
+<p>主要的方式，就是通过BeautifulSoup这个库，来解析页面，解析的依赖库，主要就是html.parser和lxml这两个解析器，其中，html.parser和lxml这两个解析器各有优劣，但是对lxml而言，更好的处理方式，是通过DOM来解析，能获得更好的效果，在写爬虫程序前，要分析爬虫的获取的数据，分析网页的结构，获取正确的位置，可以借助F12这个浏览器的工具，来快速定位所需要的信息的位置。</p>
+<p>在页面解析的过程中，除开BS4这个库之外，还使用到了re（正则表达式）这个模块，许多要获取的信息，在通过BS4解析之后，还是要进一步的清洗，提取出关键的数据，此时需要学习正则表达式的基本知识。尽管在后面，有提到可以使用string这个库的使用，在一定程度上可以减缓正则表达式在解析页面过程中的使用。但是这都是后知后觉了。</p>
+<p>3.获取需要的数据后，要对数据进行存储。</p>
+<p>自己最开始学习使用的是用的文件存储，比如，使用python的文件读写，写入到txt格式，但是在此的过程中，发现任务量比较大，如果使用txt格式存储，就不太适合了，到后面所有的数据都是用的Excel格式存储的。主要使用的库是XLWT，在写入的过程中，发现某一列数据可能会写入多行，这个时候，定义下函数来存储就是比较好的了。</p>
+<p>4.获得JSON数据，刚开始接触到这个，其实是在文章页面，获得文章信息之后，需要再获取评论的信息，在评论区，是通过动态加载而来，第一页数据使用的Ajax将评论异步加载过来的，在网络上寻求帮助之后，提供了几个建议：</p>
+<p>a.通过浏览器加载渲染，就是实际上通过浏览器来访问，并且获得评论的信息，但是发现这种方式的效率太低，而且对电脑要求的比较高，需要下载Webdriver和PhantomJS 来解析JS</p>
+<p>b.到后面，自己在反复尝试之后，发现，可以直接访问JSON数据，就是从浏览器发送请求，然后服务器端发送相关的数据页面，这样的方式既达到了自己的效果，又使得电脑的负载更低，使用的方向有8K+的基本信息的页面，以及每个人文章的评论的内容，当然，获取的JSON数据并不是我们需要的，我们需要处理，处理成干净的JSON数据，然后利用JSON这个库，来处理，将其处理成字典数据，最后，在字典的里面，通过键-值来提取我们需要的数据。</p>
+<p>5.连接到数据库，这一部分，主要是同学完成的。其中的重难点，应该是数据库的设计，因为在爬取数据的过程中，发现了许多的问题，并不是像老师说的那么简单就行，表格之间有关系，而一张表又不可能写完所有的信息，在此，就想着使用数据库来存储数据。</p>
+<p>6.IP代理的问题，在实验室，实际上就只有一个IP，这样限制了爬虫的速度，不可能爬取太快，一旦稍微速度快了，就会错误，网站拒绝提供服务，会提醒DDOS攻击（10054）错误。因此，就想着在此基础上，想着爬取网络上的IP代理，使用代理访问（主要是高匿代理），但是目前，高匿代理，在许多代理网站上都是没用的。</p>
 
           
         
@@ -886,7 +1219,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/11/jingjin4.2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/clusteragl/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jackence">
@@ -905,7 +1238,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/11/jingjin4.2/" itemprop="url">《精进》精彩观点提炼</a></h1>
+                <a class="post-title-link" href="/2018/01/12/clusteragl/" itemprop="url">聚类分析的学习概览</a></h1>
         
 
         <div class="post-meta">
@@ -917,8 +1250,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-11T20:21:30+08:00">
-                2018-01-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-12T16:35:02+08:00">
+                2018-01-12
               </time>
             
 
@@ -940,8 +1273,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生活/" itemprop="url" rel="index">
-                    <span itemprop="name">生活</span>
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
                   </a>
                 </span>
 
@@ -979,12 +1312,17 @@
       
         
           
-            <p>用平衡观点看待过去、现在和未来，用郑重的态度过好当下的生活，并连接过去和未来。</p>
-<p>明确工作隔阂生活的界限，用未来的视角工作，用享乐主义视角生活。</p>
-<p>使用时间之尺，审视时间的长期价值，尽可能删减非必要事件。</p>
-<p>让远期未来更具体，为近期未来增加挑战。</p>
-<p>把握做事的节奏，区分“求快”的事件和“求慢”事件</p>
-<p>提升时间使用的“深度”，减少被动式的休闲比例，至少保持一项以上的业余爱好。</p>
+            <p>聚类学习是一种无监督学习，是可以根据数据集中的自相似进行自动分类。</p>
+<p>聚类的结果希望达成类内大相似，类间不相似的分类效果。</p>
+<p>聚类分析的方法有很多，列举下：基于划分的聚类、基于层次的聚类、基于密度的聚类、基于网格的聚类和基于模型的聚类等几种。</p>
+<p>其中，基于层次聚类的聚类方法有：凝聚法和分裂法。</p>
+<p>凝聚法是自底向上，逐步聚类，一开始将每个样本作为一个单独的组，然后相继地合并相近的对象或组，直到所有的组合并成一个，或者达到一个终止条件。</p>
+<p>分裂法是自顶向下，逐步递归。一开始将所有样本置于一个簇中，在迭代的每一步中，一个簇被分裂为更小的簇，直到最终每个样本在单独的一个簇中。（这个不是分类算法）</p>
+<p>基于密度的方法，代表算法是DBSCAN和OPTICS算法。</p>
+<p>其中，DBSCAN是根据一个密度阈值来控制簇的增长。而 OPTICS算法是另一种基于密度的方法，它为自动的和交互的聚类分析计算一个聚类顺序。</p>
+<p>基于划分的方法有：K-均值、K-众数、CLARA、CLARANS、FCM等。</p>
+<p>基于网格的方法把样本空间量化为有限数目的单元，形成了一个网格结构，所有的聚类操作都在这个网格结构上进行。这种方法的主要优点是它的处理速度很快，其处理时间独立与数据样本的数目，只与量化空间中的每一位的单元数目有关。典型的方法有：STING和WaveCluster。</p>
+<p>基于模型的方法，为每一个簇假定了一个模型，寻找数据对给定模型的最佳组合。一个基于模型的算法可能通过构建反映数据点空间分布的密度函数来定位聚类。它也基于标准的统计数字自动决定聚类的数目，考虑“噪声”数据或孤立点，从而产生健壮的聚类方法，典型的方法有：COBWEB和CLASSIT。</p>
 
           
         
@@ -1033,7 +1371,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/11/jingjin4.1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/clusteragl1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jackence">
@@ -1052,7 +1390,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/11/jingjin4.1/" itemprop="url">《精进》4.1</a></h1>
+                <a class="post-title-link" href="/2018/01/12/clusteragl1/" itemprop="url">聚类分析之K-means算法</a></h1>
         
 
         <div class="post-meta">
@@ -1064,8 +1402,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-11T20:21:30+08:00">
-                2018-01-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-12T16:35:02+08:00">
+                2018-01-12
               </time>
             
 
@@ -1087,8 +1425,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生活/" itemprop="url" rel="index">
-                    <span itemprop="name">生活</span>
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
                   </a>
                 </span>
 
@@ -1126,37 +1464,19 @@
       
         
           
-            <p>1.主动构建知识</p>
-<p>提问在我们的学习的过程中是至关重要的。如果我们在平时学习的时候不提问，学习的流程应该是这样的：</p>
-<pre><code>订立计划
-
-实施学习
-
-回顾和整理，对笔记进行整理，或者画出一张思维导图，将知识结构进行整理。
-</code></pre><p>其实，很多人在做到上面的三点就很了不起了。我们在学习这些知识的过程中，只是扮演着搬运工的角色，只是将书本上面的知识放进脑子了，而并没有用上自己的知识结构和知识构建体系。</p>
-<p>2.打开新旧知识之间的通道</p>
-<p>罗素在他的《人类的知识》中写道，一个人求知的历程，就像是一个登山者靠近一座被无爱笼罩的高山，刚开始只能看见轮廓，走近的时候，才看清整座山，才感觉到山的高大。</p>
-<p>问题就像是向导，引领着我们去接近。我们应该去多想项四个问题：</p>
-<pre><code>针对当前的学习资料，我已具备了哪些知识？
-这个问题是对我知道我知道这一问题的回答，自己对自己的知识掌握情况应该是最熟知的；
-
-针对当前的学习材料，我又学到了哪些新的知识？
-这些知识对原有的知识构成了何种补充或挑战？
-这个问题是对自己知道自己不知道的问题的回答；
-
-针对当前的学习材料，还有哪些未知的东西，我可以通过简单的探索就可以获知？
-
-针对当前的学习材料，还有哪些未知的东西，无法轻易地获得解答，同时值得自己长期去探索的？
-</code></pre><p>第四个问题是最为特别的，因为它可能变成一项长期任务，值得每一个学习者去深入研究。</p>
-<p>这两天看到这样的观点:学习要把握四点：</p>
-<pre><code>将基础知识掌握牢固，越牢固越好，最好的效果就类似于卖油翁那样的熟练程度；
-
-大胆假设，小心求证，当自己有何看法或想法的时候，积极做出假设，但是在验证的时候保持严谨的态度，对验证的要求越高越好；
-
-在一二点做好之后，可能在前进的过程中，会遇到自己不能解决的问题，这个时候，就应该主动去和人交流，与人探讨，切忌闭门造车；
-
-博览群书，知识面需要进行扩展，在知识体系交叉的时候，许多新的知识会对自己的研究产生新的思路
-</code></pre><p>也向大家推荐另一本书，《学会提问，批判性思维指南》</p>
+            <p>聚类分析是根据数据之间的自相似自动分类的。</p>
+<p>分类的结果是，类内大相似，类间不相似或小相似。</p>
+<p>聚类的分类方法有：</p>
+<pre><code>1.划分
+2.层次
+3.基于密度
+4.基于网络
+5.基于模型
+</code></pre><h2 id="划分聚类："><a href="#划分聚类：" class="headerlink" title="划分聚类："></a>划分聚类：</h2><h3 id="K-Means算法"><a href="#K-Means算法" class="headerlink" title="K-Means算法"></a>K-Means算法</h3><p>将数据集划分为K个簇，每隔簇内部的样本都相似。主要步骤：<br>    1.确定K个簇。<br>    2.计算距离并进行归类<br>    3.重新定K。<br>    当出现单一条件不同、标准不同时，需要对数据进行归一化处理。</p>
+<p>常见的有：<br>(x-min)/（max-min）<br>但是K-means由于其本身选取的是均值作为？</p>
+<p>有一定的局限性：<br>    1.不适用于非数值型数据，如分类数据，序列数据，且容易受极值的影响<br>    2.K-means算法是对初始值敏感的，如果起初随意定初始值很可能无法迭代到本该的最优点。<br>    3.K-means算法倾向于聚类后的半径相近，倾向于密度均匀的聚类<br>    4.无法聚类出有型的点（一般只能用于球形）</p>
+<p>鉴于K-means算法的缺点，可以使用，K-mediods，K-modes,K-prototype，二分 K-means算法进行替代</p>
+<h2 id="层次聚类"><a href="#层次聚类" class="headerlink" title="层次聚类"></a>层次聚类</h2><p>分为凝聚法和分裂法。</p>
 
           
         
@@ -1205,7 +1525,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/11/jingjin3.4/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/decisiontree0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jackence">
@@ -1224,7 +1544,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/11/jingjin3.4/" itemprop="url">《精进》3.4</a></h1>
+                <a class="post-title-link" href="/2018/01/12/decisiontree0/" itemprop="url">决策树算法——概述</a></h1>
         
 
         <div class="post-meta">
@@ -1236,8 +1556,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-11T20:21:30+08:00">
-                2018-01-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-12T16:35:02+08:00">
+                2018-01-12
               </time>
             
 
@@ -1259,8 +1579,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生活/" itemprop="url" rel="index">
-                    <span itemprop="name">生活</span>
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
                   </a>
                 </span>
 
@@ -1298,225 +1618,16 @@
       
         
           
-            <p>作者在10年前在一家互联网公司做实习生时，一位导师教了两样东西让他印象最深刻：<br>每住到一家宾馆，首先看门背后的楼层结构图，记住安全出口和逃生通道的位置；<br>每做完一件事情，就要做一下回顾总结。</p>
-<p>在从小到大的学习中，我们被告知的所有知识来源于课本，前人已经帮我们探索了大多数的知识，我们只需要认真读书，理解吸收就可以了。也因此，许多人养成了僵化的思维模式，我们得出了这样的结论：实践中遇到的知识可以从理论中推导出来，从理论到时间是一个自然而然的过程。但实际上并不是这样的。</p>
-<p>从理论出发不一定能指导实践，只有在实践中通过反思积累的知识才能指导实践。“行动科学”对此有比较深入的阐述：科学理论诞生于“维持其他变量恒定”的理想情景，而实际的问题却则处于一个多因素相互作用、相互依存而又相互冲突的“复杂场域”中，并且具有某种独特性。</p>
-<p>事实上，我们在解决问题的时候，更依赖于隐性的知识和理性的推理。行动科学的另一位大师认为：三思而行不一定正确，很多时候甚至是行动先于思考的，因为人们的机智行为是高度技巧及复杂推理形成的，而其中的绝大多数又是隐形的。</p>
-<p>故，行动之后的反思，可能反过来发展我们的认知。以个人在实验室配置linux为例，自己以前没有配过，然后此次为了实验的需要，直接硬着头皮上了，自己以前只装过windows的系统，而这两款系统是不一样的，这次就先直接上了，边查资料边配软件，照着资料上面的教程来配。在查资料配软件的过程中，也学会了一些linux的命令，而现在在配置好的系统中的添加文件或修改文件，再也不是一头雾水了，起码看得懂一些代码的意义，明白了语句的作用。</p>
-<p>日本管理大师野中郁次郎认为：我们行动中蕴含的知识属于不容易用语言表达出来的隐形知识，往往是经验，是技巧。这就是工匠精神所蕴含的精髓所在。最近也在想工匠精神的意义，第一次接触到工匠精神是在大一时候的，那时的互联网时代这部纪录片中提到了德国的工匠艺术，自己其实一直很钦佩德国人的那种严谨精神的，自己以为的工匠精神应该就是属于那种师傅带几个徒弟，进行精细化指导，手把手教导，自古以来的中国的工匠精神一直就有传承，记得爷爷曾经和我说父亲以前拜师学习木匠的故事，那时出师还要好几年，第一年怎么样，第二年怎么样……当时不太懂，现在有些懂了。正是做一些重复式的内容，才能到后面将事情做好，做好做快。</p>
-<p>我自己在平时进行反思的时候，总结还是做了，然后，今天再一看，感觉深度不够，只是停留在表面，不够细致。</p>
-<p>作者是这样建议的：</p>
-<pre><code>我们需要透过表象看到本质，需要付出更多的思考和观察。在表象之上，是经由归纳抽象出来的经验、假设和模型；在表象之下，是大量更加真实与繁密的细节信息。
-</code></pre><p>我们在做完一件事，应该怎样反思呢？</p>
-<pre><code>信息：
-在做这件事利用了哪些信息？哪些信息是最关键的？
-这些信息是从哪些渠道得来的？哪些渠道被证明是很有价值的？
-我可能遗漏了哪些信息？这些信息可以怎么得到？
-
-
-
-预期：
-在做事之前，是否对事情的过程与结果形成了正确的预期？
-我为什么会形成这样的预期？是什么造成了预期和事实的偏差？
-我的预期是否促进或阻碍了事情的进展？今后应该如何管理自己的预期？
-
-
-
-结果：
-怎样描述这件事的结果？怎样评价它？
-在描述和评价这件事的结果时，自己都用了哪些指标？这些指标是否需要改进？
-结果可以改进吗？需要哪些方面的改进？如何改进？
-
-
-
-进度：
-事情的进度合适吗？快了还是慢了？是什么因素造成的？
-当进度出现了问题时使用了哪些手段进行干预？效果怎样？为何效果理想/不理想？
-
-
-工具：
-在完成这件事的过程中，我使用了哪些工具？
-哪些工具起到了重要的促进作用？哪些工具起到了阻碍的作用？
-如何改进现有的工具使其发挥更好的功效？
-
-
-情绪：
-在做事的过程中，自己的情绪是怎样的？是否出现了情绪失控的情况？是何原因引发的？
-我是否有意识地调整了自己的情绪？在这期间使用了什么方法？是否需要改进？
-
-
-阻碍：
-在做事的过程中我遇到了哪些阻碍？其中最大的阻碍是什么？
-我是如何应对这些阻碍的？取得了哪些效果？
-这些阻碍中哪些会长期存在？我需要通过什么持续的努力来减少这些阻碍？
-
-
-优势：
-在做事的过程中，我发挥了哪些优势？是否有优势没有用上？
-在做事的过程中，我的主要收获有哪些？我的哪些知识和能力得到了提升？
-我可以向做同类事情的其他人学习些什么？他们有哪些优势是自己不具有的？
-
-
-缺憾：
-在做事的过程中，我的遗憾有哪些？最大的遗憾是什么？是什么原因造成了这个遗憾？
-在做事的过程中，我暴露了哪些缺点？其中哪些缺点是必须且迫切需要改进的？
-关于这件事，别人对我有什么评价和批评？他们的批评有哪些可取之处？
-
-
-意义：
-这件事对我来说最大的意义是什么？对我的短期生活和长期生活分别有什么影响？
-这件事对身边的人、社会、对世界和对地球的意义是什么？ 我发现了哪些意想不到的意义？
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/11/jingjin3.3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jackence">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="坚守本心">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/11/jingjin3.3/" itemprop="url">《精进》3.3</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-11T20:21:30+08:00">
-                2018-01-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生活/" itemprop="url" rel="index">
-                    <span itemprop="name">生活</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>很多人认为，同时做多件事情是很有效率的，其实，从认知心理学的观点来看，人的“多线程工作”是不可能的。</p>
-<p>因为在任何瞬间，人只能有一个“逐一焦点”，这个注意焦点牵引了人的认知加工资源。有时候我们认为同时关注了两个东西，其实是发生了注意力转移的结果。当然也有例外：就是我们有些熟练的技能，可以自动化、不加注意的进行，那就可以和其他事情一起做。</p>
-<h3 id="“核心思考区间”的工作不可中断"><a href="#“核心思考区间”的工作不可中断" class="headerlink" title="“核心思考区间”的工作不可中断"></a>“核心思考区间”的工作不可中断</h3><p>科学家发现“任务转换”会降低工作效率，主要原因有两个：1.任务留下的惯性思维，这个惯性对切换后的任务有影响；2.需要对转换后的任务进行知识重构，需要熟悉新任务的完成方式。如果我们在非常投入和忘我的思考时打断，我们的损失和懊恼就会非常巨大；相反，如果我们只是在做一些不需要投入大量精力的事情的时候，即使是频繁地中断，对我们的影响也不会太大。</p>
-<p>如果，我们能选择合适的中断点，我们的切换损失就会降低。对于提高工作效率而言，着可以研究一下。但是，个人觉得在做一件事情的时候，只需要做好手中的事情就好，不要想着同时做多件事情。</p>
-<p>作者给我们的参考意见是：在接受一个新任务之后，第一部，应该是找到其中的核心思考区间，什么是最重要的，自己希望在处理事情的时候，以什么样的方式处理，这是重要的一步。找出了这个区间之后，先聚精会神的完成对该任务的研究和准备，再对外围的内容进行扩充和谋划。</p>
-<h3 id="对不同认知类型的工作分层处理"><a href="#对不同认知类型的工作分层处理" class="headerlink" title="对不同认知类型的工作分层处理"></a>对不同认知类型的工作分层处理</h3><p>我们应该如何按照认知类型来划分任务呢？</p>
-<p>认知类型是指我们头脑加工信息的不同方式。当我们在不同认知类型里面切换任务的时候，我们在调整的过程中需要花费的精力很大。那为什么不先按照一个类型进行分类，我们完成该类型下的所有任务，我们将需要切换其他方式的地方进行标注，待该类型下的任务完成之后，再切换认知模型，如果这样下来，我们的任务是不是感觉会要轻松一些呢？</p>
-<p>自己深有体会：前一段时间，老师让我们先写一篇项目申报书，我们是先将文字写了，然后再将图放上去，但是老师在给我门指导的时候，是这样指导的：这个地方需要补充什么图，描绘的是什么内容，然后继续对我们的文档进行分析，再指出另一个地方需要加上什么图片，描述的是什么内容，待到全部文档修改完，再来具体绘画图片。这应该也是老师比我们的效率高的原因之一吧。</p>
-<h3 id="集中处理同质性的工作"><a href="#集中处理同质性的工作" class="headerlink" title="集中处理同质性的工作"></a>集中处理同质性的工作</h3><p>按照上面分层的方案，对每一层任务进行分析，然后对每一层任务进行各个击破：</p>
-<p>以做PPT为例：先确定主题，这套PPT的主题是什么，自己想要传递什么信息，信息的层次是什么，每一层的信息是什么，信息的分层表达形式是什么，如果以文字、excel和图片形式传递，那可以先确定文字的内容，excel内容，图片内容，再来分别完成文字内容、图片的填充。就这样，梳理好之后，就可以进行PPT的制作了。</p>
+            <p>决策树是一种基本的分类和回归方法。</p>
+<p>决策树模型呈树形结构，在分类问题中，表示基于特征对实例进行分类的过程，可以认为是if-then规则的集合，也可以认为是定义在特征空间与类空间上的条件概率分布。主要优点是模型具有可读性、分类速度快。</p>
+<p>学习时，利用训练数据，根据损失函数最小化的原则建立决策树模型。预测时，对新的数据，利用决策树模型进行分类。</p>
+<p>决策树学习通常包括3个步骤：特征选择、决策树的生成与决策树的剪枝。</p>
+<p>主要包括ID3算法，C4.5算法和CART算法。</p>
+<p>决策树模型</p>
+<p>分类决策树模型是一种描述对实力进行分类的树形结构。决策树由节点和有向边组成，节点有两种类型：内节点和叶节点，内节点表示一个特征或属性，叶节点表示一个类。</p>
+<p>用决策树分类，从根结点开始，对实例的某一特征进行测试，根据测试结果，将实例分配到其子节点；这时，mri一个子节点对应着该特征的一个取值。如此递归地对实例进行测试并分配，直至达到叶节点。最后将实力分到叶节点的类中。</p>
+<p>特征选择<br>特征选择在于选择对训练数据具有分类能力的特征，这样可以提高决策树学习的效率。如果利用一个特征进行分类的结果与随机分类的结果没有很大差别，则称这个特征是没有分类能力的，经验上扔掉这样的特征对决策树学习的精度影响不大，通常特征选择的准则是信息增益或信息增益比。</p>
+<p>——————————<br>还未涉及决策树的剪枝部分……</p>
 
           
         
@@ -1565,7 +1676,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/11/jingjin3.2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/recommendsys1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jackence">
@@ -1584,7 +1695,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/11/jingjin3.2/" itemprop="url">《精进》3.2</a></h1>
+                <a class="post-title-link" href="/2018/01/12/recommendsys1/" itemprop="url">《推荐系统》读书笔记——协同过滤推荐</a></h1>
         
 
         <div class="post-meta">
@@ -1596,8 +1707,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-11T20:21:30+08:00">
-                2018-01-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-12T16:35:02+08:00">
+                2018-01-12
               </time>
             
 
@@ -1619,8 +1730,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生活/" itemprop="url" rel="index">
-                    <span itemprop="name">生活</span>
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
                   </a>
                 </span>
 
@@ -1658,173 +1769,50 @@
       
         
           
-            <p>目前互联网创业最流行的方法之一是“精益创业”，而其中有个关键的概念“最小化可行产品”。</p>
-<p>它体现的是“构建-测量-学习”的循环式的过程。类似在平时我们希望上交一份比较优秀的答卷的时候，我们总是先建立一个最基本的版本，而后再根据市场需求来不断地修改，进行修正。</p>
-<p>精益创业的价值在于，在动态演化的市场里，找到一种可操作的适应市场的方式。而在传统的产品生产流程过程中，我们都是在进行周密、系统的规划后，一步一步完成项目的各个部分，最后再构建出精致的成品。然而即使在市场进行了充分的调研后，再到论证、规划、测试，等到产品的发布，所形成的产品也不一定能适应新的市场。</p>
-<p>因此，及时推出适应市场产品的关键性就体现出来了。当然，如果市场的演变不大，那也不必去使用精益创业的模式。</p>
-<h3 id="一个人的“最小化可行产品”是什么？"><a href="#一个人的“最小化可行产品”是什么？" class="headerlink" title="一个人的“最小化可行产品”是什么？"></a>一个人的“最小化可行产品”是什么？</h3><p>人生类似于一个不断演化的创业，我们面临着不可知的未来，哪怕我们已经做好了计划和准备，但是还是可能无法适应变化的世界。那为什么不借鉴精益创业的方法呢？推出属于自己的一个最小化的可行性产品呢？</p>
-<pre><code>产品：是一种结果，是对原料的结构性整合，产品能被别人使用和检验，能对世界产生影响，使人受益，同时，它应该也是一种媒介。如果我们按照这种框架来理解，就可以去分析，对于我们每一个人来说，什么才是自己向外宣传的能力或专业化产品了。
-</code></pre><h3 id="我们永远无法准备好"><a href="#我们永远无法准备好" class="headerlink" title="我们永远无法准备好"></a>我们永远无法准备好</h3><p>“先做好准备再上场”的思想有一个问题：我们无法做好万全准备，总有我们无暇顾及的问题。当我们先做出一定的东西的时候，我们的思路才可能更清晰。</p>
-<p>把评判当做一种信息来对待</p>
-<p>我们可以将外界的反馈分为三类：正面肯定、否定和批评、提示之前未知的方面。我们总是习惯反对别人的意见。</p>
-<p>一方面，我们怯于将自己的产品发布给外界，怯于将自己的产品分享给别人，这是一种自卑的表现；一方面，当自己的观点、产品暴露在大众的目光下，我们虚心接受评判和提示之后，我们的产品才能进步的更快。</p>
-<h3 id="对产品不断修正"><a href="#对产品不断修正" class="headerlink" title="对产品不断修正"></a>对产品不断修正</h3><p>精益创业的最后的关键是，在勇于修正自己的错误。这一步说起来容易也困难：容易是因为我们在前期已经将需要改进的信息获取了，只需要按照我们收集的信息来进行针对性修改；困难是因为我们有没有勇气去走出那一步，这最关键的一步，因为只有自己采取措施，自己的产品才会有所改变。</p>
-<p>如果我们希望以精益创业的方式去走过人生，需要做到这三点：</p>
-<pre><code>1. 克服”过度准备“的惯性，向前一步，把未完成的事情完成；
-
-
-2. 克服”自我防卫“的心态，乐于接受反面意见并加以慎重地审核；
-
-
-3. 克服”沉没成本“的固执，有勇气否定并重新构造自己的产品；
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/11/jingjin3.1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jackence">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="坚守本心">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/11/jingjin3.1/" itemprop="url">《精进》3.1</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-11T20:21:30+08:00">
-                2018-01-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生活/" itemprop="url" rel="index">
-                    <span itemprop="name">生活</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>一件看上去繁难的事，只要开始做了，就会变得越来越容易。</p>
-<p>我们内心的懒惰、恐惧、侥幸附带各种各样的借口，在本该有的行动之前树起了重重无形的阻碍。这些心理的障碍往往超过了这些行动本身的难度。</p>
-<p>纵使一件事情真的很难，你就迈出第一步试试，有何不可？</p>
-<p>这个自己深有体会:自己平时在寝室不想收拾，后面每次到检查卫生的时候收拾一次，但是最近感觉这个习惯不太好，于是，就准备每天好好收拾一下。其实发现也是蛮简单，只要每天花个三到五分钟，自己的视觉感受也就感觉好很多，心情愉悦不少，总比以前那种只会在检查卫生的时候打扫一次感觉好很多。</p>
-<p>现在自己在想一些事情或看法的时候，如果有什么头绪，自己总会在第一时间去尝试着去做，哪怕只是开个头，开了个头，自己就会时刻惦记着，惦记着，自己也就会在日后的闲暇时间里去做。</p>
-<p>如果我们总能想到一件事就去完成一件事，我们同时应付的事情就少了，也就不用多花时间去“管理”这些事情。正像第一章中的，事情总会越管理越多。当我们待完成的事情一多，我们的管理复杂度会直线上升，相应地，记忆负担、情绪负担和人际负担会显著加重。</p>
-<p>我们必须要把先做的小事处理掉，是我们保持积极和从容心态的一剂良方。虽说我们在一些参考资料中看到，说当我们先解决大问题，那么后面的情形就会好很多。但是对我而言，个人觉得还是在先解决小问题，再来解决大问题，这种方式更好。</p>
+            <p>协同过滤推荐的主要思想：利用已有用户群过去的行为或意见预测当前用户最可能喜欢哪些东西或对哪些东西感兴趣。</p>
+<p>此类的系统在在线零售系统中成为对用户需求个性化定制内容的工具。</p>
+<p>纯粹的协同过滤方法的输入数据只有给定的用户—物品评分矩阵，输出数据一般有以下几种类型：</p>
+<pre><code>1. 表示当前用户对物品喜欢或者不喜欢程度的预测数值，
+2. n项推荐物品的列表。当然，这个TOP-N列表不会包含用户已经买过的物品。
+</code></pre><p>推荐方法：</p>
+<h3 id="基于用户的最近邻推荐"><a href="#基于用户的最近邻推荐" class="headerlink" title="基于用户的最近邻推荐"></a>基于用户的最近邻推荐</h3><p>这是一种早期的推荐系统，它的主要思想：首先，给定一个评分数据集和当前用户的id作为输入，找出与当前用户过去有相似偏好的其他用户，这些用户有时也被称为对等用户或最近邻；然后对当前用户没有见过的每个物品p，利用其近邻对p的评分计算预测值。这种方法的假设是：</p>
+<pre><code>1. 如果用户过去有相同的偏好，则他们未来也有相似的偏好
+2. 用户偏好不会随着时间变化而变化。
+</code></pre><p>书中以Alice购物为例，利用Pearson系数来评估用户的相似性（如何计算，我会在单独一篇博文中讲述）。</p>
+<p>在实际应用中，由于评分数据集非常大，我们需要考虑计算的复杂度。</p>
+<p>此外，评分矩阵通常十分稀疏，每个用户只对所有有效的物品的小部分进行评分。</p>
+<p>最后，我们给新用户推荐什么，如何处理没有评分的新物品。这些问题都要深入讨论。</p>
+<p>其他用于评估用户相似度的方法：改进余弦相似度，spearman相关系数和均方差。</p>
+<p>然而实验分析显示，对于基于用户的推荐系统，pearson的相关系数比其他的方法更为优秀。不过，后来发现的基于物品的推荐技术，利用余弦相似度方法比pearson系数推荐效果更好。</p>
+<p>事实上，基于近邻的预测方法在遇到当前用户只有非常少的共同的物品评分时会出错，导致不准的预测。</p>
+<p>于是，有专家学者就提出了重要性赋权的方法——基于线性化简相似度权值的方法。尽管简单，但是在评分物品少于50个的时候，准确预测的效率提升非常显著。但是还有问题需要解决：赋权方案和启发式决定阈值在现实中是否有效；评分数据集更小时，我们不能期望找到很多有50个共同评分物品的用户。</p>
+<p>能通过精细调整预测权重来提高准确度的方法是样本拓展。它指的是强调那些接近1和-1的值，对原始数值乘以一个常量p来调整近邻的权值。</p>
+<p>选择近邻<br>为了减小计算量并且保证计算预测值，我们只包括了那些与当前用户有正向关联的用户。<br>降低近邻集合规模的方法通常是为用户相似度定义一个具体的最小阈值，或者将规模大小限制为一个固定值，而且只考虑k个近邻。</p>
+<p>但是这两种方法有潜在的问题：如果阈值过高，那么规模就会小很多，意味着很多商品无法预测。相反，阈值过低，那么规模就不会显著降低。</p>
+<p>k取多少，是个问题，MOVIE LENS上的测试显示，在大多数情况下，20到50个近邻似乎比较合理。</p>
+<h3 id="基于物品的最近邻推荐"><a href="#基于物品的最近邻推荐" class="headerlink" title="基于物品的最近邻推荐"></a>基于物品的最近邻推荐</h3><p>在电子商务网站，大多采用的是基于物品的推荐。</p>
+<p>这种推荐，比较适合做线下的预处理。因此，即使评分数据矩阵非常大，也能做到实时计算的推荐。</p>
+<p>基于物品的推荐算法的思想是：利用物品之间的相似度来计算预测值。</p>
+<p>还是以Alice购物为例，书中介绍的是利用余弦相似度来进行物品的相似度的计算。（如何利用余弦相似度来计算，我也会另开一篇来进行介绍说明）</p>
+<p>不管是基于物品还是基于用户，当数量达到一定程度的时候，计算的实时性是达不到的。需要对数据进行预处理。</p>
+<p>为了保证性能与精度，通常采用离线预计算数据。</p>
+<p>思想：实现构造一个物品相似度矩阵，描述物品两两之间的相似度。运行时，通过确定与物品p最相似的物品并计算用户u对这些邻近物品的加权总和来得到用户u对物品的评分。近邻数量受限于当前用户评过分的物品个数。</p>
+<p>除开这种模型上的预处理之外，还可以仅利用评分矩阵中的某一部分数据来降低复杂度。一种基本技术是二次抽样，这种技术可以随机选取数据的子集，或者忽略那些仅有少量评分或非常热门物品的用户记录。</p>
+<p>一般地，可以利用这些技术来加速计算，但是由于用到的信息少了，系统做出的精准预判的能力可能会下降。</p>
+<h3 id="基于协同过滤的评分方法"><a href="#基于协同过滤的评分方法" class="headerlink" title="基于协同过滤的评分方法"></a>基于协同过滤的评分方法</h3><p>显式收集用户的观点：通常是5分或者7分制。通过记录用户的打分，来收集用户的评分数据集。</p>
+<p>隐式收集用户的观点：跟踪用户的浏览记录，收集用户的浏览日志，对用户的浏览日志进行分析，推荐可能效果更为显著。</p>
+<h3 id="数据稀疏与冷启动的问题"><a href="#数据稀疏与冷启动的问题" class="headerlink" title="数据稀疏与冷启动的问题"></a>数据稀疏与冷启动的问题</h3><p>实际应用中，可能获取的用户评分数据十分少，因此。评分矩阵就是一个稀疏矩阵。这种情况下的挑战就是利用较少的数据来获得精准的预测。直接做法，利用用户的附加信息（年龄，性别，教育程度兴趣等）来辅助分类用户，这是借助外界的信息。</p>
+<p>解决数据稀疏与冷启动的问题的一种方法——基于图的方法（后面单独拿出来讲解）<br>主要思想：利用假定用户品味的传递性，并且是不变的（书中没有提到），并由此增强额外的信息矩阵。</p>
+<h3 id="矩阵因子分解"><a href="#矩阵因子分解" class="headerlink" title="矩阵因子分解"></a>矩阵因子分解</h3><p>Netflix的竞赛表明高等矩阵因子分解方法对提高推荐系统的预测准确率有很大的帮助。<br>简单来说，推荐系统使用矩阵因子分解方法来从评分模式抽取一组潜在的因子，并通过这些因子向量来描述用户和物品。在电影领域，这些自动识别的因子，很有可能对应一部电影的常见标签，也有可能是无法解释的。当当前用户和物品在这些因子相似时，就会推荐物品。</p>
+<p>在信息检索领域，SVD被用于发现文档中的潜在因子；这种潜在语义分析技术也被成为潜在语义索引。</p>
+<h3 id="关联规则挖掘（后面单独拿出来详细介绍）"><a href="#关联规则挖掘（后面单独拿出来详细介绍）" class="headerlink" title="关联规则挖掘（后面单独拿出来详细介绍）"></a>关联规则挖掘（后面单独拿出来详细介绍）</h3><p>关联规则挖掘是一种在大规模交易中识别类似规则关系的技术。</p>
+<p>典型案例：啤酒与尿布。</p>
+<p>就是通过一系列购物篮分析，分析出购物篮里面的可能同时购买的商品。</p>
+<p>推荐系统，也可以根据这个来做一个类似商品的推荐。如捆绑销售。</p>
+<p>在实际生活中，如果去一趟超市，可能发现商品并不是按照这种购物篮的方式捆绑，而是可能约有可能一起买的商品，反而相隔了一定的距离，这也是超市为了让人待在超市里更久，增加销量。</p>
+<h3 id="基于概率分析的推荐方法"><a href="#基于概率分析的推荐方法" class="headerlink" title="基于概率分析的推荐方法"></a>基于概率分析的推荐方法</h3><p>还有一种预测用户会对某个物品进行评分的方法是利用概率论已有的形式体系。</p>
+<p>用概率方法实现协同过滤，最初简单的实现是将预测问题看作分类问题，通常可以描述为“将一个对象分配给几个事先定义好的类别”的任务。</p>
+<p>如邮件的推荐（将其划分为正常邮件和垃圾邮件），里面用到的贝叶斯分类器，可以将经过训练的数据来拟合邮件分类，来判断一封邮件是否是正常邮件。</p>
 
           
         
@@ -1864,7 +1852,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1910,7 +1898,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1932,7 +1920,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

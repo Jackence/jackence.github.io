@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="算法,数据结构,KMP算法," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="在用匹配字符串(A)对目标字符串(B)进行匹配的过程中，会出现多次遍历的情况，当A越长，要进行匹配的次数越多，且一旦匹配失效，其时间成本在急剧上升。在这里，结合其他前辈的经验，理解一下大名鼎鼎的KMP算法的思路吧。 解决思路：    在进行匹配之前，需要计算匹配字符串的部分匹配值。    1.查找目标字符串中第一个与匹配字符串中第一个字符相等的位置，将A移动到该位置，开始匹配；    2.若匹配字">
+<meta name="keywords" content="算法,数据结构,KMP算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="KMP算法概览">
+<meta property="og:url" content="http://yoursite.com/2018/01/12/kmpagl/index.html">
+<meta property="og:site_name" content="坚守本心">
+<meta property="og:description" content="在用匹配字符串(A)对目标字符串(B)进行匹配的过程中，会出现多次遍历的情况，当A越长，要进行匹配的次数越多，且一旦匹配失效，其时间成本在急剧上升。在这里，结合其他前辈的经验，理解一下大名鼎鼎的KMP算法的思路吧。 解决思路：    在进行匹配之前，需要计算匹配字符串的部分匹配值。    1.查找目标字符串中第一个与匹配字符串中第一个字符相等的位置，将A移动到该位置，开始匹配；    2.若匹配字">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-12T07:43:14.637Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="KMP算法概览">
+<meta name="twitter:description" content="在用匹配字符串(A)对目标字符串(B)进行匹配的过程中，会出现多次遍历的情况，当A越长，要进行匹配的次数越多，且一旦匹配失效，其时间成本在急剧上升。在这里，结合其他前辈的经验，理解一下大名鼎鼎的KMP算法的思路吧。 解决思路：    在进行匹配之前，需要计算匹配字符串的部分匹配值。    1.查找目标字符串中第一个与匹配字符串中第一个字符相等的位置，将A移动到该位置，开始匹配；    2.若匹配字">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/12/kmpagl/"/>
+
+
+
+
+
+  <title>KMP算法概览 | 坚守本心</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">坚守本心</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">坚守本心，方为长久</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/kmpagl/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jackence">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="坚守本心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">KMP算法概览</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-12T16:35:02+08:00">
+                2018-01-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在用匹配字符串(A)对目标字符串(B)进行匹配的过程中，会出现多次遍历的情况，当A越长，要进行匹配的次数越多，且一旦匹配失效，其时间成本在急剧上升。<br>在这里，结合其他前辈的经验，理解一下大名鼎鼎的KMP算法的思路吧。</p>
+<p>解决思路：<br>    在进行匹配之前，需要计算匹配字符串的部分匹配值。<br>    1.查找目标字符串中第一个与匹配字符串中第一个字符相等的位置，将A移动到该位置，开始匹配；<br>    2.若匹配字符串的第N（N&gt;=2）个字符能匹配目标字符串，则继续匹配，直至，<br>        若（1）在目标字符串中找到匹配字符串，则结束此轮查找；<br>        若（2）在目标字符串中没有查找到匹配字符串，记录当前已成功匹配的数量x和匹配字符串该位置下的部分匹配值t,计算移动位数k=x-t，移动k位，进行下一轮匹配，执行1,2</p>
+<p>字符串A:ABCDABD<br>字符串B：AHADABFABCDABCDABD</p>
+<p>有两个概念：已匹配字符数和对应的部分匹配值<br>已匹配的字符数：在字符串B中，找到已匹配字符串A的数量<br>对应的部分匹配值：字符串A中，到达某位置时，该部分的字符串的前缀和后缀的公共字符串的长度。</p>
+<p>前缀：某字符串除开尾字符外的顺序字符串的集合。<br>后缀：某字符串除开首字符串的顺序字符串的集合。</p>
+<p>以A为例：ABCDABD<br>到达A时：前缀和后缀都为0,公共字符串长度为0</p>
+<p>到达AB时：<br>前缀：A<br>后缀：B<br>公共字符串长度为0</p>
+<p>到达ABC时：<br>前缀：A,AB<br>后缀：BC,C<br>公共字符串长度为0</p>
+<p>到达ABCD时：<br>前缀：A,AB,ABC<br>后缀：D,CD,BCD<br>公共字符串长度为0</p>
+<p>到达ABCDA时：<br>前缀：A,AB,ABC,ABCD<br>后缀：A,DA,CDA,BCDA<br>公共字符串长度为1，为A</p>
+<p>到达ABCDAB时：<br>前缀：A,AB,ABC,ABCD,ABCDA<br>后缀：B,AB,DAB,CDAB,BCDAB<br>公共字符串长度为2，为AB</p>
+<p>到达ABCDABD时：<br>前缀：A,AB,ABC,ABCD,ABCDA,ABCDAB<br>后缀：D,BD,ABD,DABD,CDABD,BCDABD<br>公共字符串长度为0</p>
+<p>还是以开头的字符串为例：<br>匹配字符串：ABCDABD<br>目标字符串：AHADABFABCDABCDABD<br>当开始匹配时：<br>1.A匹配A，匹配数为1，部分匹配值为0，移动位数为1-0=1，B不与H匹配，往前移动1位，<br>2.A不与H匹配，往前移动1位,<br>3.A与A匹配，B与D不匹配，匹配数为1，部分匹配值为0，移动位数为1-0=1，往前移动1位<br>4.D与A不匹配，往前移动1位，<br>5.A与A匹配，B与B匹配，F与C不匹配，匹配数为2，部分匹配值为0，往前移动2-0=2位，<br>6.A与A匹配，B与B匹配，C与C匹配，D与D匹配，A与A匹配，B与B匹配,C与D不匹配，匹配数为6，部分匹配值为2，移动位数为6-2=4位，</p>
+<ol>
+<li>A与A匹配,B与B匹配,C与C匹配，D与D匹配，A与A匹配，B与B匹配,D与D匹配，匹配成功。距离为1+1+1+1+2+4=10</li>
+</ol>
+<p>“部分匹配”的实质是，有时候，字符串头部和尾部会有重复。</p>
+<p>参考资料：阮一峰的博客。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
+          
+            <a href="/tags/KMP算法/" rel="tag"># KMP算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/12/EDA/" rel="next" title="数据分析之探索性分析">
+                <i class="fa fa-chevron-left"></i> 数据分析之探索性分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Jackence</p>
+              <p class="site-description motion-element" itemprop="description">一路以来，总需要坚持着。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jackence</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

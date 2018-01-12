@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="《推荐系统》,读书笔记," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="协同过滤推荐的主要思想：利用已有用户群过去的行为或意见预测当前用户最可能喜欢哪些东西或对哪些东西感兴趣。 此类的系统在在线零售系统中成为对用户需求个性化定制内容的工具。 纯粹的协同过滤方法的输入数据只有给定的用户—物品评分矩阵，输出数据一般有以下几种类型： 1. 表示当前用户对物品喜欢或者不喜欢程度的预测数值， 2. n项推荐物品的列表。当然，这个TOP-N列表不会包含用户已经买过的物品。 推荐方">
+<meta name="keywords" content="《推荐系统》,读书笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《推荐系统》读书笔记——协同过滤推荐">
+<meta property="og:url" content="http://yoursite.com/2018/01/12/recommendsys1/index.html">
+<meta property="og:site_name" content="坚守本心">
+<meta property="og:description" content="协同过滤推荐的主要思想：利用已有用户群过去的行为或意见预测当前用户最可能喜欢哪些东西或对哪些东西感兴趣。 此类的系统在在线零售系统中成为对用户需求个性化定制内容的工具。 纯粹的协同过滤方法的输入数据只有给定的用户—物品评分矩阵，输出数据一般有以下几种类型： 1. 表示当前用户对物品喜欢或者不喜欢程度的预测数值， 2. n项推荐物品的列表。当然，这个TOP-N列表不会包含用户已经买过的物品。 推荐方">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-12T08:27:21.287Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《推荐系统》读书笔记——协同过滤推荐">
+<meta name="twitter:description" content="协同过滤推荐的主要思想：利用已有用户群过去的行为或意见预测当前用户最可能喜欢哪些东西或对哪些东西感兴趣。 此类的系统在在线零售系统中成为对用户需求个性化定制内容的工具。 纯粹的协同过滤方法的输入数据只有给定的用户—物品评分矩阵，输出数据一般有以下几种类型： 1. 表示当前用户对物品喜欢或者不喜欢程度的预测数值， 2. n项推荐物品的列表。当然，这个TOP-N列表不会包含用户已经买过的物品。 推荐方">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/12/recommendsys1/"/>
+
+
+
+
+
+  <title>《推荐系统》读书笔记——协同过滤推荐 | 坚守本心</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">坚守本心</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">坚守本心，方为长久</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/recommendsys1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jackence">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="坚守本心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">《推荐系统》读书笔记——协同过滤推荐</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-12T16:35:02+08:00">
+                2018-01-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>协同过滤推荐的主要思想：利用已有用户群过去的行为或意见预测当前用户最可能喜欢哪些东西或对哪些东西感兴趣。</p>
+<p>此类的系统在在线零售系统中成为对用户需求个性化定制内容的工具。</p>
+<p>纯粹的协同过滤方法的输入数据只有给定的用户—物品评分矩阵，输出数据一般有以下几种类型：</p>
+<pre><code>1. 表示当前用户对物品喜欢或者不喜欢程度的预测数值，
+2. n项推荐物品的列表。当然，这个TOP-N列表不会包含用户已经买过的物品。
+</code></pre><p>推荐方法：</p>
+<h3 id="基于用户的最近邻推荐"><a href="#基于用户的最近邻推荐" class="headerlink" title="基于用户的最近邻推荐"></a>基于用户的最近邻推荐</h3><p>这是一种早期的推荐系统，它的主要思想：首先，给定一个评分数据集和当前用户的id作为输入，找出与当前用户过去有相似偏好的其他用户，这些用户有时也被称为对等用户或最近邻；然后对当前用户没有见过的每个物品p，利用其近邻对p的评分计算预测值。这种方法的假设是：</p>
+<pre><code>1. 如果用户过去有相同的偏好，则他们未来也有相似的偏好
+2. 用户偏好不会随着时间变化而变化。
+</code></pre><p>书中以Alice购物为例，利用Pearson系数来评估用户的相似性（如何计算，我会在单独一篇博文中讲述）。</p>
+<p>在实际应用中，由于评分数据集非常大，我们需要考虑计算的复杂度。</p>
+<p>此外，评分矩阵通常十分稀疏，每个用户只对所有有效的物品的小部分进行评分。</p>
+<p>最后，我们给新用户推荐什么，如何处理没有评分的新物品。这些问题都要深入讨论。</p>
+<p>其他用于评估用户相似度的方法：改进余弦相似度，spearman相关系数和均方差。</p>
+<p>然而实验分析显示，对于基于用户的推荐系统，pearson的相关系数比其他的方法更为优秀。不过，后来发现的基于物品的推荐技术，利用余弦相似度方法比pearson系数推荐效果更好。</p>
+<p>事实上，基于近邻的预测方法在遇到当前用户只有非常少的共同的物品评分时会出错，导致不准的预测。</p>
+<p>于是，有专家学者就提出了重要性赋权的方法——基于线性化简相似度权值的方法。尽管简单，但是在评分物品少于50个的时候，准确预测的效率提升非常显著。但是还有问题需要解决：赋权方案和启发式决定阈值在现实中是否有效；评分数据集更小时，我们不能期望找到很多有50个共同评分物品的用户。</p>
+<p>能通过精细调整预测权重来提高准确度的方法是样本拓展。它指的是强调那些接近1和-1的值，对原始数值乘以一个常量p来调整近邻的权值。</p>
+<p>选择近邻<br>为了减小计算量并且保证计算预测值，我们只包括了那些与当前用户有正向关联的用户。<br>降低近邻集合规模的方法通常是为用户相似度定义一个具体的最小阈值，或者将规模大小限制为一个固定值，而且只考虑k个近邻。</p>
+<p>但是这两种方法有潜在的问题：如果阈值过高，那么规模就会小很多，意味着很多商品无法预测。相反，阈值过低，那么规模就不会显著降低。</p>
+<p>k取多少，是个问题，MOVIE LENS上的测试显示，在大多数情况下，20到50个近邻似乎比较合理。</p>
+<h3 id="基于物品的最近邻推荐"><a href="#基于物品的最近邻推荐" class="headerlink" title="基于物品的最近邻推荐"></a>基于物品的最近邻推荐</h3><p>在电子商务网站，大多采用的是基于物品的推荐。</p>
+<p>这种推荐，比较适合做线下的预处理。因此，即使评分数据矩阵非常大，也能做到实时计算的推荐。</p>
+<p>基于物品的推荐算法的思想是：利用物品之间的相似度来计算预测值。</p>
+<p>还是以Alice购物为例，书中介绍的是利用余弦相似度来进行物品的相似度的计算。（如何利用余弦相似度来计算，我也会另开一篇来进行介绍说明）</p>
+<p>不管是基于物品还是基于用户，当数量达到一定程度的时候，计算的实时性是达不到的。需要对数据进行预处理。</p>
+<p>为了保证性能与精度，通常采用离线预计算数据。</p>
+<p>思想：实现构造一个物品相似度矩阵，描述物品两两之间的相似度。运行时，通过确定与物品p最相似的物品并计算用户u对这些邻近物品的加权总和来得到用户u对物品的评分。近邻数量受限于当前用户评过分的物品个数。</p>
+<p>除开这种模型上的预处理之外，还可以仅利用评分矩阵中的某一部分数据来降低复杂度。一种基本技术是二次抽样，这种技术可以随机选取数据的子集，或者忽略那些仅有少量评分或非常热门物品的用户记录。</p>
+<p>一般地，可以利用这些技术来加速计算，但是由于用到的信息少了，系统做出的精准预判的能力可能会下降。</p>
+<h3 id="基于协同过滤的评分方法"><a href="#基于协同过滤的评分方法" class="headerlink" title="基于协同过滤的评分方法"></a>基于协同过滤的评分方法</h3><p>显式收集用户的观点：通常是5分或者7分制。通过记录用户的打分，来收集用户的评分数据集。</p>
+<p>隐式收集用户的观点：跟踪用户的浏览记录，收集用户的浏览日志，对用户的浏览日志进行分析，推荐可能效果更为显著。</p>
+<h3 id="数据稀疏与冷启动的问题"><a href="#数据稀疏与冷启动的问题" class="headerlink" title="数据稀疏与冷启动的问题"></a>数据稀疏与冷启动的问题</h3><p>实际应用中，可能获取的用户评分数据十分少，因此。评分矩阵就是一个稀疏矩阵。这种情况下的挑战就是利用较少的数据来获得精准的预测。直接做法，利用用户的附加信息（年龄，性别，教育程度兴趣等）来辅助分类用户，这是借助外界的信息。</p>
+<p>解决数据稀疏与冷启动的问题的一种方法——基于图的方法（后面单独拿出来讲解）<br>主要思想：利用假定用户品味的传递性，并且是不变的（书中没有提到），并由此增强额外的信息矩阵。</p>
+<h3 id="矩阵因子分解"><a href="#矩阵因子分解" class="headerlink" title="矩阵因子分解"></a>矩阵因子分解</h3><p>Netflix的竞赛表明高等矩阵因子分解方法对提高推荐系统的预测准确率有很大的帮助。<br>简单来说，推荐系统使用矩阵因子分解方法来从评分模式抽取一组潜在的因子，并通过这些因子向量来描述用户和物品。在电影领域，这些自动识别的因子，很有可能对应一部电影的常见标签，也有可能是无法解释的。当当前用户和物品在这些因子相似时，就会推荐物品。</p>
+<p>在信息检索领域，SVD被用于发现文档中的潜在因子；这种潜在语义分析技术也被成为潜在语义索引。</p>
+<h3 id="关联规则挖掘（后面单独拿出来详细介绍）"><a href="#关联规则挖掘（后面单独拿出来详细介绍）" class="headerlink" title="关联规则挖掘（后面单独拿出来详细介绍）"></a>关联规则挖掘（后面单独拿出来详细介绍）</h3><p>关联规则挖掘是一种在大规模交易中识别类似规则关系的技术。</p>
+<p>典型案例：啤酒与尿布。</p>
+<p>就是通过一系列购物篮分析，分析出购物篮里面的可能同时购买的商品。</p>
+<p>推荐系统，也可以根据这个来做一个类似商品的推荐。如捆绑销售。</p>
+<p>在实际生活中，如果去一趟超市，可能发现商品并不是按照这种购物篮的方式捆绑，而是可能约有可能一起买的商品，反而相隔了一定的距离，这也是超市为了让人待在超市里更久，增加销量。</p>
+<h3 id="基于概率分析的推荐方法"><a href="#基于概率分析的推荐方法" class="headerlink" title="基于概率分析的推荐方法"></a>基于概率分析的推荐方法</h3><p>还有一种预测用户会对某个物品进行评分的方法是利用概率论已有的形式体系。</p>
+<p>用概率方法实现协同过滤，最初简单的实现是将预测问题看作分类问题，通常可以描述为“将一个对象分配给几个事先定义好的类别”的任务。</p>
+<p>如邮件的推荐（将其划分为正常邮件和垃圾邮件），里面用到的贝叶斯分类器，可以将经过训练的数据来拟合邮件分类，来判断一封邮件是否是正常邮件。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/《推荐系统》/" rel="tag"># 《推荐系统》</a>
+          
+            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/12/recommendsys0/" rel="next" title="《推荐系统》(蒋凡译)读书笔记——概览">
+                <i class="fa fa-chevron-left"></i> 《推荐系统》(蒋凡译)读书笔记——概览
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/12/decisiontree0/" rel="prev" title="决策树算法——概述">
+                决策树算法——概述 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Jackence</p>
+              <p class="site-description motion-element" itemprop="description">一路以来，总需要坚持着。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#基于用户的最近邻推荐"><span class="nav-number">1.</span> <span class="nav-text">基于用户的最近邻推荐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于物品的最近邻推荐"><span class="nav-number">2.</span> <span class="nav-text">基于物品的最近邻推荐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于协同过滤的评分方法"><span class="nav-number">3.</span> <span class="nav-text">基于协同过滤的评分方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据稀疏与冷启动的问题"><span class="nav-number">4.</span> <span class="nav-text">数据稀疏与冷启动的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵因子分解"><span class="nav-number">5.</span> <span class="nav-text">矩阵因子分解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关联规则挖掘（后面单独拿出来详细介绍）"><span class="nav-number">6.</span> <span class="nav-text">关联规则挖掘（后面单独拿出来详细介绍）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于概率分析的推荐方法"><span class="nav-number">7.</span> <span class="nav-text">基于概率分析的推荐方法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jackence</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
