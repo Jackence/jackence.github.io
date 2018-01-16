@@ -313,7 +313,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/16/surprise_predict/" itemprop="url">surprise框架之使用预测算法</a></h1>
+                <a class="post-title-link" href="/2018/01/16/surprise_predict/" itemprop="url">surprise框架之使用预测算法（翻译）</a></h1>
         
 
         <div class="post-meta">
@@ -387,43 +387,16 @@
       
         
           
-            <p>surprise框架提供了一堆内建的算法。所有算法都来自AlgoBase基类，其中实现了一些关键方法（例如预测，拟合和测试）。 可用预测算法的列表和详细信息可以在prediction_algorithms包文档中找到。</p>
-<p>每个算法都是surprise的全局命名空间的一部分，所以你仅仅只需从surprise包中导入他们的名字即可，例如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from surprise import KNNBasic</span><br><span class="line">algo = KNNBasic()</span><br></pre></td></tr></table></figure></p>
-<p>其中一些算法可能使用基准估计，有些可能使用相似性度量。我们将在这里回顾如何配置基线和相似性的计算方法。<br>我们来回顾一下基准估计和相似度估计.</p>
-<h5 id="基准估计设置"><a href="#基准估计设置" class="headerlink" title="基准估计设置"></a>基准估计设置</h5><pre><code>说明：
-本节只适用于最小化正则化平方误差（或等价）的算法（或相似性度量）：
-
-对于在另一个目标函数（例如SVD算法）中使用基线的算法，基线配置是不同的，对每个算法都是特定的。请参考他们自己的文档。
-</code></pre><p>首先，如果你不想配置通过基准估计的方法，你也就无需进行修改，默认的参数也能很好的完成。如果你想更好，那这就是为你准备的。</p>
-<p>你可能需要阅读<a href="http://surprise.readthedocs.io/en/stable/notation_standards.html#koren-2010" target="_blank" rel="noopener">这里</a>,来了解什么是基准估计。<br>基准可以用两种方式进行估算：<br>    使用随机梯度下降<br>    使用交替最小二乘法</p>
-<p>你可以配置使用bsl_options在创建算法时传递参数来计算基准的方法。这个参数是一个字典，其中’method’表示要使用的方法，接受的值是’ALS’(默认)和’SGD’，根据其值，可以设置其他选项，对于ALS:</p>
-<ul>
-<li>‘reg_i’:表示项目的正规化参数，默认值是10；</li>
-<li>‘reg_u’:表示用户的正规化参数，默认值是15；</li>
-<li>‘n-epochs’: 表示ALS过程的迭代次数，默认是10.</li>
-</ul>
-<p>对于SGD:</p>
-<ul>
-<li>‘reg’:表示优化的成本函数的正规化参数，默认值是0.02 </li>
-<li>‘learing_rate’: 表示SGD的学习率，默认值是0.05 </li>
-<li>‘n-epochs’:表示SGD的迭代次数，默认值是20</li>
-</ul>
-<p>对于两个处理方式（ALS和SGD），用户和物品的偏差都被初始化为0。</p>
-<p>使用案例：<br>ALS:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">print(&apos;Using ALS&apos;)</span><br><span class="line">bsl_options = &#123;&apos;method&apos;: &apos;als&apos;,</span><br><span class="line">               &apos;n_epochs&apos;: 5,</span><br><span class="line">               &apos;reg_u&apos;: 12,</span><br><span class="line">               &apos;reg_i&apos;: 5</span><br><span class="line">               &#125;</span><br><span class="line">algo = BaselineOnly(bsl_options=bsl_options)</span><br></pre></td></tr></table></figure></p>
-<p>SGD:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">print(&apos;Using SGD&apos;)</span><br><span class="line">bsl_options = &#123;&apos;method&apos;: &apos;sgd&apos;,</span><br><span class="line">               &apos;learning_rate&apos;: .00005,</span><br><span class="line">               &#125;</span><br><span class="line">algo = BaselineOnly(bsl_options=bsl_options)</span><br></pre></td></tr></table></figure>
-<p>说明：一些相似性度量可能会用到基准，例如pearson_baseline相似。无论在实际的预测中是否用到r^ui，配置的工作都是相同的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bsl_options = &#123;&apos;method&apos;: &apos;als&apos;,</span><br><span class="line">               &apos;n_epochs&apos;: 20,</span><br><span class="line">               &#125;</span><br><span class="line">sim_options = &#123;&apos;name&apos;: &apos;pearson_baseline&apos;&#125;</span><br><span class="line">algo = KNNBasic(bsl_options=bsl_options, sim_options=sim_options)</span><br></pre></td></tr></table></figure></p>
-<p>这将引导我们进行相似性度量配置，我们现在将对此进行回顾。</p>
-<h5 id="相似度估计配置"><a href="#相似度估计配置" class="headerlink" title="相似度估计配置"></a>相似度估计配置</h5><p>许多算法使用相似度度量来评分。</p>
-<ul>
-<li>‘name’：在similarities模块中定义的相似度的名称 。默认是’MSD’。</li>
-<li>‘user_based’：是否在用户之间或项目之间计算相似度。这对预测算法的性能有很大的影响。默认是True。</li>
-<li>‘min_support’：共同项目的最小数量（当’user_based’ 是’True’）或最小数量的普通用户</li>
-<li>‘shrinkage’：要应用的收缩参数（仅与pearson_baseline相似性相关 ）。默认值是100。</li>
-</ul>
-<p>代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sim_options = &#123;&apos;name&apos;: &apos;cosine&apos;,</span><br><span class="line">               &apos;user_based&apos;: False  # compute  similarities between items</span><br><span class="line">               &#125;</span><br><span class="line">algo = KNNBasic(sim_options=sim_options)</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sim_options = &#123;&apos;name&apos;: &apos;pearson_baseline&apos;,</span><br><span class="line">               &apos;shrinkage&apos;: 0  # no shrinkage</span><br><span class="line">               &#125;</span><br><span class="line">algo = KNNBasic(sim_options=sim_options)</span><br><span class="line">See also</span><br></pre></td></tr></table></figure>
-          
+          surprise框架提供了一堆内建的算法。所有算法都来自AlgoBase基类，其中实现了一些关键方法（例如预测，拟合和测试）。 可用预测算法的列表和详细信息可以在prediction_algorithms包文档中找到。
+每个算法都是surprise的全局命名空间的一部分，所以你仅仅只需从surpri
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/16/surprise_predict/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -489,7 +462,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/16/surprise_getstatted/" itemprop="url">surprise框架之起步</a></h1>
+                <a class="post-title-link" href="/2018/01/16/surprise_getstatted/" itemprop="url">surprise框架之起步（翻译）</a></h1>
         
 
         <div class="post-meta">
@@ -563,58 +536,16 @@
       
         
           
-            <h4 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h4><h5 id="自动进行交叉验证"><a href="#自动进行交叉验证" class="headerlink" title="自动进行交叉验证"></a>自动进行交叉验证</h5><p>surprise 有一系列的内建的算法和数据集供用户来进行尝试。在最简单的形式中，它的模型仅需几行代码就可以运行一次交叉验证的流程：<br>代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">from surprise import SVD</span><br><span class="line">from surprise import Dataset</span><br><span class="line">from surprise.model_selection import cross_validate</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Load the movielens-100k dataset (download it if needed),</span><br><span class="line">data = Dataset.load_builtin(&apos;ml-100k&apos;)</span><br><span class="line"></span><br><span class="line"># We&apos;ll use the famous SVD algorithm.</span><br><span class="line">algo = SVD()</span><br><span class="line"></span><br><span class="line"># Run 5-fold cross-validation and print results</span><br><span class="line">cross_validate(algo, data, measures=[&apos;RMSE&apos;, &apos;MAE&apos;], cv=5, verbose=True)</span><br></pre></td></tr></table></figure>
-<p>运行之后的结果应该是如下所示(实际结果可能会因随机性而异)：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Evaluating RMSE, MAE of algorithm SVD on 5 split(s).</span><br><span class="line"></span><br><span class="line">            Fold 1  Fold 2  Fold 3  Fold 4  Fold 5   Mean    Std</span><br><span class="line">RMSE        0.9311  0.9370  0.9320  0.9317  0.9391  0.9342  0.0032</span><br><span class="line">MAE         0.7350  0.7375  0.7341  0.7342  0.7375  0.7357  0.0015</span><br><span class="line">Fit time    6.53    7.11    7.23    7.15    3.99    6.40    1.23</span><br><span class="line">Test time   0.26    0.26    0.25    0.15    0.13    0.21    0.06</span><br></pre></td></tr></table></figure></p>
-<p>如果数据集（movielens_100k dataset）还没有下载，load_builtin()方法会提供下载，并将数据集保存在用户目录下的.surprise_data文件夹下，当然，你也可以选择其他地方进行保存。</p>
-<p>我们将使用著名的SVD模型，当然其他算法模型亦可以，可以通过查看<a href="http://surprise.readthedocs.io/en/stable/prediction_algorithms.html#prediction-algorithms" target="_blank" rel="noopener">链接</a>获取更多细节。</p>
-<p>cross-validation()方法通过使用cv参数来进行交叉验证的过程。通过计算准确率来衡量效果。我们这里使用了经典的五次交叉验证，但是也可以使用更精彩的交叉验证（<a href="http://surprise.readthedocs.io/en/stable/model_selection.html#cross-validation-iterators-api" target="_blank" rel="noopener">查看资料</a>）。</p>
-<h5 id="Train-test划分和fit-方法"><a href="#Train-test划分和fit-方法" class="headerlink" title="Train-test划分和fit()方法"></a>Train-test划分和fit()方法</h5><p>如果您不想运行完整的交叉验证程序，则可以使用train_test_split（）对给定尺寸的trainset和testset进行采样，并使用您选择的精度度量。</p>
-<p>你需要选择fit()方法，fit()方法可以在训练集上来训练算法，test()方法将会返回从测试集上生成的预测值。</p>
-<p>实例代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">from surprise import SVD</span><br><span class="line">from surprise import Dataset</span><br><span class="line">from surprise import accuracy</span><br><span class="line">from surprise.model_selection import train_test_split</span><br><span class="line"></span><br><span class="line"># Load the movielens-100k dataset (download it if needed),</span><br><span class="line">data = Dataset.load_builtin(&apos;ml-100k&apos;)</span><br><span class="line"></span><br><span class="line"># sample random trainset and testset</span><br><span class="line"># test set is made of 25% of the ratings.</span><br><span class="line">trainset, testset = train_test_split(data, test_size=.25)</span><br><span class="line"></span><br><span class="line"># We&apos;ll use the famous SVD algorithm.</span><br><span class="line">algo = SVD()</span><br><span class="line"></span><br><span class="line"># Train the algorithm on the trainset, and predict ratings for the testset</span><br><span class="line">algo.fit(trainset)</span><br><span class="line">predictions = algo.test(testset)</span><br><span class="line"></span><br><span class="line"># Then compute RMSE</span><br><span class="line">accuracy.rmse(predictions)</span><br></pre></td></tr></table></figure></p>
-<p>返回的结果是0.9411 </p>
-<p>在此说明：你可以通过下面一行代码来训练并测试一个算法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">predictions = algo.fit(trainset).test(testset)</span><br></pre></td></tr></table></figure></p>
-<p>在一些例子中，你的训练集和测试集数据已经被另一些例子所定义，请参考<a href="http://surprise.readthedocs.io/en/stable/getting_started.html#load-from-folds-example" target="_blank" rel="noopener">此处</a>来处理这些问题。</p>
-<h5 id="训练整个测试集数据和predict-方法"><a href="#训练整个测试集数据和predict-方法" class="headerlink" title="训练整个测试集数据和predict()方法"></a>训练整个测试集数据和predict()方法</h5><p>毫无疑问，我们可以简单地将算法运用到我们的整个数据集，而不是使用交叉验证。这种方法可以通过使用build_full_trainset()方法来实现，该方法可以建立一个trainset对象。</p>
-<p>实例代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from surprise import KNNBasic</span><br><span class="line">from surprise import Dataset</span><br><span class="line"></span><br><span class="line"># Load the movielens-100k dataset</span><br><span class="line">data = Dataset.load_builtin(&apos;ml-100k&apos;)</span><br><span class="line"></span><br><span class="line"># Retrieve the trainset.</span><br><span class="line">trainset = data.build_full_trainset()</span><br><span class="line"></span><br><span class="line"># Build an algorithm, and train it.</span><br><span class="line">algo = KNNBasic()</span><br><span class="line">algo.fit(trainset)</span><br></pre></td></tr></table></figure>
-<p>我们可以通过predict()方法来预测评分。我们假设您对用户196和302物品感兴趣(确保他们在训练集中)，并且你知道正确的评分是4，通过下面的代码可以实现计算:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">uid = str(196)  # raw user id (as in the ratings file). They are **strings**!</span><br><span class="line">iid = str(302)  # raw item id (as in the ratings file). They are **strings**!</span><br><span class="line"></span><br><span class="line"># get a prediction for specific users and items.</span><br><span class="line">pred = algo.predict(uid, iid, r_ui=4, verbose=True)</span><br></pre></td></tr></table></figure>
-<p>计算结果:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user: 196        item: 302        r_ui = 4.00   est = 4.06   &#123;&apos;actual_k&apos;: 40, &apos;was_impossible&apos;: False&#125;</span><br></pre></td></tr></table></figure></p>
-<pre><code>说明：
-predict（）使用原始ID（请阅读关于[原始ID和内部ID](http://surprise.readthedocs.io/en/stable/FAQ.html#raw-inner-note)的信息）。 由于我们使用的数据集已经从文件中读取，原始ID是字符串（即使它们代表数字）
-</code></pre><h4 id="使用用户的自定义数据集"><a href="#使用用户的自定义数据集" class="headerlink" title="使用用户的自定义数据集"></a>使用用户的自定义数据集</h4><p>尽管surprise有一系列的内建数据集，但是你还是能够使用用户自定义的数据集。可以通过文件导入(csv)或者一个pandas dataframe导入。此外，你需要为surprise定义一个reader对象来解析文件或者数据框。</p>
-<p> -为载入一个文件(如csv)，你可以使用load_from_file()方法来实现。<br>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">from surprise import BaselineOnly</span><br><span class="line">from surprise import Dataset</span><br><span class="line">from surprise import Reader</span><br><span class="line">from surprise.model_selection import cross_validate</span><br><span class="line"></span><br><span class="line"># path to dataset file</span><br><span class="line">file_path = os.path.expanduser(&apos;~/.surprise_data/ml-100k/ml-100k/u.data&apos;)</span><br><span class="line"></span><br><span class="line"># As we&apos;re loading a custom dataset, we need to define a reader. In the</span><br><span class="line"># movielens-100k dataset, each line has the following format:</span><br><span class="line"># &apos;user item rating timestamp&apos;, separated by &apos;\t&apos; characters.</span><br><span class="line">reader = Reader(line_format=&apos;user item rating timestamp&apos;, sep=&apos;\t&apos;)</span><br><span class="line"></span><br><span class="line">data = Dataset.load_from_file(file_path, reader=reader)</span><br><span class="line"></span><br><span class="line"># We can now use this dataset as we please, e.g. calling cross_validate</span><br><span class="line">cross_validate(BaselineOnly(), data, verbose=True)</span><br></pre></td></tr></table></figure></p>
-<p>其他更多关于阅读器和如何使用的信息，详情查看reader class 文档。</p>
-<pre><code>说明：
-正如您在前一节中已经知道的那样，Movielens-100k数据集是内置的，因此加载数据集的更快的方法是执行data = Dataset.load_builtin（&apos;ml-100k&apos;）。 我们当然会在这里忽略这个。
-</code></pre><ul>
-<li><p>为载入一个从pandas dataframe 的数据集，你需要使用load_from_df()方法。你同样需要一个reader对象吗，但只需指定rating_scale参数即可。dataframe必须要有三列数据，包括用户id,物品id,用户对物品的评分数据。因此每一列都需要给定评分。<br>这不是限制性的，因为您可以轻松地重新排列数据框的列。<br>实例代码如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">from surprise import NormalPredictor</span><br><span class="line">from surprise import Dataset</span><br><span class="line">from surprise import Reader</span><br><span class="line">from surprise.model_selection import cross_validate</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Creation of the dataframe. Column names are irrelevant.</span><br><span class="line">ratings_dict = &#123;&apos;itemID&apos;: [1, 1, 1, 2, 2],</span><br><span class="line">                &apos;userID&apos;: [9, 32, 2, 45, &apos;user_foo&apos;],</span><br><span class="line">                &apos;rating&apos;: [3, 2, 4, 3, 1]&#125;</span><br><span class="line">df = pd.DataFrame(ratings_dict)</span><br><span class="line"></span><br><span class="line"># A reader is still needed but only the rating_scale param is requiered.</span><br><span class="line">reader = Reader(rating_scale=(1, 5))</span><br><span class="line"></span><br><span class="line"># The columns must correspond to user id, item id and ratings (in that order).</span><br><span class="line">data = Dataset.load_from_df(df[[&apos;userID&apos;, &apos;itemID&apos;, &apos;rating&apos;]], reader)</span><br><span class="line"></span><br><span class="line"># We can now use this dataset as we please, e.g. calling cross_validate</span><br><span class="line">cross_validate(NormalPredictor(), data, cv=2)</span><br></pre></td></tr></table></figure>
-<p>dataframe的初始情况可能如下:</p>
-<pre><code>itemID  rating    userID
-</code></pre><p>0       1       3         9<br>1       1       2        32<br>2       1       4         2<br>3       2       3        45<br>4       2       1  user_foo</p>
-</li>
-</ul>
-<h4 id="使用交叉验证迭代"><a href="#使用交叉验证迭代" class="headerlink" title="使用交叉验证迭代"></a>使用交叉验证迭代</h4><p>对于交叉验证，我们可以使用cross_validate()方法，它能为我们做所有的困难的工作。但为了更好的控制，我们还可以实例化交叉验证迭代器，并使用迭代器的split（）方法和算法的test（）方法对每个分裂进行预测。下面地案例是我们使用经典地k次交叉验证地过程，分裂了三次。<br>代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">from surprise import SVD</span><br><span class="line">from surprise import Dataset</span><br><span class="line">from surprise import accuracy</span><br><span class="line">from surprise.model_selection import KFold</span><br><span class="line"></span><br><span class="line"># Load the movielens-100k dataset</span><br><span class="line">data = Dataset.load_builtin(&apos;ml-100k&apos;)</span><br><span class="line"></span><br><span class="line"># define a cross-validation iterator</span><br><span class="line">kf = KFold(n_splits=3)</span><br><span class="line"></span><br><span class="line">algo = SVD()</span><br><span class="line"></span><br><span class="line">for trainset, testset in kf.split(data):</span><br><span class="line"></span><br><span class="line">    # train and test algorithm.</span><br><span class="line">    algo.fit(trainset)</span><br><span class="line">    predictions = algo.test(testset)</span><br><span class="line"></span><br><span class="line">    # Compute and print Root Mean Squared Error</span><br><span class="line">    accuracy.rmse(predictions, verbose=True)</span><br></pre></td></tr></table></figure></p>
-<p>可能的结果：<br>RMSE: 0.9374<br>RMSE: 0.9476<br>RMSE: 0.9478</p>
-<p>其他的交叉验证迭代的方法也可以使用，如留一法和ShuffleSplit。在<a href="http://surprise.readthedocs.io/en/stable/model_selection.html#cross-validation-iterators-api" target="_blank" rel="noopener">此处</a>查看所有的迭代器。surprise的交叉验证的涉及工具是受scikit-learnAPI工具的启发。</p>
-<p>一个特殊的交叉验证案例是当其他文件预先定义了folds。例如:movielens-100k数据集已经提供了5个训练和测试的文件。surprise通过surprise.model_selection.split.PredefinedKFold对象来解决这个问题。<br>实例代码:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">from surprise import SVD</span><br><span class="line">from surprise import Dataset</span><br><span class="line">from surprise import Reader</span><br><span class="line">from surprise import accuracy</span><br><span class="line">from surprise.model_selection import PredefinedKFold</span><br><span class="line"></span><br><span class="line"># path to dataset folder</span><br><span class="line">files_dir = os.path.expanduser(&apos;~/.surprise_data/ml-100k/ml-100k/&apos;)</span><br><span class="line"></span><br><span class="line"># This time, we&apos;ll use the built-in reader.</span><br><span class="line">reader = Reader(&apos;ml-100k&apos;)</span><br><span class="line"></span><br><span class="line"># folds_files is a list of tuples containing file paths:</span><br><span class="line"># [(u1.base, u1.test), (u2.base, u2.test), ... (u5.base, u5.test)]</span><br><span class="line">train_file = files_dir + &apos;u%d.base&apos;</span><br><span class="line">test_file = files_dir + &apos;u%d.test&apos;</span><br><span class="line">folds_files = [(train_file % i, test_file % i) for i in (1, 2, 3, 4, 5)]</span><br><span class="line"></span><br><span class="line">data = Dataset.load_from_folds(folds_files, reader=reader)</span><br><span class="line">pkf = PredefinedKFold()</span><br><span class="line"></span><br><span class="line">algo = SVD()</span><br><span class="line"></span><br><span class="line">for trainset, testset in pkf.split(data):</span><br><span class="line"></span><br><span class="line">    # train and test algorithm.</span><br><span class="line">    algo.fit(trainset)</span><br><span class="line">    predictions = algo.test(testset)</span><br><span class="line"></span><br><span class="line">    # Compute and print Root Mean Squared Error</span><br><span class="line">    accuracy.rmse(predictions, verbose=True)</span><br></pre></td></tr></table></figure>
-<p>当然，如果你仅通过导入单一的文件来进行训练，用单一的文件来测试，谁也阻止不了你。然而，folds_files参数仍需要是一个list。</p>
-<h4 id="使用GridSearchCV调整算法参数"><a href="#使用GridSearchCV调整算法参数" class="headerlink" title="使用GridSearchCV调整算法参数"></a>使用GridSearchCV调整算法参数</h4><p>cross_validate（）函数针对给定的一组参数报告交叉验证过程的准确性度量。<br>如果你想知道哪个参数组合可以产生最好的结果，那么GridSearchCV类就可以解决问题。 给定一个参数的字典，这个类彻底地尝试所有的参数组合，并报告任何准确性度量（在不同的分割平均）的最佳参数。 它受到scikit-learn的GridSearchCV的启发。<br>下面的按理是我们使用不同的值来设置SVD算法的n_epochs,lr_all和reg_all参数.<br>代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">from surprise import SVD</span><br><span class="line">from surprise import Dataset</span><br><span class="line">from surprise.model_selection import GridSearchCV</span><br><span class="line"></span><br><span class="line"># Use movielens-100K</span><br><span class="line">data = Dataset.load_builtin(&apos;ml-100k&apos;)</span><br><span class="line"></span><br><span class="line">param_grid = &#123;&apos;n_epochs&apos;: [5, 10], &apos;lr_all&apos;: [0.002, 0.005],</span><br><span class="line">              &apos;reg_all&apos;: [0.4, 0.6]&#125;</span><br><span class="line">gs = GridSearchCV(SVD, param_grid, measures=[&apos;rmse&apos;, &apos;mae&apos;], cv=3)</span><br><span class="line"></span><br><span class="line">gs.fit(data)</span><br><span class="line"></span><br><span class="line"># best RMSE score</span><br><span class="line">print(gs.best_score[&apos;rmse&apos;])</span><br><span class="line"></span><br><span class="line"># combination of parameters that gave the best RMSE score</span><br><span class="line">print(gs.best_params[&apos;rmse&apos;])</span><br></pre></td></tr></table></figure></p>
-<p>运行结果:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0.961300130118</span><br><span class="line">&#123;&apos;n_epochs&apos;: 10, &apos;lr_all&apos;: 0.005, &apos;reg_all&apos;: 0.4&#125;</span><br></pre></td></tr></table></figure></p>
-<p>我们在这里评估3倍交叉验证过程的平均RMSE和MAE，但是可以使用任何交叉验证迭代器。<br>一旦调用了fit（），best_estimator属性为我们提供了一个具有最佳参数集的算法实例，我们可以使用它：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">algo = gs.best_estimator[&apos;rmse&apos;]</span><br><span class="line">algo.fit(data.build_full_trainset())</span><br></pre></td></tr></table></figure></p>
-<pre><code>说明：如bsl_options和sim_options等字典型参数需要特殊处理，如:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">param_grid = &#123;&apos;k&apos;: [10, 20],</span><br><span class="line">          &apos;sim_options&apos;: &#123;&apos;name&apos;: [&apos;msd&apos;, &apos;cosine&apos;],</span><br><span class="line">                          &apos;min_support&apos;: [1, 5],</span><br><span class="line">                          &apos;user_based&apos;: [False]&#125;</span><br><span class="line">          &#125;</span><br></pre></td></tr></table></figure>
-</code></pre><p>自然而然，两者可以组合使用，如KNNBaseline算法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">param_grid = &#123;&apos;bsl_options&apos;: &#123;&apos;method&apos;: [&apos;als&apos;, &apos;sgd&apos;],</span><br><span class="line">                              &apos;reg&apos;: [1, 2]&#125;,</span><br><span class="line">              &apos;k&apos;: [2, 3],</span><br><span class="line">              &apos;sim_options&apos;: &#123;&apos;name&apos;: [&apos;msd&apos;, &apos;cosine&apos;],</span><br><span class="line">                              &apos;min_support&apos;: [1, 5],</span><br><span class="line">                              &apos;user_based&apos;: [False]&#125;</span><br><span class="line">              &#125;</span><br></pre></td></tr></table></figure></p>
-<p>为了进一步分析，cv_results属性具有所有需要的信息，并且可以在pandas dataframe中导入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">results_df = pd.DataFrame.from_dict(gs.cv_results)</span><br></pre></td></tr></table></figure></p>
-<p>在我们的案例中，cv_results属性可能是这样的（已经转成了浮点型数据）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&apos;split0_test_rmse&apos;: [1.0, 1.0, 0.97, 0.98, 0.98, 0.99, 0.96, 0.97]</span><br><span class="line">&apos;split1_test_rmse&apos;: [1.0, 1.0, 0.97, 0.98, 0.98, 0.99, 0.96, 0.97]</span><br><span class="line">&apos;split2_test_rmse&apos;: [1.0, 1.0, 0.97, 0.98, 0.98, 0.99, 0.96, 0.97]</span><br><span class="line">&apos;mean_test_rmse&apos;:   [1.0, 1.0, 0.97, 0.98, 0.98, 0.99, 0.96, 0.97]</span><br><span class="line">&apos;std_test_rmse&apos;:    [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]</span><br><span class="line">&apos;rank_test_rmse&apos;:   [7 8 3 5 4 6 1 2]</span><br><span class="line">&apos;split0_test_mae&apos;:  [0.81, 0.82, 0.78, 0.79, 0.79, 0.8, 0.77, 0.79]</span><br><span class="line">&apos;split1_test_mae&apos;:  [0.8, 0.81, 0.78, 0.79, 0.78, 0.79, 0.77, 0.78]</span><br><span class="line">&apos;split2_test_mae&apos;:  [0.81, 0.81, 0.78, 0.79, 0.78, 0.8, 0.77, 0.78]</span><br><span class="line">&apos;mean_test_mae&apos;:    [0.81, 0.81, 0.78, 0.79, 0.79, 0.8, 0.77, 0.78]</span><br><span class="line">&apos;std_test_mae&apos;:     [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]</span><br><span class="line">&apos;rank_test_mae&apos;:    [7 8 2 5 4 6 1 3]</span><br><span class="line">&apos;mean_fit_time&apos;:    [1.53, 1.52, 1.53, 1.53, 3.04, 3.05, 3.06, 3.02]</span><br><span class="line">&apos;std_fit_time&apos;:     [0.03, 0.04, 0.0, 0.01, 0.04, 0.01, 0.06, 0.01]</span><br><span class="line">&apos;mean_test_time&apos;:   [0.46, 0.45, 0.44, 0.44, 0.47, 0.49, 0.46, 0.34]</span><br><span class="line">&apos;std_test_time&apos;:    [0.0, 0.01, 0.01, 0.0, 0.03, 0.06, 0.01, 0.08]</span><br><span class="line">&apos;params&apos;:           [&#123;&apos;n_epochs&apos;: 5, &apos;lr_all&apos;: 0.002, &apos;reg_all&apos;: 0.4&#125;, &#123;&apos;n_epochs&apos;: 5, &apos;lr_all&apos;: 0.002, &apos;reg_all&apos;: 0.6&#125;, &#123;&apos;n_epochs&apos;: 5, &apos;lr_all&apos;: 0.005, &apos;reg_all&apos;: 0.4&#125;, &#123;&apos;n_epochs&apos;: 5, &apos;lr_all&apos;: 0.005, &apos;reg_all&apos;: 0.6&#125;, &#123;&apos;n_epochs&apos;: 10, &apos;lr_all&apos;: 0.002, &apos;reg_all&apos;: 0.4&#125;, &#123;&apos;n_epochs&apos;: 10, &apos;lr_all&apos;: 0.002, &apos;reg_all&apos;: 0.6&#125;, &#123;&apos;n_epochs&apos;: 10, &apos;lr_all&apos;: 0.005, &apos;reg_all&apos;: 0.4&#125;, &#123;&apos;n_epochs&apos;: 10, &apos;lr_all&apos;: 0.005, &apos;reg_all&apos;: 0.6&#125;]</span><br><span class="line">&apos;param_n_epochs&apos;:   [5, 5, 5, 5, 10, 10, 10, 10]</span><br><span class="line">&apos;param_lr_all&apos;:     [0.0, 0.0, 0.01, 0.01, 0.0, 0.0, 0.01, 0.01]</span><br><span class="line">&apos;param_reg_all&apos;:    [0.4, 0.6, 0.4, 0.6, 0.4, 0.6, 0.4, 0.6]</span><br></pre></td></tr></table></figure></p>
-<p>正如你所看到的，每个列表具有相同大小的参数组合数量。 它对应于下表：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">split0_test_rmse    split1_test_rmse    split2_test_rmse    mean_test_rmse  std_test_rmse   rank_test_rmse  split0_test_mae split1_test_mae split2_test_mae mean_test_mae   std_test_mae    rank_test_mae   mean_fit_time   std_fit_time    mean_test_time  std_test_time   params  param_n_epochs  param_lr_all    param_reg_all</span><br><span class="line">0.99775 0.997744    0.996378    0.997291    0.000645508 7   0.807862    0.804626    0.805282    0.805923    0.00139657  7   1.53341 0.0305216   0.455831    0.000922113 &#123;‘n_epochs’: 5, ‘lr_all’: 0.002, ‘reg_all’: 0.4&#125;    5   0.002   0.4</span><br><span class="line">1.00381 1.00304 1.00257 1.00314 0.000508358 8   0.816559    0.812905    0.813772    0.814412    0.00155866  8   1.5199  0.0367117   0.451068    0.00938646  &#123;‘n_epochs’: 5, ‘lr_all’: 0.002, ‘reg_all’: 0.6&#125;    5   0.002   0.6</span><br><span class="line">0.973524    0.973595    0.972495    0.973205    0.000502609 3   0.783361    0.780242    0.78067 0.781424    0.00138049  2   1.53449 0.00496203  0.441558    0.00529696  &#123;‘n_epochs’: 5, ‘lr_all’: 0.005, ‘reg_all’: 0.4&#125;    5   0.005   0.4</span><br><span class="line">0.98229 0.982059    0.981486    0.981945    0.000338056 5   0.794481    0.790781    0.79186 0.792374    0.00155377  5   1.52739 0.00859185  0.44463 0.000888907 &#123;‘n_epochs’: 5, ‘lr_all’: 0.005, ‘reg_all’: 0.6&#125;    5   0.005   0.6</span><br><span class="line">0.978034    0.978407    0.976919    0.977787    0.000632049 4   0.787643    0.784723    0.784957    0.785774    0.00132486  4   3.03572 0.0431101   0.466606    0.0254965   &#123;‘n_epochs’: 10, ‘lr_all’: 0.002, ‘reg_all’: 0.4&#125;   10  0.002   0.4</span><br><span class="line">0.986263    0.985817    0.985004    0.985695    0.000520899 6   0.798218    0.794457    0.795373    0.796016    0.00160135  6   3.0544  0.00636185  0.488357    0.0576194   &#123;‘n_epochs’: 10, ‘lr_all’: 0.002, ‘reg_all’: 0.6&#125;   10  0.002   0.6</span><br><span class="line">0.963751    0.963463    0.962676    0.963297    0.000454661 1   0.774036    0.770548    0.771588    0.772057    0.00146201  1   3.0636  0.0597982   0.456484    0.00510321  &#123;‘n_epochs’: 10, ‘lr_all’: 0.005, ‘reg_all’: 0.4&#125;   10  0.005   0.4</span><br><span class="line">0.973605    0.972868    0.972765    0.973079    0.000374222 2   0.78607 0.781918    0.783537    0.783842    0.00170855  3   3.01907 0.011834    0.338839    0.075346    &#123;‘n_epochs’: 10, ‘lr_all’: 0.005, ‘reg_all’: 0.6&#125;   10  0.005   0.6</span><br></pre></td></tr></table></figure></p>
-<h4 id="命令行的使用"><a href="#命令行的使用" class="headerlink" title="命令行的使用"></a>命令行的使用</h4><p>surprise 同样支持命令行工具，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">surprise -algo SVD -params &quot;&#123;&apos;n_epochs&apos;: 5, &apos;verbose&apos;: True&#125;&quot; -load-builtin ml-100k -n-folds 3</span><br></pre></td></tr></table></figure></p>
-<p>查看使用细节运行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">surprise -h</span><br></pre></td></tr></table></figure></p>
-
-          
+          基本使用自动进行交叉验证surprise 有一系列的内建的算法和数据集供用户来进行尝试。在最简单的形式中，它的模型仅需几行代码就可以运行一次交叉验证的流程：代码如下：
+12345678910111213from surprise import SVDfrom surprise import Data
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/16/surprise_getstatted/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -754,27 +685,18 @@ predict（）使用原始ID（请阅读关于[原始ID和内部ID](http://surpri
       
         
           
-            <p>昨天晚上遭遇了一场持久的农村燃烧秸秆的浓烟，昨天晚上估计燃烧了一晚上。</p>
-<p>昨天先是把窗户打开，想着浓烟尽快散去，但是发现似乎浓烟一直都在，然后就等着，把窗户关上了。之后再把窗户打开通风，发现浓烟还在…… </p>
-<p>直至今早，房间里似乎依然还是有浓烟的味道，感觉很是不爽。</p>
-<p>早上起来感觉鼻腔疼痛，喉咙不舒服，有些痒，而后，就把窗户继续打开通风。</p>
-<p>由此自己昨天晚上半夜想了一下关于农村秸秆回收利用的事情。</p>
-<p>自己的思路大致分为两种：</p>
-<pre><code>第一种，是不对秸秆进行燃烧回收，直接回田处理，辅以能快速分解的菌类，使得稻草的有机物能迅速变成无机物，便于来年植物的吸收。
-
-第二种，是由专业的商业公司对秸秆进行二次回收，利用回收来的秸秆进行二次利用。
-</code></pre><p>第一种，是避免空气污染的主要方式，且环保无污染，成本低。需要政府、科研所、村民的配合。科研所在新技术的发展下，假设能研制出一种新型菌类，只能分解秸秆，且能高效快速分解。</p>
-<p>在政府的要求下，这两年使用大型收割机进行收割的农户，大多选择了就地还田，也有部分选择将其作为燃料，供给日常燃料。在田中的稻草，哪怕经过曝晒，其中仍然含有水分，所以有农户半夜偷偷燃烧时，会使其产生大量浓烟，污染空气，这种浓烟中含有大量SO2,NO2等对人体有害的气体，而且浓烟中还有一些没有完全燃烧的炭。这些污染物都能对人体造成伤害。</p>
-<p>在政府的要求下，收割机在收割时将秸秆处理碾碎成微小颗粒，并将菌类按照一定比例混在粉末中，在菌类的分解下，稻田中的颗粒能迅速分解，将有机物还田，实现元素的二次利用，并且政府向村民公布这种方式的好处。其实为了不让农户在夜间燃烧秸秆，现在也有部分收割机加装了相关设备，在收割时已经将秸秆截断了。</p>
-<p>第二种，是由专业的商业公司对秸秆进行二次回收，利用回收来的秸秆进行生产。需要政府、商业公司、农户的配合。</p>
-<p>在农户进行采收时，也有部分农户选择将秸秆作为燃料，这种情况下，可以在收割时，选用相应的工具，在收割时，将秸秆进行捆绑，便于农户进行移动；</p>
-<p>如若农户不需要秸秆。在收割季开始之前，商业公司（可能包括新能源电厂、生产菌类的农场，生产饲料的畜牧业公司）和收割团队商议，一同去农田，收割时，商业公司选择生产条件，电厂可以利用燃烧这种电进行发电，虽说这种发电是种季节性的，但是可以作为新能源方式来处理，由国家提供成熟的生产指导技术，以地域划分，建立生个小规模的电站还是可观的，可以供给企业用电。</p>
-<p>而这新型利用秸秆进行烧热发电的技术，就需要科研所的技术团队来进行攻关了。</p>
-<p>也可以将秸秆处理成饲料，供给动物食用。</p>
-<p>亦或者是对其处理，使之能生产菌类蔬菜。</p>
-<p>现在的科技进步导致的是农村的人口越来越少，愿意种田的人也越来越少。乡下空气很好，但是每烧一次秸秆，就会导致下风方的村民十分难受。</p>
-
-          
+          昨天晚上遭遇了一场持久的农村燃烧秸秆的浓烟，昨天晚上估计燃烧了一晚上。
+昨天先是把窗户打开，想着浓烟尽快散去，但是发现似乎浓烟一直都在，然后就等着，把窗户关上了。之后再把窗户打开通风，发现浓烟还在…… 
+直至今早，房间里似乎依然还是有浓烟的味道，感觉很是不爽。
+早上起来感觉鼻腔疼痛，喉咙不舒服，有些
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/14/mind0/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -914,28 +836,20 @@ predict（）使用原始ID（请阅读关于[原始ID和内部ID](http://surpri
       
         
           
-            <p>在日常生活中，我经常发现需要手中有一个笔记本，来记录自己的感悟和发现，也需要整理自己的生活。</p>
-<p>自己用过的的工具有印象笔记、有道云笔记、OneNote、wuderlist等工具，但是发现似乎都没有手写笔记本来得高效。</p>
-<p>作者推荐使用笔记本时要使用三个原则：</p>
-<pre><code>一元化，即所有想记录地一切都记录其中
+          在日常生活中，我经常发现需要手中有一个笔记本，来记录自己的感悟和发现，也需要整理自己的生活。
+自己用过的的工具有印象笔记、有道云笔记、OneNote、wuderlist等工具，但是发现似乎都没有手写笔记本来得高效。
+作者推荐使用笔记本时要使用三个原则：
+一元化，即所有想记录地一切都记录其中
 
-时序化，为笔记添加日期，作者建议六位日期（年后面两位+月份两位+日期两位）
-
-索引化，在一本笔记完成之后，可以自行整理笔记，对笔记建立索引。便于后期自行搜寻
-</code></pre><h4 id="一元化"><a href="#一元化" class="headerlink" title="一元化"></a>一元化</h4><p>书中提到一元化笔记的三个优点：</p>
-<pre><code>简洁而简单，不会造成混乱
-
-可以无压力地持续使用
-
-自由度高，能够随意调整
-</code></pre><p>作者建议将自己所有想记录的东西都记录在其中，这便是一元化。</p>
-<p>有时候，当自己拿起笔，就会发现东西会越写越多的情况。记录内容包括但不限于自己的一日三餐的感受、遇事的感受、处理问题的情景。</p>
-<p>在方便时，可以将笔记本携带身上，随时记录，在不方便时，可以先用其他可以书写的材料代替，比如小便签，写上自己想记录的内容，待方便时，再将其粘贴到笔记本上。</p>
-<h4 id="时序化"><a href="#时序化" class="headerlink" title="时序化"></a>时序化</h4><p>时序化，为笔记添加日期，作者建议六位日期，也可以用八位日期，都行，将笔记持续记录，记录笔记的日期，便于以后的索引与整理。也可以帮助自己记录在什么时候记录了，什么时候没有记录。</p>
-<h4 id="索引化"><a href="#索引化" class="headerlink" title="索引化"></a>索引化</h4><p>在一本笔记本整理完后，需要对笔记本进行复盘与整理，要建立笔记的索引。也不必所有的事件都需要建立索引，可以选择性地将自己认为重要地部分，进行索引。</p>
-<p>当笔记本比较多时，可以考虑使用电子表格进行索引。这个便于以后存档与搜索。</p>
-
-          
+时序化
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/13/manageinfo/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1075,358 +989,16 @@ predict（）使用原始ID（请阅读关于[原始ID和内部ID](http://surpri
       
         
           
-            <p>在用匹配字符串(A)对目标字符串(B)进行匹配的过程中，会出现多次遍历的情况，当A越长，要进行匹配的次数越多，且一旦匹配失效，其时间成本在急剧上升。<br>在这里，结合其他前辈的经验，理解一下大名鼎鼎的KMP算法的思路吧。</p>
-<p>解决思路：<br>    在进行匹配之前，需要计算匹配字符串的部分匹配值。<br>    1.查找目标字符串中第一个与匹配字符串中第一个字符相等的位置，将A移动到该位置，开始匹配；<br>    2.若匹配字符串的第N（N&gt;=2）个字符能匹配目标字符串，则继续匹配，直至，<br>        若（1）在目标字符串中找到匹配字符串，则结束此轮查找；<br>        若（2）在目标字符串中没有查找到匹配字符串，记录当前已成功匹配的数量x和匹配字符串该位置下的部分匹配值t,计算移动位数k=x-t，移动k位，进行下一轮匹配，执行1,2</p>
-<p>字符串A:ABCDABD<br>字符串B：AHADABFABCDABCDABD</p>
-<p>有两个概念：已匹配字符数和对应的部分匹配值<br>已匹配的字符数：在字符串B中，找到已匹配字符串A的数量<br>对应的部分匹配值：字符串A中，到达某位置时，该部分的字符串的前缀和后缀的公共字符串的长度。</p>
-<p>前缀：某字符串除开尾字符外的顺序字符串的集合。<br>后缀：某字符串除开首字符串的顺序字符串的集合。</p>
-<p>以A为例：ABCDABD<br>到达A时：前缀和后缀都为0,公共字符串长度为0</p>
-<p>到达AB时：<br>前缀：A<br>后缀：B<br>公共字符串长度为0</p>
-<p>到达ABC时：<br>前缀：A,AB<br>后缀：BC,C<br>公共字符串长度为0</p>
-<p>到达ABCD时：<br>前缀：A,AB,ABC<br>后缀：D,CD,BCD<br>公共字符串长度为0</p>
-<p>到达ABCDA时：<br>前缀：A,AB,ABC,ABCD<br>后缀：A,DA,CDA,BCDA<br>公共字符串长度为1，为A</p>
-<p>到达ABCDAB时：<br>前缀：A,AB,ABC,ABCD,ABCDA<br>后缀：B,AB,DAB,CDAB,BCDAB<br>公共字符串长度为2，为AB</p>
-<p>到达ABCDABD时：<br>前缀：A,AB,ABC,ABCD,ABCDA,ABCDAB<br>后缀：D,BD,ABD,DABD,CDABD,BCDABD<br>公共字符串长度为0</p>
-<p>还是以开头的字符串为例：<br>匹配字符串：ABCDABD<br>目标字符串：AHADABFABCDABCDABD<br>当开始匹配时：<br>1.A匹配A，匹配数为1，部分匹配值为0，移动位数为1-0=1，B不与H匹配，往前移动1位，<br>2.A不与H匹配，往前移动1位,<br>3.A与A匹配，B与D不匹配，匹配数为1，部分匹配值为0，移动位数为1-0=1，往前移动1位<br>4.D与A不匹配，往前移动1位，<br>5.A与A匹配，B与B匹配，F与C不匹配，匹配数为2，部分匹配值为0，往前移动2-0=2位，<br>6.A与A匹配，B与B匹配，C与C匹配，D与D匹配，A与A匹配，B与B匹配,C与D不匹配，匹配数为6，部分匹配值为2，移动位数为6-2=4位，</p>
-<ol>
-<li>A与A匹配,B与B匹配,C与C匹配，D与D匹配，A与A匹配，B与B匹配,D与D匹配，匹配成功。距离为1+1+1+1+2+4=10</li>
-</ol>
-<p>“部分匹配”的实质是，有时候，字符串头部和尾部会有重复。</p>
-<p>参考资料：阮一峰的博客。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/EDA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jackence">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="坚守本心">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/12/EDA/" itemprop="url">数据分析之探索性分析</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-12T16:35:02+08:00">
-                2018-01-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>探索性数据分析是指对已有数据通过作图、制表、计算特征量等手段探索数据的结构和规律的一种数据分析方法。特别是当我们队这些数据中的信息没有足够的经验，不知道该用何种传统统计方法进行分析是，探索性数据分析就会非常有效。课程内容主要包括描述性统计分析、多维数据的可视化、降维技术、数据模型的可视化。</p>
-<p>描述统计分析：以揭示数据分布特性的方式汇总并表达定量数据的方法。</p>
-<p>包括数据的频数分析、数据的集中趋势分析、数据的离散程度分析、数据的分布以及一些基本的统计图形。描述性统计是一类统计方法的汇总，作用是提供了一种概括和表征数据的有效且相对简便的方法。通常用图示法来表述，易于看懂，能发现质量特性值的分布状况、趋势走向的一些规律，便于采取措施。用于汇总和表征数据，通常是对数据进一步定量分析的基础，或是对推断性统计方法的有效补充。</p>
-<p>常见的描述性统计方法分为三类：<br>    数据的统计量描述，如均值、方差。<br>    图示技术描述，如直方图、散布图、趋势图、排列图、条形图和饼分图<br>    文字语言分析和描述，如统计分析表、分层、因果图、亲和图和流程图。</p>
-<p>常见的描述性统计的应用范围：适用于能够收集到定量数据的所有领域，提供有关产品、过程或质量管理体系的信息，也用于管理。</p>
-<p>多元数据和多维数据的区别？</p>
-<p>以下方法来自：<a href="http://staff.ustc.edu.cn/~zwp/teach/MVA/Lec2_slides.pdf" target="_blank" rel="noopener">http://staff.ustc.edu.cn/~zwp/teach/MVA/Lec2_slides.pdf</a><br>多元数据的可视化方法：<br>1.几何投影方法<br>2.基于像素的可视化技术<br>3.层次可视化技术<br>4.基于图标的可视化结束</p>
-<p>以下方法来自：<a href="http://www.afenxi.com/post/1643" target="_blank" rel="noopener">http://www.afenxi.com/post/1643</a><br>降维技术的方法：<br>缺失值比率<br>低方差滤波<br>高相关滤波<br>随机森林/组合树<br>主成分分析<br>反向特征消除<br>前向特征构造</p>
-<p>数据模型的可视化</p>
-<p>——————————<br>未完待续……</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/moviecomments1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jackence">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="坚守本心">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/12/moviecomments1/" itemprop="url">《釜山行影评》</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-12T16:35:02+08:00">
-                2018-01-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生活/" itemprop="url" rel="index">
-                    <span itemprop="name">生活</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>电影很好看，故事发生在韩国，以丧尸感染人类为背景。</p>
-<p>故事开头是发生在白天，一司机在收费站经历消毒之后，回家路上因为要接电话分神，开车撞死了一头鹿，下车之后，但是司机就检查了一下，然后开车走了。之后，等司机离开，死去的鹿，抽搐了两下就站立起来。</p>
-<p>男主（一基金公司的经理）的公司似乎是做了什么不可告人的项目，男主让下属（金代理）处理好，虽然说是不知道什么内容，但是写在这里，应该是有意图的。在处理好公事后，询问金代理最近孩子们都喜欢什么。最后，男主回家带回来一份儿童节就已经送过的礼物，但男主并不知道，等女儿指出来，父女俩就很尴尬了。与此同时，男主的女儿想去见远在釜山的母亲，因为明天就是她的生日，而妻子也想见见女儿。而男主为何会和妻子分开，电影中借孩子的口吻反映出来一部分原因：基金公司的经理，在长期的工作习惯中，一直是趋利避害，努力在保证着自己的利益–也就是所谓的自私，自私的性格，让两人分开。</p>
-<p>男主的母亲告诉男主昨天发生在学校开家长会的事情，并把录好了的录影机交给男主。在看完视频之后，男主经过反复思考，决定陪女儿去釜山。半夜开车去车站，准备送到女儿后，中午回来继续工作。由此，父女俩踏上了死亡列车（或者说是希望列车）。但是，在列车开动之前，发生了意外，但也是必然吧：一被感染的人上了车。故事就由此正式展开 。</p>
-<p>开车后，小萝莉（男主的女儿）发现车站的工作人员被扑倒，被吓了，但是，没有告诉熟睡中的父亲。转而起身去上厕所，遇到了男二号，成庆（貌似姓金）和他妻子。电影中的富贵男，发现了流浪汉长期呆在厕所里，就转告乘务人员，乘务人员就在这里处理这个事情，富贵男告诉小萝莉（秀安）如果不好好学习，以后就会成为像流浪汉一样的人（这时在输出他自己的价值观），而秀安反驳到，妈妈说这种话的人，都不是好人（事实上故事中他的行为证明了这一点）。与此同时，女乘务员发现了被感染的那个女子。在呼叫列车乘务长的过程中，女子彻底被感染，开始撕咬人类。由于都没有防备，被感染的人类快速尸变，并快速蔓延开来，很快，整个车厢里就感染了好几节。男主被电话吵醒，在接完电话后，发现女儿不见了。就起身找女儿，在寻找的过程中，发现了车厢中的动荡，在一探究竟之后，发现了丧尸，转身往回跑的过程，发现女儿，抱起女儿往回跑，但是没想到，回来的路也有了丧尸，在男二（成庆）的掩护之下，成功躲过一劫，但是男主在跑到安全车厢后（也就是没有人被感染的车厢时），立马把门关上，把成庆和他媳妇儿留在外面，幸亏成庆手快，打开了门，进去之后快速锁好了门。男主发现丧尸的智慧低下，不能开门，就提醒成庆，可以把手从门上拿下来。这时成庆开始发飙：你小子跑路的时候，我给你打掩护，结果你先到了，竟然还把门关上了，成庆的媳妇就拉住他，提醒他别说了。而他们发现，丧尸只攻击看到的人，于是，成庆媳妇儿就用报纸和水把透明的车厢门封上了，丧尸的动静马上安静下来。</p>
-<p>第一部分的高潮到此结束。</p>
-<p>在众人逐渐安定下来的时候，石安告诉女儿，在危险的情况下，自己永远是最重要的，不要给别人让座，要学会保护好自己。</p>
-<p>之后，男主接到了母亲打来的电话，母亲问他们的行程情况，并让他（石安）照顾好女儿。呼吸变重，挂掉了电话（推测应该也是被感染了，但是石安也没仔细想）。</p>
-<p>众人通过各种手段，了解到国内发生的情形，发言人声明国内只是在发生暴乱，请国民安心，不要随便外出，不要相信各种谣言。但是众人也已经知道事实，人心惶惶。</p>
-<p>列车长告诉乘客，将在天安鞍山站停靠，所有人下车。但是，当列车逐渐开到车站的时候，发现，车站已被丧尸占领，列车只好往前开。列车长告诉乘客：下一站停靠大田站，有乘客下车，将会有军队和警车保卫他们离开。石安通过联系公司在大田的人员（闵大尉），了解到，大田将会对他们进行隔离。石安以利诱，让闵大尉安排他们让他们父女俩不被隔离。闵大尉答应了，告诉他们下车出站之后，不要走主广场，走旁边的通道。</p>
-<p>第二波高潮来了：</p>
-<p>当众人听从列车员的安排，都下车出站时，石安和秀安走的旁边的通道，而众人走的是主通道。秀安问为什么不和众人走在一起时，秀安指责父亲的自私。而那位流浪汉在乘乱逃出，听到石安和闵大尉的谈话之后，跟随他们走的旁边的通道。当众人坐电梯下楼时，发现了尸变了的警察和军队。可是这个时候，已经晚了，众人开始往回逃。流浪汉在看到警察之后，往警察那边跑，却发现警察尸变了，吓得腿软了。石安发现之后，往回跑，提醒女儿快跑，发现尸变了的警察已经跑到了女儿的身边，多亏了男二号成庆和他媳妇，救了孩子一命。众人就开始抵御丧尸的攻击，石安也在此时受到了攻击，多亏流浪汉用大衣遮住丧尸的脸，石安得以逃过一劫。在几个棒球队员、石安和成庆的合力辅助下，大部分没被感染的人已经安全上车了。但是富贵男提醒乘务员让列车长开车，棒球队的啦啦队队长珍熙坚决反对，因为她的朋友们还没上车。乘务员绝对让列车长发车。棒球队员等人觉得拖延时间够了，就转身去赶车，但是车已经发动了，车站上的人已经被感染，咬伤了几个人，最后，经过一番搏斗，几个人里只剩下了三个人：石安、成庆和珍熙的男友（虽说他没表白，但两人的关系在几人上车的时候，就已经表明）。</p>
-<p>在之后的联系中，发现：秀安和成庆的媳妇儿，以及故事中的姐妹花中的姐姐，被困在十三节车厢，而他们在第九节车厢，珍熙和大部分人在第十五节车厢。几人商议决定：一起前往十三节，救出几人，然后去十五节车厢和大部分人会合。</p>
-<p>第二波高潮结束<br>在角色分配上：成庆自己排在第一，棒球男排在第二，石安殿后。在经历了与一节车厢丧尸的搏斗之后，体力不足。但是他们发现丧尸不能在暗的环境下看见，但能听见。于是石安心生一计:在火车过隧道的时候，用手机吸引丧尸的注意力，乘机跑过去。</p>
-<p>于是，三人就以这种方式跑到了第十三节车厢。棒球男联系珍熙，珍熙告诉列车员情况，一群人会过去。但是此时的富贵男从中作梗，或者说说出了其他人的心声：这些人从那边跑过来，谁知道有没有被感染，于是坚决反对。并将珍熙绑住，把门用衣服领带给固定住，不让他们过来，但是此时，被困到第十四节车厢的他们，车门还没被关紧，几个人负责堵住丧尸，一个人负责砸门。为了掩护石安，成庆被丧尸咬了，门终于关上了。但是成庆也被感染了，成庆将怀孕的妻子托付给石安，请求他照顾好，并让他赶紧带着其他人跑向刚砸开的门。其他人都安全地离开了。但是此时，姐妹花中的姐姐却被困住了，在门关上时，被丧尸感染了。其他人一致要求刚进来的人走向第十六节车厢，要求把他们隔离。姐妹花中的妹妹发现因为这群人的原因，自己的姐姐本来可以进来，却被感染了，心里捣鼓了几句，乘其他人在封锁第十五、十六节车厢的车门的时候，打开了第十四、十五节车厢的车门。</p>
-<p>第三波高潮结束</p>
-<p>而第十五节中，只有两个人没被感染：富贵男和一乘务员，和秀安他们一样，因为躲在厕所而幸免。</p>
-<p>列车继续前进。第十六节车厢里只剩了：珍熙（在众人要求石安和棒球男等人离开，被隔离时同棒球男一同离开）、成庆的媳妇儿、棒球男、石安、流浪汉和秀安。整趟列车中只有这些人和列车长没被感染。而此时石安接到了金代理的电话，此次事件可能是由于他们在那个项目中的打捞的油轮上带起来的病毒引起的。金代理表示很后悔，不知道这件事对不对，石安听到消息后，很震惊，之后，听金代理说釜山已经安全了。军队掌管了所有权，已经安全隔离了。金代理挂了电话之后，石安拼命清洗手上的血污。</p>
-<p>列车在前进的过程中，到站了，是不打算停的，但是列车长发现了道路被出轨的列车挡住了。列车长决定换车。列车长在启动机车之后，下车提醒其他人（安全的）坐火车头去釜山。此时对面冲过来一辆火车头，撞翻了一辆满载着丧尸的列车，丧尸就快冲出来了。而石安、秀安、流浪汉和成庆媳妇被压在两辆车之间，天无绝人之路，石安发现了一个车轱辘之间的缝隙可以通行，于是先爬出来，看清楚周围没有丧尸之后，让其他人赶紧爬过去。而此时丧尸从被压碎的玻璃窗中跑出来了。流浪汉挡住了他们，让秀安和孕妇爬了出去。</p>
-<p>富贵男在出卖乘务员之后，冲出了列车（没关车门），导致身后一大波丧尸跟随。首先遇到了珍熙和棒球男，打开他们关上的车门，没有关，反而把一旁在等男友砸开车窗的珍熙推给了丧尸，棒球男发现之后，就停止了砸窗，转身去救珍熙，而此时富贵男就趁机撞开车窗，跑了出去。珍熙被感染之后，棒球男就一直抱着她，直到自己被感染……</p>
-<p>列车长在遇到富贵男时，就起身与富贵男身后的丧尸搏斗，结果也被感染了。富贵男独自一人趁机爬上了车头。石安、秀安与成庆媳妇看到了行进中的车头，起身追赶。逐渐追上了，而身后的丧尸也追了上来。于是看到了一场类似于打群架的情形：一群人追着几个人。身后的丧尸在扒上了车头之后，由于人数过多，都拖在地上，都开始让列车减速。于是石安就开始用脚踢这些丧尸。渐渐地，丧尸的数量少了，速度提起来了，最后，丧尸就完全被驱逐干净了。</p>
-<p>三人在走向驾驶室时，发现了已经被感染的富贵男。富贵男说明想回家，想石安带他回家，但是很快就尸变了，尸变之后，两人开始搏斗。在搏斗的过程中，石安不幸被感染。</p>
-<p>石安为了两人的安全，将两人锁在驾驶室，期望成庆的媳妇儿照顾好女儿之后，自己跳下了车头，跳下车头之前，石安是愉悦的：回忆起女儿刚出生时的情形，自己十分高兴。</p>
-<p>两人安全到达隔离带，士兵请求上级如何处置未知人士时，上峰命令击毙。而秀安在此时唱起了歌曲：那首她在学校没唱完的歌曲，狙击手没有开枪，故事在一群士兵包围两人的情形中结束。<br>嗯，三千六百多字的故事梗概，内容不是特别详细。</p>
-<p>就自己看完这部电影，觉得在故事中，涉及到了一下几部分的内容：</p>
-<pre><code>1. 资本的力量的强大，在爆发问题时，资本的力量，可以让有钱人权贵可以暂时免受灾难的侵扰。但是当灾难无法避免和消除时，只能保留一部分的安全，甚至这一部分人的安全也不能保证。资本可以让人享受特权对待。
-
-2. 人性是不可考验的，在故事中，石安对成庆的所作所为，以及众人对石安、成庆等人的隔离、姐妹花妹妹为了和姐姐团聚打开车门，富贵男的自私等等，都是基于人性在面对危难时的个人反映。
-
-人性有好有坏，在面对危难境地时，看站在人们面前的是哪种，是哪种人提出来的，在关键时刻提出来的声音，往往会成为人们共同的心声（人们在有多个选择时，更多的时候，会被周围人感染，大众心理会倾向于一种发声）。
-
-3. 人性的自私，在危难时刻最容易体现。资本是自私的，但资本却是由人掌控的。权贵是自私的，因为他们有钱、权，在正常的时候，他们可以享受更高质量的生活。因此，他们不希望改变，人性中的自私会更充分体现。
-</code></pre><p>故事中也有很多美好：</p>
-<p>石安母亲对石安的爱，石安对秀安的爱（父女，母子的亲情）；</p>
-<p>成庆对妻子的爱，表面上是妻管严，实际上对妻子的爱，无以言表；</p>
-<p>棒球男对珍熙的爱，虽说没有说出口，但是却陪伴到最后；</p>
-<p>姐妹花中妹妹对姐姐的依恋，对姐姐生活地同情与爱等等。</p>
-<p>在这些人一同前进的时候，我也感受到了人性的美好，人性中的善良。哪怕刚开始，石安对成庆的所作所为，但是毕竟后面石安还是改过来了。当三人前往十三节车厢救人时，棒球男没有勇气对自己昔日的队友下手，哪怕其他两人已经深陷困境，这之间的犹豫，也很美好。</p>
-<p>尽管电影中，每当他们深陷困境时，总有好运降临，助他们躲过重重劫难。艺术做到这里也就足够了，虽说有些假。</p>
-<p>总之，<br>这部电影真的很好看。<br>这部电影真的很好看。<br>这部电影真的很好看。</p>
-
-          
+          在用匹配字符串(A)对目标字符串(B)进行匹配的过程中，会出现多次遍历的情况，当A越长，要进行匹配的次数越多，且一旦匹配失效，其时间成本在急剧上升。在这里，结合其他前辈的经验，理解一下大名鼎鼎的KMP算法的思路吧。
+解决思路：    在进行匹配之前，需要计算匹配字符串的部分匹配值。    1.查找目
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/12/kmpagl/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1566,24 +1138,319 @@ predict（）使用原始ID（请阅读关于[原始ID和内部ID](http://surpri
       
         
           
-            <p>编写的爬虫代码的主要涉及的过程：</p>
-<p>获取网页数据–提取数据–数据的清洗和处理–数据存储。</p>
-<p>以下是编写爬虫程序所需要安装的库。在这里，默认大家在安装Python之时已经安装好pip这个工具。</p>
-<p>1.获取网页数据阶段，可能会用到的库：requests,urllib2</p>
-<p>进入控制台界面：</p>
-<pre><code>pip install urllib2
+          编写的爬虫代码的主要涉及的过程：
+获取网页数据–提取数据–数据的清洗和处理–数据存储。
+以下是编写爬虫程序所需要安装的库。在这里，默认大家在安装Python之时已经安装好pip这个工具。
+1.获取网页数据阶段，可能会用到的库：requests,urllib2
+进入控制台界面：
+pip install
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/12/crawl0/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
 
-pip install requests
-</code></pre><p>2.提取数据需要用到的库：bs4,re,lxml</p>
-<pre><code>pip install bs4
-</code></pre><p>3.数据清洗和处理：re,JSON</p>
-<p>4.数据存储：mysqldb（SQL数据库）,pymongo（NOSQL）,xlwt（excel）</p>
-<pre><code>pip install pymongo
+    
 
-pip install xlwt
-</code></pre><p>mysqldb的库需要去其他地方下载：<a href="https://sourceforge.net/projects/mysql-python/" target="_blank" rel="noopener">https://sourceforge.net/projects/mysql-python/</a></p>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/moviecomments1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jackence">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="坚守本心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/12/moviecomments1/" itemprop="url">《釜山行影评》</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-12T16:35:02+08:00">
+                2018-01-12
+              </time>
+            
+
+            
+
+            
+          </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/生活/" itemprop="url" rel="index">
+                    <span itemprop="name">生活</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          电影很好看，故事发生在韩国，以丧尸感染人类为背景。
+故事开头是发生在白天，一司机在收费站经历消毒之后，回家路上因为要接电话分神，开车撞死了一头鹿，下车之后，但是司机就检查了一下，然后开车走了。之后，等司机离开，死去的鹿，抽搐了两下就站立起来。
+男主（一基金公司的经理）的公司似乎是做了什么不可告人的项
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/12/moviecomments1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/EDA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jackence">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="坚守本心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/12/EDA/" itemprop="url">数据分析之探索性分析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-12T16:35:02+08:00">
+                2018-01-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          探索性数据分析是指对已有数据通过作图、制表、计算特征量等手段探索数据的结构和规律的一种数据分析方法。特别是当我们队这些数据中的信息没有足够的经验，不知道该用何种传统统计方法进行分析是，探索性数据分析就会非常有效。课程内容主要包括描述性统计分析、多维数据的可视化、降维技术、数据模型的可视化。
+描述统计
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/12/EDA/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1723,21 +1590,22 @@ pip install xlwt
       
         
           
-            <p>HTTP协议构建于TCP/IP协议之上，默认端口号是80。</p>
-<p>HTTP协议是无连接无状态的。</p>
-<p>HTTP协议是以ASCII码传输，建立在TCP/IP协议上的规范。</p>
-<p>HTTP报文（请求和响应）</p>
-<p>请求报文</p>
-<p>报文分为三部分：状态行、请求头、消息主体。</p>
-<p>HTTP定义了四种客户端与服务器端交互的方法：</p>
-<p>GET/POST/PUT/DELETE,对应着四种操作：查、增、改、删。</p>
-<p>1.GET用于信息获取，有URL长度的限制<br>2.POST可能修改服务器上的资源请求，大小没有限制，但是出于安全考虑。服务器在实现时会做一定的限制。</p>
-<p>响应报文</p>
-<p>报文也由三部分组成：状态行、响应头、响应正文</p>
-<p>常见的响应状态码：</p>
-<p>200   客户端请求成功，服务端发送正常数据<br>301   客户端请求失败，请求被永久重定向<br>302   客户端请求失败，请求被暂时重定向<br>304   文件未修改，可以直接使用缓存文件<br>400   请求错误，服务器无法解析<br>401   请求未经授权， 这个状态代码必须和WWW-Authenticate报头域一起使用<br>403   服务器收到请求，但是拒绝提供服务<br>404   服务器收到请求，但是服务器上没有资源<br>500   服务器发生不可预知的错误，导致无法完成客户端的请求<br>503   服务器当前不能处理客户端的请求，一段时间后，可能会恢复正常</p>
-
-          
+          HTTP协议构建于TCP/IP协议之上，默认端口号是80。
+HTTP协议是无连接无状态的。
+HTTP协议是以ASCII码传输，建立在TCP/IP协议上的规范。
+HTTP报文（请求和响应）
+请求报文
+报文分为三部分：状态行、请求头、消息主体。
+HTTP定义了四种客户端与服务器端交互的方法：
+GET/P
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/12/HTTP/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1784,7 +1652,7 @@ pip install xlwt
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/clusteragl1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/crawl1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jackence">
@@ -1803,7 +1671,7 @@ pip install xlwt
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/12/clusteragl1/" itemprop="url">聚类分析之K-means算法</a></h1>
+                <a class="post-title-link" href="/2018/01/12/crawl1/" itemprop="url">动手写爬虫总结1</a></h1>
         
 
         <div class="post-meta">
@@ -1877,21 +1745,17 @@ pip install xlwt
       
         
           
-            <p>聚类分析是根据数据之间的自相似自动分类的。</p>
-<p>分类的结果是，类内大相似，类间不相似或小相似。</p>
-<p>聚类的分类方法有：</p>
-<pre><code>1.划分
-2.层次
-3.基于密度
-4.基于网络
-5.基于模型
-</code></pre><h2 id="划分聚类："><a href="#划分聚类：" class="headerlink" title="划分聚类："></a>划分聚类：</h2><h3 id="K-Means算法"><a href="#K-Means算法" class="headerlink" title="K-Means算法"></a>K-Means算法</h3><p>将数据集划分为K个簇，每隔簇内部的样本都相似。主要步骤：<br>    1.确定K个簇。<br>    2.计算距离并进行归类<br>    3.重新定K。<br>    当出现单一条件不同、标准不同时，需要对数据进行归一化处理。</p>
-<p>常见的有：<br>(x-min)/（max-min）<br>但是K-means由于其本身选取的是均值作为？</p>
-<p>有一定的局限性：<br>    1.不适用于非数值型数据，如分类数据，序列数据，且容易受极值的影响<br>    2.K-means算法是对初始值敏感的，如果起初随意定初始值很可能无法迭代到本该的最优点。<br>    3.K-means算法倾向于聚类后的半径相近，倾向于密度均匀的聚类<br>    4.无法聚类出有型的点（一般只能用于球形）</p>
-<p>鉴于K-means算法的缺点，可以使用，K-mediods，K-modes,K-prototype，二分 K-means算法进行替代</p>
-<h2 id="层次聚类"><a href="#层次聚类" class="headerlink" title="层次聚类"></a>层次聚类</h2><p>分为凝聚法和分裂法。</p>
-
-          
+          爬虫总结：
+自2016年十月中旬至此，前后花费了一个半月写爬虫，也是平时零零散散写的爬虫，从最简单的页面获取，到页面数据解析，再到后面的翻页，保存到Excel中，再到获取动态网页，加载JSON数据，到最后的将数据保存到数据库，中间踩的坑又不少，最近就开始简单的总结吧。
+自己当初使用的是Python 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/12/crawl1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1985,10 +1849,10 @@ pip install xlwt
               
               
               <div class="site-state-item site-state-categories">
-                
+                <a href="/categories/index.html">
                   <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">分类</span>
-                
+                </a>
               </div>
             
 
@@ -1996,10 +1860,10 @@ pip install xlwt
               
               
               <div class="site-state-item site-state-tags">
-                
+                <a href="/tags/index.html">
                   <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">标签</span>
-                
+                </a>
               </div>
             
 
@@ -2113,6 +1977,8 @@ pip install xlwt
   
 
 
+  
+
 
 
 
@@ -2151,6 +2017,11 @@ pip install xlwt
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 
@@ -2545,6 +2416,11 @@ pip install xlwt
   
 
   
+
+
+  
+  
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
 </body>
 </html>
