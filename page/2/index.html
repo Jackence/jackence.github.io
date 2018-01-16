@@ -294,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/recommendsys0/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/clusteragl/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jackence">
@@ -313,7 +313,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/12/recommendsys0/" itemprop="url">《推荐系统》(蒋凡译)读书笔记——概览</a></h1>
+                <a class="post-title-link" href="/2018/01/12/clusteragl/" itemprop="url">聚类分析的学习概览</a></h1>
         
 
         <div class="post-meta">
@@ -387,237 +387,17 @@
       
         
           
-            <h3 id="第一章-引言"><a href="#第一章-引言" class="headerlink" title="第一章       引言"></a>第一章       引言</h3><p>书中首先以在线书店为例，讲述了书店向特定用户推荐相关书籍的推荐系统，引申出推荐系统的类别——个性化推荐与热门推荐。在线书店是个性化推荐系统。每一个人由于其兴趣爱好不同，在系统中会看到不同的列表。当然也会有畅销书的推荐，而畅销书的推荐，显示的是当前用户群体，大众的关注热点，表示的是一种群体性推荐。</p>
-<p>这本书重点讨论的是前面一种：也就是个性化的推荐系统。</p>
-<p>提供个性化的推荐系统需要了解到用户的信息。它必须开发并维护一个用户模型或者用户记录来保存用户的偏好。以在线书店为例子，系统需要记住访客的浏览或者买过的书，从而预测他可能感兴趣的书。</p>
-<p>尽管用户模型对推荐系统很重要，但是如何获取并利用这个信息，往往是取决于特定的推荐技术的。</p>
-<p>用户的偏好可以通过监测用户行为隐式地获取，也可以通过询问访问者，显式地获取。</p>
-<p>在获取用户的信息后，系统该如何利用，以及利用什么额外的信息。这些是推荐系统要解决的一部分问题。</p>
-<p>目前已经在许多在线书店应用的方法：基于群体或协同的方法。</p>
-<p>本书分为两部分：<br>第一部分总结了几年来被广泛接受的推荐系统方面的研究成果，介绍了协同过滤、基于内容的过滤、基于知识的推荐和混合推荐方法的基本理论框架。此外，还包含了解释推荐物品的原因和评估推荐结果质量。</p>
-<p>第二部分讨论了推荐系统的最近研究课题。如：如何因对外来攻击和操作推荐系统的做法、支持消费决策和可能的说服策略、社交和语义网背景下的推荐系统和所有领域应用推荐系统。第二部分可以看作是持续研究的参考。</p>
-<p>本书的第一部分简介：</p>
-<h5 id="协同过滤的推荐"><a href="#协同过滤的推荐" class="headerlink" title="协同过滤的推荐"></a>协同过滤的推荐</h5><p>这些推荐的思想是：如果用户在过去有相同的偏好，他们在未来也有相同的偏好。</p>
-<p>基于协同过滤推荐下，一般需要回答几个问题：</p>
-<pre><code>我们如何发现与我们要推荐的用户有着相似的偏好的用户？
-
-如何衡量相似度？
-
-如何处理还没有购买经历的用户？
-
-如果只有很少的评分怎么办？
-
-除了利用相似的用户之外，还有哪些技术可以预测某个用户是否喜欢其他物品？
-</code></pre><p>其实，纯粹的协同过滤方法不会用到和要求任何和物品有关本身的知识的。</p>
-<h5 id="基于内容的推荐"><a href="#基于内容的推荐" class="headerlink" title="基于内容的推荐"></a>基于内容的推荐</h5><p>它的核心是：能够得到物品的描述，和这些特征的重要记录。</p>
-<p>基于内容的推荐下，需要回答如下的问题：</p>
-<pre><code>系统如何获取并持续改进用户记录？
-
-如何决定哪个物品匹配或至少能接近、符合用户的兴趣？
-
-什么技术能自动抽取或学习物品的描述，减少人工标注？
-</code></pre><p>与不涉及内容的方法比较，基于内容的推荐有两大优点：<br>    1.不需要大规模用户就可以达到适度的推荐精准度    2.一旦得到物品的属性就能立即推荐新物品。</p>
-<h5 id="基于知识的推荐"><a href="#基于知识的推荐" class="headerlink" title="基于知识的推荐"></a>基于知识的推荐</h5><p>如果我们把注意力投向其他领域，比如消费电子产品，就会涉及大量单次购买者。这意味着我们可能无法依赖购买记录，而这却是基于内容过滤和协同过滤的前提条件。即使如此，我们还是能够获取到更为精细化和结构化的内容，包括专业化的优质特征。</p>
-<p>基于知识的推荐系统需要额外的因果关系知识生成推荐。在这种基于知识的方法中，推荐系统通常会用到有关当前用户和有效商品的额外信息。基于约束的推荐就是此类系统的例子（就类似与taobao，京东此类网站，需要用户设定条件，才能给你过滤，推荐产品）</p>
-<p>基于知识的推荐系统要解决的问题如下：</p>
-<pre><code>什么机制可根据用户的特点来选择和排名物品？（为什么把某一个放在前面，把某一个放在后面）
-
-哪种领域知识能表示成知识库？
-
-如何在没有购买记录的领域获取用户信息？
-
-如何处理用户直接给出的偏好信息？
-
-哪种交互方式能够用英语交互式推荐系统？
-
-设计对话时，要考虑哪些个性化因素才能保证获取用户的偏好信息？
-</code></pre><h5 id="混合推荐"><a href="#混合推荐" class="headerlink" title="混合推荐"></a>混合推荐</h5><p>由于问题的背景不同，每一种方法都有其优劣势。一种显而易见的方法就是组合不同技术产生更好或更精准的推荐。这种设计尤其适用于克服纯粹协同过滤方法的规模膨胀问题，并可以以来内容分析处理新物品或新用户。</p>
-<p>在推荐系统中混合使用不同的方法时必须回答一下几个问题：</p>
-<pre><code>哪些方法能被组合，特定组合的前提是什么？
-
-两个或多个推荐算法是应该顺序计算，还是按照其他方法计算？
-
-不同的方法如何赋予权重，可以动态赋权吗？
-</code></pre><p>一般来说，推荐系统的目的有两个：一方面，推荐系统被用于激发用户去做某件事；另一方面，也可以看作是解决信息过载的工具。</p>
-<p>因此，推荐系统也深深根植于信息检索和信息过滤的领域。</p>
-<h5 id="推荐系统的解释"><a href="#推荐系统的解释" class="headerlink" title="推荐系统的解释"></a>推荐系统的解释</h5><p>解释是未来让用户更容易理解推荐系统的推理脉络。</p>
-<p>如何评估推荐系统？评估的方法有哪些？</p>
-<p>评估方法有：实验、半实验和非实验三种设计方法。需要回答的问题有：</p>
-<pre><code>哪些研究适用于评估推荐系统？
-
-如何利用历史数据实验评估推荐系统？
-
-用什么衡量来适应不同的评估目标？
-
-现有的评估技术的局限是什么？尤其是推荐系统的会话性或商业价值方面。
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/recommendsys2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jackence">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="坚守本心">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/12/recommendsys2/" itemprop="url">《推荐系统》读书笔记——协同过滤推荐</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-12T16:35:02+08:00">
-                2018-01-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在应用协同过滤推荐技术时，除了用户评分数据，我们不需要额外的物品数据。</p>
-<p>这样的好处是避免了付出很大的代价向系统提供详细而且实时更新的物品描述信息，但是这种仅基于纯粹的协同过滤的算法却无法根据物品的特性和用户的特殊偏好来客观选择推荐物品的。</p>
-<p>本章中，将物品的特征描述为“内容”。因为后面章节部分介绍的大多技术的最初目的是推荐有意思的文本文档。此外，绝大多数的方法的假设是物品的特性能自动从文档内容本身或无结构的文本描述中提取。所以，基于内容的推荐系统的典型例子是比较候选文章的主要关键词和用户过去高度评价过的其他文章中出现的关键词来推荐新文章，而这些被推荐的物品，就常常指的是“文档”。</p>
-<p>本章讨论的基于内容的推荐，关注的算法侧重于推荐文本描述的物品，并能自动“学习”用户记录（基于知识的推荐系统通常是显式询问用户的偏好）。</p>
-<h3 id="内容的表示与相似度"><a href="#内容的表示与相似度" class="headerlink" title="内容的表示与相似度"></a>内容的表示与相似度</h3><p>描述物品目录最简单的方法就是维护每个物品的特征的详细列表（属性集、特征集或物品信息）。以推荐图书为例，可以把体裁、作者、出版社等信息保存在数据库中，根据不同的用户兴趣，</p>
-<p>用这些特征来描述他们的偏好，而要做的就是将物品特征同用户偏好匹配起来。推荐系统需要收集用户的记录，直接的方法是明确询问用户ta所接受的范围和内容，间接的方式是让用户给一组物品进行评分，可以是整体评分，也可以是对不同维度进行评分。</p>
-<p>基于内容的推荐系统的工作原理是，评估用户还没看到的物品与当前用户过去喜欢的物品的相似度。而衡量相似度的方法有两种：1.0/1衡量，就是将用户过去喜欢的物品，同其他ta没见过的物品n进行比较，如果n的类型在ta喜欢的类型中，则标为1，否则就为0；2.计算相关关键词的相似度或重叠度。典型的相似度系数会用到Dice系数，它比较适合多值特征组合。它是这样描述的：如果每本图书b由一组关键词k描述，那么Dice系数描述bi和bj为：<br>2*（kbi∩kbj）/(|kbj|+|kbi|)</p>
-<h3 id="向量空间模型和TF-IDF"><a href="#向量空间模型和TF-IDF" class="headerlink" title="向量空间模型和TF-IDF"></a>向量空间模型和TF-IDF</h3><p>严格来讲，图书的类别信息，并不算是图书的内容，而只能算是附加知识。基于内容的推荐方法不是去维护一组“元信息”特征，而是使用一列在文档中出现的相关关键词，它的主要思想是，能够从文档内容本身或没有限制的文字描述中自动生成列表。</p>
-<p>文档内容可以用不同方法转换到这样的关键词列表中。首先，一种单纯的方法是将现在所有文档的词语设为一个列表，然后用布尔型向量描述每一个文档，1表示文档出现在文档中，0表示没有出现。如果用户记录用一个相似的列表描述，那么计算兴趣文档和文档的重合程度就可以匹配文档。</p>
-<p>这个方法存在的问题很明显。首先是它假设每个词在文档中的重要性是相同的，此外，当文档比较长的时候，用户记录和文档的重叠几率自然就会大，所以，这样的推荐系统，往往更倾向于推荐长文档。</p>
-<p>另一种方法是TF-IDF。它代表的是TF(term-frequence)-IDF(inverse documents frequence)，这种技术在信息检索领域应用广泛。</p>
-<p>词频描述某个词在一篇文档中出现的频繁程度。为了阻止更长的文档得到更高的相关度的权值，必须对文档长度进行归一化处理，有几种方法是可行的。其中一种简单方法是将词出现的次数比上同文档中其他关键词出现的最多次数。假定：f是某词在文档中出现的频数，fj是其他关键词中最常出现的关键词的频数 TF=f/fj</p>
-<p>反文档频率是组合了词频后的第二个衡量值，旨在降低所有文档中几乎都会出现的关键词的权重。其思想是，那些常见的词语对区分文档没有用，应该给那些仅出现在某些文档中的词更高的权值。N是所有可推荐的文档数量，ni是N中关键词i出现的数量。</p>
-<p>IDF的计算方式：log (N/ni)</p>
-<p>文档关键词的组合TF-IDF的权值可以计算为这两个子向量的乘积。</p>
-<p>在TF-IDF模型中，文档不是表示为每个关键词的布尔值向量，而是算出的TF-IDF值向量。（这部分没弄懂，TF-IDF向量不是计算某一个次嘛？怎么来计算整篇文档的？所有关键词的TF-IDF再次相乘？）</p>
-<p>其实，文档在处理之前，实际上还要去掉停用词，停用词的去除，对模型的效果可能更为明显。</p>
-<h3 id="TF-IDF的改进及局限"><a href="#TF-IDF的改进及局限" class="headerlink" title="TF-IDF的改进及局限"></a>TF-IDF的改进及局限</h3><p>TF-IDF向量一般很大并且很稀疏。可以使用其他技术来让它们更紧凑，并从向量中删除不相关的信息。</p>
-<p>1.停用词和词干还原。一种直接的方法是删除所谓的停用词。在英语中，这类词一般是介词和冠词，这类词在文档中几乎都会出现，可以将他们从文档向量中删除。此外，另一种技术是词干还原或合并，目的是将相同的词语的不同变形替换成他们共同的词干（词根）。</p>
-<p>这些技术进一步缩小了向量规模，与此同时，在用户记录中也用到词干来改进匹配过程。词干还原的实现方法包括：词形分析（后缀拆分法）和查字典法（wordnet）。尽管这些方法很强大，但是还是可能存在陷阱，如缩略语和双关语，会导致匹配不当的问题，词干还原法只用句法后缀拆分可能增加匹配不相关文档的风险。</p>
-<p>2.精简规模。仅用n个信息量最大的词语来减少文档描述的规模，期望删除数据中的“噪声”。实验结果表明，如果挑选的关键词太少，一些重要文档特征就可能无法覆盖到；如果挑选的关键词太多，文档模型中用到关键词的重要性就有限，而且这些噪声反而使得推荐效果变差。原则上，特征选择技术也可以用于觉得信息量的关键词，然而这种基于学习的方法，不仅会增加模型复杂度，也有可能会倾向于过拟合描述训练数据的样本。也有人提出用外部词典来删除该领域不相关的词语，实验表明，这种方法能持续提高精度，尤其是只能得到很少的训练样本时。</p>
-<p>3.短语。短语比单词更能描述文本，用它来替换词，可能进一步提高描述的准确性。<br>局限性：从文本中抽取个别关键词并赋权的方法有另外的局限，没有考虑到关键词的上下文，在某些情况下没有正确体现描述的“含义”。一般来说，我们假设出现在一篇文档中的词语通常是适合刻画文档，而不是在文档中出现“反语境”。</p>
-<h3 id="基于内容的相似度检索"><a href="#基于内容的相似度检索" class="headerlink" title="基于内容的相似度检索"></a>基于内容的相似度检索</h3><p>协同过滤可以被成为“推荐相似用户喜欢的物品”，基于内容的推荐是称为“推荐与用户过去喜欢的物品相似的物品”。从这里来看，推荐系统的任务还是（基于用户记录）来预测用户是否喜欢自己没有见过的物品。本节会介绍依赖向量——空间文档表示模型的最常见技术。</p>
-<h3 id="最近邻（还没写完）"><a href="#最近邻（还没写完）" class="headerlink" title="最近邻（还没写完）"></a>最近邻（还没写完）</h3><p>想要估计用户对某篇文档感兴趣的程度，最初的方法是查询用户过去是否喜欢相似的文档。这需要两类信息：1.用户对以前商品的“喜欢/不喜欢”的评价记录，其次，需要一个标准来衡量文档的相似度。一般地，使用余弦相似度方法来评价文档是否相似。</p>
-<h3 id="相关性反馈——R0cchio方法"><a href="#相关性反馈——R0cchio方法" class="headerlink" title="相关性反馈——R0cchio方法"></a>相关性反馈——R0cchio方法</h3><p>它也是一种基于向量模型的方法，曾用于信息检索系统SMART，它的特定是，用户不能只提交给系统基于关键词的查询词，还要反馈检索结果是否相关。</p>
-<h3 id="其他文本分类方法"><a href="#其他文本分类方法" class="headerlink" title="其他文本分类方法"></a>其他文本分类方法</h3><p>将这类问题看作是分类问题，应用机器学习中的有监督学习技术，就会自动决定用户是否对某篇文档感兴趣，有监督学习意味着算法依赖现成的训练数据。文中还介绍了基于概率模型的方法、其他线性分类器和机器学习、显示决策模型和特征选择。</p>
-<p>讨论<br>对比评估<br>局限性</p>
+            <p>聚类学习是一种无监督学习，是可以根据数据集中的自相似进行自动分类。</p>
+<p>聚类的结果希望达成类内大相似，类间不相似的分类效果。</p>
+<p>聚类分析的方法有很多，列举下：基于划分的聚类、基于层次的聚类、基于密度的聚类、基于网格的聚类和基于模型的聚类等几种。</p>
+<p>其中，基于层次聚类的聚类方法有：凝聚法和分裂法。</p>
+<p>凝聚法是自底向上，逐步聚类，一开始将每个样本作为一个单独的组，然后相继地合并相近的对象或组，直到所有的组合并成一个，或者达到一个终止条件。</p>
+<p>分裂法是自顶向下，逐步递归。一开始将所有样本置于一个簇中，在迭代的每一步中，一个簇被分裂为更小的簇，直到最终每个样本在单独的一个簇中。（这个不是分类算法）</p>
+<p>基于密度的方法，代表算法是DBSCAN和OPTICS算法。</p>
+<p>其中，DBSCAN是根据一个密度阈值来控制簇的增长。而 OPTICS算法是另一种基于密度的方法，它为自动的和交互的聚类分析计算一个聚类顺序。</p>
+<p>基于划分的方法有：K-均值、K-众数、CLARA、CLARANS、FCM等。</p>
+<p>基于网格的方法把样本空间量化为有限数目的单元，形成了一个网格结构，所有的聚类操作都在这个网格结构上进行。这种方法的主要优点是它的处理速度很快，其处理时间独立与数据样本的数目，只与量化空间中的每一位的单元数目有关。典型的方法有：STING和WaveCluster。</p>
+<p>基于模型的方法，为每一个簇假定了一个模型，寻找数据对给定模型的最佳组合。一个基于模型的算法可能通过构建反映数据点空间分布的密度函数来定位聚类。它也基于标准的统计数字自动决定聚类的数目，考虑“噪声”数据或孤立点，从而产生健壮的聚类方法，典型的方法有：COBWEB和CLASSIT。</p>
 
           
         
@@ -666,7 +446,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/decisiontree0/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/crawl1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jackence">
@@ -685,7 +465,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/12/decisiontree0/" itemprop="url">决策树算法——概述</a></h1>
+                <a class="post-title-link" href="/2018/01/12/crawl1/" itemprop="url">动手写爬虫总结1</a></h1>
         
 
         <div class="post-meta">
@@ -759,16 +539,22 @@
       
         
           
-            <p>决策树是一种基本的分类和回归方法。</p>
-<p>决策树模型呈树形结构，在分类问题中，表示基于特征对实例进行分类的过程，可以认为是if-then规则的集合，也可以认为是定义在特征空间与类空间上的条件概率分布。主要优点是模型具有可读性、分类速度快。</p>
-<p>学习时，利用训练数据，根据损失函数最小化的原则建立决策树模型。预测时，对新的数据，利用决策树模型进行分类。</p>
-<p>决策树学习通常包括3个步骤：特征选择、决策树的生成与决策树的剪枝。</p>
-<p>主要包括ID3算法，C4.5算法和CART算法。</p>
-<p>决策树模型</p>
-<p>分类决策树模型是一种描述对实力进行分类的树形结构。决策树由节点和有向边组成，节点有两种类型：内节点和叶节点，内节点表示一个特征或属性，叶节点表示一个类。</p>
-<p>用决策树分类，从根结点开始，对实例的某一特征进行测试，根据测试结果，将实例分配到其子节点；这时，mri一个子节点对应着该特征的一个取值。如此递归地对实例进行测试并分配，直至达到叶节点。最后将实力分到叶节点的类中。</p>
-<p>特征选择<br>特征选择在于选择对训练数据具有分类能力的特征，这样可以提高决策树学习的效率。如果利用一个特征进行分类的结果与随机分类的结果没有很大差别，则称这个特征是没有分类能力的，经验上扔掉这样的特征对决策树学习的精度影响不大，通常特征选择的准则是信息增益或信息增益比。</p>
-<p>——————————<br>还未涉及决策树的剪枝部分……</p>
+            <p>爬虫总结：</p>
+<p>自2016年十月中旬至此，前后花费了一个半月写爬虫，也是平时零零散散写的爬虫，从最简单的页面获取，到页面数据解析，再到后面的翻页，保存到Excel中，再到获取动态网页，加载JSON数据，到最后的将数据保存到数据库，中间踩的坑又不少，最近就开始简单的总结吧。</p>
+<p>自己当初使用的是Python 2.7的环境</p>
+<p>1.从最简单的页面获取而言，有几个库（模块）的使用，用到了urllib2,urllib,requests等。</p>
+<p>具体的使用，通过urllib2获取网页的HTML代码，使用的过程中，为了防止爬虫被ban，在获取某些页面的过程中，添加了浏览器的headers，将爬虫伪装成浏览器去访问页面，常见的伪装就是加上USER-AGENT（UA）,也有部分网页即使加上了headers也没用，这个时候，就要往爬虫的headers方面去下功夫，到底是什么限制了爬虫的访问。</p>
+<p>目前，在爬取个人的关注方面出现了问题。为了更像浏览器，在获取多个页面的时候，就要提前设置访问的间隔时间，使用time()这个系统库，再利用的是random()库，获取任意的（0.0-1）时间，用获取到的时间进行处理，最后，间隔时间在5s以上为佳。</p>
+<p>2.在页面获取之后，要对页面的数据（html代码）进行处理。</p>
+<p>主要的方式，就是通过BeautifulSoup这个库，来解析页面，解析的依赖库，主要就是html.parser和lxml这两个解析器，其中，html.parser和lxml这两个解析器各有优劣，但是对lxml而言，更好的处理方式，是通过DOM来解析，能获得更好的效果，在写爬虫程序前，要分析爬虫的获取的数据，分析网页的结构，获取正确的位置，可以借助F12这个浏览器的工具，来快速定位所需要的信息的位置。</p>
+<p>在页面解析的过程中，除开BS4这个库之外，还使用到了re（正则表达式）这个模块，许多要获取的信息，在通过BS4解析之后，还是要进一步的清洗，提取出关键的数据，此时需要学习正则表达式的基本知识。尽管在后面，有提到可以使用string这个库的使用，在一定程度上可以减缓正则表达式在解析页面过程中的使用。但是这都是后知后觉了。</p>
+<p>3.获取需要的数据后，要对数据进行存储。</p>
+<p>自己最开始学习使用的是用的文件存储，比如，使用python的文件读写，写入到txt格式，但是在此的过程中，发现任务量比较大，如果使用txt格式存储，就不太适合了，到后面所有的数据都是用的Excel格式存储的。主要使用的库是XLWT，在写入的过程中，发现某一列数据可能会写入多行，这个时候，定义下函数来存储就是比较好的了。</p>
+<p>4.获得JSON数据，刚开始接触到这个，其实是在文章页面，获得文章信息之后，需要再获取评论的信息，在评论区，是通过动态加载而来，第一页数据使用的Ajax将评论异步加载过来的，在网络上寻求帮助之后，提供了几个建议：</p>
+<p>a.通过浏览器加载渲染，就是实际上通过浏览器来访问，并且获得评论的信息，但是发现这种方式的效率太低，而且对电脑要求的比较高，需要下载Webdriver和PhantomJS 来解析JS</p>
+<p>b.到后面，自己在反复尝试之后，发现，可以直接访问JSON数据，就是从浏览器发送请求，然后服务器端发送相关的数据页面，这样的方式既达到了自己的效果，又使得电脑的负载更低，使用的方向有8K+的基本信息的页面，以及每个人文章的评论的内容，当然，获取的JSON数据并不是我们需要的，我们需要处理，处理成干净的JSON数据，然后利用JSON这个库，来处理，将其处理成字典数据，最后，在字典的里面，通过键-值来提取我们需要的数据。</p>
+<p>5.连接到数据库，这一部分，主要是同学完成的。其中的重难点，应该是数据库的设计，因为在爬取数据的过程中，发现了许多的问题，并不是像老师说的那么简单就行，表格之间有关系，而一张表又不可能写完所有的信息，在此，就想着使用数据库来存储数据。</p>
+<p>6.IP代理的问题，在实验室，实际上就只有一个IP，这样限制了爬虫的速度，不可能爬取太快，一旦稍微速度快了，就会错误，网站拒绝提供服务，会提醒DDOS攻击（10054）错误。因此，就想着在此基础上，想着爬取网络上的IP代理，使用代理访问（主要是高匿代理），但是目前，高匿代理，在许多代理网站上都是没用的。</p>
 
           
         
@@ -1002,6 +788,529 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/recommendsys2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jackence">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="坚守本心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/12/recommendsys2/" itemprop="url">《推荐系统》读书笔记——协同过滤推荐</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-12T16:35:02+08:00">
+                2018-01-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在应用协同过滤推荐技术时，除了用户评分数据，我们不需要额外的物品数据。</p>
+<p>这样的好处是避免了付出很大的代价向系统提供详细而且实时更新的物品描述信息，但是这种仅基于纯粹的协同过滤的算法却无法根据物品的特性和用户的特殊偏好来客观选择推荐物品的。</p>
+<p>本章中，将物品的特征描述为“内容”。因为后面章节部分介绍的大多技术的最初目的是推荐有意思的文本文档。此外，绝大多数的方法的假设是物品的特性能自动从文档内容本身或无结构的文本描述中提取。所以，基于内容的推荐系统的典型例子是比较候选文章的主要关键词和用户过去高度评价过的其他文章中出现的关键词来推荐新文章，而这些被推荐的物品，就常常指的是“文档”。</p>
+<p>本章讨论的基于内容的推荐，关注的算法侧重于推荐文本描述的物品，并能自动“学习”用户记录（基于知识的推荐系统通常是显式询问用户的偏好）。</p>
+<h3 id="内容的表示与相似度"><a href="#内容的表示与相似度" class="headerlink" title="内容的表示与相似度"></a>内容的表示与相似度</h3><p>描述物品目录最简单的方法就是维护每个物品的特征的详细列表（属性集、特征集或物品信息）。以推荐图书为例，可以把体裁、作者、出版社等信息保存在数据库中，根据不同的用户兴趣，</p>
+<p>用这些特征来描述他们的偏好，而要做的就是将物品特征同用户偏好匹配起来。推荐系统需要收集用户的记录，直接的方法是明确询问用户ta所接受的范围和内容，间接的方式是让用户给一组物品进行评分，可以是整体评分，也可以是对不同维度进行评分。</p>
+<p>基于内容的推荐系统的工作原理是，评估用户还没看到的物品与当前用户过去喜欢的物品的相似度。而衡量相似度的方法有两种：1.0/1衡量，就是将用户过去喜欢的物品，同其他ta没见过的物品n进行比较，如果n的类型在ta喜欢的类型中，则标为1，否则就为0；2.计算相关关键词的相似度或重叠度。典型的相似度系数会用到Dice系数，它比较适合多值特征组合。它是这样描述的：如果每本图书b由一组关键词k描述，那么Dice系数描述bi和bj为：<br>2*（kbi∩kbj）/(|kbj|+|kbi|)</p>
+<h3 id="向量空间模型和TF-IDF"><a href="#向量空间模型和TF-IDF" class="headerlink" title="向量空间模型和TF-IDF"></a>向量空间模型和TF-IDF</h3><p>严格来讲，图书的类别信息，并不算是图书的内容，而只能算是附加知识。基于内容的推荐方法不是去维护一组“元信息”特征，而是使用一列在文档中出现的相关关键词，它的主要思想是，能够从文档内容本身或没有限制的文字描述中自动生成列表。</p>
+<p>文档内容可以用不同方法转换到这样的关键词列表中。首先，一种单纯的方法是将现在所有文档的词语设为一个列表，然后用布尔型向量描述每一个文档，1表示文档出现在文档中，0表示没有出现。如果用户记录用一个相似的列表描述，那么计算兴趣文档和文档的重合程度就可以匹配文档。</p>
+<p>这个方法存在的问题很明显。首先是它假设每个词在文档中的重要性是相同的，此外，当文档比较长的时候，用户记录和文档的重叠几率自然就会大，所以，这样的推荐系统，往往更倾向于推荐长文档。</p>
+<p>另一种方法是TF-IDF。它代表的是TF(term-frequence)-IDF(inverse documents frequence)，这种技术在信息检索领域应用广泛。</p>
+<p>词频描述某个词在一篇文档中出现的频繁程度。为了阻止更长的文档得到更高的相关度的权值，必须对文档长度进行归一化处理，有几种方法是可行的。其中一种简单方法是将词出现的次数比上同文档中其他关键词出现的最多次数。假定：f是某词在文档中出现的频数，fj是其他关键词中最常出现的关键词的频数 TF=f/fj</p>
+<p>反文档频率是组合了词频后的第二个衡量值，旨在降低所有文档中几乎都会出现的关键词的权重。其思想是，那些常见的词语对区分文档没有用，应该给那些仅出现在某些文档中的词更高的权值。N是所有可推荐的文档数量，ni是N中关键词i出现的数量。</p>
+<p>IDF的计算方式：log (N/ni)</p>
+<p>文档关键词的组合TF-IDF的权值可以计算为这两个子向量的乘积。</p>
+<p>在TF-IDF模型中，文档不是表示为每个关键词的布尔值向量，而是算出的TF-IDF值向量。（这部分没弄懂，TF-IDF向量不是计算某一个次嘛？怎么来计算整篇文档的？所有关键词的TF-IDF再次相乘？）</p>
+<p>其实，文档在处理之前，实际上还要去掉停用词，停用词的去除，对模型的效果可能更为明显。</p>
+<h3 id="TF-IDF的改进及局限"><a href="#TF-IDF的改进及局限" class="headerlink" title="TF-IDF的改进及局限"></a>TF-IDF的改进及局限</h3><p>TF-IDF向量一般很大并且很稀疏。可以使用其他技术来让它们更紧凑，并从向量中删除不相关的信息。</p>
+<p>1.停用词和词干还原。一种直接的方法是删除所谓的停用词。在英语中，这类词一般是介词和冠词，这类词在文档中几乎都会出现，可以将他们从文档向量中删除。此外，另一种技术是词干还原或合并，目的是将相同的词语的不同变形替换成他们共同的词干（词根）。</p>
+<p>这些技术进一步缩小了向量规模，与此同时，在用户记录中也用到词干来改进匹配过程。词干还原的实现方法包括：词形分析（后缀拆分法）和查字典法（wordnet）。尽管这些方法很强大，但是还是可能存在陷阱，如缩略语和双关语，会导致匹配不当的问题，词干还原法只用句法后缀拆分可能增加匹配不相关文档的风险。</p>
+<p>2.精简规模。仅用n个信息量最大的词语来减少文档描述的规模，期望删除数据中的“噪声”。实验结果表明，如果挑选的关键词太少，一些重要文档特征就可能无法覆盖到；如果挑选的关键词太多，文档模型中用到关键词的重要性就有限，而且这些噪声反而使得推荐效果变差。原则上，特征选择技术也可以用于觉得信息量的关键词，然而这种基于学习的方法，不仅会增加模型复杂度，也有可能会倾向于过拟合描述训练数据的样本。也有人提出用外部词典来删除该领域不相关的词语，实验表明，这种方法能持续提高精度，尤其是只能得到很少的训练样本时。</p>
+<p>3.短语。短语比单词更能描述文本，用它来替换词，可能进一步提高描述的准确性。<br>局限性：从文本中抽取个别关键词并赋权的方法有另外的局限，没有考虑到关键词的上下文，在某些情况下没有正确体现描述的“含义”。一般来说，我们假设出现在一篇文档中的词语通常是适合刻画文档，而不是在文档中出现“反语境”。</p>
+<h3 id="基于内容的相似度检索"><a href="#基于内容的相似度检索" class="headerlink" title="基于内容的相似度检索"></a>基于内容的相似度检索</h3><p>协同过滤可以被成为“推荐相似用户喜欢的物品”，基于内容的推荐是称为“推荐与用户过去喜欢的物品相似的物品”。从这里来看，推荐系统的任务还是（基于用户记录）来预测用户是否喜欢自己没有见过的物品。本节会介绍依赖向量——空间文档表示模型的最常见技术。</p>
+<h3 id="最近邻（还没写完）"><a href="#最近邻（还没写完）" class="headerlink" title="最近邻（还没写完）"></a>最近邻（还没写完）</h3><p>想要估计用户对某篇文档感兴趣的程度，最初的方法是查询用户过去是否喜欢相似的文档。这需要两类信息：1.用户对以前商品的“喜欢/不喜欢”的评价记录，其次，需要一个标准来衡量文档的相似度。一般地，使用余弦相似度方法来评价文档是否相似。</p>
+<h3 id="相关性反馈——R0cchio方法"><a href="#相关性反馈——R0cchio方法" class="headerlink" title="相关性反馈——R0cchio方法"></a>相关性反馈——R0cchio方法</h3><p>它也是一种基于向量模型的方法，曾用于信息检索系统SMART，它的特定是，用户不能只提交给系统基于关键词的查询词，还要反馈检索结果是否相关。</p>
+<h3 id="其他文本分类方法"><a href="#其他文本分类方法" class="headerlink" title="其他文本分类方法"></a>其他文本分类方法</h3><p>将这类问题看作是分类问题，应用机器学习中的有监督学习技术，就会自动决定用户是否对某篇文档感兴趣，有监督学习意味着算法依赖现成的训练数据。文中还介绍了基于概率模型的方法、其他线性分类器和机器学习、显示决策模型和特征选择。</p>
+<p>讨论<br>对比评估<br>局限性</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/recommendsys0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jackence">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="坚守本心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/12/recommendsys0/" itemprop="url">《推荐系统》(蒋凡译)读书笔记——概览</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-12T16:35:02+08:00">
+                2018-01-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="第一章-引言"><a href="#第一章-引言" class="headerlink" title="第一章       引言"></a>第一章       引言</h3><p>书中首先以在线书店为例，讲述了书店向特定用户推荐相关书籍的推荐系统，引申出推荐系统的类别——个性化推荐与热门推荐。在线书店是个性化推荐系统。每一个人由于其兴趣爱好不同，在系统中会看到不同的列表。当然也会有畅销书的推荐，而畅销书的推荐，显示的是当前用户群体，大众的关注热点，表示的是一种群体性推荐。</p>
+<p>这本书重点讨论的是前面一种：也就是个性化的推荐系统。</p>
+<p>提供个性化的推荐系统需要了解到用户的信息。它必须开发并维护一个用户模型或者用户记录来保存用户的偏好。以在线书店为例子，系统需要记住访客的浏览或者买过的书，从而预测他可能感兴趣的书。</p>
+<p>尽管用户模型对推荐系统很重要，但是如何获取并利用这个信息，往往是取决于特定的推荐技术的。</p>
+<p>用户的偏好可以通过监测用户行为隐式地获取，也可以通过询问访问者，显式地获取。</p>
+<p>在获取用户的信息后，系统该如何利用，以及利用什么额外的信息。这些是推荐系统要解决的一部分问题。</p>
+<p>目前已经在许多在线书店应用的方法：基于群体或协同的方法。</p>
+<p>本书分为两部分：<br>第一部分总结了几年来被广泛接受的推荐系统方面的研究成果，介绍了协同过滤、基于内容的过滤、基于知识的推荐和混合推荐方法的基本理论框架。此外，还包含了解释推荐物品的原因和评估推荐结果质量。</p>
+<p>第二部分讨论了推荐系统的最近研究课题。如：如何因对外来攻击和操作推荐系统的做法、支持消费决策和可能的说服策略、社交和语义网背景下的推荐系统和所有领域应用推荐系统。第二部分可以看作是持续研究的参考。</p>
+<p>本书的第一部分简介：</p>
+<h5 id="协同过滤的推荐"><a href="#协同过滤的推荐" class="headerlink" title="协同过滤的推荐"></a>协同过滤的推荐</h5><p>这些推荐的思想是：如果用户在过去有相同的偏好，他们在未来也有相同的偏好。</p>
+<p>基于协同过滤推荐下，一般需要回答几个问题：</p>
+<pre><code>我们如何发现与我们要推荐的用户有着相似的偏好的用户？
+
+如何衡量相似度？
+
+如何处理还没有购买经历的用户？
+
+如果只有很少的评分怎么办？
+
+除了利用相似的用户之外，还有哪些技术可以预测某个用户是否喜欢其他物品？
+</code></pre><p>其实，纯粹的协同过滤方法不会用到和要求任何和物品有关本身的知识的。</p>
+<h5 id="基于内容的推荐"><a href="#基于内容的推荐" class="headerlink" title="基于内容的推荐"></a>基于内容的推荐</h5><p>它的核心是：能够得到物品的描述，和这些特征的重要记录。</p>
+<p>基于内容的推荐下，需要回答如下的问题：</p>
+<pre><code>系统如何获取并持续改进用户记录？
+
+如何决定哪个物品匹配或至少能接近、符合用户的兴趣？
+
+什么技术能自动抽取或学习物品的描述，减少人工标注？
+</code></pre><p>与不涉及内容的方法比较，基于内容的推荐有两大优点：<br>    1.不需要大规模用户就可以达到适度的推荐精准度    2.一旦得到物品的属性就能立即推荐新物品。</p>
+<h5 id="基于知识的推荐"><a href="#基于知识的推荐" class="headerlink" title="基于知识的推荐"></a>基于知识的推荐</h5><p>如果我们把注意力投向其他领域，比如消费电子产品，就会涉及大量单次购买者。这意味着我们可能无法依赖购买记录，而这却是基于内容过滤和协同过滤的前提条件。即使如此，我们还是能够获取到更为精细化和结构化的内容，包括专业化的优质特征。</p>
+<p>基于知识的推荐系统需要额外的因果关系知识生成推荐。在这种基于知识的方法中，推荐系统通常会用到有关当前用户和有效商品的额外信息。基于约束的推荐就是此类系统的例子（就类似与taobao，京东此类网站，需要用户设定条件，才能给你过滤，推荐产品）</p>
+<p>基于知识的推荐系统要解决的问题如下：</p>
+<pre><code>什么机制可根据用户的特点来选择和排名物品？（为什么把某一个放在前面，把某一个放在后面）
+
+哪种领域知识能表示成知识库？
+
+如何在没有购买记录的领域获取用户信息？
+
+如何处理用户直接给出的偏好信息？
+
+哪种交互方式能够用英语交互式推荐系统？
+
+设计对话时，要考虑哪些个性化因素才能保证获取用户的偏好信息？
+</code></pre><h5 id="混合推荐"><a href="#混合推荐" class="headerlink" title="混合推荐"></a>混合推荐</h5><p>由于问题的背景不同，每一种方法都有其优劣势。一种显而易见的方法就是组合不同技术产生更好或更精准的推荐。这种设计尤其适用于克服纯粹协同过滤方法的规模膨胀问题，并可以以来内容分析处理新物品或新用户。</p>
+<p>在推荐系统中混合使用不同的方法时必须回答一下几个问题：</p>
+<pre><code>哪些方法能被组合，特定组合的前提是什么？
+
+两个或多个推荐算法是应该顺序计算，还是按照其他方法计算？
+
+不同的方法如何赋予权重，可以动态赋权吗？
+</code></pre><p>一般来说，推荐系统的目的有两个：一方面，推荐系统被用于激发用户去做某件事；另一方面，也可以看作是解决信息过载的工具。</p>
+<p>因此，推荐系统也深深根植于信息检索和信息过滤的领域。</p>
+<h5 id="推荐系统的解释"><a href="#推荐系统的解释" class="headerlink" title="推荐系统的解释"></a>推荐系统的解释</h5><p>解释是未来让用户更容易理解推荐系统的推理脉络。</p>
+<p>如何评估推荐系统？评估的方法有哪些？</p>
+<p>评估方法有：实验、半实验和非实验三种设计方法。需要回答的问题有：</p>
+<pre><code>哪些研究适用于评估推荐系统？
+
+如何利用历史数据实验评估推荐系统？
+
+用什么衡量来适应不同的评估目标？
+
+现有的评估技术的局限是什么？尤其是推荐系统的会话性或商业价值方面。
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/decisiontree0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jackence">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="坚守本心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/12/decisiontree0/" itemprop="url">决策树算法——概述</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-12T16:35:02+08:00">
+                2018-01-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>决策树是一种基本的分类和回归方法。</p>
+<p>决策树模型呈树形结构，在分类问题中，表示基于特征对实例进行分类的过程，可以认为是if-then规则的集合，也可以认为是定义在特征空间与类空间上的条件概率分布。主要优点是模型具有可读性、分类速度快。</p>
+<p>学习时，利用训练数据，根据损失函数最小化的原则建立决策树模型。预测时，对新的数据，利用决策树模型进行分类。</p>
+<p>决策树学习通常包括3个步骤：特征选择、决策树的生成与决策树的剪枝。</p>
+<p>主要包括ID3算法，C4.5算法和CART算法。</p>
+<p>决策树模型</p>
+<p>分类决策树模型是一种描述对实力进行分类的树形结构。决策树由节点和有向边组成，节点有两种类型：内节点和叶节点，内节点表示一个特征或属性，叶节点表示一个类。</p>
+<p>用决策树分类，从根结点开始，对实例的某一特征进行测试，根据测试结果，将实例分配到其子节点；这时，mri一个子节点对应着该特征的一个取值。如此递归地对实例进行测试并分配，直至达到叶节点。最后将实力分到叶节点的类中。</p>
+<p>特征选择<br>特征选择在于选择对训练数据具有分类能力的特征，这样可以提高决策树学习的效率。如果利用一个特征进行分类的结果与随机分类的结果没有很大差别，则称这个特征是没有分类能力的，经验上扔掉这样的特征对决策树学习的精度影响不大，通常特征选择的准则是信息增益或信息增益比。</p>
+<p>——————————<br>还未涉及决策树的剪枝部分……</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/recommendsys3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1110,6 +1419,198 @@
 <p>默认设置<br>    处理不满意地需求和空结果集<br>    提出为满足需求地修改建议<br>    对基于物品/效用推荐的结果地排序</p>
 <h4 id="基于实例的推荐系统的交互"><a href="#基于实例的推荐系统的交互" class="headerlink" title="基于实例的推荐系统的交互"></a>基于实例的推荐系统的交互</h4><p>早期的基于实例的推荐系统也是纯粹基于查询的方法。用户需要反复指定自己的需求，直至发现目标。这种反复修改十分乏味，而且需要专业的领域知识才能弄懂物品之间的关系属性。这种缺陷让人们提出了基于浏览的方法来检索物品，评价是一种有效的方法。</p>
 <p>评价的基本思想是：用户以当前待审核物品未满足的目标来指明他们的修改要求。如：用户觉得价格太高，就会评价期望价格更低廉，如果需要质量更好，可能就要评价质量不够等。基于实例的最新进展是有效整合了基于查询和基于浏览的物品检索。一方面，评价有助于在物品集合内有效地引导用户；另一方面，基于相似度的实例检索有助于识别最相似的物品。基于评价的推荐系统允许用户很方便地表达自己的偏好，而不用强制地指明物品属性的具体值。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/algofbase/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jackence">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="坚守本心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/12/algofbase/" itemprop="url">基础算法--小白专场的时间复杂度与性能比较</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-12T16:35:02+08:00">
+                2018-01-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="快速排序（quick-sort）"><a href="#快速排序（quick-sort）" class="headerlink" title="快速排序（quick sort）"></a>快速排序（quick sort）</h3><pre><code>稳定：否
+时间复杂度
+最优：O(nlog(n))
+最差：O(n^2)
+平均：O(nlog(n))
+</code></pre><h3 id="合并排序（merge-sort-）"><a href="#合并排序（merge-sort-）" class="headerlink" title="合并排序（merge sort ）"></a>合并排序（merge sort ）</h3><p>合并排序是一种分治算法。这个算法不断地将一个数组分为两部分，分别对左子数组和右子数组排序，然后将两个数组合并为新的有序数组。</p>
+<pre><code>稳定：是
+时间复杂度：
+最优：O(nlog(n))
+最差：O(nlog(n))
+平均：O(nlog(n))
+</code></pre><h3 id="桶排序（bucket-sort-）"><a href="#桶排序（bucket-sort-）" class="headerlink" title="桶排序（bucket sort ）"></a>桶排序（bucket sort ）</h3><p>桶排序是一种将元素分到一定数量的桶中的排序算法。每个桶内部采用其他算法排序，或递归调用桶排序。</p>
+<pre><code>时间复杂度
+最优：Ω(n + k)
+最差: O(n^2)
+平均：Θ(n + k)
+</code></pre><h3 id="基数排序（base-sort-）"><a href="#基数排序（base-sort-）" class="headerlink" title="基数排序（base sort ）"></a>基数排序（base sort ）</h3><p>基数排序类似于桶排序，将元素分发到一定数目的桶中。不同的是，基数排序在分割元素之后没有让每个桶单独进行排序，而是直接做了合并操作。</p>
+<pre><code>时间复杂度
+最优：Ω(nk)
+最差: O(nk)
+平均：Θ(nk)
+</code></pre><h3 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h3><p>拓扑排序是有向图节点的线性排序。对于任何一条节点 u 到节点 v 的边，u 的下标先于 v。</p>
+<pre><code>时间复杂度：O(|V| + |E|)
+</code></pre><h2 id="图算法"><a href="#图算法" class="headerlink" title="图算法"></a>图算法</h2><h3 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h3><p>深度优先搜索是一种先遍历子节点而不回溯的图遍历算法。</p>
+<pre><code>时间复杂度：O(|V| + |E|)
+</code></pre><h3 id="广度优先搜索"><a href="#广度优先搜索" class="headerlink" title="广度优先搜索"></a>广度优先搜索</h3><p>广度优先搜索是一种先遍历邻居节点而不是子节点的图遍历算法。</p>
+<pre><code>时间复杂度：O(|V| + |E|)
+</code></pre><h3 id="Dijkstra算法"><a href="#Dijkstra算法" class="headerlink" title="Dijkstra算法"></a>Dijkstra算法</h3><p>Dijkstra 算法是一种在有向图中查找单源最短路径的算法。<br>    时间复杂度：O(|V|^2)</p>
+<h3 id="Bellman-Ford算法"><a href="#Bellman-Ford算法" class="headerlink" title="Bellman-Ford算法"></a>Bellman-Ford算法</h3><p>Bellman-Ford 是一种在带权图中查找单一源点到其他节点最短路径的算法。<br>虽然时间复杂度大于 Dijkstra 算法，但它可以处理包含了负值边的图。</p>
+<pre><code>时间复杂度：
+最优：O(|E|)
+最差：O(|V||E|)
+</code></pre><h3 id="Floyd-Warshall-算法"><a href="#Floyd-Warshall-算法" class="headerlink" title="Floyd-Warshall 算法"></a>Floyd-Warshall 算法</h3><p>Floyd-Warshall 算法是一种在无环带权图中寻找任意节点间最短路径的算法。<br>该算法执行一次即可找到所有节点间的最短路径（路径权重和）。</p>
+<pre><code>时间复杂度：
+最优：O(|V|^3)
+最差：O(|V|^3)
+平均：O(|V|^3)
+</code></pre><h3 id="最小生成树算法"><a href="#最小生成树算法" class="headerlink" title="最小生成树算法"></a>最小生成树算法</h3><p>最小生成树算法是一种在无向带权图中查找最小生成树的贪心算法。换言之，最小生成树算法能在一个图中找到连接所有节点的边的最小子集。</p>
+<pre><code>时间复杂度：O(|V|^2)
+</code></pre><h3 id="Kruskal-算法"><a href="#Kruskal-算法" class="headerlink" title="Kruskal 算法"></a>Kruskal 算法</h3><p>Kruskal 算法也是一个计算最小生成树的贪心算法，但在 Kruskal 算法中，图不一定是连通的。</p>
+<pre><code>时间复杂度：O(|E|log|V|)
+</code></pre><h3 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h3><p>贪心算法总是做出在当前看来最优的选择，并希望最后整体也是最优的。<br>使用贪心算法可以解决的问题必须具有如下两种特性：<br>    最优子结构<br>    问题的最优解包含其子问题的最优解。<br>    贪心选择<br>    每一步的贪心选择可以得到问题的整体最优解。</p>
+<p>实例-硬币选择问题<br>给定期望的硬币总和为 V 分，以及 n 种硬币，即类型是 i 的硬币共有 coinValue[i] 分，i的范围是 [0…n – 1]。假设每种类型的硬币都有无限个，求解为使和为 V 分最少需要多少硬币？<br>硬币：便士（1美分），镍（5美分），一角（10美分），四分之一（25美分）。<br>假设总和 V 为41,。我们可以使用贪心算法查找小于或者等于 V 的面值最大的硬币，然后从 V 中减掉该硬币的值，如此重复进行。<br>V = 41 | 使用了0个硬币<br>V = 16 | 使用了1个硬币(41 – 25 = 16)<br>V = 6 | 使用了2个硬币(16 – 10 = 6)<br>V = 1 | 使用了3个硬币(6 – 5 = 1)<br>V = 0 | 使用了4个硬币(1 – 1 = 0)</p>
+<p>位运算</p>
+<p>位运算即在比特级别进行操作的技术。使用位运算技术可以带来更快的运行速度与更小的内存使用。<br>测试第 k 位：s &amp; (1 &lt;&lt; k);<br>设置第k位：s |= (1 &lt;&lt; k);<br>关闭第k位：s &amp;= ~(1 &lt;&lt; k);<br>切换第k位：s ^= (1 &lt;&lt; k);<br>乘以2n：s &lt;&lt; n;<br>除以2n：s &gt;&gt; n;<br>交集：s &amp; t;<br>并集：s | t;<br>减法：s &amp; ~t;<br>提取最小非0位：s &amp; (-s);<br>提取最小0位：~s &amp; (s + 1);<br>交换值：x ^= y; y ^= x; x ^= y;</p>
+<p>运行时分析</p>
+<h4 id="大-O-表示"><a href="#大-O-表示" class="headerlink" title="大 O 表示"></a>大 O 表示</h4><p>大 O 表示用于表示某个算法的上界，用于描述最坏的情况。</p>
+<h4 id="小-O-表示"><a href="#小-O-表示" class="headerlink" title="小 O 表示"></a>小 O 表示</h4><p>小 O 表示用于描述某个算法的渐进上界，二者逐渐趋近。</p>
+<h4 id="大-Ω-表示"><a href="#大-Ω-表示" class="headerlink" title="大 Ω 表示"></a>大 Ω 表示</h4><p>大 Ω 表示用于描述某个算法的渐进下界。</p>
+<h4 id="小-ω-表示"><a href="#小-ω-表示" class="headerlink" title="小 ω 表示"></a>小 ω 表示</h4><p>小 ω 表示用于描述某个算法的渐进下界，二者逐渐趋近。</p>
+<h4 id="Theta-Θ-表示"><a href="#Theta-Θ-表示" class="headerlink" title="Theta Θ 表示"></a>Theta Θ 表示</h4><p>Theta Θ 表示用于描述某个算法的确界，包括最小上界和最大下界。</p>
 
           
         
@@ -1356,198 +1857,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/algofbase/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jackence">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="坚守本心">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/12/algofbase/" itemprop="url">基础算法--小白专场的时间复杂度与性能比较</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-12T16:35:02+08:00">
-                2018-01-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="快速排序（quick-sort）"><a href="#快速排序（quick-sort）" class="headerlink" title="快速排序（quick sort）"></a>快速排序（quick sort）</h3><pre><code>稳定：否
-时间复杂度
-最优：O(nlog(n))
-最差：O(n^2)
-平均：O(nlog(n))
-</code></pre><h3 id="合并排序（merge-sort-）"><a href="#合并排序（merge-sort-）" class="headerlink" title="合并排序（merge sort ）"></a>合并排序（merge sort ）</h3><p>合并排序是一种分治算法。这个算法不断地将一个数组分为两部分，分别对左子数组和右子数组排序，然后将两个数组合并为新的有序数组。</p>
-<pre><code>稳定：是
-时间复杂度：
-最优：O(nlog(n))
-最差：O(nlog(n))
-平均：O(nlog(n))
-</code></pre><h3 id="桶排序（bucket-sort-）"><a href="#桶排序（bucket-sort-）" class="headerlink" title="桶排序（bucket sort ）"></a>桶排序（bucket sort ）</h3><p>桶排序是一种将元素分到一定数量的桶中的排序算法。每个桶内部采用其他算法排序，或递归调用桶排序。</p>
-<pre><code>时间复杂度
-最优：Ω(n + k)
-最差: O(n^2)
-平均：Θ(n + k)
-</code></pre><h3 id="基数排序（base-sort-）"><a href="#基数排序（base-sort-）" class="headerlink" title="基数排序（base sort ）"></a>基数排序（base sort ）</h3><p>基数排序类似于桶排序，将元素分发到一定数目的桶中。不同的是，基数排序在分割元素之后没有让每个桶单独进行排序，而是直接做了合并操作。</p>
-<pre><code>时间复杂度
-最优：Ω(nk)
-最差: O(nk)
-平均：Θ(nk)
-</code></pre><h3 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h3><p>拓扑排序是有向图节点的线性排序。对于任何一条节点 u 到节点 v 的边，u 的下标先于 v。</p>
-<pre><code>时间复杂度：O(|V| + |E|)
-</code></pre><h2 id="图算法"><a href="#图算法" class="headerlink" title="图算法"></a>图算法</h2><h3 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h3><p>深度优先搜索是一种先遍历子节点而不回溯的图遍历算法。</p>
-<pre><code>时间复杂度：O(|V| + |E|)
-</code></pre><h3 id="广度优先搜索"><a href="#广度优先搜索" class="headerlink" title="广度优先搜索"></a>广度优先搜索</h3><p>广度优先搜索是一种先遍历邻居节点而不是子节点的图遍历算法。</p>
-<pre><code>时间复杂度：O(|V| + |E|)
-</code></pre><h3 id="Dijkstra算法"><a href="#Dijkstra算法" class="headerlink" title="Dijkstra算法"></a>Dijkstra算法</h3><p>Dijkstra 算法是一种在有向图中查找单源最短路径的算法。<br>    时间复杂度：O(|V|^2)</p>
-<h3 id="Bellman-Ford算法"><a href="#Bellman-Ford算法" class="headerlink" title="Bellman-Ford算法"></a>Bellman-Ford算法</h3><p>Bellman-Ford 是一种在带权图中查找单一源点到其他节点最短路径的算法。<br>虽然时间复杂度大于 Dijkstra 算法，但它可以处理包含了负值边的图。</p>
-<pre><code>时间复杂度：
-最优：O(|E|)
-最差：O(|V||E|)
-</code></pre><h3 id="Floyd-Warshall-算法"><a href="#Floyd-Warshall-算法" class="headerlink" title="Floyd-Warshall 算法"></a>Floyd-Warshall 算法</h3><p>Floyd-Warshall 算法是一种在无环带权图中寻找任意节点间最短路径的算法。<br>该算法执行一次即可找到所有节点间的最短路径（路径权重和）。</p>
-<pre><code>时间复杂度：
-最优：O(|V|^3)
-最差：O(|V|^3)
-平均：O(|V|^3)
-</code></pre><h3 id="最小生成树算法"><a href="#最小生成树算法" class="headerlink" title="最小生成树算法"></a>最小生成树算法</h3><p>最小生成树算法是一种在无向带权图中查找最小生成树的贪心算法。换言之，最小生成树算法能在一个图中找到连接所有节点的边的最小子集。</p>
-<pre><code>时间复杂度：O(|V|^2)
-</code></pre><h3 id="Kruskal-算法"><a href="#Kruskal-算法" class="headerlink" title="Kruskal 算法"></a>Kruskal 算法</h3><p>Kruskal 算法也是一个计算最小生成树的贪心算法，但在 Kruskal 算法中，图不一定是连通的。</p>
-<pre><code>时间复杂度：O(|E|log|V|)
-</code></pre><h3 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h3><p>贪心算法总是做出在当前看来最优的选择，并希望最后整体也是最优的。<br>使用贪心算法可以解决的问题必须具有如下两种特性：<br>    最优子结构<br>    问题的最优解包含其子问题的最优解。<br>    贪心选择<br>    每一步的贪心选择可以得到问题的整体最优解。</p>
-<p>实例-硬币选择问题<br>给定期望的硬币总和为 V 分，以及 n 种硬币，即类型是 i 的硬币共有 coinValue[i] 分，i的范围是 [0…n – 1]。假设每种类型的硬币都有无限个，求解为使和为 V 分最少需要多少硬币？<br>硬币：便士（1美分），镍（5美分），一角（10美分），四分之一（25美分）。<br>假设总和 V 为41,。我们可以使用贪心算法查找小于或者等于 V 的面值最大的硬币，然后从 V 中减掉该硬币的值，如此重复进行。<br>V = 41 | 使用了0个硬币<br>V = 16 | 使用了1个硬币(41 – 25 = 16)<br>V = 6 | 使用了2个硬币(16 – 10 = 6)<br>V = 1 | 使用了3个硬币(6 – 5 = 1)<br>V = 0 | 使用了4个硬币(1 – 1 = 0)</p>
-<p>位运算</p>
-<p>位运算即在比特级别进行操作的技术。使用位运算技术可以带来更快的运行速度与更小的内存使用。<br>测试第 k 位：s &amp; (1 &lt;&lt; k);<br>设置第k位：s |= (1 &lt;&lt; k);<br>关闭第k位：s &amp;= ~(1 &lt;&lt; k);<br>切换第k位：s ^= (1 &lt;&lt; k);<br>乘以2n：s &lt;&lt; n;<br>除以2n：s &gt;&gt; n;<br>交集：s &amp; t;<br>并集：s | t;<br>减法：s &amp; ~t;<br>提取最小非0位：s &amp; (-s);<br>提取最小0位：~s &amp; (s + 1);<br>交换值：x ^= y; y ^= x; x ^= y;</p>
-<p>运行时分析</p>
-<h4 id="大-O-表示"><a href="#大-O-表示" class="headerlink" title="大 O 表示"></a>大 O 表示</h4><p>大 O 表示用于表示某个算法的上界，用于描述最坏的情况。</p>
-<h4 id="小-O-表示"><a href="#小-O-表示" class="headerlink" title="小 O 表示"></a>小 O 表示</h4><p>小 O 表示用于描述某个算法的渐进上界，二者逐渐趋近。</p>
-<h4 id="大-Ω-表示"><a href="#大-Ω-表示" class="headerlink" title="大 Ω 表示"></a>大 Ω 表示</h4><p>大 Ω 表示用于描述某个算法的渐进下界。</p>
-<h4 id="小-ω-表示"><a href="#小-ω-表示" class="headerlink" title="小 ω 表示"></a>小 ω 表示</h4><p>小 ω 表示用于描述某个算法的渐进下界，二者逐渐趋近。</p>
-<h4 id="Theta-Θ-表示"><a href="#Theta-Θ-表示" class="headerlink" title="Theta Θ 表示"></a>Theta Θ 表示</h4><p>Theta Θ 表示用于描述某个算法的确界，包括最小上界和最大下界。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/11/webmining/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1699,297 +2008,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/11/top10datamining/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jackence">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="坚守本心">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/11/top10datamining/" itemprop="url">数据挖掘十大算法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-11T20:21:30+08:00">
-                2018-01-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>2006年，在香港举办的IEEE数据挖掘国际会议上，与会专家遴选出十个最具影响力的数据挖掘算法。包括C4.5，K-means，SVM，Apriori，EM，PageRank，AdaBoost，KNN，Navie Bayes和CART算法。</p>
-<p>其中，<br>C4.5，SVM， KNN， Navie Bayes，CART 算法是分类算法<br>K-means是聚类分析算法<br>Apriori 是关联分析算法<br>EM 极大似然算法<br>Pagerank Web链接分析法<br>AdaBoost  泛化</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/11/searchonscience/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jackence">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="坚守本心">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/11/searchonscience/" itemprop="url">科学上网</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-11T20:21:30+08:00">
-                2018-01-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生活/" itemprop="url" rel="index">
-                    <span itemprop="name">生活</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>经过实际使用的体验，国内的搜索引擎–百度和搜狗的搜索体验不佳。因此，尝试使用国外的google搜索，经过试用，体验效果比较良好。</p>
-<p>以下内容参考自：<a href="http://coderschool.cn/1853.html" target="_blank" rel="noopener">http://coderschool.cn/1853.html</a><br>科学上网-轻松访问Google(持续更新-解决Google打不开)<br>——————————————————————————————————————————————————</p>
-<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><p><a href="https://gufen.ga/" target="_blank" rel="noopener">https://gufen.ga/</a> （无广告，原guso.ml,ggso.ga,guge.ga）<br><a href="https://www.aiguso.ga/" target="_blank" rel="noopener">https://www.aiguso.ga/</a> （无广告，体验良好）<br><a href="https://gg.cellmean.com" target="_blank" rel="noopener">https://gg.cellmean.com</a> （无广告，体验良好）<br><a href="https://google.gg-g.org/" target="_blank" rel="noopener">https://google.gg-g.org/</a> （无广告，体验良好）<br><a href="https://cc.qqmmgj.com" target="_blank" rel="noopener">https://cc.qqmmgj.com</a>  （无广告，体验良好）<br><a href="https://www.xichuan.pub/" target="_blank" rel="noopener">https://www.xichuan.pub/</a> （无广告，体验良好）<br><a href="https://freedo.ga/" target="_blank" rel="noopener">https://freedo.ga/</a> （流量快耗尽，随时可能关掉）<br><a href="https://b.ggkai.men/" target="_blank" rel="noopener">https://b.ggkai.men/</a>  （有广告，体验一般）<br><a href="http://g.suconghou.cn" target="_blank" rel="noopener">http://g.suconghou.cn</a> （无广告，体验良好）<br><a href="http://google.suanfazu.com/" target="_blank" rel="noopener">http://google.suanfazu.com/</a> （整合搜索，非原版）<br><a href="https://kuaiguge.info" target="_blank" rel="noopener">https://kuaiguge.info</a> （无广告，体验良好）<br><a href="https://g.zmirrordemo.com/" target="_blank" rel="noopener">https://g.zmirrordemo.com/</a> （第一次访问需验证,部分地区被qiang）<br><a href="https://google.speeder.cf/" target="_blank" rel="noopener">https://google.speeder.cf/</a>  （第一次访问需验证）<br><a href="https://www.inrealm.xyz" target="_blank" rel="noopener">https://www.inrealm.xyz</a> （无广告，体验良好）</p>
-<h2 id="谷歌学术"><a href="#谷歌学术" class="headerlink" title="谷歌学术"></a>谷歌学术</h2><p><a href="https://xues.glgoo.com/" target="_blank" rel="noopener">https://xues.glgoo.com/</a><br><a href="https://b.ggkai.men/scholar" target="_blank" rel="noopener">https://b.ggkai.men/scholar</a><br><a href="http://g.suconghou.cn/scholar" target="_blank" rel="noopener">http://g.suconghou.cn/scholar</a><br><a href="http://a.a.88dr.com/" target="_blank" rel="noopener">http://a.a.88dr.com/</a><br><a href="http://www.tmeishi.com/xs/" target="_blank" rel="noopener">http://www.tmeishi.com/xs/</a><br><a href="https://www.scholar.live/" target="_blank" rel="noopener">https://www.scholar.live/</a><br><a href="https://www.xichuan.pub/scholar" target="_blank" rel="noopener">https://www.xichuan.pub/scholar</a><br><a href="https://a.ggkai.men/…/scholar.google.com/" target="_blank" rel="noopener">https://a.ggkai.men/…/scholar.google.com/</a><br><a href="https://google.speeder.cf/…scholar.google.com/" target="_blank" rel="noopener">https://google.speeder.cf/…scholar.google.com/</a><br><a href="https://xue.glgoo.com" target="_blank" rel="noopener">https://xue.glgoo.com</a></p>
-<h2 id="变种网页："><a href="#变种网页：" class="headerlink" title="变种网页："></a>变种网页：</h2><p><a href="http://www.tmeishi.com/" target="_blank" rel="noopener">http://www.tmeishi.com/</a> （无广告，搜索体验良好）<br><a href="http://www.ibying.com/" target="_blank" rel="noopener">http://www.ibying.com/</a> （无广告，搜索体验良好）<br><a href="http://search.twcc.com/" target="_blank" rel="noopener">http://search.twcc.com/</a>  （无广告，体验良好）<br><a href="https://www.tlss.space/" target="_blank" rel="noopener">https://www.tlss.space/</a> （无广告，体验良好）<br><a href="http://googlebridge.com/" target="_blank" rel="noopener">http://googlebridge.com/</a> （无广告，体验良好）<br><a href="http://www.yegoogle.com/" target="_blank" rel="noopener">http://www.yegoogle.com/</a> （无广告，体验良好）<br><a href="https://www.sov5.com/" target="_blank" rel="noopener">https://www.sov5.com/</a> （无广告，体验良好）<br><a href="http://www.gycc.com/" target="_blank" rel="noopener">http://www.gycc.com/</a> （无广告，体验良好）<br><a href="http://www.gfsoso.me/" target="_blank" rel="noopener">http://www.gfsoso.me/</a> （有广告，体验一般）<br><a href="http://www.17soso.cn/" target="_blank" rel="noopener">http://www.17soso.cn/</a> （无广告，搜索体验良好）<br><a href="http://www.aifago.com/" target="_blank" rel="noopener">http://www.aifago.com/</a> （无广告，搜索体验良好）<br><a href="https://www.dcrss.net" target="_blank" rel="noopener">https://www.dcrss.net</a> （无广告，搜索体验良好）<br><a href="https://www.dcrss.com/" target="_blank" rel="noopener">https://www.dcrss.com/</a> （google学术和网页）<br><a href="http://www.daysou.com/" target="_blank" rel="noopener">http://www.daysou.com/</a> （有广告，体验一般）<br><a href="http://www.lstsrw.org/" target="_blank" rel="noopener">http://www.lstsrw.org/</a> （有广告，体验一般）</p>
-<p>该网站也有大神总结的优秀资源汇总：<br><a href="http://gufenso.coderschool.cn/" target="_blank" rel="noopener">http://gufenso.coderschool.cn/</a></p>
-<p>以下的搜索引擎也可以使用：<br><a href="https://www.googto.org" target="_blank" rel="noopener">https://www.googto.org</a>  构图搜索<br><a href="https://www.googto.info" target="_blank" rel="noopener">https://www.googto.info</a> 构图搜索</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2040,7 +2058,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2062,7 +2080,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

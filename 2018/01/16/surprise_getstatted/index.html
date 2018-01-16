@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="翻译,推荐系统,surprise框架," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="基本使用自动进行交叉验证surprise 有一系列的内建的算法和数据集供用户来进行尝试。在最简单的形式中，它的模型仅需几行代码就可以运行一次交叉验证的流程：代码如下： 12345678910111213from surprise import SVDfrom surprise import Datasetfrom surprise.model_selection import cross_vali">
+<meta name="keywords" content="翻译,推荐系统,surprise框架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="surprise框架之起步">
+<meta property="og:url" content="http://yoursite.com/2018/01/16/surprise_getstatted/index.html">
+<meta property="og:site_name" content="坚守本心">
+<meta property="og:description" content="基本使用自动进行交叉验证surprise 有一系列的内建的算法和数据集供用户来进行尝试。在最简单的形式中，它的模型仅需几行代码就可以运行一次交叉验证的流程：代码如下： 12345678910111213from surprise import SVDfrom surprise import Datasetfrom surprise.model_selection import cross_vali">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-16T08:22:38.718Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="surprise框架之起步">
+<meta name="twitter:description" content="基本使用自动进行交叉验证surprise 有一系列的内建的算法和数据集供用户来进行尝试。在最简单的形式中，它的模型仅需几行代码就可以运行一次交叉验证的流程：代码如下： 12345678910111213from surprise import SVDfrom surprise import Datasetfrom surprise.model_selection import cross_vali">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/16/surprise_getstatted/"/>
+
+
+
+
+
+  <title>surprise框架之起步 | 坚守本心</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">坚守本心</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">坚守本心，方为长久</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/16/surprise_getstatted/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jackence">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="坚守本心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">surprise框架之起步</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-16T15:58:39+08:00">
+                2018-01-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h4><h5 id="自动进行交叉验证"><a href="#自动进行交叉验证" class="headerlink" title="自动进行交叉验证"></a>自动进行交叉验证</h5><p>surprise 有一系列的内建的算法和数据集供用户来进行尝试。在最简单的形式中，它的模型仅需几行代码就可以运行一次交叉验证的流程：<br>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">from surprise import SVD</span><br><span class="line">from surprise import Dataset</span><br><span class="line">from surprise.model_selection import cross_validate</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Load the movielens-100k dataset (download it if needed),</span><br><span class="line">data = Dataset.load_builtin(&apos;ml-100k&apos;)</span><br><span class="line"></span><br><span class="line"># We&apos;ll use the famous SVD algorithm.</span><br><span class="line">algo = SVD()</span><br><span class="line"></span><br><span class="line"># Run 5-fold cross-validation and print results</span><br><span class="line">cross_validate(algo, data, measures=[&apos;RMSE&apos;, &apos;MAE&apos;], cv=5, verbose=True)</span><br></pre></td></tr></table></figure>
+<p>运行之后的结果应该是如下所示(实际结果可能会因随机性而异)：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Evaluating RMSE, MAE of algorithm SVD on 5 split(s).</span><br><span class="line"></span><br><span class="line">            Fold 1  Fold 2  Fold 3  Fold 4  Fold 5   Mean    Std</span><br><span class="line">RMSE        0.9311  0.9370  0.9320  0.9317  0.9391  0.9342  0.0032</span><br><span class="line">MAE         0.7350  0.7375  0.7341  0.7342  0.7375  0.7357  0.0015</span><br><span class="line">Fit time    6.53    7.11    7.23    7.15    3.99    6.40    1.23</span><br><span class="line">Test time   0.26    0.26    0.25    0.15    0.13    0.21    0.06</span><br></pre></td></tr></table></figure></p>
+<p>如果数据集（movielens_100k dataset）还没有下载，load_builtin()方法会提供下载，并将数据集保存在用户目录下的.surprise_data文件夹下，当然，你也可以选择其他地方进行保存。</p>
+<p>我们将使用著名的SVD模型，当然其他算法模型亦可以，可以通过查看<a href="http://surprise.readthedocs.io/en/stable/prediction_algorithms.html#prediction-algorithms" target="_blank" rel="noopener">链接</a>获取更多细节。</p>
+<p>cross-validation()方法通过使用cv参数来进行交叉验证的过程。通过计算准确率来衡量效果。我们这里使用了经典的五次交叉验证，但是也可以使用更精彩的交叉验证（<a href="http://surprise.readthedocs.io/en/stable/model_selection.html#cross-validation-iterators-api" target="_blank" rel="noopener">查看资料</a>）。</p>
+<h5 id="Train-test划分和fit-方法"><a href="#Train-test划分和fit-方法" class="headerlink" title="Train-test划分和fit()方法"></a>Train-test划分和fit()方法</h5><p>如果您不想运行完整的交叉验证程序，则可以使用train_test_split（）对给定尺寸的trainset和testset进行采样，并使用您选择的精度度量。</p>
+<p>你需要选择fit()方法，fit()方法可以在训练集上来训练算法，test()方法将会返回从测试集上生成的预测值。</p>
+<p>实例代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">from surprise import SVD</span><br><span class="line">from surprise import Dataset</span><br><span class="line">from surprise import accuracy</span><br><span class="line">from surprise.model_selection import train_test_split</span><br><span class="line"></span><br><span class="line"># Load the movielens-100k dataset (download it if needed),</span><br><span class="line">data = Dataset.load_builtin(&apos;ml-100k&apos;)</span><br><span class="line"></span><br><span class="line"># sample random trainset and testset</span><br><span class="line"># test set is made of 25% of the ratings.</span><br><span class="line">trainset, testset = train_test_split(data, test_size=.25)</span><br><span class="line"></span><br><span class="line"># We&apos;ll use the famous SVD algorithm.</span><br><span class="line">algo = SVD()</span><br><span class="line"></span><br><span class="line"># Train the algorithm on the trainset, and predict ratings for the testset</span><br><span class="line">algo.fit(trainset)</span><br><span class="line">predictions = algo.test(testset)</span><br><span class="line"></span><br><span class="line"># Then compute RMSE</span><br><span class="line">accuracy.rmse(predictions)</span><br></pre></td></tr></table></figure></p>
+<p>返回的结果是0.9411 </p>
+<p>在此说明：你可以通过下面一行代码来训练并测试一个算法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">predictions = algo.fit(trainset).test(testset)</span><br></pre></td></tr></table></figure></p>
+<p>在一些例子中，你的训练集和测试集数据已经被另一些例子所定义，请参考<a href="http://surprise.readthedocs.io/en/stable/getting_started.html#load-from-folds-example" target="_blank" rel="noopener">此处</a>来处理这些问题。</p>
+<h5 id="训练整个测试集数据和predict-方法"><a href="#训练整个测试集数据和predict-方法" class="headerlink" title="训练整个测试集数据和predict()方法"></a>训练整个测试集数据和predict()方法</h5><p>毫无疑问，我们可以简单地将算法运用到我们的整个数据集，而不是使用交叉验证。这种方法可以通过使用build_full_trainset()方法来实现，该方法可以建立一个trainset对象。</p>
+<p>实例代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from surprise import KNNBasic</span><br><span class="line">from surprise import Dataset</span><br><span class="line"></span><br><span class="line"># Load the movielens-100k dataset</span><br><span class="line">data = Dataset.load_builtin(&apos;ml-100k&apos;)</span><br><span class="line"></span><br><span class="line"># Retrieve the trainset.</span><br><span class="line">trainset = data.build_full_trainset()</span><br><span class="line"></span><br><span class="line"># Build an algorithm, and train it.</span><br><span class="line">algo = KNNBasic()</span><br><span class="line">algo.fit(trainset)</span><br></pre></td></tr></table></figure>
+<p>我们可以通过predict()方法来预测评分。我们假设您对用户196和302物品感兴趣(确保他们在训练集中)，并且你知道正确的评分是4，通过下面的代码可以实现计算:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">uid = str(196)  # raw user id (as in the ratings file). They are **strings**!</span><br><span class="line">iid = str(302)  # raw item id (as in the ratings file). They are **strings**!</span><br><span class="line"></span><br><span class="line"># get a prediction for specific users and items.</span><br><span class="line">pred = algo.predict(uid, iid, r_ui=4, verbose=True)</span><br></pre></td></tr></table></figure>
+<p>计算结果:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user: 196        item: 302        r_ui = 4.00   est = 4.06   &#123;&apos;actual_k&apos;: 40, &apos;was_impossible&apos;: False&#125;</span><br></pre></td></tr></table></figure></p>
+<pre><code>说明：
+predict（）使用原始ID（请阅读关于[原始ID和内部ID](http://surprise.readthedocs.io/en/stable/FAQ.html#raw-inner-note)的信息）。 由于我们使用的数据集已经从文件中读取，原始ID是字符串（即使它们代表数字）
+</code></pre><h4 id="使用用户的自定义数据集"><a href="#使用用户的自定义数据集" class="headerlink" title="使用用户的自定义数据集"></a>使用用户的自定义数据集</h4><p>尽管surprise有一系列的内建数据集，但是你还是能够使用用户自定义的数据集。可以通过文件导入(csv)或者一个pandas dataframe导入。此外，你需要为surprise定义一个reader对象来解析文件或者数据框。</p>
+<p> -为载入一个文件(如csv)，你可以使用load_from_file()方法来实现。<br>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">from surprise import BaselineOnly</span><br><span class="line">from surprise import Dataset</span><br><span class="line">from surprise import Reader</span><br><span class="line">from surprise.model_selection import cross_validate</span><br><span class="line"></span><br><span class="line"># path to dataset file</span><br><span class="line">file_path = os.path.expanduser(&apos;~/.surprise_data/ml-100k/ml-100k/u.data&apos;)</span><br><span class="line"></span><br><span class="line"># As we&apos;re loading a custom dataset, we need to define a reader. In the</span><br><span class="line"># movielens-100k dataset, each line has the following format:</span><br><span class="line"># &apos;user item rating timestamp&apos;, separated by &apos;\t&apos; characters.</span><br><span class="line">reader = Reader(line_format=&apos;user item rating timestamp&apos;, sep=&apos;\t&apos;)</span><br><span class="line"></span><br><span class="line">data = Dataset.load_from_file(file_path, reader=reader)</span><br><span class="line"></span><br><span class="line"># We can now use this dataset as we please, e.g. calling cross_validate</span><br><span class="line">cross_validate(BaselineOnly(), data, verbose=True)</span><br></pre></td></tr></table></figure></p>
+<p>其他更多关于阅读器和如何使用的信息，详情查看reader class 文档。</p>
+<pre><code>说明：
+正如您在前一节中已经知道的那样，Movielens-100k数据集是内置的，因此加载数据集的更快的方法是执行data = Dataset.load_builtin（&apos;ml-100k&apos;）。 我们当然会在这里忽略这个。
+</code></pre><ul>
+<li><p>为载入一个从pandas dataframe 的数据集，你需要使用load_from_df()方法。你同样需要一个reader对象吗，但只需指定rating_scale参数即可。dataframe必须要有三列数据，包括用户id,物品id,用户对物品的评分数据。因此每一列都需要给定评分。<br>这不是限制性的，因为您可以轻松地重新排列数据框的列。<br>实例代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">from surprise import NormalPredictor</span><br><span class="line">from surprise import Dataset</span><br><span class="line">from surprise import Reader</span><br><span class="line">from surprise.model_selection import cross_validate</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Creation of the dataframe. Column names are irrelevant.</span><br><span class="line">ratings_dict = &#123;&apos;itemID&apos;: [1, 1, 1, 2, 2],</span><br><span class="line">                &apos;userID&apos;: [9, 32, 2, 45, &apos;user_foo&apos;],</span><br><span class="line">                &apos;rating&apos;: [3, 2, 4, 3, 1]&#125;</span><br><span class="line">df = pd.DataFrame(ratings_dict)</span><br><span class="line"></span><br><span class="line"># A reader is still needed but only the rating_scale param is requiered.</span><br><span class="line">reader = Reader(rating_scale=(1, 5))</span><br><span class="line"></span><br><span class="line"># The columns must correspond to user id, item id and ratings (in that order).</span><br><span class="line">data = Dataset.load_from_df(df[[&apos;userID&apos;, &apos;itemID&apos;, &apos;rating&apos;]], reader)</span><br><span class="line"></span><br><span class="line"># We can now use this dataset as we please, e.g. calling cross_validate</span><br><span class="line">cross_validate(NormalPredictor(), data, cv=2)</span><br></pre></td></tr></table></figure>
+<p>dataframe的初始情况可能如下:</p>
+<pre><code>itemID  rating    userID
+</code></pre><p>0       1       3         9<br>1       1       2        32<br>2       1       4         2<br>3       2       3        45<br>4       2       1  user_foo</p>
+</li>
+</ul>
+<h4 id="使用交叉验证迭代"><a href="#使用交叉验证迭代" class="headerlink" title="使用交叉验证迭代"></a>使用交叉验证迭代</h4><p>对于交叉验证，我们可以使用cross_validate()方法，它能为我们做所有的困难的工作。但为了更好的控制，我们还可以实例化交叉验证迭代器，并使用迭代器的split（）方法和算法的test（）方法对每个分裂进行预测。下面地案例是我们使用经典地k次交叉验证地过程，分裂了三次。<br>代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">from surprise import SVD</span><br><span class="line">from surprise import Dataset</span><br><span class="line">from surprise import accuracy</span><br><span class="line">from surprise.model_selection import KFold</span><br><span class="line"></span><br><span class="line"># Load the movielens-100k dataset</span><br><span class="line">data = Dataset.load_builtin(&apos;ml-100k&apos;)</span><br><span class="line"></span><br><span class="line"># define a cross-validation iterator</span><br><span class="line">kf = KFold(n_splits=3)</span><br><span class="line"></span><br><span class="line">algo = SVD()</span><br><span class="line"></span><br><span class="line">for trainset, testset in kf.split(data):</span><br><span class="line"></span><br><span class="line">    # train and test algorithm.</span><br><span class="line">    algo.fit(trainset)</span><br><span class="line">    predictions = algo.test(testset)</span><br><span class="line"></span><br><span class="line">    # Compute and print Root Mean Squared Error</span><br><span class="line">    accuracy.rmse(predictions, verbose=True)</span><br></pre></td></tr></table></figure></p>
+<p>可能的结果：<br>RMSE: 0.9374<br>RMSE: 0.9476<br>RMSE: 0.9478</p>
+<p>其他的交叉验证迭代的方法也可以使用，如留一法和ShuffleSplit。在<a href="http://surprise.readthedocs.io/en/stable/model_selection.html#cross-validation-iterators-api" target="_blank" rel="noopener">此处</a>查看所有的迭代器。surprise的交叉验证的涉及工具是受scikit-learnAPI工具的启发。</p>
+<p>一个特殊的交叉验证案例是当其他文件预先定义了folds。例如:movielens-100k数据集已经提供了5个训练和测试的文件。surprise通过surprise.model_selection.split.PredefinedKFold对象来解决这个问题。<br>实例代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">from surprise import SVD</span><br><span class="line">from surprise import Dataset</span><br><span class="line">from surprise import Reader</span><br><span class="line">from surprise import accuracy</span><br><span class="line">from surprise.model_selection import PredefinedKFold</span><br><span class="line"></span><br><span class="line"># path to dataset folder</span><br><span class="line">files_dir = os.path.expanduser(&apos;~/.surprise_data/ml-100k/ml-100k/&apos;)</span><br><span class="line"></span><br><span class="line"># This time, we&apos;ll use the built-in reader.</span><br><span class="line">reader = Reader(&apos;ml-100k&apos;)</span><br><span class="line"></span><br><span class="line"># folds_files is a list of tuples containing file paths:</span><br><span class="line"># [(u1.base, u1.test), (u2.base, u2.test), ... (u5.base, u5.test)]</span><br><span class="line">train_file = files_dir + &apos;u%d.base&apos;</span><br><span class="line">test_file = files_dir + &apos;u%d.test&apos;</span><br><span class="line">folds_files = [(train_file % i, test_file % i) for i in (1, 2, 3, 4, 5)]</span><br><span class="line"></span><br><span class="line">data = Dataset.load_from_folds(folds_files, reader=reader)</span><br><span class="line">pkf = PredefinedKFold()</span><br><span class="line"></span><br><span class="line">algo = SVD()</span><br><span class="line"></span><br><span class="line">for trainset, testset in pkf.split(data):</span><br><span class="line"></span><br><span class="line">    # train and test algorithm.</span><br><span class="line">    algo.fit(trainset)</span><br><span class="line">    predictions = algo.test(testset)</span><br><span class="line"></span><br><span class="line">    # Compute and print Root Mean Squared Error</span><br><span class="line">    accuracy.rmse(predictions, verbose=True)</span><br></pre></td></tr></table></figure>
+<p>当然，如果你仅通过导入单一的文件来进行训练，用单一的文件来测试，谁也阻止不了你。然而，folds_files参数仍需要是一个list。</p>
+<h4 id="使用GridSearchCV调整算法参数"><a href="#使用GridSearchCV调整算法参数" class="headerlink" title="使用GridSearchCV调整算法参数"></a>使用GridSearchCV调整算法参数</h4><p>cross_validate（）函数针对给定的一组参数报告交叉验证过程的准确性度量。<br>如果你想知道哪个参数组合可以产生最好的结果，那么GridSearchCV类就可以解决问题。 给定一个参数的字典，这个类彻底地尝试所有的参数组合，并报告任何准确性度量（在不同的分割平均）的最佳参数。 它受到scikit-learn的GridSearchCV的启发。<br>下面的按理是我们使用不同的值来设置SVD算法的n_epochs,lr_all和reg_all参数.<br>代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">from surprise import SVD</span><br><span class="line">from surprise import Dataset</span><br><span class="line">from surprise.model_selection import GridSearchCV</span><br><span class="line"></span><br><span class="line"># Use movielens-100K</span><br><span class="line">data = Dataset.load_builtin(&apos;ml-100k&apos;)</span><br><span class="line"></span><br><span class="line">param_grid = &#123;&apos;n_epochs&apos;: [5, 10], &apos;lr_all&apos;: [0.002, 0.005],</span><br><span class="line">              &apos;reg_all&apos;: [0.4, 0.6]&#125;</span><br><span class="line">gs = GridSearchCV(SVD, param_grid, measures=[&apos;rmse&apos;, &apos;mae&apos;], cv=3)</span><br><span class="line"></span><br><span class="line">gs.fit(data)</span><br><span class="line"></span><br><span class="line"># best RMSE score</span><br><span class="line">print(gs.best_score[&apos;rmse&apos;])</span><br><span class="line"></span><br><span class="line"># combination of parameters that gave the best RMSE score</span><br><span class="line">print(gs.best_params[&apos;rmse&apos;])</span><br></pre></td></tr></table></figure></p>
+<p>运行结果:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0.961300130118</span><br><span class="line">&#123;&apos;n_epochs&apos;: 10, &apos;lr_all&apos;: 0.005, &apos;reg_all&apos;: 0.4&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我们在这里评估3倍交叉验证过程的平均RMSE和MAE，但是可以使用任何交叉验证迭代器。<br>一旦调用了fit（），best_estimator属性为我们提供了一个具有最佳参数集的算法实例，我们可以使用它：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">algo = gs.best_estimator[&apos;rmse&apos;]</span><br><span class="line">algo.fit(data.build_full_trainset())</span><br></pre></td></tr></table></figure></p>
+<pre><code>说明：如bsl_options和sim_options等字典型参数需要特殊处理，如:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">param_grid = &#123;&apos;k&apos;: [10, 20],</span><br><span class="line">          &apos;sim_options&apos;: &#123;&apos;name&apos;: [&apos;msd&apos;, &apos;cosine&apos;],</span><br><span class="line">                          &apos;min_support&apos;: [1, 5],</span><br><span class="line">                          &apos;user_based&apos;: [False]&#125;</span><br><span class="line">          &#125;</span><br></pre></td></tr></table></figure>
+</code></pre><p>自然而然，两者可以组合使用，如KNNBaseline算法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">param_grid = &#123;&apos;bsl_options&apos;: &#123;&apos;method&apos;: [&apos;als&apos;, &apos;sgd&apos;],</span><br><span class="line">                              &apos;reg&apos;: [1, 2]&#125;,</span><br><span class="line">              &apos;k&apos;: [2, 3],</span><br><span class="line">              &apos;sim_options&apos;: &#123;&apos;name&apos;: [&apos;msd&apos;, &apos;cosine&apos;],</span><br><span class="line">                              &apos;min_support&apos;: [1, 5],</span><br><span class="line">                              &apos;user_based&apos;: [False]&#125;</span><br><span class="line">              &#125;</span><br></pre></td></tr></table></figure></p>
+<p>为了进一步分析，cv_results属性具有所有需要的信息，并且可以在pandas dataframe中导入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">results_df = pd.DataFrame.from_dict(gs.cv_results)</span><br></pre></td></tr></table></figure></p>
+<p>在我们的案例中，cv_results属性可能是这样的（已经转成了浮点型数据）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&apos;split0_test_rmse&apos;: [1.0, 1.0, 0.97, 0.98, 0.98, 0.99, 0.96, 0.97]</span><br><span class="line">&apos;split1_test_rmse&apos;: [1.0, 1.0, 0.97, 0.98, 0.98, 0.99, 0.96, 0.97]</span><br><span class="line">&apos;split2_test_rmse&apos;: [1.0, 1.0, 0.97, 0.98, 0.98, 0.99, 0.96, 0.97]</span><br><span class="line">&apos;mean_test_rmse&apos;:   [1.0, 1.0, 0.97, 0.98, 0.98, 0.99, 0.96, 0.97]</span><br><span class="line">&apos;std_test_rmse&apos;:    [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]</span><br><span class="line">&apos;rank_test_rmse&apos;:   [7 8 3 5 4 6 1 2]</span><br><span class="line">&apos;split0_test_mae&apos;:  [0.81, 0.82, 0.78, 0.79, 0.79, 0.8, 0.77, 0.79]</span><br><span class="line">&apos;split1_test_mae&apos;:  [0.8, 0.81, 0.78, 0.79, 0.78, 0.79, 0.77, 0.78]</span><br><span class="line">&apos;split2_test_mae&apos;:  [0.81, 0.81, 0.78, 0.79, 0.78, 0.8, 0.77, 0.78]</span><br><span class="line">&apos;mean_test_mae&apos;:    [0.81, 0.81, 0.78, 0.79, 0.79, 0.8, 0.77, 0.78]</span><br><span class="line">&apos;std_test_mae&apos;:     [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]</span><br><span class="line">&apos;rank_test_mae&apos;:    [7 8 2 5 4 6 1 3]</span><br><span class="line">&apos;mean_fit_time&apos;:    [1.53, 1.52, 1.53, 1.53, 3.04, 3.05, 3.06, 3.02]</span><br><span class="line">&apos;std_fit_time&apos;:     [0.03, 0.04, 0.0, 0.01, 0.04, 0.01, 0.06, 0.01]</span><br><span class="line">&apos;mean_test_time&apos;:   [0.46, 0.45, 0.44, 0.44, 0.47, 0.49, 0.46, 0.34]</span><br><span class="line">&apos;std_test_time&apos;:    [0.0, 0.01, 0.01, 0.0, 0.03, 0.06, 0.01, 0.08]</span><br><span class="line">&apos;params&apos;:           [&#123;&apos;n_epochs&apos;: 5, &apos;lr_all&apos;: 0.002, &apos;reg_all&apos;: 0.4&#125;, &#123;&apos;n_epochs&apos;: 5, &apos;lr_all&apos;: 0.002, &apos;reg_all&apos;: 0.6&#125;, &#123;&apos;n_epochs&apos;: 5, &apos;lr_all&apos;: 0.005, &apos;reg_all&apos;: 0.4&#125;, &#123;&apos;n_epochs&apos;: 5, &apos;lr_all&apos;: 0.005, &apos;reg_all&apos;: 0.6&#125;, &#123;&apos;n_epochs&apos;: 10, &apos;lr_all&apos;: 0.002, &apos;reg_all&apos;: 0.4&#125;, &#123;&apos;n_epochs&apos;: 10, &apos;lr_all&apos;: 0.002, &apos;reg_all&apos;: 0.6&#125;, &#123;&apos;n_epochs&apos;: 10, &apos;lr_all&apos;: 0.005, &apos;reg_all&apos;: 0.4&#125;, &#123;&apos;n_epochs&apos;: 10, &apos;lr_all&apos;: 0.005, &apos;reg_all&apos;: 0.6&#125;]</span><br><span class="line">&apos;param_n_epochs&apos;:   [5, 5, 5, 5, 10, 10, 10, 10]</span><br><span class="line">&apos;param_lr_all&apos;:     [0.0, 0.0, 0.01, 0.01, 0.0, 0.0, 0.01, 0.01]</span><br><span class="line">&apos;param_reg_all&apos;:    [0.4, 0.6, 0.4, 0.6, 0.4, 0.6, 0.4, 0.6]</span><br></pre></td></tr></table></figure></p>
+<p>正如你所看到的，每个列表具有相同大小的参数组合数量。 它对应于下表：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">split0_test_rmse    split1_test_rmse    split2_test_rmse    mean_test_rmse  std_test_rmse   rank_test_rmse  split0_test_mae split1_test_mae split2_test_mae mean_test_mae   std_test_mae    rank_test_mae   mean_fit_time   std_fit_time    mean_test_time  std_test_time   params  param_n_epochs  param_lr_all    param_reg_all</span><br><span class="line">0.99775 0.997744    0.996378    0.997291    0.000645508 7   0.807862    0.804626    0.805282    0.805923    0.00139657  7   1.53341 0.0305216   0.455831    0.000922113 &#123;‘n_epochs’: 5, ‘lr_all’: 0.002, ‘reg_all’: 0.4&#125;    5   0.002   0.4</span><br><span class="line">1.00381 1.00304 1.00257 1.00314 0.000508358 8   0.816559    0.812905    0.813772    0.814412    0.00155866  8   1.5199  0.0367117   0.451068    0.00938646  &#123;‘n_epochs’: 5, ‘lr_all’: 0.002, ‘reg_all’: 0.6&#125;    5   0.002   0.6</span><br><span class="line">0.973524    0.973595    0.972495    0.973205    0.000502609 3   0.783361    0.780242    0.78067 0.781424    0.00138049  2   1.53449 0.00496203  0.441558    0.00529696  &#123;‘n_epochs’: 5, ‘lr_all’: 0.005, ‘reg_all’: 0.4&#125;    5   0.005   0.4</span><br><span class="line">0.98229 0.982059    0.981486    0.981945    0.000338056 5   0.794481    0.790781    0.79186 0.792374    0.00155377  5   1.52739 0.00859185  0.44463 0.000888907 &#123;‘n_epochs’: 5, ‘lr_all’: 0.005, ‘reg_all’: 0.6&#125;    5   0.005   0.6</span><br><span class="line">0.978034    0.978407    0.976919    0.977787    0.000632049 4   0.787643    0.784723    0.784957    0.785774    0.00132486  4   3.03572 0.0431101   0.466606    0.0254965   &#123;‘n_epochs’: 10, ‘lr_all’: 0.002, ‘reg_all’: 0.4&#125;   10  0.002   0.4</span><br><span class="line">0.986263    0.985817    0.985004    0.985695    0.000520899 6   0.798218    0.794457    0.795373    0.796016    0.00160135  6   3.0544  0.00636185  0.488357    0.0576194   &#123;‘n_epochs’: 10, ‘lr_all’: 0.002, ‘reg_all’: 0.6&#125;   10  0.002   0.6</span><br><span class="line">0.963751    0.963463    0.962676    0.963297    0.000454661 1   0.774036    0.770548    0.771588    0.772057    0.00146201  1   3.0636  0.0597982   0.456484    0.00510321  &#123;‘n_epochs’: 10, ‘lr_all’: 0.005, ‘reg_all’: 0.4&#125;   10  0.005   0.4</span><br><span class="line">0.973605    0.972868    0.972765    0.973079    0.000374222 2   0.78607 0.781918    0.783537    0.783842    0.00170855  3   3.01907 0.011834    0.338839    0.075346    &#123;‘n_epochs’: 10, ‘lr_all’: 0.005, ‘reg_all’: 0.6&#125;   10  0.005   0.6</span><br></pre></td></tr></table></figure></p>
+<h4 id="命令行的使用"><a href="#命令行的使用" class="headerlink" title="命令行的使用"></a>命令行的使用</h4><p>surprise 同样支持命令行工具，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">surprise -algo SVD -params &quot;&#123;&apos;n_epochs&apos;: 5, &apos;verbose&apos;: True&#125;&quot; -load-builtin ml-100k -n-folds 3</span><br></pre></td></tr></table></figure></p>
+<p>查看使用细节运行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">surprise -h</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/翻译/" rel="tag"># 翻译</a>
+          
+            <a href="/tags/推荐系统/" rel="tag"># 推荐系统</a>
+          
+            <a href="/tags/surprise框架/" rel="tag"># surprise框架</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/14/mind0/" rel="next" title="关于农村秸秆燃烧地想法">
+                <i class="fa fa-chevron-left"></i> 关于农村秸秆燃烧地想法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/16/surprise_predict/" rel="prev" title="surprise框架之使用预测算法">
+                surprise框架之使用预测算法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Jackence</p>
+              <p class="site-description motion-element" itemprop="description">一路以来，总需要坚持着。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.jingbeiseo.com/" title="境北SEO" target="_blank">境北SEO</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本使用"><span class="nav-number">1.</span> <span class="nav-text">基本使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#自动进行交叉验证"><span class="nav-number">1.1.</span> <span class="nav-text">自动进行交叉验证</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Train-test划分和fit-方法"><span class="nav-number">1.2.</span> <span class="nav-text">Train-test划分和fit()方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#训练整个测试集数据和predict-方法"><span class="nav-number">1.3.</span> <span class="nav-text">训练整个测试集数据和predict()方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用用户的自定义数据集"><span class="nav-number">2.</span> <span class="nav-text">使用用户的自定义数据集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用交叉验证迭代"><span class="nav-number">3.</span> <span class="nav-text">使用交叉验证迭代</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用GridSearchCV调整算法参数"><span class="nav-number">4.</span> <span class="nav-text">使用GridSearchCV调整算法参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#命令行的使用"><span class="nav-number">5.</span> <span class="nav-text">命令行的使用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jackence</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
