@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="翻译,推荐系统,surprise框架," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="你将在这里找到FAQ和其他没有在用户手册中展现的用例。 如何为每一个用户推荐Top-N我们将在这里使用movielens-100k的数据集来为每一个用户提供评分最高的top-10的电影。我们先在整个数据集上用SVD算法，然后我们为没有出现在训练集上的每一组（user，item）数据进行评分预测。我们将为每一个用户提供专属的top-10的电影名单。 代码：1234567891011121314151">
+<meta name="keywords" content="翻译,推荐系统,surprise框架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="surprise框架FAQ">
+<meta property="og:url" content="http://yoursite.com/2018/01/18/surprise_faq/index.html">
+<meta property="og:site_name" content="坚守本心">
+<meta property="og:description" content="你将在这里找到FAQ和其他没有在用户手册中展现的用例。 如何为每一个用户推荐Top-N我们将在这里使用movielens-100k的数据集来为每一个用户提供评分最高的top-10的电影。我们先在整个数据集上用SVD算法，然后我们为没有出现在训练集上的每一组（user，item）数据进行评分预测。我们将为每一个用户提供专属的top-10的电影名单。 代码：1234567891011121314151">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-18T11:52:35.408Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="surprise框架FAQ">
+<meta name="twitter:description" content="你将在这里找到FAQ和其他没有在用户手册中展现的用例。 如何为每一个用户推荐Top-N我们将在这里使用movielens-100k的数据集来为每一个用户提供评分最高的top-10的电影。我们先在整个数据集上用SVD算法，然后我们为没有出现在训练集上的每一组（user，item）数据进行评分预测。我们将为每一个用户提供专属的top-10的电影名单。 代码：1234567891011121314151">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/18/surprise_faq/"/>
+
+
+
+
+
+  <title>surprise框架FAQ | 坚守本心</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">坚守本心</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">坚守本心，方为长久</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/18/surprise_faq/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jackence">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="坚守本心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">surprise框架FAQ</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-18T17:32:14+08:00">
+                2018-01-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>你将在这里找到FAQ和其他没有在用户手册中展现的用例。</p>
+<h4 id="如何为每一个用户推荐Top-N"><a href="#如何为每一个用户推荐Top-N" class="headerlink" title="如何为每一个用户推荐Top-N"></a>如何为每一个用户推荐Top-N</h4><p>我们将在这里使用movielens-100k的数据集来为每一个用户提供评分最高的top-10的电影。我们先在整个数据集上用SVD算法，然后我们为没有出现在训练集上的每一组（user，item）数据进行评分预测。我们将为每一个用户提供专属的top-10的电影名单。</p>
+<p>代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">from collections import defaultdict</span><br><span class="line"></span><br><span class="line">from surprise import SVD</span><br><span class="line">from surprise import Dataset</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def get_top_n(predictions, n=10):</span><br><span class="line">    &apos;&apos;&apos;Return the top-N recommendation for each user from a set of predictions.</span><br><span class="line"></span><br><span class="line">    Args:</span><br><span class="line">        predictions(list of Prediction objects): The list of predictions, as</span><br><span class="line">            returned by the test method of an algorithm.</span><br><span class="line">        n(int): The number of recommendation to output for each user. Default</span><br><span class="line">            is 10.</span><br><span class="line"></span><br><span class="line">    Returns:</span><br><span class="line">    A dict where keys are user (raw) ids and values are lists of tuples:</span><br><span class="line">        [(raw item id, rating estimation), ...] of size n.</span><br><span class="line">    &apos;&apos;&apos;</span><br><span class="line"></span><br><span class="line">    # First map the predictions to each user.</span><br><span class="line">    top_n = defaultdict(list)</span><br><span class="line">    for uid, iid, true_r, est, _ in predictions:</span><br><span class="line">        top_n[uid].append((iid, est))</span><br><span class="line"></span><br><span class="line">    # Then sort the predictions for each user and retrieve the k highest ones.</span><br><span class="line">    for uid, user_ratings in top_n.items():</span><br><span class="line">        user_ratings.sort(key=lambda x: x[1], reverse=True)</span><br><span class="line">        top_n[uid] = user_ratings[:n]</span><br><span class="line"></span><br><span class="line">    return top_n</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># First train an SVD algorithm on the movielens dataset.</span><br><span class="line">data = Dataset.load_builtin(&apos;ml-100k&apos;)</span><br><span class="line">trainset = data.build_full_trainset()</span><br><span class="line">algo = SVD()</span><br><span class="line">algo.fit(trainset)</span><br><span class="line"></span><br><span class="line"># Than predict ratings for all pairs (u, i) that are NOT in the training set.</span><br><span class="line">testset = trainset.build_anti_testset()</span><br><span class="line">predictions = algo.test(testset)</span><br><span class="line"></span><br><span class="line">top_n = get_top_n(predictions, n=10)</span><br><span class="line"></span><br><span class="line"># Print the recommended items for each user</span><br><span class="line">for uid, user_ratings in top_n.items():</span><br><span class="line">    print(uid, [iid for (iid, _) in user_ratings])</span><br></pre></td></tr></table></figure></p>
+<h4 id="如何计算准确率和召回率"><a href="#如何计算准确率和召回率" class="headerlink" title="如何计算准确率和召回率"></a>如何计算准确率和召回率</h4><p>我们可以使用下面的模型来为每一个用户计算准确率和召回率</p>
+<p>准确率： 相关的推荐项目集合/推荐项目 </p>
+<p>召回率： 相关的推荐项目集合/相关的项目</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">from collections import defaultdict</span><br><span class="line"></span><br><span class="line">from surprise import Dataset</span><br><span class="line">from surprise import SVD</span><br><span class="line">from surprise.model_selection import KFold</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def precision_recall_at_k(predictions, k=10, threshold=3.5):</span><br><span class="line">    &apos;&apos;&apos;Return precision and recall at k metrics for each user.&apos;&apos;&apos;</span><br><span class="line"></span><br><span class="line">    # First map the predictions to each user.</span><br><span class="line">    user_est_true = defaultdict(list)</span><br><span class="line">    for uid, _, true_r, est, _ in predictions:</span><br><span class="line">        user_est_true[uid].append((est, true_r))</span><br><span class="line"></span><br><span class="line">    precisions = dict()</span><br><span class="line">    recalls = dict()</span><br><span class="line">    for uid, user_ratings in user_est_true.items():</span><br><span class="line"></span><br><span class="line">        # Sort user ratings by estimated value</span><br><span class="line">        user_ratings.sort(key=lambda x: x[0], reverse=True)</span><br><span class="line"></span><br><span class="line">        # Number of relevant items</span><br><span class="line">        n_rel = sum((true_r &gt;= threshold) for (_, true_r) in user_ratings)</span><br><span class="line"></span><br><span class="line">        # Number of recommended items in top k</span><br><span class="line">        n_rec_k = sum((est &gt;= threshold) for (est, _) in user_ratings[:k])</span><br><span class="line"></span><br><span class="line">        # Number of relevant and recommended items in top k</span><br><span class="line">        n_rel_and_rec_k = sum(((true_r &gt;= threshold) and (est &gt;= threshold))</span><br><span class="line">                              for (est, true_r) in user_ratings[:k])</span><br><span class="line"></span><br><span class="line">        # Precision@K: Proportion of recommended items that are relevant</span><br><span class="line">        precisions[uid] = n_rel_and_rec_k / n_rec_k if n_rec_k != 0 else 1</span><br><span class="line"></span><br><span class="line">        # Recall@K: Proportion of relevant items that are recommended</span><br><span class="line">        recalls[uid] = n_rel_and_rec_k / n_rel if n_rel != 0 else 1</span><br><span class="line"></span><br><span class="line">    return precisions, recalls</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">data = Dataset.load_builtin(&apos;ml-100k&apos;)</span><br><span class="line">kf = KFold(n_splits=5)</span><br><span class="line">algo = SVD()</span><br><span class="line"></span><br><span class="line">for trainset, testset in kf.split(data):</span><br><span class="line">    algo.fit(trainset)</span><br><span class="line">    predictions = algo.test(testset)</span><br><span class="line">    precisions, recalls = precision_recall_at_k(predictions, k=5, threshold=4)</span><br><span class="line"></span><br><span class="line">    # Precision and recall can then be averaged over all users</span><br><span class="line">    print(sum(prec for prec in precisions.values()) / len(precisions))</span><br><span class="line">    print(sum(rec for rec in recalls.values()) / len(recalls))</span><br></pre></td></tr></table></figure>
+<h4 id="如何为每个用户计算K近邻"><a href="#如何为每个用户计算K近邻" class="headerlink" title="如何为每个用户计算K近邻"></a>如何为每个用户计算K近邻</h4><p>你可以使用算法对象中的get_neighbors()方法，它是一个仅用相似度来衡量的相关算法，就像<a href="http://surprise.readthedocs.io/en/stable/knn_inspired.html#pred-package-knn-inpired" target="_blank" rel="noopener">KNN</a>算法。</p>
+<p>下面的例子是我们返回的电影Toy Story的10NN结果，结果输出:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">The 10 nearest neighbors of Toy Story are:</span><br><span class="line">Beauty and the Beast (1991)</span><br><span class="line">Raiders of the Lost Ark (1981)</span><br><span class="line">That Thing You Do! (1996)</span><br><span class="line">Lion King, The (1994)</span><br><span class="line">Craft, The (1996)</span><br><span class="line">Liar Liar (1997)</span><br><span class="line">Aladdin (1992)</span><br><span class="line">Cool Hand Luke (1967)</span><br><span class="line">Winnie the Pooh and the Blustery Day (1968)</span><br><span class="line">Indiana Jones and the Last Crusade (1989)</span><br></pre></td></tr></table></figure></p>
+<p>由于电影名称于其原始/内部ID之间的转换，有很多模板，但是这一切都归结于使用get_neighbors()方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">import io  # needed because of weird encoding of u.item file</span><br><span class="line"></span><br><span class="line">from surprise import KNNBaseline</span><br><span class="line">from surprise import Dataset</span><br><span class="line">from surprise import get_dataset_dir</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def read_item_names():</span><br><span class="line">    &quot;&quot;&quot;Read the u.item file from MovieLens 100-k dataset and return two</span><br><span class="line">    mappings to convert raw ids into movie names and movie names into raw ids.</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">    file_name = get_dataset_dir() + &apos;/ml-100k/ml-100k/u.item&apos;</span><br><span class="line">    rid_to_name = &#123;&#125;</span><br><span class="line">    name_to_rid = &#123;&#125;</span><br><span class="line">    with io.open(file_name, &apos;r&apos;, encoding=&apos;ISO-8859-1&apos;) as f:</span><br><span class="line">        for line in f:</span><br><span class="line">            line = line.split(&apos;|&apos;)</span><br><span class="line">            rid_to_name[line[0]] = line[1]</span><br><span class="line">            name_to_rid[line[1]] = line[0]</span><br><span class="line"></span><br><span class="line">    return rid_to_name, name_to_rid</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># First, train the algortihm to compute the similarities between items</span><br><span class="line">data = Dataset.load_builtin(&apos;ml-100k&apos;)</span><br><span class="line">trainset = data.build_full_trainset()</span><br><span class="line">sim_options = &#123;&apos;name&apos;: &apos;pearson_baseline&apos;, &apos;user_based&apos;: False&#125;</span><br><span class="line">algo = KNNBaseline(sim_options=sim_options)</span><br><span class="line">algo.fit(trainset)</span><br><span class="line"></span><br><span class="line"># Read the mappings raw id &lt;-&gt; movie name</span><br><span class="line">rid_to_name, name_to_rid = read_item_names()</span><br><span class="line"></span><br><span class="line"># Retrieve inner id of the movie Toy Story</span><br><span class="line">toy_story_raw_id = name_to_rid[&apos;Toy Story (1995)&apos;]</span><br><span class="line">toy_story_inner_id = algo.trainset.to_inner_iid(toy_story_raw_id)</span><br><span class="line"></span><br><span class="line"># Retrieve inner ids of the nearest neighbors of Toy Story.</span><br><span class="line">toy_story_neighbors = algo.get_neighbors(toy_story_inner_id, k=10)</span><br><span class="line"></span><br><span class="line"># Convert inner ids of the neighbors into names.</span><br><span class="line">toy_story_neighbors = (algo.trainset.to_raw_iid(inner_id)</span><br><span class="line">                       for inner_id in toy_story_neighbors)</span><br><span class="line">toy_story_neighbors = (rid_to_name[rid]</span><br><span class="line">                       for rid in toy_story_neighbors)</span><br><span class="line"></span><br><span class="line">print()</span><br><span class="line">print(&apos;The 10 nearest neighbors of Toy Story are:&apos;)</span><br><span class="line">for movie in toy_story_neighbors:</span><br><span class="line">    print(movie)</span><br></pre></td></tr></table></figure></p>
+<p>自然而然，对于只做稍改的用户同样适用。</p>
+<h4 id="如何序列化一个算法"><a href="#如何序列化一个算法" class="headerlink" title="如何序列化一个算法"></a>如何序列化一个算法</h4><p>预测算法可以使用dump()和load()函数进行序列化和加载，SVD算法是在数据集上进行训练并进行序列化的，然后再次导入，用于后面的计算。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line"></span><br><span class="line">from surprise import SVD</span><br><span class="line">from surprise import Dataset</span><br><span class="line">from surprise import dump</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">data = Dataset.load_builtin(&apos;ml-100k&apos;)</span><br><span class="line">trainset = data.build_full_trainset()</span><br><span class="line"></span><br><span class="line">algo = SVD()</span><br><span class="line">algo.fit(trainset)</span><br><span class="line"></span><br><span class="line"># Compute predictions of the &apos;original&apos; algorithm.</span><br><span class="line">predictions = algo.test(trainset.build_testset())</span><br><span class="line"></span><br><span class="line"># Dump algorithm and reload it.</span><br><span class="line">file_name = os.path.expanduser(&apos;~/dump_file&apos;)</span><br><span class="line">dump.dump(file_name, algo=algo)</span><br><span class="line">_, loaded_algo = dump.load(file_name)</span><br><span class="line"></span><br><span class="line"># We now ensure that the algo is still the same by checking the predictions.</span><br><span class="line">predictions_loaded_algo = loaded_algo.test(trainset.build_testset())</span><br><span class="line">assert predictions == predictions_loaded_algo</span><br><span class="line">print(&apos;Predictions are the same&apos;)</span><br></pre></td></tr></table></figure></p>
+<p>可以将算法连同其一起序列化，以便可以使用pandas dataframe来进一步分析或于其他算法进行比较。<br>下面的两个是例子：<br><a href="http://nbviewer.jupyter.org/github/NicolasHug/Surprise/blob/master/examples/notebooks/KNNBasic_analysis.ipynb" target="_blank" rel="noopener">KNN算法的转储和分析</a><br><a href="http://nbviewer.jupyter.org/github/NicolasHug/Surprise/blob/master/examples/notebooks/Compare.ipynb" target="_blank" rel="noopener">两种算法的比较</a></p>
+<h4 id="如何建立自己的预测算法"><a href="#如何建立自己的预测算法" class="headerlink" title="如何建立自己的预测算法"></a>如何建立自己的预测算法</h4><p>整个手册在<a href="http://surprise.readthedocs.io/en/stable/building_custom_algo.html#building-custom-algo" target="_blank" rel="noopener">这里</a></p>
+<h4 id="说明是raw-和inner-ids"><a href="#说明是raw-和inner-ids" class="headerlink" title="说明是raw 和inner ids"></a>说明是raw 和inner ids</h4><p>user和item都有原生(raw)的id和内置(inner)的id，一些方法可能会返回原生id（如predict()方法），有一些返回内置id。</p>
+<p>原生id是从评分文件或 pandas 的dataframe中定义的。它们可以是字符串或者是数字。<br>要注意，如果评分数据是从标准的脚本文件中读取的，那么它们就是以字符串的形式展现的。你要知道当你使用像predict()或者其他方法那样接受原生id作为参数的时候，这一点很重要。</p>
+<p>在测试集的构建中，每个原生的id会被映射到被称作是inner id的唯一整数中——能更适用于surprise地操作。原生id 和inner id的相互转化方法可以通过调用训练集中的 to_inner_uid(), to_inner_iid(), to_raw_uid()和to_raw_iid()方法实现。 </p>
+<h4 id="我能使用使用自己数据集吗？数据集能是pandas-dataframe形式吗？"><a href="#我能使用使用自己数据集吗？数据集能是pandas-dataframe形式吗？" class="headerlink" title="我能使用使用自己数据集吗？数据集能是pandas dataframe形式吗？"></a>我能使用使用自己数据集吗？数据集能是pandas dataframe形式吗？</h4><p>可以，都可以，查看<a href="http://surprise.readthedocs.io/en/stable/getting_started.html#load-custom" target="_blank" rel="noopener">这里</a> </p>
+<h4 id="如何调用算法参数"><a href="#如何调用算法参数" class="headerlink" title="如何调用算法参数"></a>如何调用算法参数</h4><p>你可以按照<a href="http://surprise.readthedocs.io/en/stable/getting_started.html#tuning-algorithm-parameters" target="_blank" rel="noopener">这里</a>的所说的算法来使用GridSearchCV 类调整算法参数。 调优之后，你可能希望对算法性能进行<a href="http://surprise.readthedocs.io/en/stable/FAQ.html#unbiased-estimate-after-tuning" target="_blank" rel="noopener">无偏估计</a>。</p>
+<h4 id="在训练集上如何获取准确度量"><a href="#在训练集上如何获取准确度量" class="headerlink" title="在训练集上如何获取准确度量"></a>在训练集上如何获取准确度量</h4><p>你可以使用Trainset对象中的build_testset()方法来构建测试集，测试集可以使用test()方法来调用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">from surprise import Dataset</span><br><span class="line">from surprise import SVD</span><br><span class="line">from surprise import accuracy</span><br><span class="line">from surprise.model_selection import KFold</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">data = Dataset.load_builtin(&apos;ml-100k&apos;)</span><br><span class="line"></span><br><span class="line">algo = SVD()</span><br><span class="line"></span><br><span class="line">trainset = data.build_full_trainset()</span><br><span class="line">algo.fit(trainset)</span><br><span class="line"></span><br><span class="line">testset = trainset.build_testset()</span><br><span class="line">predictions = algo.test(testset)</span><br><span class="line"># RMSE should be low as we are biased</span><br><span class="line">accuracy.rmse(predictions, verbose=True)  # ~ 0.68 (which is low)</span><br></pre></td></tr></table></figure>
+<p>查看样例文件以获取更多用例。</p>
+<h4 id="如何保存数据以进行无偏估计"><a href="#如何保存数据以进行无偏估计" class="headerlink" title="如何保存数据以进行无偏估计"></a>如何保存数据以进行无偏估计</h4><p>如果你的目标是调用算法参数，你可能需要留出部分数据对算法性能进行无偏估计。例如：你可能需要将数据分为两组，一组用户girdsearch进行参数调整，另一组用于无偏估计。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">import random</span><br><span class="line"></span><br><span class="line">from surprise import SVD</span><br><span class="line">from surprise import Dataset</span><br><span class="line">from surprise import accuracy</span><br><span class="line">from surprise.model_selection import GridSearchCV</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Load the full dataset.</span><br><span class="line">data = Dataset.load_builtin(&apos;ml-100k&apos;)</span><br><span class="line">raw_ratings = data.raw_ratings</span><br><span class="line"></span><br><span class="line"># shuffle ratings if you want</span><br><span class="line">random.shuffle(raw_ratings)</span><br><span class="line"></span><br><span class="line"># A = 90% of the data, B = 10% of the data</span><br><span class="line">threshold = int(.9 * len(raw_ratings))</span><br><span class="line">A_raw_ratings = raw_ratings[:threshold]</span><br><span class="line">B_raw_ratings = raw_ratings[threshold:]</span><br><span class="line"></span><br><span class="line">data.raw_ratings = A_raw_ratings  # data is now the set A</span><br><span class="line"></span><br><span class="line"># Select your best algo with grid search.</span><br><span class="line">print(&apos;Grid Search...&apos;)</span><br><span class="line">param_grid = &#123;&apos;n_epochs&apos;: [5, 10], &apos;lr_all&apos;: [0.002, 0.005]&#125;</span><br><span class="line">grid_search = GridSearchCV(SVD, param_grid, measures=[&apos;rmse&apos;], cv=3)</span><br><span class="line">grid_search.fit(data)</span><br><span class="line"></span><br><span class="line">algo = grid_search.best_estimator[&apos;rmse&apos;]</span><br><span class="line"></span><br><span class="line"># retrain on the whole set A</span><br><span class="line">trainset = data.build_full_trainset()</span><br><span class="line">algo.fit(trainset)</span><br><span class="line"></span><br><span class="line"># Compute biased accuracy on A</span><br><span class="line">predictions = algo.test(trainset.build_testset())</span><br><span class="line">print(&apos;Biased accuracy on A,&apos;, end=&apos;   &apos;)</span><br><span class="line">accuracy.rmse(predictions)</span><br><span class="line"></span><br><span class="line"># Compute unbiased accuracy on B</span><br><span class="line">testset = data.construct_testset(B_raw_ratings)  # testset is now the set B</span><br><span class="line">predictions = algo.test(testset)</span><br><span class="line">print(&apos;Unbiased accuracy on B,&apos;, end=&apos; &apos;)</span><br><span class="line">accuracy.rmse(predictions)</span><br></pre></td></tr></table></figure></p>
+<h4 id="如何构建可再现的实验"><a href="#如何构建可再现的实验" class="headerlink" title="如何构建可再现的实验"></a>如何构建可再现的实验</h4><p>一些算法随机地初始化参数（有时与numpy一起），交叉验证折叠也是随机产生地，如果你需要多次再现你的实验，你只需要在你的程序开始前设置RNG的种子(seed)就行了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import random</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">my_seed = 0</span><br><span class="line">random.seed(my_seed)</span><br><span class="line">numpy.random.seed(my_seed)</span><br></pre></td></tr></table></figure></p>
+<h4 id="数据存储在哪，如何改变它的位置"><a href="#数据存储在哪，如何改变它的位置" class="headerlink" title="数据存储在哪，如何改变它的位置"></a>数据存储在哪，如何改变它的位置</h4><p>默认情况下，通过surprise下载的数据集是被存储在用户目录下的/surprise_data文件夹下，也可以将其存放到其他位置，你只需要通过设置’SURPRISE_DATA_FOLDER’参数就可以改变默认目录了。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/翻译/" rel="tag"># 翻译</a>
+          
+            <a href="/tags/推荐系统/" rel="tag"># 推荐系统</a>
+          
+            <a href="/tags/surprise框架/" rel="tag"># surprise框架</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/18/problems_codefault/" rel="next" title="sublime text3打开txt文件乱码问题及解决">
+                <i class="fa fa-chevron-left"></i> sublime text3打开txt文件乱码问题及解决
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/20/python_problem0/" rel="prev" title="Python设置左闭右开的原则">
+                Python设置左闭右开的原则 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Jackence</p>
+              <p class="site-description motion-element" itemprop="description">一路以来，总需要坚持着。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.jingbeiseo.com/" title="境北SEO" target="_blank">境北SEO</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何为每一个用户推荐Top-N"><span class="nav-number">1.</span> <span class="nav-text">如何为每一个用户推荐Top-N</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何计算准确率和召回率"><span class="nav-number">2.</span> <span class="nav-text">如何计算准确率和召回率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何为每个用户计算K近邻"><span class="nav-number">3.</span> <span class="nav-text">如何为每个用户计算K近邻</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何序列化一个算法"><span class="nav-number">4.</span> <span class="nav-text">如何序列化一个算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何建立自己的预测算法"><span class="nav-number">5.</span> <span class="nav-text">如何建立自己的预测算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#说明是raw-和inner-ids"><span class="nav-number">6.</span> <span class="nav-text">说明是raw 和inner ids</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#我能使用使用自己数据集吗？数据集能是pandas-dataframe形式吗？"><span class="nav-number">7.</span> <span class="nav-text">我能使用使用自己数据集吗？数据集能是pandas dataframe形式吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何调用算法参数"><span class="nav-number">8.</span> <span class="nav-text">如何调用算法参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在训练集上如何获取准确度量"><span class="nav-number">9.</span> <span class="nav-text">在训练集上如何获取准确度量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何保存数据以进行无偏估计"><span class="nav-number">10.</span> <span class="nav-text">如何保存数据以进行无偏估计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何构建可再现的实验"><span class="nav-number">11.</span> <span class="nav-text">如何构建可再现的实验</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据存储在哪，如何改变它的位置"><span class="nav-number">12.</span> <span class="nav-text">数据存储在哪，如何改变它的位置</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jackence</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+
+</body>
+</html>
