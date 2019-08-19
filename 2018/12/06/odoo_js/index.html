@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content=",," />
+  <meta name="keywords" content="odoo,JS," />
 
 
 
@@ -77,18 +77,18 @@
 
 
 
-<meta name="description" content="odoo中，xml可以通过context来写入吗？ 可以 odoo中LXML的用法 lxml.builder可以建立XML odoo 中的xml除开手写，继承的方式展现。另外，还可以通过context的方式来实现获取，将数据写在context中，可以直接获取到context的数据 案例： 针对某一个视图修改： 功能点权限页面视图的显示12345678910111213141516171819202">
-<meta name="keywords" content="odoo,XML">
-<meta property="og:type" content="website">
-<meta property="og:title" content="odoo中的XML">
-<meta property="og:url" content="http://yoursite.com/odoo学习自述/odoo_xml.html">
+<meta name="description" content="odoo 作为一个系统，就避免不了前后端交互的过程。 本部分，就简要讲解一下odoo中的JS。 odoo 中的JS ,主要都是继承写的。实际上，在odoo 中，前后端封装的十分优美，后端人员基本无需手动去改动JS代码，如果需要，可能只是简单的修改，例如报表查看的功能？ odoo 中的JS：关键词： Classextend()include()_super()Require.js JS 中没有Cla">
+<meta name="keywords" content="odoo,JS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="odoo中的JS">
+<meta property="og:url" content="http://yoursite.com/2018/12/06/odoo_js/index.html">
 <meta property="og:site_name" content="坚守本心">
-<meta property="og:description" content="odoo中，xml可以通过context来写入吗？ 可以 odoo中LXML的用法 lxml.builder可以建立XML odoo 中的xml除开手写，继承的方式展现。另外，还可以通过context的方式来实现获取，将数据写在context中，可以直接获取到context的数据 案例： 针对某一个视图修改： 功能点权限页面视图的显示12345678910111213141516171819202">
+<meta property="og:description" content="odoo 作为一个系统，就避免不了前后端交互的过程。 本部分，就简要讲解一下odoo中的JS。 odoo 中的JS ,主要都是继承写的。实际上，在odoo 中，前后端封装的十分优美，后端人员基本无需手动去改动JS代码，如果需要，可能只是简单的修改，例如报表查看的功能？ odoo 中的JS：关键词： Classextend()include()_super()Require.js JS 中没有Cla">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-28T07:21:06.434Z">
+<meta property="og:updated_time" content="2019-08-19T07:32:42.595Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="odoo中的XML">
-<meta name="twitter:description" content="odoo中，xml可以通过context来写入吗？ 可以 odoo中LXML的用法 lxml.builder可以建立XML odoo 中的xml除开手写，继承的方式展现。另外，还可以通过context的方式来实现获取，将数据写在context中，可以直接获取到context的数据 案例： 针对某一个视图修改： 功能点权限页面视图的显示12345678910111213141516171819202">
+<meta name="twitter:title" content="odoo中的JS">
+<meta name="twitter:description" content="odoo 作为一个系统，就避免不了前后端交互的过程。 本部分，就简要讲解一下odoo中的JS。 odoo 中的JS ,主要都是继承写的。实际上，在odoo 中，前后端封装的十分优美，后端人员基本无需手动去改动JS代码，如果需要，可能只是简单的修改，例如报表查看的功能？ odoo 中的JS：关键词： Classextend()include()_super()Require.js JS 中没有Cla">
 
 
 
@@ -118,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/odoo学习自述/odoo_xml.html"/>
+  <link rel="canonical" href="http://yoursite.com/2018/12/06/odoo_js/"/>
 
 
 
 
 
-  <title>odoo中的XML | 坚守本心</title>
+  <title>odoo中的JS | 坚守本心</title>
   
 
 
@@ -283,40 +283,195 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/06/odoo_js/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jackence">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="坚守本心">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">odoo中的XML</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <p>odoo中，xml可以通过context来写入吗？ 可以</p>
-<p>odoo中LXML的用法</p>
-<p>lxml.builder可以建立XML</p>
-<p>odoo 中的xml除开手写，继承的方式展现。<br>另外，还可以通过context的方式来实现获取，将数据写在context中，可以直接获取到context的数据</p>
-<p>案例：</p>
-<p>针对某一个视图修改：</p>
-<h1 id="功能点权限页面视图的显示"><a href="#功能点权限页面视图的显示" class="headerlink" title="功能点权限页面视图的显示"></a>功能点权限页面视图的显示</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">view_function = self.env.ref(&apos;kthrp_base.user_groups_view_function&apos;, raise_if_not_found=False)</span><br><span class="line">    if view_function and view_function.exists() and view_function._name == &apos;ir.ui.view&apos;:</span><br><span class="line">        group_no_one = view_function.env.ref(&apos;base.group_no_one&apos;)</span><br><span class="line">        xml1, xml2 = [], []</span><br><span class="line">        xml1.append(E.separator(string=_(&apos;Application&apos;), colspan=&quot;2&quot;))</span><br><span class="line">        for app, kind, gs in self.get_groups_by_application():</span><br><span class="line">            # hide groups in categories &apos;Hidden&apos; and &apos;Extra&apos; (except for group_no_one)</span><br><span class="line">            attrs = &#123;&#125;</span><br><span class="line">            if app.xml_id in (</span><br><span class="line">                    &apos;base.module_category_hidden&apos;, &apos;base.module_category_extra&apos;, &apos;base.module_category_usability&apos;):</span><br><span class="line">                attrs[&apos;groups&apos;] = &apos;base.group_no_one&apos;</span><br><span class="line"></span><br><span class="line">            if kind == &apos;selection&apos;:</span><br><span class="line">                # application name with a selection field</span><br><span class="line">                field_name = name_selection_groups(gs.ids)</span><br><span class="line">                xml1.append(E.field(name=field_name, **attrs))</span><br><span class="line">                xml1.append(E.newline())</span><br><span class="line">            else:</span><br><span class="line">                # application separator with boolean fields</span><br><span class="line">                app_name = app.name or _(&apos;Other&apos;)</span><br><span class="line">                xml2.append(E.separator(string=app_name, colspan=&quot;4&quot;, **attrs))</span><br><span class="line">                for g in gs:</span><br><span class="line">                    field_name = name_boolean_group(g.id)</span><br><span class="line">                    if g == group_no_one:</span><br><span class="line">                        # make the group_no_one invisible in the form view</span><br><span class="line">                        xml2.append(E.field(name=field_name, invisible=&quot;1&quot;, **attrs))</span><br><span class="line">                    elif g.classification in (&apos;function_access&apos;, &apos;data_access&apos;):</span><br><span class="line">                        xml2.append(E.field(name=field_name, **attrs))</span><br><span class="line">                    else:</span><br><span class="line">                        xml2.append(E.field(name=field_name, invisible=&quot;1&quot;, **attrs))</span><br><span class="line"></span><br><span class="line">        xml2.append(&#123;&apos;class&apos;: &quot;o_label_nowrap&quot;&#125;)</span><br><span class="line">        xml = E.field(E.group(*(xml1), col=&quot;2&quot;), E.group(*(xml2), col=&quot;4&quot;), name=&quot;groups_id&quot;, position=&quot;replace&quot;)</span><br><span class="line">        xml.addprevious(etree.Comment(&quot;GENERATED AUTOMATICALLY BY GROUPS&quot;))</span><br><span class="line">        xml_content = etree.tostring(xml, pretty_print=True, xml_declaration=True, encoding=&quot;utf-8&quot;)</span><br><span class="line">        view_function.with_context(lang=None).write(&#123;&apos;arch&apos;: xml_content, &apos;arch_fs&apos;: False&#125;)</span><br></pre></td></tr></table></figure>
-
+          <h1 class="post-title" itemprop="name headline">odoo中的JS</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-06T19:48:01+08:00">
+                2018-12-06
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-19T15:32:42+08:00">
+                2019-08-19
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/草稿/" itemprop="url" rel="index">
+                    <span itemprop="name">草稿</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>odoo 作为一个系统，就避免不了前后端交互的过程。</p>
+<p>本部分，就简要讲解一下odoo中的JS。</p>
+<p>odoo 中的JS ,主要都是继承写的。实际上，在odoo 中，前后端封装的十分优美，后端人员基本无需手动去改动JS代码，如果需要，可能只是简单的修改，例如报表查看的功能？</p>
+<p>odoo 中的JS：<br>关键词：</p>
+<p>Class<br>extend()<br>include()<br>_super()<br>Require.js</p>
+<p>JS 中没有Class 的，odoo中使用封装手段，将数据结构，封装成类。</p>
+<p>extend : 扩充原类的方法，不改变原类的方法，仅仅新增</p>
+<p>include ： 引入原类的方法，并对方法进行修改</p>
+<p>_super() ： 类似于面向对象中的调用父类的方法</p>
+<p>require</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">odoo.define(&apos;tree_budget_sheet_line_quick_query&apos;, function (require) &#123;</span><br><span class="line">    &quot;use strict&quot;;</span><br><span class="line"></span><br><span class="line">    var core = require(&apos;web.core&apos;);</span><br><span class="line">    var data = require(&apos;web.data&apos;);</span><br><span class="line">    var ListView = require(&apos;web.ListView&apos;);</span><br><span class="line">    var Model = require(&apos;web.DataModel&apos;);</span><br><span class="line"></span><br><span class="line">    var QWeb = core.qweb;</span><br></pre></td></tr></table></figure>
+<p>从这段代码可以看出，odoo 中需要调用require进行引入数据，引入其他类</p>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/odoo/" rel="tag"># odoo</a>
+          
+            <a href="/tags/JS/" rel="tag"># JS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/05/odoo_source_model/" rel="next" title="odoo源码model">
+                <i class="fa fa-chevron-left"></i> odoo源码model
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/11/odoo_mail_config/" rel="prev" title="odoo中的邮件发送">
+                odoo中的邮件发送 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -349,17 +504,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -374,7 +520,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">76</span>
+                  <span class="site-state-item-count">83</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -396,7 +542,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -433,22 +579,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#功能点权限页面视图的显示"><span class="nav-number">1.</span> <span class="nav-text">功能点权限页面视图的显示</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

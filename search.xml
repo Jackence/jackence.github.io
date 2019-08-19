@@ -1,6 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[odoo中的邮件发送]]></title>
+    <url>%2F2018%2F12%2F11%2Fodoo_mail_config%2F</url>
+    <content type="text"><![CDATA[近半周，主要在研究odoo中的邮件发送的内容，修改重置密码和修改密码的邮件发送的相关功能。主要发现了： odoo 简单配置邮件，利用bournce 模式 odoo catchall 模式配置邮件 【待研究】 odoo bournce模式邮件配置： odoo发送邮件的过程中碰到 no service or xxx 使用ping 来测试是否可以访问外网。在docker 里无法ping同域名，提示类似于 ping bad address 的问题，但是可以ping 通IP，这个需要后期研究一下为什么会这样。 【待研究】 是由可能是无法访问到外部网络，是由于DNS解析失败造成的，可以暂时先不管，重启一次docker就好了。 简单的方案：直接重启docker，再次ping 网址，发现可以。 继续配置odoo邮件： 配置好出向邮件，即为发件人，要求发件人开同通IMAP服务或POP服务。 配置入向服务器，收件箱，在这种模式下可以不用配置。 配置好公司邮件，在公司的参数里，设置好，这里设置为出向邮箱。 删掉bounce 设置。在设置-技术-系统参数中。虽然这里面也没有不删掉，会报错，提示发件人和认证用户不是同一个人。 自己配置的公司的发件人A，而这里却不是A，是以bounce开头的用户，是为啥呢？ 提示的错误：12345邮件投递失败通过SMTP发送邮件失败 &apos;smtp.qq.com&apos;.SMTPSenderRefused: 501mail from address must be same as authorization userbounce+12-sale.order-6@odooqs.com 阅读源码：12345678910111213141516171819@api.modeldef _get_default_bounce_address(self): &apos;&apos;&apos;Compute the default bounce address. The default bounce address is used to set the envelop address if no envelop address is provided in the message. It is formed by properly joining the parameters &quot;mail.bounce.alias&quot; and &quot;mail.catchall.domain&quot;. If &quot;mail.bounce.alias&quot; is not set it defaults to &quot;postmaster-odoo&quot;. If &quot;mail.catchall.domain&quot; is not set, return None. &apos;&apos;&apos; get_param = self.env[&apos;ir.config_parameter&apos;].sudo().get_param postmaster = get_param(&apos;mail.bounce.alias&apos;, default=&apos;postmaster-odoo&apos;) domain = get_param(&apos;mail.catchall.domain&apos;) if postmaster and domain: return &apos;%s@%s&apos; % (postmaster, domain) 从以上可以得知 _get_default_bounce_address 发送邮件名来源于 mail.bounce.alias ,默认值是postmaster-odoo.根据以上代码的值，不删除mail.bounce.alias的值，会导致发送地址错误，删除mail.bounce.alias的值，导致默认发送邮箱名是postmaster-odoo。也就是 catchall模式配置参数：还没仔细研究 catchall 是可以看作一个中介的功能。当一个联系人回复Odoo发送的邮件时，reply-to 地址是一个catchall地址，可将回复中继到Odoo（商机、订单、任务等）中正确的讨论话题，以及所有关注者的邮箱中。地址默认为”catchall@”，也可以更改。 在你的邮件服务器设置中创建一个catchall地址。我们建议您使用”catchall@”地址，可直接运行。如想使用其他别名，需要在Odoo中多设置一些步骤。]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>odoo</tag>
+        <tag>邮件发送</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[odoo中的JS]]></title>
+    <url>%2F2018%2F12%2F06%2Fodoo_js%2F</url>
+    <content type="text"><![CDATA[odoo 作为一个系统，就避免不了前后端交互的过程。 本部分，就简要讲解一下odoo中的JS。 odoo 中的JS ,主要都是继承写的。实际上，在odoo 中，前后端封装的十分优美，后端人员基本无需手动去改动JS代码，如果需要，可能只是简单的修改，例如报表查看的功能？ odoo 中的JS：关键词： Classextend()include()_super()Require.js JS 中没有Class 的，odoo中使用封装手段，将数据结构，封装成类。 extend : 扩充原类的方法，不改变原类的方法，仅仅新增 include ： 引入原类的方法，并对方法进行修改 _super() ： 类似于面向对象中的调用父类的方法 require 123456789odoo.define(&apos;tree_budget_sheet_line_quick_query&apos;, function (require) &#123; &quot;use strict&quot;; var core = require(&apos;web.core&apos;); var data = require(&apos;web.data&apos;); var ListView = require(&apos;web.ListView&apos;); var Model = require(&apos;web.DataModel&apos;); var QWeb = core.qweb; 从这段代码可以看出，odoo 中需要调用require进行引入数据，引入其他类]]></content>
+      <categories>
+        <category>草稿</category>
+      </categories>
+      <tags>
+        <tag>odoo</tag>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[odoo源码model]]></title>
+    <url>%2F2018%2F12%2F05%2Fodoo_source_model%2F</url>
+    <content type="text"><![CDATA[这部分，主要用来分析观察odoo源码中的models文件，它主要介绍源码中的文件，作用。主要构成： 注意： 函数后 第一个参数，表示哪个函数(A)和它(B)有关，第二个参数表示关联，form表示A调用函数，to表示B调用A 代码和解析部分 主要的作用 联系部分 1.代码部分 class BaseModel 包含的方法：123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160161162163164165166167168169170171172173174175176177178179180181182183184185186187188189190191192193194195196197198199200201202203204205206207208209210211212213214215view_init default_get from _field_create _auto_init from_add_field 多函数调用，from 按照命名，应该是用来新增字段_pop_field _drop_column _prepare_update from _add_magic_fields _setup_base fromcompute_concurrency_field _add_magic_fields from compute_concurrency_field_with_access _add_magic_fields from_build_model setup_models from _build_model_check_base_build_model_check_parent_build_model_attributes_add_manual_fields_init_constraints_onchanges_constraint_methodsis_constraint_onchange_methodsis_onchange__new____init___is_an_ordinary_table__export_xml_id_export_rowsexport_dataload_add_fake_fields_extract_recordsonly_o2m_values_convert_records_log_validate_fieldsdefault_getfields_get_keys_rec_name_fallbackview_header_getuser_has_groups_get_default_form_view_get_default_search_view_get_default_tree_view_get_default_pivot_view_get_default_kanban_view_get_default_graph_view_get_default_calendar_viewset_first_ofload_viewsfields_view_getcleanget_formview_idget_formview_actionget_access_actionsearch_countsearch_compute_display_namename_getname_createname_search_name_search_add_missing_default_valuesclear_caches_read_group_fill_results_read_group_prepare_read_group_process_groupby_read_group_prepare_data_read_group_format_resultread_group_read_group_raw_inherits_join_add_inherits_join_calc_parent_store_computeprocess_check_selection_field_value_check_removed_columns_save_constraint_drop_constraint_save_relation_table_m2o_add_foreign_key_checked_m2o_add_foreign_key_unchecked_m2o_fix_foreign_key_init_column_auto_initfunc_auto_endinit_table_exist_create_table_parent_columns_exist_create_parent_columns_select_column_data_add_sql_constraintsunify_cons_textdropadd_execute_sql_add_inherited_fields_inherits_check_prepare_setup_setup_base_setup_fields_setup_completefields_getget_empty_list_helpcheck_field_access_rightsvalidread_prefetch_field_read_from_databasequalifyget_metadata_check_concurrency_check_record_rules_result_countcheck_access_rightscheck_access_rulecreate_workflowdelete_workflowstep_workflowsignal_workflowredirect_workflowunlinkwrite_writecreate_create_where_calc_check_qorder_apply_ir_rulesapply_rule_generate_translated_field_generate_m2o_order_by_generate_order_by_inner_generate_order_by_search_uniquify_listcopy_datablacklist_given_fieldscopy_translationsget_transcopyexists_check_recursion_check_m2m_recursion_get_external_idsget_external_idprint_reportis_transient_transient_clean_rows_older_than_transient_clean_old_rows_transient_vacuumresolve_2many_commandssearch_readtoggle_active_register_hook_patch_methoddo_write_revert_method_browsebrowseidsensure_onewith_envsudowith_contextwith_prefetch_convert_to_cache_convert_to_record_convert_to_write_mapped_funcmapped_mapped_cachefilteredsortedupdatenew_is_dirty_get_dirty_set_dirty__nonzero____len____iter____contains____add__concat__sub____and____or__union__eq____ne____lt____le____gt____ge____int____str____unicode____hash____getitem____setitem___cache_in_cache_withoutrefreshinvalidate_cachemodified_recompute_check_recompute_todo_recompute_donerecompute_has_onchange_onchange_specprocess_onchange_evalprocess__init____getitem____getattr__onchange]]></content>
+      <categories>
+        <category>草稿</category>
+      </categories>
+      <tags>
+        <tag>odoo</tag>
+        <tag>源码阅读</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[odoo与RPC]]></title>
+    <url>%2F2018%2F12%2F05%2Fodoo_rpc%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>草稿</category>
+      </categories>
+      <tags>
+        <tag>总结</tag>
+        <tag>odoo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[odoo中的XML与xpath]]></title>
+    <url>%2F2018%2F11%2F28%2Fodoo_xpath%2F</url>
+    <content type="text"><![CDATA[在之前，做爬虫的相关事情的时候，就已经接触到xpath的使用，只不过没有大规模的使用，只是浅尝辄止。 关于xpath，了解背景知识，请看这里。 关于xml，其实和HTML结构相似，类似于DOM，关于DOM和XML的相关知识，请看这里。 在odoo开发中，经常会用到odoo中元素的选择。 xpath，本质是一种对xml的选择，具体来说就是需要确定xml的节点，即XML的节点位置。 xml和HTML结构很相似，都有元素节点，节点都会有标签元素(tag)，标签又会有一些属性。节点之间的关系有： 1. 父子 2. 祖先和后代 3. 兄弟姐妹节点 接下来的部分，将讲述xml的语法。 选取节点利用路径表达式，获取节点，主要的表达式有： nodename 选取nodename的所有子节点/ 从根节点取// 从匹配选择的当前节点选文档的节点. 选取当前节点.. 选区当前节点的父节点@ 选取属性 谓语谓语用来查找某个特定的节点或者包含某个指定的值的节点。主要的谓语有：[1][last()][last()-1][position()&lt;3][@attr=value] 选取属性为value的元素[@attr] 选取含attr的元素 通配符 选择任意元素的节点@* 选择任意属性的节点node() 匹配任意类型的节点 多路径多路径中间用 | 分隔符来隔开。 参考文献w3scholl]]></content>
+      <categories>
+        <category>草稿</category>
+      </categories>
+      <tags>
+        <tag>odoo</tag>
+        <tag>XML，xpath</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[odoo中的XML（续）]]></title>
+    <url>%2F2018%2F11%2F28%2Fodoo_lxml%2F</url>
+    <content type="text"><![CDATA[odoo中，使用的lxml的库来控制xml的加载的。lxml 是一款定位XML元素位置的工具，并可以利用它对XML进行修改 关于lxml，简单了解一下，什么是[Python中的lxml]以及它的用途(https://lxml.de/)。 本部分主要简单介绍一下lxml的用法。 lxml主要几部分： 位置定位主要通过xpath ,对一段XML进行定位元素，获取元素的位置。通过标签，属性，内容等来对XML进行限制。 操作谓语 参考文献lxml官方文档]]></content>
+      <categories>
+        <category>草稿</category>
+      </categories>
+      <tags>
+        <tag>odoo</tag>
+        <tag>XML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[odoo中的XML]]></title>
+    <url>%2F2018%2F11%2F27%2Fodoo_xml%2F</url>
+    <content type="text"><![CDATA[odoo中，xml可以通过context来写入吗？ 可以 odoo中LXML的用法 lxml.builder可以建立XML odoo 中的xml除开手写，继承的方式展现。另外，还可以通过context的方式来实现获取，将数据写在context中，可以直接获取到context的数据 案例： 针对某一个视图修改： 功能点权限页面视图的显示123456789101112131415161718192021222324252627282930313233343536view_function = self.env.ref(&apos;base.user_groups_view_function&apos;, raise_if_not_found=False) if view_function and view_function.exists() and view_function._name == &apos;ir.ui.view&apos;: group_no_one = view_function.env.ref(&apos;base.group_no_one&apos;) xml1, xml2 = [], [] xml1.append(E.separator(string=_(&apos;Application&apos;), colspan=&quot;2&quot;)) for app, kind, gs in self.get_groups_by_application(): # hide groups in categories &apos;Hidden&apos; and &apos;Extra&apos; (except for group_no_one) attrs = &#123;&#125; if app.xml_id in ( &apos;base.module_category_hidden&apos;, &apos;base.module_category_extra&apos;, &apos;base.module_category_usability&apos;): attrs[&apos;groups&apos;] = &apos;base.group_no_one&apos; if kind == &apos;selection&apos;: # application name with a selection field field_name = name_selection_groups(gs.ids) xml1.append(E.field(name=field_name, **attrs)) xml1.append(E.newline()) else: # application separator with boolean fields app_name = app.name or _(&apos;Other&apos;) xml2.append(E.separator(string=app_name, colspan=&quot;4&quot;, **attrs)) for g in gs: field_name = name_boolean_group(g.id) if g == group_no_one: # make the group_no_one invisible in the form view xml2.append(E.field(name=field_name, invisible=&quot;1&quot;, **attrs)) elif g.classification in (&apos;function_access&apos;, &apos;data_access&apos;): xml2.append(E.field(name=field_name, **attrs)) else: xml2.append(E.field(name=field_name, invisible=&quot;1&quot;, **attrs)) xml2.append(&#123;&apos;class&apos;: &quot;o_label_nowrap&quot;&#125;) xml = E.field(E.group(*(xml1), col=&quot;2&quot;), E.group(*(xml2), col=&quot;4&quot;), name=&quot;groups_id&quot;, position=&quot;replace&quot;) xml.addprevious(etree.Comment(&quot;GENERATED AUTOMATICALLY BY GROUPS&quot;)) xml_content = etree.tostring(xml, pretty_print=True, xml_declaration=True, encoding=&quot;utf-8&quot;) view_function.with_context(lang=None).write(&#123;&apos;arch&apos;: xml_content, &apos;arch_fs&apos;: False&#125;)]]></content>
+      <categories>
+        <category>草稿</category>
+      </categories>
+      <tags>
+        <tag>odoo</tag>
+        <tag>XML</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[odoo工作流]]></title>
     <url>%2F2018%2F11%2F23%2Fodoo_workflow%2F</url>
     <content type="text"><![CDATA[本章节主要介绍odoo中的工作流的知识。 odoo中需要用到工作流的相关知识，关于工作流，请参考这篇文章。 odoo中，关于工作流，需要有一定的配置。 工作流，在odoo中，主要用在审批流中。 审批流的]]></content>
@@ -64,7 +148,7 @@
   <entry>
     <title><![CDATA[odoo权限]]></title>
     <url>%2F2018%2F11%2F23%2Fodoo_power%2F</url>
-    <content type="text"><![CDATA[odoo中关于权限，有几个部分： 记录规则 用户组 3.]]></content>
+    <content type="text"><![CDATA[odoo中关于权限，有几个部分： 记录规则 记录规则，模型:ir.rule 菜单级别 菜单访问权限，通过分配用户组来实现，但是只是隐藏菜单可视的入口，如果知道菜单的xml_id，仍然可以通过进入指定的URL来访问。 如何实现，暂时还未研究，待研究 模型访问权限模型的访问权先，主要是通过CSV文件来实现的，分别表示对某个模型的增删改查的权限。 CSV文件最后存储在ir_model_data数据表中， 具体部分，如：access_res_users,res.users,model_res_users,base.group_user,1,1,1,1 第一个是参数是xml_id，用于存储在数据库的ir_model_data中，作为标识，也可以直接设置-技术-外部标识中（debug模式下）搜索到， 第二个参数res.users 表示描述性标题，它只是内容展示，在模块中最好也保持其唯一性。官方模块通常使用模型名称和组的圆点分隔的字符串。model_res_users 表示的是model_id，是由模型自动生成的xmlid，一般是model+模型名base.group_user表示的是用户组或群组。 最后的数字表示的是：1，表示拥有这部分权限，0表示没有这部分权限,表示的顺序是：读写创删权限。 字段权限 odoo中，利用字段的权限，可以控制不同群组访问不同的字段。 参考文献：《odoo中文教程》 《OpenERP应用和开发基础》 《Odoo 10 Development Essentials》 参考网站和论坛：odoov 网站 odoo 官网 odoo 中文论坛 odoo hk odoo 论坛1 odoo v odoo文档 翻译网站 odoo 手册 odoo官方文档 odoo 其它企业 一些blog和博主：toby2chen Jeff odoo OCA]]></content>
       <categories>
         <category>草稿</category>
       </categories>
@@ -76,7 +160,7 @@
   <entry>
     <title><![CDATA[odoo函数]]></title>
     <url>%2F2018%2F11%2F23%2Fodoo_function%2F</url>
-    <content type="text"><![CDATA[odoo中的一些函数的介绍 搜索与查询类search search_read search_count name_search 创建类更新类修改类]]></content>
+    <content type="text"><![CDATA[odoo中的一些函数的介绍 搜索与查询类search search_read search_count name_search 创建类create 更新类write 删除类unlink]]></content>
       <categories>
         <category>草稿</category>
       </categories>
@@ -144,7 +228,7 @@
   <entry>
     <title><![CDATA[centsos 下 python3 安装的坑]]></title>
     <url>%2F2018%2F03%2F21%2Fpython_install%2F</url>
-    <content type="text"><![CDATA[参考资料： 作者：风Boy链接：https://www.jianshu.com/p/e2fc97b452de來源：简书著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 今天在centos 7 下准备安装keras，准备安装python3 ，而后发生了一些问题，编译安装好后，需要对软连接进行处理。删除旧连接，增加新链接。还有改变yum的配置文件，默认的是python2. 准备使用easy_install 安装命令的时候出现了错误， pkg_resources.VersionConflict: (setuptools 33.1.1 (/usr/local/python3/lib/python3.6/site-packages/setuptools-33.1.1-py3.6.egg), Requirement.parse(&apos;setuptools==0.9.8&apos;)) During handling of the above exception, another exception occurred: ... ... pkg_resources.DistributionNotFound: The &apos;setuptools==0.9.8&apos; distribution was not found and is required by the application 安装好setuptool之后，还是报错 按照上面的作者那个方法，重新编译python，发现还是不行。 换用其他方法，自己觉得应该是pip的连接没有创建，于是后面又将软连接创建了。 但是创建连接之后，pip 可以使用，但是又出现了新的问题： 缺失ssh pip is configured with locations that require TLS/SSL, however the ssl module in Python is not available 于是又用yum安装open-ssh,openssl-devel。 安装好后，又来重新编译python。（应该是必须重新编译） 编译好后，pip install 可以使用 ，安装第三方库。 但是easy_install 还是用不了。 解决方法：网上下一个setuptools工具，解压后进入解压目录输入命令： python setup.py install 之后创建软连接，保证可以在多个地方进行运行 easy_install 命令。]]></content>
+    <content type="text"><![CDATA[参考资料： 作者：风Boy链接：https://www.jianshu.com/p/e2fc97b452de 今天在centos 7 下准备安装keras，准备安装python3 ，而后发生了一些问题，编译安装好后，需要对软连接进行处理。删除旧连接，增加新链接。还有改变yum的配置文件，默认的是python2. 准备使用easy_install 安装命令的时候出现了错误， pkg_resources.VersionConflict: (setuptools 33.1.1 (/usr/local/python3/lib/python3.6/site-packages/setuptools-33.1.1-py3.6.egg), Requirement.parse(&apos;setuptools==0.9.8&apos;)) During handling of the above exception, another exception occurred: ... ... pkg_resources.DistributionNotFound: The &apos;setuptools==0.9.8&apos; distribution was not found and is required by the application 安装好setuptool之后，还是报错 按照上面的作者那个方法，重新编译python，发现还是不行。 换用其他方法，自己觉得应该是pip的连接没有创建，于是后面又将软连接创建了。 但是创建连接之后，pip 可以使用，但是又出现了新的问题： 缺失ssh pip is configured with locations that require TLS/SSL, however the ssl module in Python is not available 于是又用yum安装open-ssh,openssl-devel。 安装好后，又来重新编译python。（应该是必须重新编译） 编译好后，pip install 可以使用 ，安装第三方库。 但是easy_install 还是用不了。 解决方法：网上下一个setuptools工具，解压后进入解压目录输入命令： python setup.py install 之后创建软连接，保证可以在多个地方进行运行 easy_install 命令。]]></content>
       <categories>
         <category>草稿</category>
       </categories>
@@ -324,8 +408,8 @@
         <category>学习</category>
       </categories>
       <tags>
-        <tag>sublime text3</tag>
         <tag>快捷键</tag>
+        <tag>sublime text3</tag>
       </tags>
   </entry>
   <entry>
@@ -509,17 +593,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[《釜山行影评》]]></title>
-    <url>%2F2018%2F01%2F12%2Fmoviecomments1%2F</url>
-    <content type="text"><![CDATA[电影很好看，故事发生在韩国，以丧尸感染人类为背景。 故事开头是发生在白天，一司机在收费站经历消毒之后，回家路上因为要接电话分神，开车撞死了一头鹿，下车之后，但是司机就检查了一下，然后开车走了。之后，等司机离开，死去的鹿，抽搐了两下就站立起来。 男主（一基金公司的经理）的公司似乎是做了什么不可告人的项目，男主让下属（金代理）处理好，虽然说是不知道什么内容，但是写在这里，应该是有意图的。在处理好公事后，询问金代理最近孩子们都喜欢什么。最后，男主回家带回来一份儿童节就已经送过的礼物，但男主并不知道，等女儿指出来，父女俩就很尴尬了。与此同时，男主的女儿想去见远在釜山的母亲，因为明天就是她的生日，而妻子也想见见女儿。而男主为何会和妻子分开，电影中借孩子的口吻反映出来一部分原因：基金公司的经理，在长期的工作习惯中，一直是趋利避害，努力在保证着自己的利益–也就是所谓的自私，自私的性格，让两人分开。 男主的母亲告诉男主昨天发生在学校开家长会的事情，并把录好了的录影机交给男主。在看完视频之后，男主经过反复思考，决定陪女儿去釜山。半夜开车去车站，准备送到女儿后，中午回来继续工作。由此，父女俩踏上了死亡列车（或者说是希望列车）。但是，在列车开动之前，发生了意外，但也是必然吧：一被感染的人上了车。故事就由此正式展开 。 开车后，小萝莉（男主的女儿）发现车站的工作人员被扑倒，被吓了，但是，没有告诉熟睡中的父亲。转而起身去上厕所，遇到了男二号，成庆（貌似姓金）和他妻子。电影中的富贵男，发现了流浪汉长期呆在厕所里，就转告乘务人员，乘务人员就在这里处理这个事情，富贵男告诉小萝莉（秀安）如果不好好学习，以后就会成为像流浪汉一样的人（这时在输出他自己的价值观），而秀安反驳到，妈妈说这种话的人，都不是好人（事实上故事中他的行为证明了这一点）。与此同时，女乘务员发现了被感染的那个女子。在呼叫列车乘务长的过程中，女子彻底被感染，开始撕咬人类。由于都没有防备，被感染的人类快速尸变，并快速蔓延开来，很快，整个车厢里就感染了好几节。男主被电话吵醒，在接完电话后，发现女儿不见了。就起身找女儿，在寻找的过程中，发现了车厢中的动荡，在一探究竟之后，发现了丧尸，转身往回跑的过程，发现女儿，抱起女儿往回跑，但是没想到，回来的路也有了丧尸，在男二（成庆）的掩护之下，成功躲过一劫，但是男主在跑到安全车厢后（也就是没有人被感染的车厢时），立马把门关上，把成庆和他媳妇儿留在外面，幸亏成庆手快，打开了门，进去之后快速锁好了门。男主发现丧尸的智慧低下，不能开门，就提醒成庆，可以把手从门上拿下来。这时成庆开始发飙：你小子跑路的时候，我给你打掩护，结果你先到了，竟然还把门关上了，成庆的媳妇就拉住他，提醒他别说了。而他们发现，丧尸只攻击看到的人，于是，成庆媳妇儿就用报纸和水把透明的车厢门封上了，丧尸的动静马上安静下来。 第一部分的高潮到此结束。 在众人逐渐安定下来的时候，石安告诉女儿，在危险的情况下，自己永远是最重要的，不要给别人让座，要学会保护好自己。 之后，男主接到了母亲打来的电话，母亲问他们的行程情况，并让他（石安）照顾好女儿。呼吸变重，挂掉了电话（推测应该也是被感染了，但是石安也没仔细想）。 众人通过各种手段，了解到国内发生的情形，发言人声明国内只是在发生暴乱，请国民安心，不要随便外出，不要相信各种谣言。但是众人也已经知道事实，人心惶惶。 列车长告诉乘客，将在天安鞍山站停靠，所有人下车。但是，当列车逐渐开到车站的时候，发现，车站已被丧尸占领，列车只好往前开。列车长告诉乘客：下一站停靠大田站，有乘客下车，将会有军队和警车保卫他们离开。石安通过联系公司在大田的人员（闵大尉），了解到，大田将会对他们进行隔离。石安以利诱，让闵大尉安排他们让他们父女俩不被隔离。闵大尉答应了，告诉他们下车出站之后，不要走主广场，走旁边的通道。 第二波高潮来了： 当众人听从列车员的安排，都下车出站时，石安和秀安走的旁边的通道，而众人走的是主通道。秀安问为什么不和众人走在一起时，秀安指责父亲的自私。而那位流浪汉在乘乱逃出，听到石安和闵大尉的谈话之后，跟随他们走的旁边的通道。当众人坐电梯下楼时，发现了尸变了的警察和军队。可是这个时候，已经晚了，众人开始往回逃。流浪汉在看到警察之后，往警察那边跑，却发现警察尸变了，吓得腿软了。石安发现之后，往回跑，提醒女儿快跑，发现尸变了的警察已经跑到了女儿的身边，多亏了男二号成庆和他媳妇，救了孩子一命。众人就开始抵御丧尸的攻击，石安也在此时受到了攻击，多亏流浪汉用大衣遮住丧尸的脸，石安得以逃过一劫。在几个棒球队员、石安和成庆的合力辅助下，大部分没被感染的人已经安全上车了。但是富贵男提醒乘务员让列车长开车，棒球队的啦啦队队长珍熙坚决反对，因为她的朋友们还没上车。乘务员绝对让列车长发车。棒球队员等人觉得拖延时间够了，就转身去赶车，但是车已经发动了，车站上的人已经被感染，咬伤了几个人，最后，经过一番搏斗，几个人里只剩下了三个人：石安、成庆和珍熙的男友（虽说他没表白，但两人的关系在几人上车的时候，就已经表明）。 在之后的联系中，发现：秀安和成庆的媳妇儿，以及故事中的姐妹花中的姐姐，被困在十三节车厢，而他们在第九节车厢，珍熙和大部分人在第十五节车厢。几人商议决定：一起前往十三节，救出几人，然后去十五节车厢和大部分人会合。 第二波高潮结束在角色分配上：成庆自己排在第一，棒球男排在第二，石安殿后。在经历了与一节车厢丧尸的搏斗之后，体力不足。但是他们发现丧尸不能在暗的环境下看见，但能听见。于是石安心生一计:在火车过隧道的时候，用手机吸引丧尸的注意力，乘机跑过去。 于是，三人就以这种方式跑到了第十三节车厢。棒球男联系珍熙，珍熙告诉列车员情况，一群人会过去。但是此时的富贵男从中作梗，或者说说出了其他人的心声：这些人从那边跑过来，谁知道有没有被感染，于是坚决反对。并将珍熙绑住，把门用衣服领带给固定住，不让他们过来，但是此时，被困到第十四节车厢的他们，车门还没被关紧，几个人负责堵住丧尸，一个人负责砸门。为了掩护石安，成庆被丧尸咬了，门终于关上了。但是成庆也被感染了，成庆将怀孕的妻子托付给石安，请求他照顾好，并让他赶紧带着其他人跑向刚砸开的门。其他人都安全地离开了。但是此时，姐妹花中的姐姐却被困住了，在门关上时，被丧尸感染了。其他人一致要求刚进来的人走向第十六节车厢，要求把他们隔离。姐妹花中的妹妹发现因为这群人的原因，自己的姐姐本来可以进来，却被感染了，心里捣鼓了几句，乘其他人在封锁第十五、十六节车厢的车门的时候，打开了第十四、十五节车厢的车门。 第三波高潮结束 而第十五节中，只有两个人没被感染：富贵男和一乘务员，和秀安他们一样，因为躲在厕所而幸免。 列车继续前进。第十六节车厢里只剩了：珍熙（在众人要求石安和棒球男等人离开，被隔离时同棒球男一同离开）、成庆的媳妇儿、棒球男、石安、流浪汉和秀安。整趟列车中只有这些人和列车长没被感染。而此时石安接到了金代理的电话，此次事件可能是由于他们在那个项目中的打捞的油轮上带起来的病毒引起的。金代理表示很后悔，不知道这件事对不对，石安听到消息后，很震惊，之后，听金代理说釜山已经安全了。军队掌管了所有权，已经安全隔离了。金代理挂了电话之后，石安拼命清洗手上的血污。 列车在前进的过程中，到站了，是不打算停的，但是列车长发现了道路被出轨的列车挡住了。列车长决定换车。列车长在启动机车之后，下车提醒其他人（安全的）坐火车头去釜山。此时对面冲过来一辆火车头，撞翻了一辆满载着丧尸的列车，丧尸就快冲出来了。而石安、秀安、流浪汉和成庆媳妇被压在两辆车之间，天无绝人之路，石安发现了一个车轱辘之间的缝隙可以通行，于是先爬出来，看清楚周围没有丧尸之后，让其他人赶紧爬过去。而此时丧尸从被压碎的玻璃窗中跑出来了。流浪汉挡住了他们，让秀安和孕妇爬了出去。 富贵男在出卖乘务员之后，冲出了列车（没关车门），导致身后一大波丧尸跟随。首先遇到了珍熙和棒球男，打开他们关上的车门，没有关，反而把一旁在等男友砸开车窗的珍熙推给了丧尸，棒球男发现之后，就停止了砸窗，转身去救珍熙，而此时富贵男就趁机撞开车窗，跑了出去。珍熙被感染之后，棒球男就一直抱着她，直到自己被感染…… 列车长在遇到富贵男时，就起身与富贵男身后的丧尸搏斗，结果也被感染了。富贵男独自一人趁机爬上了车头。石安、秀安与成庆媳妇看到了行进中的车头，起身追赶。逐渐追上了，而身后的丧尸也追了上来。于是看到了一场类似于打群架的情形：一群人追着几个人。身后的丧尸在扒上了车头之后，由于人数过多，都拖在地上，都开始让列车减速。于是石安就开始用脚踢这些丧尸。渐渐地，丧尸的数量少了，速度提起来了，最后，丧尸就完全被驱逐干净了。 三人在走向驾驶室时，发现了已经被感染的富贵男。富贵男说明想回家，想石安带他回家，但是很快就尸变了，尸变之后，两人开始搏斗。在搏斗的过程中，石安不幸被感染。 石安为了两人的安全，将两人锁在驾驶室，期望成庆的媳妇儿照顾好女儿之后，自己跳下了车头，跳下车头之前，石安是愉悦的：回忆起女儿刚出生时的情形，自己十分高兴。 两人安全到达隔离带，士兵请求上级如何处置未知人士时，上峰命令击毙。而秀安在此时唱起了歌曲：那首她在学校没唱完的歌曲，狙击手没有开枪，故事在一群士兵包围两人的情形中结束。嗯，三千六百多字的故事梗概，内容不是特别详细。 就自己看完这部电影，觉得在故事中，涉及到了一下几部分的内容： 1. 资本的力量的强大，在爆发问题时，资本的力量，可以让有钱人权贵可以暂时免受灾难的侵扰。但是当灾难无法避免和消除时，只能保留一部分的安全，甚至这一部分人的安全也不能保证。资本可以让人享受特权对待。 2. 人性是不可考验的，在故事中，石安对成庆的所作所为，以及众人对石安、成庆等人的隔离、姐妹花妹妹为了和姐姐团聚打开车门，富贵男的自私等等，都是基于人性在面对危难时的个人反映。 人性有好有坏，在面对危难境地时，看站在人们面前的是哪种，是哪种人提出来的，在关键时刻提出来的声音，往往会成为人们共同的心声（人们在有多个选择时，更多的时候，会被周围人感染，大众心理会倾向于一种发声）。 3. 人性的自私，在危难时刻最容易体现。资本是自私的，但资本却是由人掌控的。权贵是自私的，因为他们有钱、权，在正常的时候，他们可以享受更高质量的生活。因此，他们不希望改变，人性中的自私会更充分体现。 故事中也有很多美好： 石安母亲对石安的爱，石安对秀安的爱（父女，母子的亲情）； 成庆对妻子的爱，表面上是妻管严，实际上对妻子的爱，无以言表； 棒球男对珍熙的爱，虽说没有说出口，但是却陪伴到最后； 姐妹花中妹妹对姐姐的依恋，对姐姐生活地同情与爱等等。 在这些人一同前进的时候，我也感受到了人性的美好，人性中的善良。哪怕刚开始，石安对成庆的所作所为，但是毕竟后面石安还是改过来了。当三人前往十三节车厢救人时，棒球男没有勇气对自己昔日的队友下手，哪怕其他两人已经深陷困境，这之间的犹豫，也很美好。 尽管电影中，每当他们深陷困境时，总有好运降临，助他们躲过重重劫难。艺术做到这里也就足够了，虽说有些假。 总之，这部电影真的很好看。这部电影真的很好看。这部电影真的很好看。]]></content>
-      <categories>
-        <category>生活</category>
-      </categories>
-      <tags>
-        <tag>电影</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[数据分析之探索性分析]]></title>
     <url>%2F2018%2F01%2F12%2FEDA%2F</url>
     <content type="text"><![CDATA[探索性数据分析是指对已有数据通过作图、制表、计算特征量等手段探索数据的结构和规律的一种数据分析方法。特别是当我们队这些数据中的信息没有足够的经验，不知道该用何种传统统计方法进行分析是，探索性数据分析就会非常有效。课程内容主要包括描述性统计分析、多维数据的可视化、降维技术、数据模型的可视化。 描述统计分析：以揭示数据分布特性的方式汇总并表达定量数据的方法。 包括数据的频数分析、数据的集中趋势分析、数据的离散程度分析、数据的分布以及一些基本的统计图形。描述性统计是一类统计方法的汇总，作用是提供了一种概括和表征数据的有效且相对简便的方法。通常用图示法来表述，易于看懂，能发现质量特性值的分布状况、趋势走向的一些规律，便于采取措施。用于汇总和表征数据，通常是对数据进一步定量分析的基础，或是对推断性统计方法的有效补充。 常见的描述性统计方法分为三类： 数据的统计量描述，如均值、方差。 图示技术描述，如直方图、散布图、趋势图、排列图、条形图和饼分图 文字语言分析和描述，如统计分析表、分层、因果图、亲和图和流程图。 常见的描述性统计的应用范围：适用于能够收集到定量数据的所有领域，提供有关产品、过程或质量管理体系的信息，也用于管理。 多元数据和多维数据的区别？ 以下方法来自：http://staff.ustc.edu.cn/~zwp/teach/MVA/Lec2_slides.pdf多元数据的可视化方法：1.几何投影方法2.基于像素的可视化技术3.层次可视化技术4.基于图标的可视化结束 以下方法来自：http://www.afenxi.com/post/1643降维技术的方法：缺失值比率低方差滤波高相关滤波随机森林/组合树主成分分析反向特征消除前向特征构造 数据模型的可视化 ——————————未完待续……]]></content>
@@ -545,6 +618,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[《釜山行影评》]]></title>
+    <url>%2F2018%2F01%2F12%2Fmoviecomments1%2F</url>
+    <content type="text"><![CDATA[电影很好看，故事发生在韩国，以丧尸感染人类为背景。 故事开头是发生在白天，一司机在收费站经历消毒之后，回家路上因为要接电话分神，开车撞死了一头鹿，下车之后，但是司机就检查了一下，然后开车走了。之后，等司机离开，死去的鹿，抽搐了两下就站立起来。 男主（一基金公司的经理）的公司似乎是做了什么不可告人的项目，男主让下属（金代理）处理好，虽然说是不知道什么内容，但是写在这里，应该是有意图的。在处理好公事后，询问金代理最近孩子们都喜欢什么。最后，男主回家带回来一份儿童节就已经送过的礼物，但男主并不知道，等女儿指出来，父女俩就很尴尬了。与此同时，男主的女儿想去见远在釜山的母亲，因为明天就是她的生日，而妻子也想见见女儿。而男主为何会和妻子分开，电影中借孩子的口吻反映出来一部分原因：基金公司的经理，在长期的工作习惯中，一直是趋利避害，努力在保证着自己的利益–也就是所谓的自私，自私的性格，让两人分开。 男主的母亲告诉男主昨天发生在学校开家长会的事情，并把录好了的录影机交给男主。在看完视频之后，男主经过反复思考，决定陪女儿去釜山。半夜开车去车站，准备送到女儿后，中午回来继续工作。由此，父女俩踏上了死亡列车（或者说是希望列车）。但是，在列车开动之前，发生了意外，但也是必然吧：一被感染的人上了车。故事就由此正式展开 。 开车后，小萝莉（男主的女儿）发现车站的工作人员被扑倒，被吓了，但是，没有告诉熟睡中的父亲。转而起身去上厕所，遇到了男二号，成庆（貌似姓金）和他妻子。电影中的富贵男，发现了流浪汉长期呆在厕所里，就转告乘务人员，乘务人员就在这里处理这个事情，富贵男告诉小萝莉（秀安）如果不好好学习，以后就会成为像流浪汉一样的人（这时在输出他自己的价值观），而秀安反驳到，妈妈说这种话的人，都不是好人（事实上故事中他的行为证明了这一点）。与此同时，女乘务员发现了被感染的那个女子。在呼叫列车乘务长的过程中，女子彻底被感染，开始撕咬人类。由于都没有防备，被感染的人类快速尸变，并快速蔓延开来，很快，整个车厢里就感染了好几节。男主被电话吵醒，在接完电话后，发现女儿不见了。就起身找女儿，在寻找的过程中，发现了车厢中的动荡，在一探究竟之后，发现了丧尸，转身往回跑的过程，发现女儿，抱起女儿往回跑，但是没想到，回来的路也有了丧尸，在男二（成庆）的掩护之下，成功躲过一劫，但是男主在跑到安全车厢后（也就是没有人被感染的车厢时），立马把门关上，把成庆和他媳妇儿留在外面，幸亏成庆手快，打开了门，进去之后快速锁好了门。男主发现丧尸的智慧低下，不能开门，就提醒成庆，可以把手从门上拿下来。这时成庆开始发飙：你小子跑路的时候，我给你打掩护，结果你先到了，竟然还把门关上了，成庆的媳妇就拉住他，提醒他别说了。而他们发现，丧尸只攻击看到的人，于是，成庆媳妇儿就用报纸和水把透明的车厢门封上了，丧尸的动静马上安静下来。 第一部分的高潮到此结束。 在众人逐渐安定下来的时候，石安告诉女儿，在危险的情况下，自己永远是最重要的，不要给别人让座，要学会保护好自己。 之后，男主接到了母亲打来的电话，母亲问他们的行程情况，并让他（石安）照顾好女儿。呼吸变重，挂掉了电话（推测应该也是被感染了，但是石安也没仔细想）。 众人通过各种手段，了解到国内发生的情形，发言人声明国内只是在发生暴乱，请国民安心，不要随便外出，不要相信各种谣言。但是众人也已经知道事实，人心惶惶。 列车长告诉乘客，将在天安鞍山站停靠，所有人下车。但是，当列车逐渐开到车站的时候，发现，车站已被丧尸占领，列车只好往前开。列车长告诉乘客：下一站停靠大田站，有乘客下车，将会有军队和警车保卫他们离开。石安通过联系公司在大田的人员（闵大尉），了解到，大田将会对他们进行隔离。石安以利诱，让闵大尉安排他们让他们父女俩不被隔离。闵大尉答应了，告诉他们下车出站之后，不要走主广场，走旁边的通道。 第二波高潮来了： 当众人听从列车员的安排，都下车出站时，石安和秀安走的旁边的通道，而众人走的是主通道。秀安问为什么不和众人走在一起时，秀安指责父亲的自私。而那位流浪汉在乘乱逃出，听到石安和闵大尉的谈话之后，跟随他们走的旁边的通道。当众人坐电梯下楼时，发现了尸变了的警察和军队。可是这个时候，已经晚了，众人开始往回逃。流浪汉在看到警察之后，往警察那边跑，却发现警察尸变了，吓得腿软了。石安发现之后，往回跑，提醒女儿快跑，发现尸变了的警察已经跑到了女儿的身边，多亏了男二号成庆和他媳妇，救了孩子一命。众人就开始抵御丧尸的攻击，石安也在此时受到了攻击，多亏流浪汉用大衣遮住丧尸的脸，石安得以逃过一劫。在几个棒球队员、石安和成庆的合力辅助下，大部分没被感染的人已经安全上车了。但是富贵男提醒乘务员让列车长开车，棒球队的啦啦队队长珍熙坚决反对，因为她的朋友们还没上车。乘务员绝对让列车长发车。棒球队员等人觉得拖延时间够了，就转身去赶车，但是车已经发动了，车站上的人已经被感染，咬伤了几个人，最后，经过一番搏斗，几个人里只剩下了三个人：石安、成庆和珍熙的男友（虽说他没表白，但两人的关系在几人上车的时候，就已经表明）。 在之后的联系中，发现：秀安和成庆的媳妇儿，以及故事中的姐妹花中的姐姐，被困在十三节车厢，而他们在第九节车厢，珍熙和大部分人在第十五节车厢。几人商议决定：一起前往十三节，救出几人，然后去十五节车厢和大部分人会合。 第二波高潮结束在角色分配上：成庆自己排在第一，棒球男排在第二，石安殿后。在经历了与一节车厢丧尸的搏斗之后，体力不足。但是他们发现丧尸不能在暗的环境下看见，但能听见。于是石安心生一计:在火车过隧道的时候，用手机吸引丧尸的注意力，乘机跑过去。 于是，三人就以这种方式跑到了第十三节车厢。棒球男联系珍熙，珍熙告诉列车员情况，一群人会过去。但是此时的富贵男从中作梗，或者说说出了其他人的心声：这些人从那边跑过来，谁知道有没有被感染，于是坚决反对。并将珍熙绑住，把门用衣服领带给固定住，不让他们过来，但是此时，被困到第十四节车厢的他们，车门还没被关紧，几个人负责堵住丧尸，一个人负责砸门。为了掩护石安，成庆被丧尸咬了，门终于关上了。但是成庆也被感染了，成庆将怀孕的妻子托付给石安，请求他照顾好，并让他赶紧带着其他人跑向刚砸开的门。其他人都安全地离开了。但是此时，姐妹花中的姐姐却被困住了，在门关上时，被丧尸感染了。其他人一致要求刚进来的人走向第十六节车厢，要求把他们隔离。姐妹花中的妹妹发现因为这群人的原因，自己的姐姐本来可以进来，却被感染了，心里捣鼓了几句，乘其他人在封锁第十五、十六节车厢的车门的时候，打开了第十四、十五节车厢的车门。 第三波高潮结束 而第十五节中，只有两个人没被感染：富贵男和一乘务员，和秀安他们一样，因为躲在厕所而幸免。 列车继续前进。第十六节车厢里只剩了：珍熙（在众人要求石安和棒球男等人离开，被隔离时同棒球男一同离开）、成庆的媳妇儿、棒球男、石安、流浪汉和秀安。整趟列车中只有这些人和列车长没被感染。而此时石安接到了金代理的电话，此次事件可能是由于他们在那个项目中的打捞的油轮上带起来的病毒引起的。金代理表示很后悔，不知道这件事对不对，石安听到消息后，很震惊，之后，听金代理说釜山已经安全了。军队掌管了所有权，已经安全隔离了。金代理挂了电话之后，石安拼命清洗手上的血污。 列车在前进的过程中，到站了，是不打算停的，但是列车长发现了道路被出轨的列车挡住了。列车长决定换车。列车长在启动机车之后，下车提醒其他人（安全的）坐火车头去釜山。此时对面冲过来一辆火车头，撞翻了一辆满载着丧尸的列车，丧尸就快冲出来了。而石安、秀安、流浪汉和成庆媳妇被压在两辆车之间，天无绝人之路，石安发现了一个车轱辘之间的缝隙可以通行，于是先爬出来，看清楚周围没有丧尸之后，让其他人赶紧爬过去。而此时丧尸从被压碎的玻璃窗中跑出来了。流浪汉挡住了他们，让秀安和孕妇爬了出去。 富贵男在出卖乘务员之后，冲出了列车（没关车门），导致身后一大波丧尸跟随。首先遇到了珍熙和棒球男，打开他们关上的车门，没有关，反而把一旁在等男友砸开车窗的珍熙推给了丧尸，棒球男发现之后，就停止了砸窗，转身去救珍熙，而此时富贵男就趁机撞开车窗，跑了出去。珍熙被感染之后，棒球男就一直抱着她，直到自己被感染…… 列车长在遇到富贵男时，就起身与富贵男身后的丧尸搏斗，结果也被感染了。富贵男独自一人趁机爬上了车头。石安、秀安与成庆媳妇看到了行进中的车头，起身追赶。逐渐追上了，而身后的丧尸也追了上来。于是看到了一场类似于打群架的情形：一群人追着几个人。身后的丧尸在扒上了车头之后，由于人数过多，都拖在地上，都开始让列车减速。于是石安就开始用脚踢这些丧尸。渐渐地，丧尸的数量少了，速度提起来了，最后，丧尸就完全被驱逐干净了。 三人在走向驾驶室时，发现了已经被感染的富贵男。富贵男说明想回家，想石安带他回家，但是很快就尸变了，尸变之后，两人开始搏斗。在搏斗的过程中，石安不幸被感染。 石安为了两人的安全，将两人锁在驾驶室，期望成庆的媳妇儿照顾好女儿之后，自己跳下了车头，跳下车头之前，石安是愉悦的：回忆起女儿刚出生时的情形，自己十分高兴。 两人安全到达隔离带，士兵请求上级如何处置未知人士时，上峰命令击毙。而秀安在此时唱起了歌曲：那首她在学校没唱完的歌曲，狙击手没有开枪，故事在一群士兵包围两人的情形中结束。嗯，三千六百多字的故事梗概，内容不是特别详细。 就自己看完这部电影，觉得在故事中，涉及到了一下几部分的内容： 1. 资本的力量的强大，在爆发问题时，资本的力量，可以让有钱人权贵可以暂时免受灾难的侵扰。但是当灾难无法避免和消除时，只能保留一部分的安全，甚至这一部分人的安全也不能保证。资本可以让人享受特权对待。 2. 人性是不可考验的，在故事中，石安对成庆的所作所为，以及众人对石安、成庆等人的隔离、姐妹花妹妹为了和姐姐团聚打开车门，富贵男的自私等等，都是基于人性在面对危难时的个人反映。 人性有好有坏，在面对危难境地时，看站在人们面前的是哪种，是哪种人提出来的，在关键时刻提出来的声音，往往会成为人们共同的心声（人们在有多个选择时，更多的时候，会被周围人感染，大众心理会倾向于一种发声）。 3. 人性的自私，在危难时刻最容易体现。资本是自私的，但资本却是由人掌控的。权贵是自私的，因为他们有钱、权，在正常的时候，他们可以享受更高质量的生活。因此，他们不希望改变，人性中的自私会更充分体现。 故事中也有很多美好： 石安母亲对石安的爱，石安对秀安的爱（父女，母子的亲情）； 成庆对妻子的爱，表面上是妻管严，实际上对妻子的爱，无以言表； 棒球男对珍熙的爱，虽说没有说出口，但是却陪伴到最后； 姐妹花中妹妹对姐姐的依恋，对姐姐生活地同情与爱等等。 在这些人一同前进的时候，我也感受到了人性的美好，人性中的善良。哪怕刚开始，石安对成庆的所作所为，但是毕竟后面石安还是改过来了。当三人前往十三节车厢救人时，棒球男没有勇气对自己昔日的队友下手，哪怕其他两人已经深陷困境，这之间的犹豫，也很美好。 尽管电影中，每当他们深陷困境时，总有好运降临，助他们躲过重重劫难。艺术做到这里也就足够了，虽说有些假。 总之，这部电影真的很好看。这部电影真的很好看。这部电影真的很好看。]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>电影</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[计算机网络初探——HTTP协议]]></title>
     <url>%2F2018%2F01%2F12%2FHTTP%2F</url>
     <content type="text"><![CDATA[HTTP协议构建于TCP/IP协议之上，默认端口号是80。 HTTP协议是无连接无状态的。 HTTP协议是以ASCII码传输，建立在TCP/IP协议上的规范。 HTTP报文（请求和响应） 请求报文 报文分为三部分：状态行、请求头、消息主体。 HTTP定义了四种客户端与服务器端交互的方法： GET/POST/PUT/DELETE,对应着四种操作：查、增、改、删。 1.GET用于信息获取，有URL长度的限制2.POST可能修改服务器上的资源请求，大小没有限制，但是出于安全考虑。服务器在实现时会做一定的限制。 响应报文 报文也由三部分组成：状态行、响应头、响应正文 常见的响应状态码： 200 客户端请求成功，服务端发送正常数据301 客户端请求失败，请求被永久重定向302 客户端请求失败，请求被暂时重定向304 文件未修改，可以直接使用缓存文件400 请求错误，服务器无法解析401 请求未经授权， 这个状态代码必须和WWW-Authenticate报头域一起使用403 服务器收到请求，但是拒绝提供服务404 服务器收到请求，但是服务器上没有资源500 服务器发生不可预知的错误，导致无法完成客户端的请求503 服务器当前不能处理客户端的请求，一段时间后，可能会恢复正常]]></content>
@@ -564,8 +648,20 @@
       </categories>
       <tags>
         <tag>机器学习</tag>
-        <tag>聚类分析</tag>
         <tag>概览</tag>
+        <tag>聚类分析</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[聚类分析之K-means算法]]></title>
+    <url>%2F2018%2F01%2F12%2Fclusteragl1%2F</url>
+    <content type="text"><![CDATA[聚类分析是根据数据之间的自相似自动分类的。 分类的结果是，类内大相似，类间不相似或小相似。 聚类的分类方法有： 1.划分 2.层次 3.基于密度 4.基于网络 5.基于模型 划分聚类：K-Means算法将数据集划分为K个簇，每隔簇内部的样本都相似。主要步骤： 1.确定K个簇。 2.计算距离并进行归类 3.重新定K。 当出现单一条件不同、标准不同时，需要对数据进行归一化处理。 常见的有：(x-min)/（max-min）但是K-means由于其本身选取的是均值作为？ 有一定的局限性： 1.不适用于非数值型数据，如分类数据，序列数据，且容易受极值的影响 2.K-means算法是对初始值敏感的，如果起初随意定初始值很可能无法迭代到本该的最优点。 3.K-means算法倾向于聚类后的半径相近，倾向于密度均匀的聚类 4.无法聚类出有型的点（一般只能用于球形） 鉴于K-means算法的缺点，可以使用，K-mediods，K-modes,K-prototype，二分 K-means算法进行替代 层次聚类分为凝聚法和分裂法。]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>聚类分析</tag>
       </tags>
   </entry>
   <entry>
@@ -579,18 +675,6 @@
         <tag>Python</tag>
         <tag>爬虫</tag>
         <tag>总结</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[聚类分析之K-means算法]]></title>
-    <url>%2F2018%2F01%2F12%2Fclusteragl1%2F</url>
-    <content type="text"><![CDATA[聚类分析是根据数据之间的自相似自动分类的。 分类的结果是，类内大相似，类间不相似或小相似。 聚类的分类方法有： 1.划分 2.层次 3.基于密度 4.基于网络 5.基于模型 划分聚类：K-Means算法将数据集划分为K个簇，每隔簇内部的样本都相似。主要步骤： 1.确定K个簇。 2.计算距离并进行归类 3.重新定K。 当出现单一条件不同、标准不同时，需要对数据进行归一化处理。 常见的有：(x-min)/（max-min）但是K-means由于其本身选取的是均值作为？ 有一定的局限性： 1.不适用于非数值型数据，如分类数据，序列数据，且容易受极值的影响 2.K-means算法是对初始值敏感的，如果起初随意定初始值很可能无法迭代到本该的最优点。 3.K-means算法倾向于聚类后的半径相近，倾向于密度均匀的聚类 4.无法聚类出有型的点（一般只能用于球形） 鉴于K-means算法的缺点，可以使用，K-mediods，K-modes,K-prototype，二分 K-means算法进行替代 层次聚类分为凝聚法和分裂法。]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>机器学习</tag>
-        <tag>聚类分析</tag>
       </tags>
   </entry>
   <entry>
@@ -655,9 +739,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[基础算法--小白专场的时间复杂度与性能比较]]></title>
-    <url>%2F2018%2F01%2F12%2Falgofbase%2F</url>
-    <content type="text"><![CDATA[排序快速排序（quick sort）稳定：否 时间复杂度 最优：O(nlog(n)) 最差：O(n^2) 平均：O(nlog(n)) 合并排序（merge sort ）合并排序是一种分治算法。这个算法不断地将一个数组分为两部分，分别对左子数组和右子数组排序，然后将两个数组合并为新的有序数组。 稳定：是 时间复杂度： 最优：O(nlog(n)) 最差：O(nlog(n)) 平均：O(nlog(n)) 桶排序（bucket sort ）桶排序是一种将元素分到一定数量的桶中的排序算法。每个桶内部采用其他算法排序，或递归调用桶排序。 时间复杂度 最优：Ω(n + k) 最差: O(n^2) 平均：Θ(n + k) 基数排序（base sort ）基数排序类似于桶排序，将元素分发到一定数目的桶中。不同的是，基数排序在分割元素之后没有让每个桶单独进行排序，而是直接做了合并操作。 时间复杂度 最优：Ω(nk) 最差: O(nk) 平均：Θ(nk) 拓扑排序拓扑排序是有向图节点的线性排序。对于任何一条节点 u 到节点 v 的边，u 的下标先于 v。 时间复杂度：O(|V| + |E|) 图算法深度优先搜索深度优先搜索是一种先遍历子节点而不回溯的图遍历算法。 时间复杂度：O(|V| + |E|) 广度优先搜索广度优先搜索是一种先遍历邻居节点而不是子节点的图遍历算法。 时间复杂度：O(|V| + |E|) Dijkstra算法Dijkstra 算法是一种在有向图中查找单源最短路径的算法。 时间复杂度：O(|V|^2) Bellman-Ford算法Bellman-Ford 是一种在带权图中查找单一源点到其他节点最短路径的算法。虽然时间复杂度大于 Dijkstra 算法，但它可以处理包含了负值边的图。 时间复杂度： 最优：O(|E|) 最差：O(|V||E|) Floyd-Warshall 算法Floyd-Warshall 算法是一种在无环带权图中寻找任意节点间最短路径的算法。该算法执行一次即可找到所有节点间的最短路径（路径权重和）。 时间复杂度： 最优：O(|V|^3) 最差：O(|V|^3) 平均：O(|V|^3) 最小生成树算法最小生成树算法是一种在无向带权图中查找最小生成树的贪心算法。换言之，最小生成树算法能在一个图中找到连接所有节点的边的最小子集。 时间复杂度：O(|V|^2) Kruskal 算法Kruskal 算法也是一个计算最小生成树的贪心算法，但在 Kruskal 算法中，图不一定是连通的。 时间复杂度：O(|E|log|V|) 贪心算法贪心算法总是做出在当前看来最优的选择，并希望最后整体也是最优的。使用贪心算法可以解决的问题必须具有如下两种特性： 最优子结构 问题的最优解包含其子问题的最优解。 贪心选择 每一步的贪心选择可以得到问题的整体最优解。 实例-硬币选择问题给定期望的硬币总和为 V 分，以及 n 种硬币，即类型是 i 的硬币共有 coinValue[i] 分，i的范围是 [0…n – 1]。假设每种类型的硬币都有无限个，求解为使和为 V 分最少需要多少硬币？硬币：便士（1美分），镍（5美分），一角（10美分），四分之一（25美分）。假设总和 V 为41,。我们可以使用贪心算法查找小于或者等于 V 的面值最大的硬币，然后从 V 中减掉该硬币的值，如此重复进行。V = 41 | 使用了0个硬币V = 16 | 使用了1个硬币(41 – 25 = 16)V = 6 | 使用了2个硬币(16 – 10 = 6)V = 1 | 使用了3个硬币(6 – 5 = 1)V = 0 | 使用了4个硬币(1 – 1 = 0) 位运算 位运算即在比特级别进行操作的技术。使用位运算技术可以带来更快的运行速度与更小的内存使用。测试第 k 位：s &amp; (1 &lt;&lt; k);设置第k位：s |= (1 &lt;&lt; k);关闭第k位：s &amp;= ~(1 &lt;&lt; k);切换第k位：s ^= (1 &lt;&lt; k);乘以2n：s &lt;&lt; n;除以2n：s &gt;&gt; n;交集：s &amp; t;并集：s | t;减法：s &amp; ~t;提取最小非0位：s &amp; (-s);提取最小0位：~s &amp; (s + 1);交换值：x ^= y; y ^= x; x ^= y; 运行时分析 大 O 表示大 O 表示用于表示某个算法的上界，用于描述最坏的情况。 小 O 表示小 O 表示用于描述某个算法的渐进上界，二者逐渐趋近。 大 Ω 表示大 Ω 表示用于描述某个算法的渐进下界。 小 ω 表示小 ω 表示用于描述某个算法的渐进下界，二者逐渐趋近。 Theta Θ 表示Theta Θ 表示用于描述某个算法的确界，包括最小上界和最大下界。]]></content>
+    <title><![CDATA[基础数据结构]]></title>
+    <url>%2F2018%2F01%2F12%2Fdatastr%2F</url>
+    <content type="text"><![CDATA[链表链表是一种由节点（Node）组成的线性数据集合，每个节点通过指针指向下一个节点。它是一种由节点组成，并能用于表示序列的数据结构。 单链表：每个节点仅指向下一个节点，最后一个节点指向空（null）。 双链表：每个节点有两个指针p,n 。 p指向前一个节点，n指向下一个节点；最后一个节点指向空。 循环链表：每个节点指向下一个节点，最后一个节点指向第一个节点。 时间复杂度： 索引：O(n) 查找：O(n) 插入：O(1) 删除：O(1) 栈栈是一个元素集合，支持两个基本操作：push用于将元素压入栈，pop用于删除栈顶元素。 它是一种后进先出的数据结构（Last In First Out, LIFO）。 时间复杂度 索引：O(n) 查找：O(n) 插入：O(1) 删除：O(1) 队列队列是一个元素集合，支持两种基本操作：enqueue 用于添加一个元素到队列，dequeue 用于删除队列中的一个元素。 是一种先进先出的数据结构（First In First Out, FIFO）。 时间复杂度 索引：O(n) 查找：O(n) 插入：O(1) 删除：O(1) 树树是无向、联通的无环图。 二叉树二叉树是一个树形数据结构，每个节点最多可以有两个子节点，称为左子节点和右子节点。 满二叉树（Full Tree）：二叉树中的每个节点有 0 或者 2 个子节点。 完美二叉树（Perfect Binary）：二叉树中的每个节点有两个子节点，并且所有的叶子节点的深度是一样的。 完全二叉树：二叉树中除最后一层外其他各层的节点数均达到最大值，最后一层的节点都连续集中在最左边。 二叉查找树：二叉查找树（BST）是一种二叉树。其任何节点的值都大于等于左子树中的值，小于等于右子树中的值。 时间复杂度 索引：O(log(n)) 查找：O(log(n)) 插入：O(log(n)) 删除：O(log(n)) 字典树字典树，又称为基数树或前缀树，是一种用于存储键值为字符串的动态集合或关联数组的查找树。树中的节点并不直接存储关联键值，而是该节点在树中的位置决定了其关联键值。一个节点的所有子节点都有相同的前缀，根节点则是空字符串。 树状数组树状数组，又称为二进制索引树（Binary Indexed Tree，BIT），其概念上是树，但以数组实现。数组中的下标代表树中的节点，每个节点的父节点或子节点的下标可以通过位运算获得。数组中的每个元素都包含了预计算的区间值之和，在整个树更新的过程中，这些计算的值也同样会被更新。 时间复杂度 区间求和：O(log(n)) 更新：O(log(n)) 线段树线段树是用于存储区间和线段的树形数据结构。它允许查找一个节点在若干条线段中出现的次数。 时间复杂度 区间查找：O(log(n)) 更新：O(log(n)) 堆堆是一种基于树的满足某些特性的数据结构：整个堆中的所有父子节点的键值都满足相同的排序条件。堆分为最大堆和最小堆。在最大堆中，父节点的键值永远大于等于所有子节点的键值，根节点的键值是最大的。最小堆中，父节点的键值永远小于等于所有子节点的键值，根节点的键值是最小的。 时间复杂度 索引：O(log(n)) 查找：O(log(n)) 插入：O(log(n)) 删除：O(log(n)) 删除最大值/最小值：O(1) hash table哈希用于将任意长度的数据映射到固定长度的数据。哈希函数的返回值被称为哈希值、哈希码或者哈希。如果不同的主键得到相同的哈希值，则发生了冲突。 Hash Map：hash map 是一个存储键值间关系的数据结构。HashMap 通过哈希函数将键转化为桶或者槽中的下标，从而便于指定值的查找。 冲突解决链地址法（Separate Chaining）：在链地址法中，每个桶（bucket）是相互独立的，每一个索引对应一个元素列表。处理HashMap 的时间就是查找桶的时间（常量）与遍历列表元素的时间之和。 开放地址法（Open Addressing）：在开放地址方法中，当插入新值时，会判断该值对应的哈希桶是否存在，如果存在则根据某种算法依次选择下一个可能的位置，直到找到一个未被占用的地址。开放地址即某个元素的位置并不永远由其哈希值决定。 ###图图是G =（V，E）的有序对，其包括顶点或节点的集合 V 以及边或弧的集合E，其中E包括了两个来自V的元素（即边与两个顶点相关联 ，并且该关联为这两个顶点的无序对）。 无向图：图的邻接矩阵是对称的，因此如果存在节点 u 到节点 v 的边，那节点 v 到节点 u 的边也一定存在。 有向图：图的邻接矩阵不是对称的。因此如果存在节点 u 到节点 v 的边并不意味着一定存在节点 v 到节点 u 的边。]]></content>
       <categories>
         <category>学习</category>
       </categories>
@@ -666,9 +750,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[基础数据结构]]></title>
-    <url>%2F2018%2F01%2F12%2Fdatastr%2F</url>
-    <content type="text"><![CDATA[链表链表是一种由节点（Node）组成的线性数据集合，每个节点通过指针指向下一个节点。它是一种由节点组成，并能用于表示序列的数据结构。 单链表：每个节点仅指向下一个节点，最后一个节点指向空（null）。 双链表：每个节点有两个指针p,n 。 p指向前一个节点，n指向下一个节点；最后一个节点指向空。 循环链表：每个节点指向下一个节点，最后一个节点指向第一个节点。 时间复杂度： 索引：O(n) 查找：O(n) 插入：O(1) 删除：O(1) 栈栈是一个元素集合，支持两个基本操作：push用于将元素压入栈，pop用于删除栈顶元素。 它是一种后进先出的数据结构（Last In First Out, LIFO）。 时间复杂度 索引：O(n) 查找：O(n) 插入：O(1) 删除：O(1) 队列队列是一个元素集合，支持两种基本操作：enqueue 用于添加一个元素到队列，dequeue 用于删除队列中的一个元素。 是一种先进先出的数据结构（First In First Out, FIFO）。 时间复杂度 索引：O(n) 查找：O(n) 插入：O(1) 删除：O(1) 树树是无向、联通的无环图。 二叉树二叉树是一个树形数据结构，每个节点最多可以有两个子节点，称为左子节点和右子节点。 满二叉树（Full Tree）：二叉树中的每个节点有 0 或者 2 个子节点。 完美二叉树（Perfect Binary）：二叉树中的每个节点有两个子节点，并且所有的叶子节点的深度是一样的。 完全二叉树：二叉树中除最后一层外其他各层的节点数均达到最大值，最后一层的节点都连续集中在最左边。 二叉查找树：二叉查找树（BST）是一种二叉树。其任何节点的值都大于等于左子树中的值，小于等于右子树中的值。 时间复杂度 索引：O(log(n)) 查找：O(log(n)) 插入：O(log(n)) 删除：O(log(n)) 字典树字典树，又称为基数树或前缀树，是一种用于存储键值为字符串的动态集合或关联数组的查找树。树中的节点并不直接存储关联键值，而是该节点在树中的位置决定了其关联键值。一个节点的所有子节点都有相同的前缀，根节点则是空字符串。 树状数组树状数组，又称为二进制索引树（Binary Indexed Tree，BIT），其概念上是树，但以数组实现。数组中的下标代表树中的节点，每个节点的父节点或子节点的下标可以通过位运算获得。数组中的每个元素都包含了预计算的区间值之和，在整个树更新的过程中，这些计算的值也同样会被更新。 时间复杂度 区间求和：O(log(n)) 更新：O(log(n)) 线段树线段树是用于存储区间和线段的树形数据结构。它允许查找一个节点在若干条线段中出现的次数。 时间复杂度 区间查找：O(log(n)) 更新：O(log(n)) 堆堆是一种基于树的满足某些特性的数据结构：整个堆中的所有父子节点的键值都满足相同的排序条件。堆分为最大堆和最小堆。在最大堆中，父节点的键值永远大于等于所有子节点的键值，根节点的键值是最大的。最小堆中，父节点的键值永远小于等于所有子节点的键值，根节点的键值是最小的。 时间复杂度 索引：O(log(n)) 查找：O(log(n)) 插入：O(log(n)) 删除：O(log(n)) 删除最大值/最小值：O(1) hash table哈希用于将任意长度的数据映射到固定长度的数据。哈希函数的返回值被称为哈希值、哈希码或者哈希。如果不同的主键得到相同的哈希值，则发生了冲突。 Hash Map：hash map 是一个存储键值间关系的数据结构。HashMap 通过哈希函数将键转化为桶或者槽中的下标，从而便于指定值的查找。 冲突解决链地址法（Separate Chaining）：在链地址法中，每个桶（bucket）是相互独立的，每一个索引对应一个元素列表。处理HashMap 的时间就是查找桶的时间（常量）与遍历列表元素的时间之和。 开放地址法（Open Addressing）：在开放地址方法中，当插入新值时，会判断该值对应的哈希桶是否存在，如果存在则根据某种算法依次选择下一个可能的位置，直到找到一个未被占用的地址。开放地址即某个元素的位置并不永远由其哈希值决定。 ###图图是G =（V，E）的有序对，其包括顶点或节点的集合 V 以及边或弧的集合E，其中E包括了两个来自V的元素（即边与两个顶点相关联 ，并且该关联为这两个顶点的无序对）。 无向图：图的邻接矩阵是对称的，因此如果存在节点 u 到节点 v 的边，那节点 v 到节点 u 的边也一定存在。 有向图：图的邻接矩阵不是对称的。因此如果存在节点 u 到节点 v 的边并不意味着一定存在节点 v 到节点 u 的边。]]></content>
+    <title><![CDATA[基础算法--小白专场的时间复杂度与性能比较]]></title>
+    <url>%2F2018%2F01%2F12%2Falgofbase%2F</url>
+    <content type="text"><![CDATA[排序快速排序（quick sort）稳定：否 时间复杂度 最优：O(nlog(n)) 最差：O(n^2) 平均：O(nlog(n)) 合并排序（merge sort ）合并排序是一种分治算法。这个算法不断地将一个数组分为两部分，分别对左子数组和右子数组排序，然后将两个数组合并为新的有序数组。 稳定：是 时间复杂度： 最优：O(nlog(n)) 最差：O(nlog(n)) 平均：O(nlog(n)) 桶排序（bucket sort ）桶排序是一种将元素分到一定数量的桶中的排序算法。每个桶内部采用其他算法排序，或递归调用桶排序。 时间复杂度 最优：Ω(n + k) 最差: O(n^2) 平均：Θ(n + k) 基数排序（base sort ）基数排序类似于桶排序，将元素分发到一定数目的桶中。不同的是，基数排序在分割元素之后没有让每个桶单独进行排序，而是直接做了合并操作。 时间复杂度 最优：Ω(nk) 最差: O(nk) 平均：Θ(nk) 拓扑排序拓扑排序是有向图节点的线性排序。对于任何一条节点 u 到节点 v 的边，u 的下标先于 v。 时间复杂度：O(|V| + |E|) 图算法深度优先搜索深度优先搜索是一种先遍历子节点而不回溯的图遍历算法。 时间复杂度：O(|V| + |E|) 广度优先搜索广度优先搜索是一种先遍历邻居节点而不是子节点的图遍历算法。 时间复杂度：O(|V| + |E|) Dijkstra算法Dijkstra 算法是一种在有向图中查找单源最短路径的算法。 时间复杂度：O(|V|^2) Bellman-Ford算法Bellman-Ford 是一种在带权图中查找单一源点到其他节点最短路径的算法。虽然时间复杂度大于 Dijkstra 算法，但它可以处理包含了负值边的图。 时间复杂度： 最优：O(|E|) 最差：O(|V||E|) Floyd-Warshall 算法Floyd-Warshall 算法是一种在无环带权图中寻找任意节点间最短路径的算法。该算法执行一次即可找到所有节点间的最短路径（路径权重和）。 时间复杂度： 最优：O(|V|^3) 最差：O(|V|^3) 平均：O(|V|^3) 最小生成树算法最小生成树算法是一种在无向带权图中查找最小生成树的贪心算法。换言之，最小生成树算法能在一个图中找到连接所有节点的边的最小子集。 时间复杂度：O(|V|^2) Kruskal 算法Kruskal 算法也是一个计算最小生成树的贪心算法，但在 Kruskal 算法中，图不一定是连通的。 时间复杂度：O(|E|log|V|) 贪心算法贪心算法总是做出在当前看来最优的选择，并希望最后整体也是最优的。使用贪心算法可以解决的问题必须具有如下两种特性： 最优子结构 问题的最优解包含其子问题的最优解。 贪心选择 每一步的贪心选择可以得到问题的整体最优解。 实例-硬币选择问题给定期望的硬币总和为 V 分，以及 n 种硬币，即类型是 i 的硬币共有 coinValue[i] 分，i的范围是 [0…n – 1]。假设每种类型的硬币都有无限个，求解为使和为 V 分最少需要多少硬币？硬币：便士（1美分），镍（5美分），一角（10美分），四分之一（25美分）。假设总和 V 为41,。我们可以使用贪心算法查找小于或者等于 V 的面值最大的硬币，然后从 V 中减掉该硬币的值，如此重复进行。V = 41 | 使用了0个硬币V = 16 | 使用了1个硬币(41 – 25 = 16)V = 6 | 使用了2个硬币(16 – 10 = 6)V = 1 | 使用了3个硬币(6 – 5 = 1)V = 0 | 使用了4个硬币(1 – 1 = 0) 位运算 位运算即在比特级别进行操作的技术。使用位运算技术可以带来更快的运行速度与更小的内存使用。测试第 k 位：s &amp; (1 &lt;&lt; k);设置第k位：s |= (1 &lt;&lt; k);关闭第k位：s &amp;= ~(1 &lt;&lt; k);切换第k位：s ^= (1 &lt;&lt; k);乘以2n：s &lt;&lt; n;除以2n：s &gt;&gt; n;交集：s &amp; t;并集：s | t;减法：s &amp; ~t;提取最小非0位：s &amp; (-s);提取最小0位：~s &amp; (s + 1);交换值：x ^= y; y ^= x; x ^= y; 运行时分析 大 O 表示大 O 表示用于表示某个算法的上界，用于描述最坏的情况。 小 O 表示小 O 表示用于描述某个算法的渐进上界，二者逐渐趋近。 大 Ω 表示大 Ω 表示用于描述某个算法的渐进下界。 小 ω 表示小 ω 表示用于描述某个算法的渐进下界，二者逐渐趋近。 Theta Θ 表示Theta Θ 表示用于描述某个算法的确界，包括最小上界和最大下界。]]></content>
       <categories>
         <category>学习</category>
       </categories>
