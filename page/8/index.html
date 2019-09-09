@@ -7,6 +7,7 @@
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
+<script type="text/javascript" src="/js/src/show.js"></script>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
@@ -14,8 +15,19 @@
 
 
 
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
 
 
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
 
 
 
@@ -53,11 +65,13 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
 
 
   <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
@@ -96,7 +110,7 @@
     root: '/',
     scheme: 'Muse',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":true},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -141,13 +155,13 @@
     
   
 
-  <div class="container sidebar-position-left 
+  <div class="container sidebar-position-right 
   page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta custom-logo">
     
 
     <div class="custom-logo-site-title">
@@ -158,7 +172,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">坚守本心，方为长久</p>
+        <h1 class="site-subtitle" itemprop="description">坚守本心，方为长久</h1>
       
   </div>
 
@@ -184,6 +198,16 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -217,16 +241,6 @@
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
 
       
         <li class="menu-item menu-item-search">
@@ -246,22 +260,26 @@
   
     <div class="site-search">
       
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
     <span class="popup-btn-close">
       <i class="fa fa-times-circle"></i>
     </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
-    </div>
   </div>
-  <div id="local-search-result"></div>
-</div>
+
 
 
 
@@ -294,7 +312,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/11/searchonscience/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/16/surprise_predict/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jackence">
@@ -311,9 +329,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/11/searchonscience/" itemprop="url">科学上网</a></h1>
+                <a class="post-title-link" href="/2018/01/16/surprise_predict/" itemprop="url">surprise框架之使用预测算法（翻译）</a></h2>
         
 
         <div class="post-meta">
@@ -325,8 +343,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-11T20:21:30+08:00">
-                2018-01-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-16T16:52:52+08:00">
+                2018-01-16
               </time>
             
 
@@ -341,7 +359,391 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-02-13T13:04:36+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-02-13T12:51:41+08:00">
+                2018-02-13
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/翻译草稿/" itemprop="url" rel="index">
+                    <span itemprop="name">翻译草稿</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          surprise框架提供了一堆内建的算法。所有算法都来自AlgoBase基类，其中实现了一些关键方法（例如预测，拟合和测试）。 可用预测算法的列表和详细信息可以在prediction_algorithms包文档中找到。
+每个算法都是surprise的全局命名空间的一部分，所以你仅仅只需从surpri
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/16/surprise_predict/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/16/surprise_getstatted/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jackence">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="坚守本心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/16/surprise_getstatted/" itemprop="url">surprise框架之起步（翻译）</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-16T15:58:39+08:00">
+                2018-01-16
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-02-13T12:51:42+08:00">
+                2018-02-13
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/翻译草稿/" itemprop="url" rel="index">
+                    <span itemprop="name">翻译草稿</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          基本使用自动进行交叉验证surprise 有一系列的内建的算法和数据集供用户来进行尝试。在最简单的形式中，它的模型仅需几行代码就可以运行一次交叉验证的流程：代码如下：
+12345678910111213from surprise import SVDfrom surprise import Data
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/16/surprise_getstatted/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/14/mind0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jackence">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="坚守本心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/14/mind0/" itemprop="url">关于农村秸秆燃烧地想法</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-14T16:52:35+08:00">
+                2018-01-14
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-02-13T12:37:48+08:00">
                 2018-02-13
               </time>
             
@@ -381,6 +783,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
 
           
 
@@ -391,7 +824,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
@@ -399,12 +832,14 @@
       
         
           
-          经过实际使用的体验，国内的搜索引擎–百度和搜狗的搜索体验不佳。因此，尝试使用国外的google搜索，经过试用，体验效果比较良好。
-以下内容参考自：http://coderschool.cn/1853.html科学上网-轻松访问Google(持续更新-解决Google打不开)—————————————
+          昨天晚上遭遇了一场持久的农村燃烧秸秆的浓烟，昨天晚上估计燃烧了一晚上。
+昨天先是把窗户打开，想着浓烟尽快散去，但是发现似乎浓烟一直都在，然后就等着，把窗户关上了。之后再把窗户打开通风，发现浓烟还在…… 
+直至今早，房间里似乎依然还是有浓烟的味道，感觉很是不爽。
+早上起来感觉鼻腔疼痛，喉咙不舒服，有些
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/01/11/searchonscience/#more" rel="contents">
+            <a class="btn" href="/2018/01/14/mind0/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -455,7 +890,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/11/searchbook/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/13/manageinfo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jackence">
@@ -472,9 +907,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/11/searchbook/" itemprop="url">搜书网站概览</a></h1>
+                <a class="post-title-link" href="/2018/01/13/manageinfo/" itemprop="url">《如何有效整理信息》读书笔记</a></h2>
         
 
         <div class="post-meta">
@@ -486,8 +921,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-11T20:21:30+08:00">
-                2018-01-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-13T17:11:59+08:00">
+                2018-01-13
               </time>
             
 
@@ -502,7 +937,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-02-13T12:59:47+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-02-13T12:35:59+08:00">
                 2018-02-13
               </time>
             
@@ -542,6 +977,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
 
           
 
@@ -552,7 +1018,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
@@ -560,15 +1026,16 @@
       
         
           
-          按照使用方式和突破限制的方式分类如下：
-不需要登录注册http://manybooks.net/          英文
-http://www.allitebooks.com/ IT类型英文书籍，可以下载，可以在线阅读
-http://libgen.io/      可以使用，不用注册
-https:/
+          在日常生活中，我经常发现需要手中有一个笔记本，来记录自己的感悟和发现，也需要整理自己的生活。
+自己用过的的工具有印象笔记、有道云笔记、OneNote、wuderlist等工具，但是发现似乎都没有手写笔记本来得高效。
+作者推荐使用笔记本时要使用三个原则：
+一元化，即所有想记录地一切都记录其中
+
+时序化
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/01/11/searchbook/#more" rel="contents">
+            <a class="btn" href="/2018/01/13/manageinfo/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -619,7 +1086,7 @@ https:/
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/11/jingjin4.2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/kmpagl/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jackence">
@@ -636,9 +1103,9 @@ https:/
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/11/jingjin4.2/" itemprop="url">《精进》精彩观点提炼</a></h1>
+                <a class="post-title-link" href="/2018/01/12/kmpagl/" itemprop="url">KMP算法概览</a></h2>
         
 
         <div class="post-meta">
@@ -650,8 +1117,8 @@ https:/
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-11T20:21:30+08:00">
-                2018-01-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-12T16:35:02+08:00">
+                2018-01-12
               </time>
             
 
@@ -666,7 +1133,7 @@ https:/
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-02-13T12:49:21+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-02-13T13:05:26+08:00">
                 2018-02-13
               </time>
             
@@ -685,8 +1152,8 @@ https:/
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/读书/" itemprop="url" rel="index">
-                    <span itemprop="name">读书</span>
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
                   </a>
                 </span>
 
@@ -706,6 +1173,37 @@ https:/
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
 
           
 
@@ -716,7 +1214,7 @@ https:/
     
     
     
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
@@ -724,16 +1222,12 @@ https:/
       
         
           
-          用平衡观点看待过去、现在和未来，用郑重的态度过好当下的生活，并连接过去和未来。
-明确工作隔阂生活的界限，用未来的视角工作，用享乐主义视角生活。
-使用时间之尺，审视时间的长期价值，尽可能删减非必要事件。
-让远期未来更具体，为近期未来增加挑战。
-把握做事的节奏，区分“求快”的事件和“求慢”事件
-提升时间
+          在用匹配字符串(A)对目标字符串(B)进行匹配的过程中，会出现多次遍历的情况，当A越长，要进行匹配的次数越多，且一旦匹配失效，其时间成本在急剧上升。在这里，结合其他前辈的经验，理解一下大名鼎鼎的KMP算法的思路吧。
+解决思路：    在进行匹配之前，需要计算匹配字符串的部分匹配值。    1.查找目
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/01/11/jingjin4.2/#more" rel="contents">
+            <a class="btn" href="/2018/01/12/kmpagl/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -784,7 +1278,7 @@ https:/
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/11/jingjin4.1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/EDA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jackence">
@@ -801,9 +1295,9 @@ https:/
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/11/jingjin4.1/" itemprop="url">《精进》4.1</a></h1>
+                <a class="post-title-link" href="/2018/01/12/EDA/" itemprop="url">数据分析之探索性分析</a></h2>
         
 
         <div class="post-meta">
@@ -815,8 +1309,8 @@ https:/
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-11T20:21:30+08:00">
-                2018-01-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-12T16:35:02+08:00">
+                2018-01-12
               </time>
             
 
@@ -831,7 +1325,7 @@ https:/
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-02-13T12:49:21+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-02-13T13:00:37+08:00">
                 2018-02-13
               </time>
             
@@ -850,8 +1344,8 @@ https:/
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/读书/" itemprop="url" rel="index">
-                    <span itemprop="name">读书</span>
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
                   </a>
                 </span>
 
@@ -871,6 +1365,37 @@ https:/
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
 
           
 
@@ -881,7 +1406,7 @@ https:/
     
     
     
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
@@ -889,18 +1414,12 @@ https:/
       
         
           
-          1.主动构建知识
-提问在我们的学习的过程中是至关重要的。如果我们在平时学习的时候不提问，学习的流程应该是这样的：
-订立计划
-
-实施学习
-
-回顾和整理，对笔记进行整理，或者画出一张思维导图，将知识结构进行整理。
-其实，很多人在做到上面的三点就很了不起了。我们在学习这些知识的过程中，只是扮演着搬运工的角
+          探索性数据分析是指对已有数据通过作图、制表、计算特征量等手段探索数据的结构和规律的一种数据分析方法。特别是当我们队这些数据中的信息没有足够的经验，不知道该用何种传统统计方法进行分析是，探索性数据分析就会非常有效。课程内容主要包括描述性统计分析、多维数据的可视化、降维技术、数据模型的可视化。
+描述统计
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/01/11/jingjin4.1/#more" rel="contents">
+            <a class="btn" href="/2018/01/12/EDA/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -951,7 +1470,7 @@ https:/
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/11/jingjin3.4/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/HTTP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jackence">
@@ -968,9 +1487,9 @@ https:/
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/11/jingjin3.4/" itemprop="url">《精进》3.4</a></h1>
+                <a class="post-title-link" href="/2018/01/12/HTTP/" itemprop="url">计算机网络初探——HTTP协议</a></h2>
         
 
         <div class="post-meta">
@@ -982,8 +1501,8 @@ https:/
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-11T20:21:30+08:00">
-                2018-01-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-12T16:35:02+08:00">
+                2018-01-12
               </time>
             
 
@@ -998,7 +1517,7 @@ https:/
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-02-13T12:49:22+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-02-13T12:57:06+08:00">
                 2018-02-13
               </time>
             
@@ -1017,8 +1536,8 @@ https:/
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/读书/" itemprop="url" rel="index">
-                    <span itemprop="name">读书</span>
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
                   </a>
                 </span>
 
@@ -1038,6 +1557,37 @@ https:/
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1048,7 +1598,7 @@ https:/
     
     
     
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
@@ -1056,12 +1606,18 @@ https:/
       
         
           
-          作者在10年前在一家互联网公司做实习生时，一位导师教了两样东西让他印象最深刻：每住到一家宾馆，首先看门背后的楼层结构图，记住安全出口和逃生通道的位置；每做完一件事情，就要做一下回顾总结。
-在从小到大的学习中，我们被告知的所有知识来源于课本，前人已经帮我们探索了大多数的知识，我们只需要认真读书，理解吸
+          HTTP协议构建于TCP/IP协议之上，默认端口号是80。
+HTTP协议是无连接无状态的。
+HTTP协议是以ASCII码传输，建立在TCP/IP协议上的规范。
+HTTP报文（请求和响应）
+请求报文
+报文分为三部分：状态行、请求头、消息主体。
+HTTP定义了四种客户端与服务器端交互的方法：
+GET/P
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/01/11/jingjin3.4/#more" rel="contents">
+            <a class="btn" href="/2018/01/12/HTTP/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1112,7 +1668,7 @@ https:/
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/11/jingjin3.3/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/moviecomments1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jackence">
@@ -1129,9 +1685,9 @@ https:/
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/11/jingjin3.3/" itemprop="url">《精进》3.3</a></h1>
+                <a class="post-title-link" href="/2018/01/12/moviecomments1/" itemprop="url">《釜山行影评》</a></h2>
         
 
         <div class="post-meta">
@@ -1143,8 +1699,8 @@ https:/
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-11T20:21:30+08:00">
-                2018-01-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-12T16:35:02+08:00">
+                2018-01-12
               </time>
             
 
@@ -1159,7 +1715,7 @@ https:/
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-02-13T12:49:22+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-02-13T12:56:25+08:00">
                 2018-02-13
               </time>
             
@@ -1178,8 +1734,8 @@ https:/
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/读书/" itemprop="url" rel="index">
-                    <span itemprop="name">读书</span>
+                  <a href="/categories/生活/" itemprop="url" rel="index">
+                    <span itemprop="name">生活</span>
                   </a>
                 </span>
 
@@ -1199,6 +1755,37 @@ https:/
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1209,7 +1796,7 @@ https:/
     
     
     
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
@@ -1217,12 +1804,13 @@ https:/
       
         
           
-          很多人认为，同时做多件事情是很有效率的，其实，从认知心理学的观点来看，人的“多线程工作”是不可能的。
-因为在任何瞬间，人只能有一个“逐一焦点”，这个注意焦点牵引了人的认知加工资源。有时候我们认为同时关注了两个东西，其实是发生了注意力转移的结果。当然也有例外：就是我们有些熟练的技能，可以自动化、不加注
+          电影很好看，故事发生在韩国，以丧尸感染人类为背景。
+故事开头是发生在白天，一司机在收费站经历消毒之后，回家路上因为要接电话分神，开车撞死了一头鹿，下车之后，但是司机就检查了一下，然后开车走了。之后，等司机离开，死去的鹿，抽搐了两下就站立起来。
+男主（一基金公司的经理）的公司似乎是做了什么不可告人的项
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/01/11/jingjin3.3/#more" rel="contents">
+            <a class="btn" href="/2018/01/12/moviecomments1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1273,7 +1861,7 @@ https:/
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/11/jingjin3.2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/crawl0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jackence">
@@ -1290,9 +1878,9 @@ https:/
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/11/jingjin3.2/" itemprop="url">《精进》3.2</a></h1>
+                <a class="post-title-link" href="/2018/01/12/crawl0/" itemprop="url">动手写爬虫概览</a></h2>
         
 
         <div class="post-meta">
@@ -1304,8 +1892,8 @@ https:/
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-11T20:21:30+08:00">
-                2018-01-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-12T16:35:02+08:00">
+                2018-01-12
               </time>
             
 
@@ -1320,7 +1908,203 @@ https:/
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-02-13T12:49:22+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-12T16:03:00+08:00">
+                2018-01-12
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          编写的爬虫代码的主要涉及的过程：
+获取网页数据–提取数据–数据的清洗和处理–数据存储。
+以下是编写爬虫程序所需要安装的库。在这里，默认大家在安装Python之时已经安装好pip这个工具。
+1.获取网页数据阶段，可能会用到的库：requests,urllib2
+进入控制台界面：
+pip install
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/12/crawl0/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/clusteragl1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jackence">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="坚守本心">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/12/clusteragl1/" itemprop="url">聚类分析之K-means算法</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-12T16:35:02+08:00">
+                2018-01-12
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-02-13T13:03:33+08:00">
                 2018-02-13
               </time>
             
@@ -1339,8 +2123,8 @@ https:/
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/读书/" itemprop="url" rel="index">
-                    <span itemprop="name">读书</span>
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
                   </a>
                 </span>
 
@@ -1360,491 +2144,36 @@ https:/
           
 
           
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          目前互联网创业最流行的方法之一是“精益创业”，而其中有个关键的概念“最小化可行产品”。
-它体现的是“构建-测量-学习”的循环式的过程。类似在平时我们希望上交一份比较优秀的答卷的时候，我们总是先建立一个最基本的版本，而后再根据市场需求来不断地修改，进行修正。
-精益创业的价值在于，在动态演化的市场里，找
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/11/jingjin3.2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/11/jingjin3.1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jackence">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="坚守本心">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+            <div class="post-wordcount">
+              
                 
-                <a class="post-title-link" href="/2018/01/11/jingjin3.1/" itemprop="url">《精进》3.1</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-11T20:21:30+08:00">
-                2018-01-11
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-02-16T08:13:18+08:00">
-                2018-02-16
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/读书/" itemprop="url" rel="index">
-                    <span itemprop="name">读书</span>
-                  </a>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
                 </span>
-
                 
+                  <span class="post-meta-item-text">字数统计&#58;</span>
                 
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          一件看上去繁难的事，只要开始做了，就会变得越来越容易。
-我们内心的懒惰、恐惧、侥幸附带各种各样的借口，在本该有的行动之前树起了重重无形的阻碍。这些心理的障碍往往超过了这些行动本身的难度。
-纵使一件事情真的很难，你就迈出第一步试试，有何不可？
-这个自己深有体会:自己平时在寝室不想收拾，后面每次到检查卫
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/11/jingjin3.1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/11/jingjin2.4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jackence">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="坚守本心">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/11/jingjin2.4/" itemprop="url">《精进》2.4</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-11T20:21:30+08:00">
-                2018-01-11
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-02-13T12:49:29+08:00">
-                2018-02-13
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/读书/" itemprop="url" rel="index">
-                    <span itemprop="name">读书</span>
-                  </a>
+                <span title="字数统计">
+                  
                 </span>
-
-                
-                
               
-            </span>
-          
 
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          人生是持续而反复的构造一次选择到底有多重要？我不知道。但是在整个人生中，选择其实是可以被修正、被重塑的。自己对自己现在的情形有些体会，发现有很多选择的情景很相近，很类似。
-而当自己的性格没有太大的变动的时候，自己的选择很相似，最后的结果好像也差不多。对此，自己觉得如果需要改变事情的结果，选择的答案来
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/11/jingjin2.4/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/11/jingjin2.3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jackence">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="坚守本心">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/11/jingjin2.3/" itemprop="url">《精进》2.3</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-divider">|</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-11T20:21:30+08:00">
-                2018-01-11
-              </time>
-            
 
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
               
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-02-13T12:49:30+08:00">
-                2018-02-13
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/读书/" itemprop="url" rel="index">
-                    <span itemprop="name">读书</span>
-                  </a>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
                 </span>
-
                 
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
+                <span title="阅读时长">
+                  
+                </span>
               
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
+            </div>
           
 
           
@@ -1856,7 +2185,7 @@ https:/
     
     
     
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
@@ -1864,13 +2193,19 @@ https:/
       
         
           
-          社会学家其格蒙特·鲍曼在《流动的时代》中提到，现代社会和过去社会的一个不同点是，过去人们常常因为选择极有限而痛苦；而今，人们可能更苦恼于选择过多（选择困难症来了）。
-如何才能选择到最适合自己并确信这个选择是正确的呢？作者提到了“精细化思考”的方法。
-“精细化思考”：利用适当的工具，对各个选项从不同角
+          聚类分析是根据数据之间的自相似自动分类的。
+分类的结果是，类内大相似，类间不相似或小相似。
+聚类的分类方法有：
+1.划分
+2.层次
+3.基于密度
+4.基于网络
+5.基于模型
+划分聚类：K-Means算法将数据集划分为K个簇，每隔簇内部的样本都相似。主要步骤：    1.确定K个簇。    2.计算距
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/01/11/jingjin2.3/#more" rel="contents">
+            <a class="btn" href="/2018/01/12/clusteragl1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1912,7 +2247,7 @@ https:/
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1937,6 +2272,8 @@ https:/
 
   <aside id="sidebar" class="sidebar">
     
+      <div id="sidebar-dimmer"></div>
+    
     <div class="sidebar-inner">
 
       
@@ -1948,7 +2285,7 @@ https:/
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">Jackence</p>
-              <p class="site-description motion-element" itemprop="description">一路以来，总需要坚持着。</p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           <nav class="site-state motion-element">
@@ -1958,7 +2295,7 @@ https:/
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">87</span>
+                  <span class="site-state-item-count">106</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1969,7 +2306,7 @@ https:/
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1980,7 +2317,7 @@ https:/
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-count">70</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2006,6 +2343,11 @@ https:/
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -2023,6 +2365,15 @@ https:/
   </span>
   <span class="author" itemprop="copyrightHolder">Jackence</span>
 
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count"></span>
   
 </div>
 
@@ -2052,11 +2403,6 @@ https:/
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -2506,6 +2852,19 @@ https:/
 
 
 
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
 
   
 
@@ -2517,16 +2876,32 @@ https:/
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 
   
-
-
-
-<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
-
-
 
 </body>
 </html>
