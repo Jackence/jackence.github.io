@@ -104,32 +104,8 @@
         <category>草稿</category>
       </categories>
       <tags>
-        <tag>odoo</tag>
+        <tag>Odoo</tag>
         <tag>源码阅读</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[odoo与RPC]]></title>
-    <url>%2F2019%2F09%2F09%2Fodoo_rpc%2F</url>
-    <content type="text"></content>
-      <categories>
-        <category>草稿</category>
-      </categories>
-      <tags>
-        <tag>总结</tag>
-        <tag>odoo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[odoo中的XML与xpath]]></title>
-    <url>%2F2019%2F09%2F09%2Fodoo_xpath%2F</url>
-    <content type="text"><![CDATA[在之前，做爬虫的相关事情的时候，就已经接触到xpath的使用，只不过没有大规模的使用，只是浅尝辄止。 关于xpath，了解背景知识，请看这里。 关于xml，其实和HTML结构相似，类似于DOM，关于DOM和XML的相关知识，请看这里。 在odoo开发中，经常会用到odoo中元素的选择。 xpath，本质是一种对xml的选择，具体来说就是需要确定xml的节点，即XML的节点位置。 xml和HTML结构很相似，都有元素节点，节点都会有标签元素(tag)，标签又会有一些属性。节点之间的关系有： 1. 父子 2. 祖先和后代 3. 兄弟姐妹节点 接下来的部分，将讲述xml的语法。 选取节点利用路径表达式，获取节点，主要的表达式有： nodename 选取nodename的所有子节点/ 从根节点取// 从匹配选择的当前节点选文档的节点. 选取当前节点.. 选区当前节点的父节点@ 选取属性 谓语谓语用来查找某个特定的节点或者包含某个指定的值的节点。主要的谓语有：[1][last()][last()-1][position() &lt; 3][@attr=value] 选取属性为value的元素[@attr] 选取含attr的元素 通配符 选择任意元素的节点@* 选择任意属性的节点node() 匹配任意类型的节点 多路径多路径中间用 | 分隔符来隔开。 参考文献w3scholl]]></content>
-      <categories>
-        <category>草稿</category>
-      </categories>
-      <tags>
-        <tag>odoo</tag>
-        <tag>XML，xpath</tag>
       </tags>
   </entry>
   <entry>
@@ -140,8 +116,32 @@
         <category>草稿</category>
       </categories>
       <tags>
-        <tag>odoo</tag>
+        <tag>Odoo</tag>
         <tag>XML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[odoo中的XML与xpath]]></title>
+    <url>%2F2019%2F09%2F09%2Fodoo_xpath%2F</url>
+    <content type="text"><![CDATA[在之前，做爬虫的相关事情的时候，就已经接触到xpath的使用，只不过没有大规模的使用，只是浅尝辄止。 关于xpath，了解背景知识，请看这里。 关于xml，其实和HTML结构相似，类似于DOM，关于DOM和XML的相关知识，请看这里。 在odoo开发中，经常会用到odoo中元素的选择。 xpath，本质是一种对xml的选择，具体来说就是需要确定xml的节点，即XML的节点位置。 xml和HTML结构很相似，都有元素节点，节点都会有标签元素(tag)，标签又会有一些属性。节点之间的关系有： 1. 父子 2. 祖先和后代 3. 兄弟姐妹节点 接下来的部分，将讲述xml的语法。 选取节点利用路径表达式，获取节点，主要的表达式有： nodename 选取nodename的所有子节点/ 从根节点取// 从匹配选择的当前节点选文档的节点. 选取当前节点.. 选区当前节点的父节点@ 选取属性 谓语谓语用来查找某个特定的节点或者包含某个指定的值的节点。主要的谓语有：[1][last()][last()-1][position() &lt; 3][@attr=value] 选取属性为value的元素[@attr] 选取含attr的元素 通配符 选择任意元素的节点@* 选择任意属性的节点node() 匹配任意类型的节点 多路径多路径中间用 | 分隔符来隔开。 参考文献w3scholl]]></content>
+      <categories>
+        <category>草稿</category>
+      </categories>
+      <tags>
+        <tag>Odoo</tag>
+        <tag>XML，xpath</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[odoo与RPC]]></title>
+    <url>%2F2019%2F09%2F09%2Fodoo_rpc%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>草稿</category>
+      </categories>
+      <tags>
+        <tag>Odoo</tag>
+        <tag>总结</tag>
       </tags>
   </entry>
   <entry>
@@ -152,66 +152,8 @@
         <category>学习</category>
       </categories>
       <tags>
-        <tag>odoo</tag>
+        <tag>Odoo</tag>
         <tag>邮件发送</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[odoo中的JS]]></title>
-    <url>%2F2019%2F09%2F09%2Fodoo_js%2F</url>
-    <content type="text"><![CDATA[odoo 作为一个系统，就避免不了前后端交互的过程。 本部分，就简要讲解一下odoo中的JS。 odoo 中的JS ,主要都是继承写的。实际上，在odoo 中，前后端封装的十分优美，后端人员基本无需手动去改动JS代码，如果需要，可能只是简单的修改，例如报表查看的功能？ odoo 中的JS：关键词： Classextend()include()_super()Require.js JS 中没有Class 的，odoo中使用封装手段，将数据结构，封装成类。 extend : 扩充原类的方法，不改变原类的方法，仅仅新增 include ： 引入原类的方法，并对方法进行修改 _super() ： 类似于面向对象中的调用父类的方法 require 123456789odoo.define(&apos;tree_budget_sheet_line_quick_query&apos;, function (require) &#123; &quot;use strict&quot;; var core = require(&apos;web.core&apos;); var data = require(&apos;web.data&apos;); var ListView = require(&apos;web.ListView&apos;); var Model = require(&apos;web.DataModel&apos;); var QWeb = core.qweb; 从这段代码可以看出，odoo 中需要调用require进行引入数据，引入其他类]]></content>
-      <categories>
-        <category>草稿</category>
-      </categories>
-      <tags>
-        <tag>odoo</tag>
-        <tag>JS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[odoo特殊的功能简要介绍]]></title>
-    <url>%2F2019%2F09%2F09%2Fodoo_special%2F</url>
-    <content type="text"><![CDATA[由于实际业务场景需要，odoo 的开发者，结合实际情况，编写了几个相关API，用于实际场景的控制。 onchange:当在页面的前端，字段数据发生变化时，对字段的控制。 场景应用：在界面上，当用户编辑数据字段时，如果该字段通过onchange属性进行控制了，那么当用户修改数据后，将鼠标光标移动到其他地方(非用户当前编辑的字段的位置)，那么就会触发onchange方法 onchange 的应用实例: 给字段的赋值或清空数据 对字段的进行校验，提供提示 compute:当页面的数据发生变化时，（不论前端还是后端），自己计算相关字段的数据。 场景应用：当字段是由计算而来的，字段较为灵活。可以一次性计算多值。 应用实例: 余额 = 月初金额 - 本月支出金额 + 本月收入金额 余额字段定义时，使用计算字段是极为合适的。 注意：计算字段默认不存储在数据库中，同时，该字段的计算过程，需要依赖其它字段进行计算，当界面上出现了它计算依赖的字段，并且进行保存的时候，就会自动计算。该字段如果需要被搜索，有两种方式可以实现：1.需要存储起来，加上store= True ，2.加上固定的属性 _search。 constraint: 对数据的限制，在保存时进行校验 应用场景：当需要对数据进行限制，但是仅仅通过sql_constraint 还有onchange，compute等其他方法无法实现的情况下，使用它。 应用实例： 当某个字段需要在某种其他字段为某种类型的情况下，它会有字段的范围的限制，如：员工为famale属性时，才会有3.8妇女假期。]]></content>
-      <categories>
-        <category>工作</category>
-      </categories>
-      <tags>
-        <tag>odoo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Python设置左闭右开的原则]]></title>
-    <url>%2F2019%2F09%2F09%2Fpython_problem0%2F</url>
-    <content type="text"><![CDATA[以下资料参考自：http://blog.csdn.net/HDOJ_lin/article/details/78831868，https://www.zhihu.com/question/24883243和https://stackoverflow.com/questions/9963401/why-are-standard-iterator-ranges-begin-end-instead-of-begin-end———————————————————————————————————————————— 两个原因：1.因为在计算机硬件中迭代器对比较大小的运算很麻烦，有些时候两个地址都无法比较大小。但是比较是否相等就会简单的多。2.人们日常使用，认为半开半闭的区间最好，且从左往右的顺序更容易读。]]></content>
-      <categories>
-        <category>草稿</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[odoo视图]]></title>
-    <url>%2F2019%2F09%2F09%2Fodoo_views%2F</url>
-    <content type="text"><![CDATA[这部分主要介绍的是odoo中视图的总结 odoo视图中的 在常见的开发过程中，主要用到的视图有：tree,search ,form,kanban,日历等。 在这个过程中，一般tree会自动去寻找search视图，如何去找，自己还没研究透，在fileds_view_get中，可以对视图进行操作。 tree视图，有时又叫树视图或者列表视图，是展示一条数据的最简单的方法。tree视图也可以在设置属性的时候，调整增加这部分的数据 form视图，表单视图。通常在创建的时候，可以创建form视图。]]></content>
-      <categories>
-        <category>草稿</category>
-      </categories>
-      <tags>
-        <tag>odoo</tag>
-        <tag>views</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[odoo中的XML（续）]]></title>
-    <url>%2F2019%2F09%2F09%2Fodoo_lxml%2F</url>
-    <content type="text"><![CDATA[odoo中，使用的lxml的库来控制xml的加载的。lxml 是一款定位XML元素位置的工具，并可以利用它对XML进行修改 关于lxml，简单了解一下，什么是[Python中的lxml]以及它的用途(https://lxml.de/)。 本部分主要简单介绍一下lxml的用法。 lxml主要几部分： 位置定位主要通过xpath ,对一段XML进行定位元素，获取元素的位置。通过标签，属性，内容等来对XML进行限制。 操作谓语 参考文献lxml官方文档]]></content>
-      <categories>
-        <category>草稿</category>
-      </categories>
-      <tags>
-        <tag>odoo</tag>
-        <tag>XML</tag>
       </tags>
   </entry>
   <entry>
@@ -222,8 +164,55 @@
         <category>草稿</category>
       </categories>
       <tags>
-        <tag>odoo</tag>
+        <tag>Odoo</tag>
         <tag>权限</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[odoo中的XML（续）]]></title>
+    <url>%2F2019%2F09%2F09%2Fodoo_lxml%2F</url>
+    <content type="text"><![CDATA[odoo中，使用的lxml的库来控制xml的加载的。lxml 是一款定位XML元素位置的工具，并可以利用它对XML进行修改 关于lxml，简单了解一下，什么是[Python中的lxml]以及它的用途(https://lxml.de/)。 本部分主要简单介绍一下lxml的用法。 lxml主要几部分： 位置定位主要通过xpath ,对一段XML进行定位元素，获取元素的位置。通过标签，属性，内容等来对XML进行限制。 操作谓语 参考文献lxml官方文档]]></content>
+      <categories>
+        <category>草稿</category>
+      </categories>
+      <tags>
+        <tag>Odoo</tag>
+        <tag>XML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[odoo中的JS]]></title>
+    <url>%2F2019%2F09%2F09%2Fodoo_js%2F</url>
+    <content type="text"><![CDATA[odoo 作为一个系统，就避免不了前后端交互的过程。 本部分，就简要讲解一下odoo中的JS。 odoo 中的JS ,主要都是继承写的。实际上，在odoo 中，前后端封装的十分优美，后端人员基本无需手动去改动JS代码，如果需要，可能只是简单的修改，例如报表查看的功能？ odoo 中的JS：关键词： Classextend()include()_super()Require.js JS 中没有Class 的，odoo中使用封装手段，将数据结构，封装成类。 extend : 扩充原类的方法，不改变原类的方法，仅仅新增 include ： 引入原类的方法，并对方法进行修改 _super() ： 类似于面向对象中的调用父类的方法 require 123456789odoo.define(&apos;tree_budget_sheet_line_quick_query&apos;, function (require) &#123; &quot;use strict&quot;; var core = require(&apos;web.core&apos;); var data = require(&apos;web.data&apos;); var ListView = require(&apos;web.ListView&apos;); var Model = require(&apos;web.DataModel&apos;); var QWeb = core.qweb; 从这段代码可以看出，odoo 中需要调用require进行引入数据，引入其他类]]></content>
+      <categories>
+        <category>草稿</category>
+      </categories>
+      <tags>
+        <tag>Odoo</tag>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[odoo视图]]></title>
+    <url>%2F2019%2F09%2F09%2Fodoo_views%2F</url>
+    <content type="text"><![CDATA[这部分主要介绍的是odoo中视图的总结 odoo视图中的 在常见的开发过程中，主要用到的视图有：tree,search ,form,kanban,日历等。 在这个过程中，一般tree会自动去寻找search视图，如何去找，自己还没研究透，在fileds_view_get中，可以对视图进行操作。 tree视图，有时又叫树视图或者列表视图，是展示一条数据的最简单的方法。tree视图也可以在设置属性的时候，调整增加这部分的数据 form视图，表单视图。通常在创建的时候，可以创建form视图。]]></content>
+      <categories>
+        <category>草稿</category>
+      </categories>
+      <tags>
+        <tag>Odoo</tag>
+        <tag>views</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[odoo特殊的功能简要介绍]]></title>
+    <url>%2F2019%2F09%2F09%2Fodoo_special%2F</url>
+    <content type="text"><![CDATA[由于实际业务场景需要，odoo 的开发者，结合实际情况，编写了几个相关API，用于实际场景的控制。 onchange:当在页面的前端，字段数据发生变化时，对字段的控制。 场景应用：在界面上，当用户编辑数据字段时，如果该字段通过onchange属性进行控制了，那么当用户修改数据后，将鼠标光标移动到其他地方(非用户当前编辑的字段的位置)，那么就会触发onchange方法 onchange 的应用实例: 给字段的赋值或清空数据 对字段的进行校验，提供提示 compute:当页面的数据发生变化时，（不论前端还是后端），自己计算相关字段的数据。 场景应用：当字段是由计算而来的，字段较为灵活。可以一次性计算多值。 应用实例: 余额 = 月初金额 - 本月支出金额 + 本月收入金额 余额字段定义时，使用计算字段是极为合适的。 注意：计算字段默认不存储在数据库中，同时，该字段的计算过程，需要依赖其它字段进行计算，当界面上出现了它计算依赖的字段，并且进行保存的时候，就会自动计算。该字段如果需要被搜索，有两种方式可以实现：1.需要存储起来，加上store= True ，2.加上固定的属性 _search。 constraint: 对数据的限制，在保存时进行校验 应用场景：当需要对数据进行限制，但是仅仅通过sql_constraint 还有onchange，compute等其他方法无法实现的情况下，使用它。 应用实例： 当某个字段需要在某种其他字段为某种类型的情况下，它会有字段的范围的限制，如：员工为famale属性时，才会有3.8妇女假期。]]></content>
+      <categories>
+        <category>工作</category>
+      </categories>
+      <tags>
+        <tag>Odoo</tag>
       </tags>
   </entry>
   <entry>
@@ -239,33 +228,90 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Django学习之增删改查的API]]></title>
-    <url>%2F2019%2F09%2F09%2FDjango_learn_3%2F</url>
-    <content type="text"><![CDATA[Django中的API 之增删改查这节讲述Django 的API中关于增删改查，并结合Odoo的内容进行比较。 总所周知，在以数据驱动的业务逻辑中，主要的业务就是对数据表的增删改查。本节，将介绍一下Django中的关于数据库的操作的API学习。 增 (共有4种）create 返回值 为Object 具体创建的对象 save 返回值 为Object 具体创建的对象 x = Object() x.attr = &apos;aaa&apos; x.attr1 = &apos;bbb&apos; 返回值 为Object 具体创建的对象 Object.objects.get_or_create(**args) # Object 是模型名 args 是模型中字段的参数值 返回值为(对象，True/False) 删delete 返回值为空 改update 查Object.objects.all() # Object 是模型名 返回的是记录集 Object.objects.get() # Object 是模型名 返回的是记录集 Object.objects.count() # 查询数量 返回的是记录集数量 Object.objects.exists() # 查询是否存在 返回的True/False 数据过滤： Object.objects.filter(**value) # Object 是模型名 value 表示的是过滤的条件，filer筛选符合条件的数据 Object.objects.exclude(**value) # Object 是模型名 value 表示的是过滤的条件，exclude 排除筛选符合条件value的数据 Object.objects.all().reverse() # Object 是模型名 倒转所有的数据列表 Object.objects.all().distinct() # Object 是模型名，去重 记录集的操作： 合并 | Odoo中的API之增删改查增create 返回的创建的记录集 删unlink 返回的是删除的记录集 改write 无返回值 查browse 传id，通过id搜索 search 通过条件进行搜索 search 中的条件，用元组包括，以波兰表达式进行组织（前缀表达式） search_count 通过条件进行搜索，计数 read_group 通过数据进行分组 name_search many2one字段搜索时调用 search_read many2one点开搜索更多时调用]]></content>
+    <title><![CDATA[Python设置左闭右开的原则]]></title>
+    <url>%2F2019%2F09%2F09%2Fpython_problem0%2F</url>
+    <content type="text"><![CDATA[以下资料参考自：http://blog.csdn.net/HDOJ_lin/article/details/78831868，https://www.zhihu.com/question/24883243和https://stackoverflow.com/questions/9963401/why-are-standard-iterator-ranges-begin-end-instead-of-begin-end———————————————————————————————————————————— 两个原因：1.因为在计算机硬件中迭代器对比较大小的运算很麻烦，有些时候两个地址都无法比较大小。但是比较是否相等就会简单的多。2.人们日常使用，认为半开半闭的区间最好，且从左往右的顺序更容易读。]]></content>
       <categories>
-        <category>学习</category>
+        <category>草稿</category>
       </categories>
       <tags>
-        <tag>Django</tag>
-        <tag>Odoo</tag>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Django学习之框架的MVC]]></title>
-    <url>%2F2019%2F09%2F09%2FDjango_learn_4%2F</url>
-    <content type="text"><![CDATA[django本是一个MVC框架 MVC分别是model view controller model :表示模型，所有关于数据表，数据的内容，都和Model 有关，负责数据之间的交互逻辑和字段定义 view :负责数据的展示，负责如何展示数据 controller：负责路由的相关部分。 Django 又可以理解为MTV模块 MTV:M:代表模型，即数据存取层，该层处理与数据有关的所有事务：如何存取、确认有效性、包含哪些行为及数据之间的关系。 T：代表模板，处理与表现相关的决定：如何在页面或其他类型文档中显示。 v:业务逻辑层，包含模型的逻辑和按照模板显示。 Odoo 也是个MVC框架 Model:所有的数据字段，操作方法都是写在model中 view:不同于django 的模板语言，odoo 的View是XML，然后利用Python库，最后将XML转换成HTML。 Controller:Odoo中的controller，也是利用controller来对路由进行控制的。]]></content>
+    <title><![CDATA[《SQL进阶教程》]]></title>
+    <url>%2F2019%2F09%2F09%2FSQL_read1%2F</url>
+    <content type="text"><![CDATA[第一章 神奇的SQL之自连接自连接概述 一般来说，这些连接大都是以不同的表或视图 为对象进行的，但针对相同的表或相同的视图的连接也并没有被禁止。针对相同的表进行的连接被称为“自连接”（self join）。 可重排列、排列、组合利用自联结删除重复行排序窗口函数：1234SELECT name, price,RANK() OVER (ORDER BY price DESC) AS rank_1, DENSE_RANK() OVER (ORDER BY price DESC) AS rank_2 FROM Products; 本节要点： 自连接经常和非等值连接结合起来使用。 自连接和 GROUP BY 结合使用可以生成递归集合。 将自连接看作不同表之间的连接更容易理解。 应把表看作行的集合，用面向集合的方法来思考。 自连接的性能开销更大，应尽量给用于连接的列建立索引 练习题：]]></content>
       <categories>
-        <category>学习</category>
+        <category>读书笔记</category>
       </categories>
       <tags>
-        <tag>Django</tag>
-        <tag>Odoo</tag>
+        <tag>SQL</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[Django学习之安装启动]]></title>
     <url>%2F2019%2F09%2F09%2FDjango_learn_2%2F</url>
     <content type="text"><![CDATA[这节讲述安装部分。 硬件: 小米笔记本 Pro 2017 Windowns 10 系统 相关软件安装： Python 3 安装 pip 安装 安装Django 2.2： pip install django==2.2 查看Django 版本： import django django.VERSION 新建一个项目： django_admin startproject mysite 新建app——learn: python manage.py startapp learn 将learn app 添加到install_apps 中： 修改mysite/mysite/settings.py 添加learn 到INSTALLED_APPS INSTALLED_APPS = ( &apos;django.contrib.admin&apos;, &apos;django.contrib.auth&apos;, &apos;django.contrib.contenttypes&apos;, &apos;django.contrib.sessions&apos;, &apos;django.contrib.messages&apos;, &apos;django.contrib.staticfiles&apos;, &apos;learn&apos;, ) 定义视图函数： 在learn 目录下的views.py 中定义一个index 方法，用于返回主页的返回数据。 定义视图函数相关的URL： 修改mysite/mysite/urls.py文件 利用正则表达式进行匹配，编写路由。 如： urlpatterns = patterns(&apos;&apos;, url(r&apos;^$&apos;, &apos;learn.views.index&apos;, name=&apos;home&apos;),# Notice this line url(r&apos;^admin/&apos;, include(admin.site.urls)), ) 启动服务器： python manage.py runserver 127.0.0.1:8000 打开浏览器，访问127.0.0.1:8000，如果视图函数没写错，那么就会返回定义的方法的视图界面。]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>Django</tag>
+        <tag>Odoo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[《SQL进阶教程》]]></title>
+    <url>%2F2019%2F09%2F09%2FSQL_read0%2F</url>
+    <content type="text"><![CDATA[第一章 神奇的SQL之CASECASE 表达式概述利用CASE 表达式来进行分支判断，有两种CASE表达式：简单表达式(simple case expresssion )和搜索表达式（searched case expression）。 简单表达式 vs 搜索表达式 123456789101112-- 简单CASE 表达式CASE sex WHEN &apos;1&apos; THEN &apos;男&apos; WHEN &apos;2&apos; THEN &apos;女&apos; ELSE &apos;其他&apos; END-- 搜索CASE 表达式 CASE WHEN sex = &apos;1&apos; THEN &apos;男&apos; WHEN sex = &apos;2&apos; THEN &apos;女&apos; ELSE &apos;其他&apos; END 使用CASE 的注意点： 1.统一各分支返回的数据类型，CASE 各个分支的返回值的类型是需要一直的 2.不要忘了写END，很有可能出现问题 3.养成写ELSE 的习惯 使用CHECK约束12345CONSTRAINT check_salary CHECK ( CASE WHEN sex = &apos;2&apos; THEN CASE WHEN salary &lt;= 200000 THEN 1 ELSE 0 END ELSE 1 END = 1 ) 在UPDATE语句中进行条件分支12345678-- 用CASE 表达式写正确的更新操作 UPDATE Salaries SET salary = CASE WHEN salary &gt;= 300000 THEN salary * 0.9WHEN salary &gt;= 250000 AND salary &lt; 280000 THEN salary * 1.2 ELSE salary END; --这里的Else 很重要 ,否则，不在CASE范围内的数据，就被置为空 表之间的数据匹配和DECODE 函数相比，CASE表达式中一大优势是能够判断表达式，可以在CASE 中使用谓词组合。 12345678SELECT CM.course_name, CASE WHEN EXISTS (SELECT course_id FROM OpenCourses OC WHERE month = 200706 AND OC.course_id = CM.course_id) THEN &apos;○&apos; ELSE &apos;×&apos; END AS &quot;6 月&quot;, CASE WHEN EXISTS(SELECT course_id FROM OpenCourses OC WHERE month = 200707 AND OC.course_id = CM.course_id) THEN &apos;○&apos; ELSE &apos;×&apos; END AS &quot;7 月&quot;, CASE WHEN EXISTS (SELECT course_id FROM OpenCourses OC WHERE month = 200708 AND OC.course_id = CM.course_id) THEN &apos;○&apos; ELSE &apos;×&apos; END AS &quot;8 月&quot; FROM CourseMaster CM; CASE 也可以使用聚合函数123456789SELECT std_id, CASE WHEN COUNT(*) = 1 -- 只加入了一个社团的学生 THEN MAX(club_id) ELSE MAX(CASE WHEN main_club_flg = &apos;Y&apos; THEN club_id ELSE NULL END) END AS main_club FROM StudentClub GROUP BY std_id; 本节要点： 在 GROUP BY 子句里使用 CASE 表达式，可以灵活地选择作为聚 合的单位的编号或等级。这一点在进行非定制化统计时能发挥巨 大的威力。 在聚合函数中使用 CASE 表达式，可以轻松地将行结构的数据转 换成列结构的数据。 相反，聚合函数也可以嵌套进 CASE 表达式里使用。 相比依赖于具体数据库的函数，CASE 表达式有更强大的表达能 力和更好的可移植性。 正因为 CASE 表达式是一种表达式而不是语句，才有了这诸多优 点 练习题：]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[odoo中的API]]></title>
+    <url>%2F2019%2F09%2F09%2Fodoo_api%2F</url>
+    <content type="text"><![CDATA[odoo中，最重要的就是API的使用，多种不同的API方法。]]></content>
+      <categories>
+        <category>草稿</category>
+      </categories>
+      <tags>
+        <tag>Odoo</tag>
+        <tag>总结</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[odoo函数]]></title>
+    <url>%2F2019%2F09%2F09%2Fodoo_function%2F</url>
+    <content type="text"><![CDATA[odoo中的一些函数的介绍 搜索与查询类search search_read search_count name_search 创建类create 更新类write 删除类unlink]]></content>
+      <categories>
+        <category>草稿</category>
+      </categories>
+      <tags>
+        <tag>Odoo</tag>
+        <tag>function</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Django学习之常用命令]]></title>
+    <url>%2F2019%2F09%2F09%2FDjango_learn_8%2F</url>
+    <content type="text"><![CDATA[新建project:django-admin.py startproject project-name 新建app:python manage.py startapp app-name 或： django-admin.py startapp app-name 数据库的同步：python manage.py makemigrations python manage.py migrate 运行：python manage.py runserver 8000 清空数据库：python manage.py flush 创建超级管理员：python manage.py createsuperuser 导入导出数据：导出 python manage.py dumpdata appname &gt; appname.json 导入 python manage.py loaddata appname.json 终端环境：python manage.py dbshell]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>Django</tag>
+        <tag>Odoo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Django学习之管理]]></title>
+    <url>%2F2019%2F09%2F09%2FDjango_learn_7%2F</url>
+    <content type="text"><![CDATA[Django 的管理是什么用于管理Django的数据及模型 Django 的管理用途Django 模型的使用定制管理界面： 在类定义中需要加上Admin类： class Admin: **list_display = (&apos;title&apos;, &apos;publisher&apos;, &apos;publication_date&apos;)** **list_filter = (&apos;publisher&apos;, &apos;publication_date&apos;)** **ordering = (&apos;-publication_date&apos;,)** **search_fields = (&apos;title&apos;,)**]]></content>
       <categories>
         <category>学习</category>
       </categories>
@@ -299,9 +345,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Django学习之常用命令]]></title>
-    <url>%2F2019%2F09%2F09%2FDjango_learn_8%2F</url>
-    <content type="text"><![CDATA[新建project:django-admin.py startproject project-name 新建app:python manage.py startapp app-name 或： django-admin.py startapp app-name 数据库的同步：python manage.py makemigrations python manage.py migrate 运行：python manage.py runserver 8000 清空数据库：python manage.py flush 创建超级管理员：python manage.py createsuperuser 导入导出数据：导出 python manage.py dumpdata appname &gt; appname.json 导入 python manage.py loaddata appname.json 终端环境：python manage.py dbshell]]></content>
+    <title><![CDATA[Django学习之增删改查的API]]></title>
+    <url>%2F2019%2F09%2F09%2FDjango_learn_3%2F</url>
+    <content type="text"><![CDATA[Django中的API 之增删改查这节讲述Django 的API中关于增删改查，并结合Odoo的内容进行比较。 总所周知，在以数据驱动的业务逻辑中，主要的业务就是对数据表的增删改查。本节，将介绍一下Django中的关于数据库的操作的API学习。 增 (共有4种）create 返回值 为Object 具体创建的对象 save 返回值 为Object 具体创建的对象 x = Object() x.attr = &apos;aaa&apos; x.attr1 = &apos;bbb&apos; 返回值 为Object 具体创建的对象 Object.objects.get_or_create(**args) # Object 是模型名 args 是模型中字段的参数值 返回值为(对象，True/False) 删delete 返回值为空 改update 查Object.objects.all() # Object 是模型名 返回的是记录集 Object.objects.get() # Object 是模型名 返回的是记录集 Object.objects.count() # 查询数量 返回的是记录集数量 Object.objects.exists() # 查询是否存在 返回的True/False 数据过滤： Object.objects.filter(**value) # Object 是模型名 value 表示的是过滤的条件，filer筛选符合条件的数据 Object.objects.exclude(**value) # Object 是模型名 value 表示的是过滤的条件，exclude 排除筛选符合条件value的数据 Object.objects.all().reverse() # Object 是模型名 倒转所有的数据列表 Object.objects.all().distinct() # Object 是模型名，去重 记录集的操作： 合并 | Odoo中的API之增删改查增create 返回的创建的记录集 删unlink 返回的是删除的记录集 改write 无返回值 查browse 传id，通过id搜索 search 通过条件进行搜索 search 中的条件，用元组包括，以波兰表达式进行组织（前缀表达式） search_count 通过条件进行搜索，计数 read_group 通过数据进行分组 name_search many2one字段搜索时调用 search_read many2one点开搜索更多时调用]]></content>
       <categories>
         <category>学习</category>
       </categories>
@@ -311,84 +357,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[odoo函数]]></title>
-    <url>%2F2019%2F09%2F09%2Fodoo_function%2F</url>
-    <content type="text"><![CDATA[odoo中的一些函数的介绍 搜索与查询类search search_read search_count name_search 创建类create 更新类write 删除类unlink]]></content>
-      <categories>
-        <category>草稿</category>
-      </categories>
-      <tags>
-        <tag>odoo</tag>
-        <tag>function</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Django学习之管理]]></title>
-    <url>%2F2019%2F09%2F09%2FDjango_learn_7%2F</url>
-    <content type="text"><![CDATA[Django 的管理是什么用于管理Django的数据及模型 Django 的管理用途Django 模型的使用定制管理界面： 在类定义中需要加上Admin类： class Admin: **list_display = (&apos;title&apos;, &apos;publisher&apos;, &apos;publication_date&apos;)** **list_filter = (&apos;publisher&apos;, &apos;publication_date&apos;)** **ordering = (&apos;-publication_date&apos;,)** **search_fields = (&apos;title&apos;,)**]]></content>
+    <title><![CDATA[Django学习之框架的MVC]]></title>
+    <url>%2F2019%2F09%2F09%2FDjango_learn_4%2F</url>
+    <content type="text"><![CDATA[django本是一个MVC框架 MVC分别是model view controller model :表示模型，所有关于数据表，数据的内容，都和Model 有关，负责数据之间的交互逻辑和字段定义 view :负责数据的展示，负责如何展示数据 controller：负责路由的相关部分。 Django 又可以理解为MTV模块 MTV:M:代表模型，即数据存取层，该层处理与数据有关的所有事务：如何存取、确认有效性、包含哪些行为及数据之间的关系。 T：代表模板，处理与表现相关的决定：如何在页面或其他类型文档中显示。 v:业务逻辑层，包含模型的逻辑和按照模板显示。 Odoo 也是个MVC框架 Model:所有的数据字段，操作方法都是写在model中 view:不同于django 的模板语言，odoo 的View是XML，然后利用Python库，最后将XML转换成HTML。 Controller:Odoo中的controller，也是利用controller来对路由进行控制的。]]></content>
       <categories>
         <category>学习</category>
       </categories>
       <tags>
         <tag>Django</tag>
         <tag>Odoo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[《SQL进阶教程》]]></title>
-    <url>%2F2019%2F09%2F09%2FSQL_read0%2F</url>
-    <content type="text"><![CDATA[第一章 神奇的SQL之CASECASE 表达式概述利用CASE 表达式来进行分支判断，有两种CASE表达式：简单表达式(simple case expresssion )和搜索表达式（searched case expression）。 简单表达式 vs 搜索表达式 123456789101112-- 简单CASE 表达式CASE sex WHEN &apos;1&apos; THEN &apos;男&apos; WHEN &apos;2&apos; THEN &apos;女&apos; ELSE &apos;其他&apos; END-- 搜索CASE 表达式 CASE WHEN sex = &apos;1&apos; THEN &apos;男&apos; WHEN sex = &apos;2&apos; THEN &apos;女&apos; ELSE &apos;其他&apos; END 使用CASE 的注意点： 1.统一各分支返回的数据类型，CASE 各个分支的返回值的类型是需要一直的 2.不要忘了写END，很有可能出现问题 3.养成写ELSE 的习惯 使用CHECK约束12345CONSTRAINT check_salary CHECK ( CASE WHEN sex = &apos;2&apos; THEN CASE WHEN salary &lt;= 200000 THEN 1 ELSE 0 END ELSE 1 END = 1 ) 在UPDATE语句中进行条件分支12345678-- 用CASE 表达式写正确的更新操作 UPDATE Salaries SET salary = CASE WHEN salary &gt;= 300000 THEN salary * 0.9WHEN salary &gt;= 250000 AND salary &lt; 280000 THEN salary * 1.2 ELSE salary END; --这里的Else 很重要 ,否则，不在CASE范围内的数据，就被置为空 表之间的数据匹配和DECODE 函数相比，CASE表达式中一大优势是能够判断表达式，可以在CASE 中使用谓词组合。 12345678SELECT CM.course_name, CASE WHEN EXISTS (SELECT course_id FROM OpenCourses OC WHERE month = 200706 AND OC.course_id = CM.course_id) THEN &apos;○&apos; ELSE &apos;×&apos; END AS &quot;6 月&quot;, CASE WHEN EXISTS(SELECT course_id FROM OpenCourses OC WHERE month = 200707 AND OC.course_id = CM.course_id) THEN &apos;○&apos; ELSE &apos;×&apos; END AS &quot;7 月&quot;, CASE WHEN EXISTS (SELECT course_id FROM OpenCourses OC WHERE month = 200708 AND OC.course_id = CM.course_id) THEN &apos;○&apos; ELSE &apos;×&apos; END AS &quot;8 月&quot; FROM CourseMaster CM; CASE 也可以使用聚合函数123456789SELECT std_id, CASE WHEN COUNT(*) = 1 -- 只加入了一个社团的学生 THEN MAX(club_id) ELSE MAX(CASE WHEN main_club_flg = &apos;Y&apos; THEN club_id ELSE NULL END) END AS main_club FROM StudentClub GROUP BY std_id; 本节要点： 在 GROUP BY 子句里使用 CASE 表达式，可以灵活地选择作为聚 合的单位的编号或等级。这一点在进行非定制化统计时能发挥巨 大的威力。 在聚合函数中使用 CASE 表达式，可以轻松地将行结构的数据转 换成列结构的数据。 相反，聚合函数也可以嵌套进 CASE 表达式里使用。 相比依赖于具体数据库的函数，CASE 表达式有更强大的表达能 力和更好的可移植性。 正因为 CASE 表达式是一种表达式而不是语句，才有了这诸多优 点 练习题：]]></content>
-      <categories>
-        <category>读书笔记</category>
-      </categories>
-      <tags>
-        <tag>SQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[odoo中的API]]></title>
-    <url>%2F2019%2F09%2F09%2Fodoo_api%2F</url>
-    <content type="text"><![CDATA[odoo中，最重要的就是API的使用，多种不同的API方法。]]></content>
-      <categories>
-        <category>草稿</category>
-      </categories>
-      <tags>
-        <tag>总结</tag>
-        <tag>odoo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[《SQL进阶教程》]]></title>
-    <url>%2F2019%2F09%2F09%2FSQL_read1%2F</url>
-    <content type="text"><![CDATA[第一章 神奇的SQL之自连接自连接概述 一般来说，这些连接大都是以不同的表或视图 为对象进行的，但针对相同的表或相同的视图的连接也并没有被禁止。针对相同的表进行的连接被称为“自连接”（self join）。 可重排列、排列、组合利用自联结删除重复行排序窗口函数：1234SELECT name, price,RANK() OVER (ORDER BY price DESC) AS rank_1, DENSE_RANK() OVER (ORDER BY price DESC) AS rank_2 FROM Products; 本节要点： 自连接经常和非等值连接结合起来使用。 自连接和 GROUP BY 结合使用可以生成递归集合。 将自连接看作不同表之间的连接更容易理解。 应把表看作行的集合，用面向集合的方法来思考。 自连接的性能开销更大，应尽量给用于连接的列建立索引 练习题：]]></content>
-      <categories>
-        <category>读书笔记</category>
-      </categories>
-      <tags>
-        <tag>SQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Django学习之表单]]></title>
-    <url>%2F2019%2F09%2F09%2FDjango_learn_11%2F</url>
-    <content type="text"><![CDATA[django 表单，包含两种的Form，一种是新的，被称为Newform，一种是form。]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>Django</tag>
-        <tag>Odoo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[《SQL进阶教程》]]></title>
-    <url>%2F2019%2F09%2F09%2FSQL_read3%2F</url>
-    <content type="text"><![CDATA[第一章 神奇的SQL之HAVING 子句的力量 HAVING 子句的力量概述 HAVING 子句的力量]]></content>
-      <categories>
-        <category>读书笔记</category>
-      </categories>
-      <tags>
-        <tag>SQL</tag>
       </tags>
   </entry>
   <entry>
@@ -403,20 +380,22 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[基础算法--小白专场的时间复杂度与性能比较]]></title>
-    <url>%2F2019%2F09%2F09%2Falgofbase%2F</url>
-    <content type="text"><![CDATA[排序快速排序（quick sort）稳定：否 时间复杂度 最优：O(nlog(n)) 最差：O(n^2) 平均：O(nlog(n)) 合并排序（merge sort ）合并排序是一种分治算法。这个算法不断地将一个数组分为两部分，分别对左子数组和右子数组排序，然后将两个数组合并为新的有序数组。 稳定：是 时间复杂度： 最优：O(nlog(n)) 最差：O(nlog(n)) 平均：O(nlog(n)) 桶排序（bucket sort ）桶排序是一种将元素分到一定数量的桶中的排序算法。每个桶内部采用其他算法排序，或递归调用桶排序。 时间复杂度 最优：Ω(n + k) 最差: O(n^2) 平均：Θ(n + k) 基数排序（base sort ）基数排序类似于桶排序，将元素分发到一定数目的桶中。不同的是，基数排序在分割元素之后没有让每个桶单独进行排序，而是直接做了合并操作。 时间复杂度 最优：Ω(nk) 最差: O(nk) 平均：Θ(nk) 拓扑排序拓扑排序是有向图节点的线性排序。对于任何一条节点 u 到节点 v 的边，u 的下标先于 v。 时间复杂度：O(|V| + |E|) 图算法深度优先搜索深度优先搜索是一种先遍历子节点而不回溯的图遍历算法。 时间复杂度：O(|V| + |E|) 广度优先搜索广度优先搜索是一种先遍历邻居节点而不是子节点的图遍历算法。 时间复杂度：O(|V| + |E|) Dijkstra算法Dijkstra 算法是一种在有向图中查找单源最短路径的算法。 时间复杂度：O(|V|^2) Bellman-Ford算法Bellman-Ford 是一种在带权图中查找单一源点到其他节点最短路径的算法。虽然时间复杂度大于 Dijkstra 算法，但它可以处理包含了负值边的图。 时间复杂度： 最优：O(|E|) 最差：O(|V||E|) Floyd-Warshall 算法Floyd-Warshall 算法是一种在无环带权图中寻找任意节点间最短路径的算法。该算法执行一次即可找到所有节点间的最短路径（路径权重和）。 时间复杂度： 最优：O(|V|^3) 最差：O(|V|^3) 平均：O(|V|^3) 最小生成树算法最小生成树算法是一种在无向带权图中查找最小生成树的贪心算法。换言之，最小生成树算法能在一个图中找到连接所有节点的边的最小子集。 时间复杂度：O(|V|^2) Kruskal 算法Kruskal 算法也是一个计算最小生成树的贪心算法，但在 Kruskal 算法中，图不一定是连通的。 时间复杂度：O(|E|log|V|) 贪心算法贪心算法总是做出在当前看来最优的选择，并希望最后整体也是最优的。使用贪心算法可以解决的问题必须具有如下两种特性： 最优子结构 问题的最优解包含其子问题的最优解。 贪心选择 每一步的贪心选择可以得到问题的整体最优解。 实例-硬币选择问题给定期望的硬币总和为 V 分，以及 n 种硬币，即类型是 i 的硬币共有 coinValue[i] 分，i的范围是 [0…n – 1]。假设每种类型的硬币都有无限个，求解为使和为 V 分最少需要多少硬币？硬币：便士（1美分），镍（5美分），一角（10美分），四分之一（25美分）。假设总和 V 为41,。我们可以使用贪心算法查找小于或者等于 V 的面值最大的硬币，然后从 V 中减掉该硬币的值，如此重复进行。V = 41 | 使用了0个硬币V = 16 | 使用了1个硬币(41 – 25 = 16)V = 6 | 使用了2个硬币(16 – 10 = 6)V = 1 | 使用了3个硬币(6 – 5 = 1)V = 0 | 使用了4个硬币(1 – 1 = 0) 位运算 位运算即在比特级别进行操作的技术。使用位运算技术可以带来更快的运行速度与更小的内存使用。测试第 k 位：s &amp; (1 &lt;&lt; k);设置第k位：s |= (1 &lt;&lt; k);关闭第k位：s &amp;= ~(1 &lt;&lt; k);切换第k位：s ^= (1 &lt;&lt; k);乘以2n：s &lt;&lt; n;除以2n：s &gt;&gt; n;交集：s &amp; t;并集：s | t;减法：s &amp; ~t;提取最小非0位：s &amp; (-s);提取最小0位：~s &amp; (s + 1);交换值：x ^= y; y ^= x; x ^= y; 运行时分析 大 O 表示大 O 表示用于表示某个算法的上界，用于描述最坏的情况。 小 O 表示小 O 表示用于描述某个算法的渐进上界，二者逐渐趋近。 大 Ω 表示大 Ω 表示用于描述某个算法的渐进下界。 小 ω 表示小 ω 表示用于描述某个算法的渐进下界，二者逐渐趋近。 Theta Θ 表示Theta Θ 表示用于描述某个算法的确界，包括最小上界和最大下界。]]></content>
+    <title><![CDATA[动手写爬虫总结1]]></title>
+    <url>%2F2019%2F09%2F09%2Fcrawl1%2F</url>
+    <content type="text"><![CDATA[爬虫总结： 自2016年十月中旬至此，前后花费了一个半月写爬虫，也是平时零零散散写的爬虫，从最简单的页面获取，到页面数据解析，再到后面的翻页，保存到Excel中，再到获取动态网页，加载JSON数据，到最后的将数据保存到数据库，中间踩的坑又不少，最近就开始简单的总结吧。 Python 爬虫的几个步骤： 1.爬虫向目标服务器发送请求（get/post） 2.服务器响应请求，返回结果，爬虫程序解析返回的请求 3.解析返回的结果，处理和清洗 4.存储数据 自己当初使用的是Python 2.7的环境 1.从最简单的页面获取而言，有几个库（模块）的使用，用到了urllib2,urllib,requests等。 具体的使用，通过urllib2获取网页的HTML代码，使用的过程中，为了防止爬虫被ban，在获取某些页面的过程中，添加了浏览器的headers，将爬虫伪装成浏览器去访问页面，常见的伪装就是加上USER-AGENT（UA）,也有部分网页即使加上了headers也没用，这个时候，就要往爬虫的headers方面去下功夫，到底是什么限制了爬虫的访问。 目前，在爬取个人的关注方面出现了问题。为了更像浏览器，在获取多个页面的时候，就要提前设置访问的间隔时间，使用time()这个系统库，再利用的是random()库，获取任意的（0.0-1）时间，用获取到的时间进行处理，最后，间隔时间在5s以上为佳。 2.在页面获取之后，要对页面的数据（html代码）进行处理。 主要的方式，就是通过BeautifulSoup这个库，来解析页面，解析的依赖库，主要就是html.parser和lxml这两个解析器，其中，html.parser和lxml这两个解析器各有优劣，但是对lxml而言，更好的处理方式，是通过DOM来解析，能获得更好的效果，在写爬虫程序前，要分析爬虫的获取的数据，分析网页的结构，获取正确的位置，可以借助F12这个浏览器的工具，来快速定位所需要的信息的位置。 在页面解析的过程中，除开BS4这个库之外，还使用到了re（正则表达式）这个模块，许多要获取的信息，在通过BS4解析之后，还是要进一步的清洗，提取出关键的数据，此时需要学习正则表达式的基本知识。尽管在后面，有提到可以使用string这个库的使用，在一定程度上可以减缓正则表达式在解析页面过程中的使用。但是这都是后知后觉了。 3.获取需要的数据后，要对数据进行存储。 自己最开始学习使用的是用的文件存储，比如，使用python的文件读写，写入到txt格式，但是在此的过程中，发现任务量比较大，如果使用txt格式存储，就不太适合了，到后面所有的数据都是用的Excel格式存储的。主要使用的库是XLWT，在写入的过程中，发现某一列数据可能会写入多行，这个时候，定义下函数来存储就是比较好的了。 4.获得JSON数据，刚开始接触到这个，其实是在文章页面，获得文章信息之后，需要再获取评论的信息，在评论区，是通过动态加载而来，第一页数据使用的Ajax将评论异步加载过来的，在网络上寻求帮助之后，提供了几个建议： a.通过浏览器加载渲染，就是实际上通过浏览器来访问，并且获得评论的信息，但是发现这种方式的效率太低，而且对电脑要求的比较高，需要下载Webdriver和PhantomJS 来解析JS b.到后面，自己在反复尝试之后，发现，可以直接访问JSON数据，就是从浏览器发送请求，然后服务器端发送相关的数据页面，这样的方式既达到了自己的效果，又使得电脑的负载更低，使用的方向有8K+的基本信息的页面，以及每个人文章的评论的内容，当然，获取的JSON数据并不是我们需要的，我们需要处理，处理成干净的JSON数据，然后利用JSON这个库，来处理，将其处理成字典数据，最后，在字典的里面，通过键-值来提取我们需要的数据。 5.连接到数据库，这一部分，主要是同学完成的。其中的重难点，应该是数据库的设计，因为在爬取数据的过程中，发现了许多的问题，并不是像老师说的那么简单就行，表格之间有关系，而一张表又不可能写完所有的信息，在此，就想着使用数据库来存储数据。 6.IP代理的问题，在实验室，实际上就只有一个IP，这样限制了爬虫的速度，不可能爬取太快，一旦稍微速度快了，就会错误，网站拒绝提供服务，会提醒DDOS攻击（10054）错误。因此，就想着在此基础上，想着爬取网络上的IP代理，使用代理访问（主要是高匿代理），但是目前，高匿代理，在许多代理网站上都是没用的。]]></content>
       <categories>
         <category>学习</category>
       </categories>
       <tags>
-        <tag>数据结构与算法</tag>
+        <tag>Python</tag>
+        <tag>爬虫</tag>
+        <tag>总结</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Django学习之配置]]></title>
-    <url>%2F2019%2F09%2F09%2FDjango_learn_12%2F</url>
-    <content type="text"><![CDATA[debug :用于查看调试的数据。在实际部署时，不要开启。 allow_hosts: 设置哪些域名可以访问。 STATICFILES_DIRS:用于存储公用的静态文件。 TIME_ZONE:时区 USE_I18N：语言 ROOT_URLCONF:网址的URL 缓存设置： 文件缓存 内存缓存 Memcached ？ 共享缓存 session:request.session[key] = value sitemap ORM: 中间件：]]></content>
+    <title><![CDATA[Django学习之表单]]></title>
+    <url>%2F2019%2F09%2F09%2FDjango_learn_11%2F</url>
+    <content type="text"><![CDATA[django 表单，包含两种的Form，一种是新的，被称为Newform，一种是form。]]></content>
       <categories>
         <category>学习</category>
       </categories>
@@ -438,16 +417,37 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[动手写爬虫总结1]]></title>
-    <url>%2F2019%2F09%2F09%2Fcrawl1%2F</url>
-    <content type="text"><![CDATA[爬虫总结： 自2016年十月中旬至此，前后花费了一个半月写爬虫，也是平时零零散散写的爬虫，从最简单的页面获取，到页面数据解析，再到后面的翻页，保存到Excel中，再到获取动态网页，加载JSON数据，到最后的将数据保存到数据库，中间踩的坑又不少，最近就开始简单的总结吧。 Python 爬虫的几个步骤： 1.爬虫向目标服务器发送请求（get/post） 2.服务器响应请求，返回结果，爬虫程序解析返回的请求 3.解析返回的结果，处理和清洗 4.存储数据 自己当初使用的是Python 2.7的环境 1.从最简单的页面获取而言，有几个库（模块）的使用，用到了urllib2,urllib,requests等。 具体的使用，通过urllib2获取网页的HTML代码，使用的过程中，为了防止爬虫被ban，在获取某些页面的过程中，添加了浏览器的headers，将爬虫伪装成浏览器去访问页面，常见的伪装就是加上USER-AGENT（UA）,也有部分网页即使加上了headers也没用，这个时候，就要往爬虫的headers方面去下功夫，到底是什么限制了爬虫的访问。 目前，在爬取个人的关注方面出现了问题。为了更像浏览器，在获取多个页面的时候，就要提前设置访问的间隔时间，使用time()这个系统库，再利用的是random()库，获取任意的（0.0-1）时间，用获取到的时间进行处理，最后，间隔时间在5s以上为佳。 2.在页面获取之后，要对页面的数据（html代码）进行处理。 主要的方式，就是通过BeautifulSoup这个库，来解析页面，解析的依赖库，主要就是html.parser和lxml这两个解析器，其中，html.parser和lxml这两个解析器各有优劣，但是对lxml而言，更好的处理方式，是通过DOM来解析，能获得更好的效果，在写爬虫程序前，要分析爬虫的获取的数据，分析网页的结构，获取正确的位置，可以借助F12这个浏览器的工具，来快速定位所需要的信息的位置。 在页面解析的过程中，除开BS4这个库之外，还使用到了re（正则表达式）这个模块，许多要获取的信息，在通过BS4解析之后，还是要进一步的清洗，提取出关键的数据，此时需要学习正则表达式的基本知识。尽管在后面，有提到可以使用string这个库的使用，在一定程度上可以减缓正则表达式在解析页面过程中的使用。但是这都是后知后觉了。 3.获取需要的数据后，要对数据进行存储。 自己最开始学习使用的是用的文件存储，比如，使用python的文件读写，写入到txt格式，但是在此的过程中，发现任务量比较大，如果使用txt格式存储，就不太适合了，到后面所有的数据都是用的Excel格式存储的。主要使用的库是XLWT，在写入的过程中，发现某一列数据可能会写入多行，这个时候，定义下函数来存储就是比较好的了。 4.获得JSON数据，刚开始接触到这个，其实是在文章页面，获得文章信息之后，需要再获取评论的信息，在评论区，是通过动态加载而来，第一页数据使用的Ajax将评论异步加载过来的，在网络上寻求帮助之后，提供了几个建议： a.通过浏览器加载渲染，就是实际上通过浏览器来访问，并且获得评论的信息，但是发现这种方式的效率太低，而且对电脑要求的比较高，需要下载Webdriver和PhantomJS 来解析JS b.到后面，自己在反复尝试之后，发现，可以直接访问JSON数据，就是从浏览器发送请求，然后服务器端发送相关的数据页面，这样的方式既达到了自己的效果，又使得电脑的负载更低，使用的方向有8K+的基本信息的页面，以及每个人文章的评论的内容，当然，获取的JSON数据并不是我们需要的，我们需要处理，处理成干净的JSON数据，然后利用JSON这个库，来处理，将其处理成字典数据，最后，在字典的里面，通过键-值来提取我们需要的数据。 5.连接到数据库，这一部分，主要是同学完成的。其中的重难点，应该是数据库的设计，因为在爬取数据的过程中，发现了许多的问题，并不是像老师说的那么简单就行，表格之间有关系，而一张表又不可能写完所有的信息，在此，就想着使用数据库来存储数据。 6.IP代理的问题，在实验室，实际上就只有一个IP，这样限制了爬虫的速度，不可能爬取太快，一旦稍微速度快了，就会错误，网站拒绝提供服务，会提醒DDOS攻击（10054）错误。因此，就想着在此基础上，想着爬取网络上的IP代理，使用代理访问（主要是高匿代理），但是目前，高匿代理，在许多代理网站上都是没用的。]]></content>
+    <title><![CDATA[Django学习之配置]]></title>
+    <url>%2F2019%2F09%2F09%2FDjango_learn_12%2F</url>
+    <content type="text"><![CDATA[debug :用于查看调试的数据。在实际部署时，不要开启。 allow_hosts: 设置哪些域名可以访问。 STATICFILES_DIRS:用于存储公用的静态文件。 TIME_ZONE:时区 USE_I18N：语言 ROOT_URLCONF:网址的URL 缓存设置： 文件缓存 内存缓存 Memcached ？ 共享缓存 session:request.session[key] = value sitemap ORM: 中间件：]]></content>
       <categories>
         <category>学习</category>
       </categories>
       <tags>
-        <tag>Python</tag>
-        <tag>爬虫</tag>
-        <tag>总结</tag>
+        <tag>Django</tag>
+        <tag>Odoo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[《SQL进阶教程》]]></title>
+    <url>%2F2019%2F09%2F09%2FSQL_read3%2F</url>
+    <content type="text"><![CDATA[第一章 神奇的SQL之HAVING 子句的力量 HAVING 子句的力量概述 HAVING 子句的力量]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[基础算法--小白专场的时间复杂度与性能比较]]></title>
+    <url>%2F2019%2F09%2F09%2Falgofbase%2F</url>
+    <content type="text"><![CDATA[排序快速排序（quick sort）稳定：否 时间复杂度 最优：O(nlog(n)) 最差：O(n^2) 平均：O(nlog(n)) 合并排序（merge sort ）合并排序是一种分治算法。这个算法不断地将一个数组分为两部分，分别对左子数组和右子数组排序，然后将两个数组合并为新的有序数组。 稳定：是 时间复杂度： 最优：O(nlog(n)) 最差：O(nlog(n)) 平均：O(nlog(n)) 桶排序（bucket sort ）桶排序是一种将元素分到一定数量的桶中的排序算法。每个桶内部采用其他算法排序，或递归调用桶排序。 时间复杂度 最优：Ω(n + k) 最差: O(n^2) 平均：Θ(n + k) 基数排序（base sort ）基数排序类似于桶排序，将元素分发到一定数目的桶中。不同的是，基数排序在分割元素之后没有让每个桶单独进行排序，而是直接做了合并操作。 时间复杂度 最优：Ω(nk) 最差: O(nk) 平均：Θ(nk) 拓扑排序拓扑排序是有向图节点的线性排序。对于任何一条节点 u 到节点 v 的边，u 的下标先于 v。 时间复杂度：O(|V| + |E|) 图算法深度优先搜索深度优先搜索是一种先遍历子节点而不回溯的图遍历算法。 时间复杂度：O(|V| + |E|) 广度优先搜索广度优先搜索是一种先遍历邻居节点而不是子节点的图遍历算法。 时间复杂度：O(|V| + |E|) Dijkstra算法Dijkstra 算法是一种在有向图中查找单源最短路径的算法。 时间复杂度：O(|V|^2) Bellman-Ford算法Bellman-Ford 是一种在带权图中查找单一源点到其他节点最短路径的算法。虽然时间复杂度大于 Dijkstra 算法，但它可以处理包含了负值边的图。 时间复杂度： 最优：O(|E|) 最差：O(|V||E|) Floyd-Warshall 算法Floyd-Warshall 算法是一种在无环带权图中寻找任意节点间最短路径的算法。该算法执行一次即可找到所有节点间的最短路径（路径权重和）。 时间复杂度： 最优：O(|V|^3) 最差：O(|V|^3) 平均：O(|V|^3) 最小生成树算法最小生成树算法是一种在无向带权图中查找最小生成树的贪心算法。换言之，最小生成树算法能在一个图中找到连接所有节点的边的最小子集。 时间复杂度：O(|V|^2) Kruskal 算法Kruskal 算法也是一个计算最小生成树的贪心算法，但在 Kruskal 算法中，图不一定是连通的。 时间复杂度：O(|E|log|V|) 贪心算法贪心算法总是做出在当前看来最优的选择，并希望最后整体也是最优的。使用贪心算法可以解决的问题必须具有如下两种特性： 最优子结构 问题的最优解包含其子问题的最优解。 贪心选择 每一步的贪心选择可以得到问题的整体最优解。 实例-硬币选择问题给定期望的硬币总和为 V 分，以及 n 种硬币，即类型是 i 的硬币共有 coinValue[i] 分，i的范围是 [0…n – 1]。假设每种类型的硬币都有无限个，求解为使和为 V 分最少需要多少硬币？硬币：便士（1美分），镍（5美分），一角（10美分），四分之一（25美分）。假设总和 V 为41,。我们可以使用贪心算法查找小于或者等于 V 的面值最大的硬币，然后从 V 中减掉该硬币的值，如此重复进行。V = 41 | 使用了0个硬币V = 16 | 使用了1个硬币(41 – 25 = 16)V = 6 | 使用了2个硬币(16 – 10 = 6)V = 1 | 使用了3个硬币(6 – 5 = 1)V = 0 | 使用了4个硬币(1 – 1 = 0) 位运算 位运算即在比特级别进行操作的技术。使用位运算技术可以带来更快的运行速度与更小的内存使用。测试第 k 位：s &amp; (1 &lt;&lt; k);设置第k位：s |= (1 &lt;&lt; k);关闭第k位：s &amp;= ~(1 &lt;&lt; k);切换第k位：s ^= (1 &lt;&lt; k);乘以2n：s &lt;&lt; n;除以2n：s &gt;&gt; n;交集：s &amp; t;并集：s | t;减法：s &amp; ~t;提取最小非0位：s &amp; (-s);提取最小0位：~s &amp; (s + 1);交换值：x ^= y; y ^= x; x ^= y; 运行时分析 大 O 表示大 O 表示用于表示某个算法的上界，用于描述最坏的情况。 小 O 表示小 O 表示用于描述某个算法的渐进上界，二者逐渐趋近。 大 Ω 表示大 Ω 表示用于描述某个算法的渐进下界。 小 ω 表示小 ω 表示用于描述某个算法的渐进下界，二者逐渐趋近。 Theta Θ 表示Theta Θ 表示用于描述某个算法的确界，包括最小上界和最大下界。]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>数据结构与算法</tag>
       </tags>
   </entry>
   <entry>
@@ -458,7 +458,7 @@
         <category>草稿</category>
       </categories>
       <tags>
-        <tag>odoo</tag>
+        <tag>Odoo</tag>
         <tag>Workflow</tag>
       </tags>
   </entry>
@@ -470,8 +470,8 @@
         <category>草稿</category>
       </categories>
       <tags>
+        <tag>Odoo</tag>
         <tag>总结</tag>
-        <tag>odoo</tag>
       </tags>
   </entry>
   <entry>
@@ -482,7 +482,7 @@
         <category>草稿</category>
       </categories>
       <tags>
-        <tag>odoo</tag>
+        <tag>Odoo</tag>
         <tag>bugs</tag>
         <tag>problems</tag>
       </tags>
@@ -495,7 +495,7 @@
         <category>草稿</category>
       </categories>
       <tags>
-        <tag>odoo</tag>
+        <tag>Odoo</tag>
         <tag>report</tag>
       </tags>
   </entry>
@@ -888,6 +888,19 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[动手写爬虫概览]]></title>
+    <url>%2F2018%2F01%2F12%2Fcrawl0%2F</url>
+    <content type="text"><![CDATA[编写的爬虫代码的主要涉及的过程： 获取网页数据–提取数据–数据的清洗和处理–数据存储。 以下是编写爬虫程序所需要安装的库。在这里，默认大家在安装Python之时已经安装好pip这个工具。 1.获取网页数据阶段，可能会用到的库：requests,urllib2 进入控制台界面： pip install urllib2 pip install requests 2.提取数据需要用到的库：bs4,re,lxml pip install bs4 3.数据清洗和处理：re,JSON 4.数据存储：mysqldb（SQL数据库）,pymongo（NOSQL）,xlwt（excel） pip install pymongo pip install xlwt mysqldb的库需要去其他地方下载：https://sourceforge.net/projects/mysql-python/]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>概览</tag>
+        <tag>Python</tag>
+        <tag>爬虫</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[《釜山行影评》]]></title>
     <url>%2F2018%2F01%2F12%2Fmoviecomments1%2F</url>
     <content type="text"><![CDATA[电影很好看，故事发生在韩国，以丧尸感染人类为背景。 故事开头是发生在白天，一司机在收费站经历消毒之后，回家路上因为要接电话分神，开车撞死了一头鹿，下车之后，但是司机就检查了一下，然后开车走了。之后，等司机离开，死去的鹿，抽搐了两下就站立起来。 男主（一基金公司的经理）的公司似乎是做了什么不可告人的项目，男主让下属（金代理）处理好，虽然说是不知道什么内容，但是写在这里，应该是有意图的。在处理好公事后，询问金代理最近孩子们都喜欢什么。最后，男主回家带回来一份儿童节就已经送过的礼物，但男主并不知道，等女儿指出来，父女俩就很尴尬了。与此同时，男主的女儿想去见远在釜山的母亲，因为明天就是她的生日，而妻子也想见见女儿。而男主为何会和妻子分开，电影中借孩子的口吻反映出来一部分原因：基金公司的经理，在长期的工作习惯中，一直是趋利避害，努力在保证着自己的利益–也就是所谓的自私，自私的性格，让两人分开。 男主的母亲告诉男主昨天发生在学校开家长会的事情，并把录好了的录影机交给男主。在看完视频之后，男主经过反复思考，决定陪女儿去釜山。半夜开车去车站，准备送到女儿后，中午回来继续工作。由此，父女俩踏上了死亡列车（或者说是希望列车）。但是，在列车开动之前，发生了意外，但也是必然吧：一被感染的人上了车。故事就由此正式展开 。 开车后，小萝莉（男主的女儿）发现车站的工作人员被扑倒，被吓了，但是，没有告诉熟睡中的父亲。转而起身去上厕所，遇到了男二号，成庆（貌似姓金）和他妻子。电影中的富贵男，发现了流浪汉长期呆在厕所里，就转告乘务人员，乘务人员就在这里处理这个事情，富贵男告诉小萝莉（秀安）如果不好好学习，以后就会成为像流浪汉一样的人（这时在输出他自己的价值观），而秀安反驳到，妈妈说这种话的人，都不是好人（事实上故事中他的行为证明了这一点）。与此同时，女乘务员发现了被感染的那个女子。在呼叫列车乘务长的过程中，女子彻底被感染，开始撕咬人类。由于都没有防备，被感染的人类快速尸变，并快速蔓延开来，很快，整个车厢里就感染了好几节。男主被电话吵醒，在接完电话后，发现女儿不见了。就起身找女儿，在寻找的过程中，发现了车厢中的动荡，在一探究竟之后，发现了丧尸，转身往回跑的过程，发现女儿，抱起女儿往回跑，但是没想到，回来的路也有了丧尸，在男二（成庆）的掩护之下，成功躲过一劫，但是男主在跑到安全车厢后（也就是没有人被感染的车厢时），立马把门关上，把成庆和他媳妇儿留在外面，幸亏成庆手快，打开了门，进去之后快速锁好了门。男主发现丧尸的智慧低下，不能开门，就提醒成庆，可以把手从门上拿下来。这时成庆开始发飙：你小子跑路的时候，我给你打掩护，结果你先到了，竟然还把门关上了，成庆的媳妇就拉住他，提醒他别说了。而他们发现，丧尸只攻击看到的人，于是，成庆媳妇儿就用报纸和水把透明的车厢门封上了，丧尸的动静马上安静下来。 第一部分的高潮到此结束。 在众人逐渐安定下来的时候，石安告诉女儿，在危险的情况下，自己永远是最重要的，不要给别人让座，要学会保护好自己。 之后，男主接到了母亲打来的电话，母亲问他们的行程情况，并让他（石安）照顾好女儿。呼吸变重，挂掉了电话（推测应该也是被感染了，但是石安也没仔细想）。 众人通过各种手段，了解到国内发生的情形，发言人声明国内只是在发生暴乱，请国民安心，不要随便外出，不要相信各种谣言。但是众人也已经知道事实，人心惶惶。 列车长告诉乘客，将在天安鞍山站停靠，所有人下车。但是，当列车逐渐开到车站的时候，发现，车站已被丧尸占领，列车只好往前开。列车长告诉乘客：下一站停靠大田站，有乘客下车，将会有军队和警车保卫他们离开。石安通过联系公司在大田的人员（闵大尉），了解到，大田将会对他们进行隔离。石安以利诱，让闵大尉安排他们让他们父女俩不被隔离。闵大尉答应了，告诉他们下车出站之后，不要走主广场，走旁边的通道。 第二波高潮来了： 当众人听从列车员的安排，都下车出站时，石安和秀安走的旁边的通道，而众人走的是主通道。秀安问为什么不和众人走在一起时，秀安指责父亲的自私。而那位流浪汉在乘乱逃出，听到石安和闵大尉的谈话之后，跟随他们走的旁边的通道。当众人坐电梯下楼时，发现了尸变了的警察和军队。可是这个时候，已经晚了，众人开始往回逃。流浪汉在看到警察之后，往警察那边跑，却发现警察尸变了，吓得腿软了。石安发现之后，往回跑，提醒女儿快跑，发现尸变了的警察已经跑到了女儿的身边，多亏了男二号成庆和他媳妇，救了孩子一命。众人就开始抵御丧尸的攻击，石安也在此时受到了攻击，多亏流浪汉用大衣遮住丧尸的脸，石安得以逃过一劫。在几个棒球队员、石安和成庆的合力辅助下，大部分没被感染的人已经安全上车了。但是富贵男提醒乘务员让列车长开车，棒球队的啦啦队队长珍熙坚决反对，因为她的朋友们还没上车。乘务员绝对让列车长发车。棒球队员等人觉得拖延时间够了，就转身去赶车，但是车已经发动了，车站上的人已经被感染，咬伤了几个人，最后，经过一番搏斗，几个人里只剩下了三个人：石安、成庆和珍熙的男友（虽说他没表白，但两人的关系在几人上车的时候，就已经表明）。 在之后的联系中，发现：秀安和成庆的媳妇儿，以及故事中的姐妹花中的姐姐，被困在十三节车厢，而他们在第九节车厢，珍熙和大部分人在第十五节车厢。几人商议决定：一起前往十三节，救出几人，然后去十五节车厢和大部分人会合。 第二波高潮结束在角色分配上：成庆自己排在第一，棒球男排在第二，石安殿后。在经历了与一节车厢丧尸的搏斗之后，体力不足。但是他们发现丧尸不能在暗的环境下看见，但能听见。于是石安心生一计:在火车过隧道的时候，用手机吸引丧尸的注意力，乘机跑过去。 于是，三人就以这种方式跑到了第十三节车厢。棒球男联系珍熙，珍熙告诉列车员情况，一群人会过去。但是此时的富贵男从中作梗，或者说说出了其他人的心声：这些人从那边跑过来，谁知道有没有被感染，于是坚决反对。并将珍熙绑住，把门用衣服领带给固定住，不让他们过来，但是此时，被困到第十四节车厢的他们，车门还没被关紧，几个人负责堵住丧尸，一个人负责砸门。为了掩护石安，成庆被丧尸咬了，门终于关上了。但是成庆也被感染了，成庆将怀孕的妻子托付给石安，请求他照顾好，并让他赶紧带着其他人跑向刚砸开的门。其他人都安全地离开了。但是此时，姐妹花中的姐姐却被困住了，在门关上时，被丧尸感染了。其他人一致要求刚进来的人走向第十六节车厢，要求把他们隔离。姐妹花中的妹妹发现因为这群人的原因，自己的姐姐本来可以进来，却被感染了，心里捣鼓了几句，乘其他人在封锁第十五、十六节车厢的车门的时候，打开了第十四、十五节车厢的车门。 第三波高潮结束 而第十五节中，只有两个人没被感染：富贵男和一乘务员，和秀安他们一样，因为躲在厕所而幸免。 列车继续前进。第十六节车厢里只剩了：珍熙（在众人要求石安和棒球男等人离开，被隔离时同棒球男一同离开）、成庆的媳妇儿、棒球男、石安、流浪汉和秀安。整趟列车中只有这些人和列车长没被感染。而此时石安接到了金代理的电话，此次事件可能是由于他们在那个项目中的打捞的油轮上带起来的病毒引起的。金代理表示很后悔，不知道这件事对不对，石安听到消息后，很震惊，之后，听金代理说釜山已经安全了。军队掌管了所有权，已经安全隔离了。金代理挂了电话之后，石安拼命清洗手上的血污。 列车在前进的过程中，到站了，是不打算停的，但是列车长发现了道路被出轨的列车挡住了。列车长决定换车。列车长在启动机车之后，下车提醒其他人（安全的）坐火车头去釜山。此时对面冲过来一辆火车头，撞翻了一辆满载着丧尸的列车，丧尸就快冲出来了。而石安、秀安、流浪汉和成庆媳妇被压在两辆车之间，天无绝人之路，石安发现了一个车轱辘之间的缝隙可以通行，于是先爬出来，看清楚周围没有丧尸之后，让其他人赶紧爬过去。而此时丧尸从被压碎的玻璃窗中跑出来了。流浪汉挡住了他们，让秀安和孕妇爬了出去。 富贵男在出卖乘务员之后，冲出了列车（没关车门），导致身后一大波丧尸跟随。首先遇到了珍熙和棒球男，打开他们关上的车门，没有关，反而把一旁在等男友砸开车窗的珍熙推给了丧尸，棒球男发现之后，就停止了砸窗，转身去救珍熙，而此时富贵男就趁机撞开车窗，跑了出去。珍熙被感染之后，棒球男就一直抱着她，直到自己被感染…… 列车长在遇到富贵男时，就起身与富贵男身后的丧尸搏斗，结果也被感染了。富贵男独自一人趁机爬上了车头。石安、秀安与成庆媳妇看到了行进中的车头，起身追赶。逐渐追上了，而身后的丧尸也追了上来。于是看到了一场类似于打群架的情形：一群人追着几个人。身后的丧尸在扒上了车头之后，由于人数过多，都拖在地上，都开始让列车减速。于是石安就开始用脚踢这些丧尸。渐渐地，丧尸的数量少了，速度提起来了，最后，丧尸就完全被驱逐干净了。 三人在走向驾驶室时，发现了已经被感染的富贵男。富贵男说明想回家，想石安带他回家，但是很快就尸变了，尸变之后，两人开始搏斗。在搏斗的过程中，石安不幸被感染。 石安为了两人的安全，将两人锁在驾驶室，期望成庆的媳妇儿照顾好女儿之后，自己跳下了车头，跳下车头之前，石安是愉悦的：回忆起女儿刚出生时的情形，自己十分高兴。 两人安全到达隔离带，士兵请求上级如何处置未知人士时，上峰命令击毙。而秀安在此时唱起了歌曲：那首她在学校没唱完的歌曲，狙击手没有开枪，故事在一群士兵包围两人的情形中结束。嗯，三千六百多字的故事梗概，内容不是特别详细。 就自己看完这部电影，觉得在故事中，涉及到了一下几部分的内容： 1. 资本的力量的强大，在爆发问题时，资本的力量，可以让有钱人权贵可以暂时免受灾难的侵扰。但是当灾难无法避免和消除时，只能保留一部分的安全，甚至这一部分人的安全也不能保证。资本可以让人享受特权对待。 2. 人性是不可考验的，在故事中，石安对成庆的所作所为，以及众人对石安、成庆等人的隔离、姐妹花妹妹为了和姐姐团聚打开车门，富贵男的自私等等，都是基于人性在面对危难时的个人反映。 人性有好有坏，在面对危难境地时，看站在人们面前的是哪种，是哪种人提出来的，在关键时刻提出来的声音，往往会成为人们共同的心声（人们在有多个选择时，更多的时候，会被周围人感染，大众心理会倾向于一种发声）。 3. 人性的自私，在危难时刻最容易体现。资本是自私的，但资本却是由人掌控的。权贵是自私的，因为他们有钱、权，在正常的时候，他们可以享受更高质量的生活。因此，他们不希望改变，人性中的自私会更充分体现。 故事中也有很多美好： 石安母亲对石安的爱，石安对秀安的爱（父女，母子的亲情）； 成庆对妻子的爱，表面上是妻管严，实际上对妻子的爱，无以言表； 棒球男对珍熙的爱，虽说没有说出口，但是却陪伴到最后； 姐妹花中妹妹对姐姐的依恋，对姐姐生活地同情与爱等等。 在这些人一同前进的时候，我也感受到了人性的美好，人性中的善良。哪怕刚开始，石安对成庆的所作所为，但是毕竟后面石安还是改过来了。当三人前往十三节车厢救人时，棒球男没有勇气对自己昔日的队友下手，哪怕其他两人已经深陷困境，这之间的犹豫，也很美好。 尽管电影中，每当他们深陷困境时，总有好运降临，助他们躲过重重劫难。艺术做到这里也就足够了，虽说有些假。 总之，这部电影真的很好看。这部电影真的很好看。这部电影真的很好看。]]></content>
@@ -896,18 +909,6 @@
       </categories>
       <tags>
         <tag>电影</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[数据分析之探索性分析]]></title>
-    <url>%2F2018%2F01%2F12%2FEDA%2F</url>
-    <content type="text"><![CDATA[探索性数据分析是指对已有数据通过作图、制表、计算特征量等手段探索数据的结构和规律的一种数据分析方法。特别是当我们队这些数据中的信息没有足够的经验，不知道该用何种传统统计方法进行分析是，探索性数据分析就会非常有效。课程内容主要包括描述性统计分析、多维数据的可视化、降维技术、数据模型的可视化。 描述统计分析：以揭示数据分布特性的方式汇总并表达定量数据的方法。 包括数据的频数分析、数据的集中趋势分析、数据的离散程度分析、数据的分布以及一些基本的统计图形。描述性统计是一类统计方法的汇总，作用是提供了一种概括和表征数据的有效且相对简便的方法。通常用图示法来表述，易于看懂，能发现质量特性值的分布状况、趋势走向的一些规律，便于采取措施。用于汇总和表征数据，通常是对数据进一步定量分析的基础，或是对推断性统计方法的有效补充。 常见的描述性统计方法分为三类： 数据的统计量描述，如均值、方差。 图示技术描述，如直方图、散布图、趋势图、排列图、条形图和饼分图 文字语言分析和描述，如统计分析表、分层、因果图、亲和图和流程图。 常见的描述性统计的应用范围：适用于能够收集到定量数据的所有领域，提供有关产品、过程或质量管理体系的信息，也用于管理。 多元数据和多维数据的区别？ 以下方法来自：http://staff.ustc.edu.cn/~zwp/teach/MVA/Lec2_slides.pdf多元数据的可视化方法：1.几何投影方法2.基于像素的可视化技术3.层次可视化技术4.基于图标的可视化结束 以下方法来自：http://www.afenxi.com/post/1643降维技术的方法：缺失值比率低方差滤波高相关滤波随机森林/组合树主成分分析反向特征消除前向特征构造 数据模型的可视化 ——————————未完待续……]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>探索性分析</tag>
-        <tag>数据分析与挖掘</tag>
       </tags>
   </entry>
   <entry>
@@ -922,16 +923,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[动手写爬虫概览]]></title>
-    <url>%2F2018%2F01%2F12%2Fcrawl0%2F</url>
-    <content type="text"><![CDATA[编写的爬虫代码的主要涉及的过程： 获取网页数据–提取数据–数据的清洗和处理–数据存储。 以下是编写爬虫程序所需要安装的库。在这里，默认大家在安装Python之时已经安装好pip这个工具。 1.获取网页数据阶段，可能会用到的库：requests,urllib2 进入控制台界面： pip install urllib2 pip install requests 2.提取数据需要用到的库：bs4,re,lxml pip install bs4 3.数据清洗和处理：re,JSON 4.数据存储：mysqldb（SQL数据库）,pymongo（NOSQL）,xlwt（excel） pip install pymongo pip install xlwt mysqldb的库需要去其他地方下载：https://sourceforge.net/projects/mysql-python/]]></content>
+    <title><![CDATA[数据分析之探索性分析]]></title>
+    <url>%2F2018%2F01%2F12%2FEDA%2F</url>
+    <content type="text"><![CDATA[探索性数据分析是指对已有数据通过作图、制表、计算特征量等手段探索数据的结构和规律的一种数据分析方法。特别是当我们队这些数据中的信息没有足够的经验，不知道该用何种传统统计方法进行分析是，探索性数据分析就会非常有效。课程内容主要包括描述性统计分析、多维数据的可视化、降维技术、数据模型的可视化。 描述统计分析：以揭示数据分布特性的方式汇总并表达定量数据的方法。 包括数据的频数分析、数据的集中趋势分析、数据的离散程度分析、数据的分布以及一些基本的统计图形。描述性统计是一类统计方法的汇总，作用是提供了一种概括和表征数据的有效且相对简便的方法。通常用图示法来表述，易于看懂，能发现质量特性值的分布状况、趋势走向的一些规律，便于采取措施。用于汇总和表征数据，通常是对数据进一步定量分析的基础，或是对推断性统计方法的有效补充。 常见的描述性统计方法分为三类： 数据的统计量描述，如均值、方差。 图示技术描述，如直方图、散布图、趋势图、排列图、条形图和饼分图 文字语言分析和描述，如统计分析表、分层、因果图、亲和图和流程图。 常见的描述性统计的应用范围：适用于能够收集到定量数据的所有领域，提供有关产品、过程或质量管理体系的信息，也用于管理。 多元数据和多维数据的区别？ 以下方法来自：http://staff.ustc.edu.cn/~zwp/teach/MVA/Lec2_slides.pdf多元数据的可视化方法：1.几何投影方法2.基于像素的可视化技术3.层次可视化技术4.基于图标的可视化结束 以下方法来自：http://www.afenxi.com/post/1643降维技术的方法：缺失值比率低方差滤波高相关滤波随机森林/组合树主成分分析反向特征消除前向特征构造 数据模型的可视化 ——————————未完待续……]]></content>
       <categories>
         <category>学习</category>
       </categories>
       <tags>
-        <tag>概览</tag>
-        <tag>Python</tag>
-        <tag>爬虫</tag>
+        <tag>探索性分析</tag>
+        <tag>数据分析与挖掘</tag>
       </tags>
   </entry>
   <entry>
@@ -960,9 +960,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[《推荐系统》(蒋凡译)读书笔记——概览]]></title>
-    <url>%2F2018%2F01%2F12%2Frecommendsys0%2F</url>
-    <content type="text"><![CDATA[第一章 引言书中首先以在线书店为例，讲述了书店向特定用户推荐相关书籍的推荐系统，引申出推荐系统的类别——个性化推荐与热门推荐。在线书店是个性化推荐系统。每一个人由于其兴趣爱好不同，在系统中会看到不同的列表。当然也会有畅销书的推荐，而畅销书的推荐，显示的是当前用户群体，大众的关注热点，表示的是一种群体性推荐。 这本书重点讨论的是前面一种：也就是个性化的推荐系统。 提供个性化的推荐系统需要了解到用户的信息。它必须开发并维护一个用户模型或者用户记录来保存用户的偏好。以在线书店为例子，系统需要记住访客的浏览或者买过的书，从而预测他可能感兴趣的书。 尽管用户模型对推荐系统很重要，但是如何获取并利用这个信息，往往是取决于特定的推荐技术的。 用户的偏好可以通过监测用户行为隐式地获取，也可以通过询问访问者，显式地获取。 在获取用户的信息后，系统该如何利用，以及利用什么额外的信息。这些是推荐系统要解决的一部分问题。 目前已经在许多在线书店应用的方法：基于群体或协同的方法。 本书分为两部分：第一部分总结了几年来被广泛接受的推荐系统方面的研究成果，介绍了协同过滤、基于内容的过滤、基于知识的推荐和混合推荐方法的基本理论框架。此外，还包含了解释推荐物品的原因和评估推荐结果质量。 第二部分讨论了推荐系统的最近研究课题。如：如何因对外来攻击和操作推荐系统的做法、支持消费决策和可能的说服策略、社交和语义网背景下的推荐系统和所有领域应用推荐系统。第二部分可以看作是持续研究的参考。 本书的第一部分简介： 协同过滤的推荐这些推荐的思想是：如果用户在过去有相同的偏好，他们在未来也有相同的偏好。 基于协同过滤推荐下，一般需要回答几个问题： 我们如何发现与我们要推荐的用户有着相似的偏好的用户？ 如何衡量相似度？ 如何处理还没有购买经历的用户？ 如果只有很少的评分怎么办？ 除了利用相似的用户之外，还有哪些技术可以预测某个用户是否喜欢其他物品？ 其实，纯粹的协同过滤方法不会用到和要求任何和物品有关本身的知识的。 基于内容的推荐它的核心是：能够得到物品的描述，和这些特征的重要记录。 基于内容的推荐下，需要回答如下的问题： 系统如何获取并持续改进用户记录？ 如何决定哪个物品匹配或至少能接近、符合用户的兴趣？ 什么技术能自动抽取或学习物品的描述，减少人工标注？ 与不涉及内容的方法比较，基于内容的推荐有两大优点： 1.不需要大规模用户就可以达到适度的推荐精准度 2.一旦得到物品的属性就能立即推荐新物品。 基于知识的推荐如果我们把注意力投向其他领域，比如消费电子产品，就会涉及大量单次购买者。这意味着我们可能无法依赖购买记录，而这却是基于内容过滤和协同过滤的前提条件。即使如此，我们还是能够获取到更为精细化和结构化的内容，包括专业化的优质特征。 基于知识的推荐系统需要额外的因果关系知识生成推荐。在这种基于知识的方法中，推荐系统通常会用到有关当前用户和有效商品的额外信息。基于约束的推荐就是此类系统的例子（就类似与taobao，京东此类网站，需要用户设定条件，才能给你过滤，推荐产品） 基于知识的推荐系统要解决的问题如下： 什么机制可根据用户的特点来选择和排名物品？（为什么把某一个放在前面，把某一个放在后面） 哪种领域知识能表示成知识库？ 如何在没有购买记录的领域获取用户信息？ 如何处理用户直接给出的偏好信息？ 哪种交互方式能够用英语交互式推荐系统？ 设计对话时，要考虑哪些个性化因素才能保证获取用户的偏好信息？ 混合推荐由于问题的背景不同，每一种方法都有其优劣势。一种显而易见的方法就是组合不同技术产生更好或更精准的推荐。这种设计尤其适用于克服纯粹协同过滤方法的规模膨胀问题，并可以以来内容分析处理新物品或新用户。 在推荐系统中混合使用不同的方法时必须回答一下几个问题： 哪些方法能被组合，特定组合的前提是什么？ 两个或多个推荐算法是应该顺序计算，还是按照其他方法计算？ 不同的方法如何赋予权重，可以动态赋权吗？ 一般来说，推荐系统的目的有两个：一方面，推荐系统被用于激发用户去做某件事；另一方面，也可以看作是解决信息过载的工具。 因此，推荐系统也深深根植于信息检索和信息过滤的领域。 推荐系统的解释解释是未来让用户更容易理解推荐系统的推理脉络。 如何评估推荐系统？评估的方法有哪些？ 评估方法有：实验、半实验和非实验三种设计方法。需要回答的问题有： 哪些研究适用于评估推荐系统？ 如何利用历史数据实验评估推荐系统？ 用什么衡量来适应不同的评估目标？ 现有的评估技术的局限是什么？尤其是推荐系统的会话性或商业价值方面。]]></content>
+    <title><![CDATA[《推荐系统》读书笔记——协同过滤推荐]]></title>
+    <url>%2F2018%2F01%2F12%2Frecommendsys2%2F</url>
+    <content type="text"><![CDATA[在应用协同过滤推荐技术时，除了用户评分数据，我们不需要额外的物品数据。 这样的好处是避免了付出很大的代价向系统提供详细而且实时更新的物品描述信息，但是这种仅基于纯粹的协同过滤的算法却无法根据物品的特性和用户的特殊偏好来客观选择推荐物品的。 本章中，将物品的特征描述为“内容”。因为后面章节部分介绍的大多技术的最初目的是推荐有意思的文本文档。此外，绝大多数的方法的假设是物品的特性能自动从文档内容本身或无结构的文本描述中提取。所以，基于内容的推荐系统的典型例子是比较候选文章的主要关键词和用户过去高度评价过的其他文章中出现的关键词来推荐新文章，而这些被推荐的物品，就常常指的是“文档”。 本章讨论的基于内容的推荐，关注的算法侧重于推荐文本描述的物品，并能自动“学习”用户记录（基于知识的推荐系统通常是显式询问用户的偏好）。 内容的表示与相似度描述物品目录最简单的方法就是维护每个物品的特征的详细列表（属性集、特征集或物品信息）。以推荐图书为例，可以把体裁、作者、出版社等信息保存在数据库中，根据不同的用户兴趣， 用这些特征来描述他们的偏好，而要做的就是将物品特征同用户偏好匹配起来。推荐系统需要收集用户的记录，直接的方法是明确询问用户ta所接受的范围和内容，间接的方式是让用户给一组物品进行评分，可以是整体评分，也可以是对不同维度进行评分。 基于内容的推荐系统的工作原理是，评估用户还没看到的物品与当前用户过去喜欢的物品的相似度。而衡量相似度的方法有两种：1.0/1衡量，就是将用户过去喜欢的物品，同其他ta没见过的物品n进行比较，如果n的类型在ta喜欢的类型中，则标为1，否则就为0；2.计算相关关键词的相似度或重叠度。典型的相似度系数会用到Dice系数，它比较适合多值特征组合。它是这样描述的：如果每本图书b由一组关键词k描述，那么Dice系数描述bi和bj为：2*（kbi∩kbj）/(|kbj|+|kbi|) 向量空间模型和TF-IDF严格来讲，图书的类别信息，并不算是图书的内容，而只能算是附加知识。基于内容的推荐方法不是去维护一组“元信息”特征，而是使用一列在文档中出现的相关关键词，它的主要思想是，能够从文档内容本身或没有限制的文字描述中自动生成列表。 文档内容可以用不同方法转换到这样的关键词列表中。首先，一种单纯的方法是将现在所有文档的词语设为一个列表，然后用布尔型向量描述每一个文档，1表示文档出现在文档中，0表示没有出现。如果用户记录用一个相似的列表描述，那么计算兴趣文档和文档的重合程度就可以匹配文档。 这个方法存在的问题很明显。首先是它假设每个词在文档中的重要性是相同的，此外，当文档比较长的时候，用户记录和文档的重叠几率自然就会大，所以，这样的推荐系统，往往更倾向于推荐长文档。 另一种方法是TF-IDF。它代表的是TF(term-frequence)-IDF(inverse documents frequence)，这种技术在信息检索领域应用广泛。 词频描述某个词在一篇文档中出现的频繁程度。为了阻止更长的文档得到更高的相关度的权值，必须对文档长度进行归一化处理，有几种方法是可行的。其中一种简单方法是将词出现的次数比上同文档中其他关键词出现的最多次数。假定：f是某词在文档中出现的频数，fj是其他关键词中最常出现的关键词的频数 TF=f/fj 反文档频率是组合了词频后的第二个衡量值，旨在降低所有文档中几乎都会出现的关键词的权重。其思想是，那些常见的词语对区分文档没有用，应该给那些仅出现在某些文档中的词更高的权值。N是所有可推荐的文档数量，ni是N中关键词i出现的数量。 IDF的计算方式：log (N/ni) 文档关键词的组合TF-IDF的权值可以计算为这两个子向量的乘积。 在TF-IDF模型中，文档不是表示为每个关键词的布尔值向量，而是算出的TF-IDF值向量。（这部分没弄懂，TF-IDF向量不是计算某一个次嘛？怎么来计算整篇文档的？所有关键词的TF-IDF再次相乘？） 其实，文档在处理之前，实际上还要去掉停用词，停用词的去除，对模型的效果可能更为明显。 TF-IDF的改进及局限TF-IDF向量一般很大并且很稀疏。可以使用其他技术来让它们更紧凑，并从向量中删除不相关的信息。 1.停用词和词干还原。一种直接的方法是删除所谓的停用词。在英语中，这类词一般是介词和冠词，这类词在文档中几乎都会出现，可以将他们从文档向量中删除。此外，另一种技术是词干还原或合并，目的是将相同的词语的不同变形替换成他们共同的词干（词根）。 这些技术进一步缩小了向量规模，与此同时，在用户记录中也用到词干来改进匹配过程。词干还原的实现方法包括：词形分析（后缀拆分法）和查字典法（wordnet）。尽管这些方法很强大，但是还是可能存在陷阱，如缩略语和双关语，会导致匹配不当的问题，词干还原法只用句法后缀拆分可能增加匹配不相关文档的风险。 2.精简规模。仅用n个信息量最大的词语来减少文档描述的规模，期望删除数据中的“噪声”。实验结果表明，如果挑选的关键词太少，一些重要文档特征就可能无法覆盖到；如果挑选的关键词太多，文档模型中用到关键词的重要性就有限，而且这些噪声反而使得推荐效果变差。原则上，特征选择技术也可以用于觉得信息量的关键词，然而这种基于学习的方法，不仅会增加模型复杂度，也有可能会倾向于过拟合描述训练数据的样本。也有人提出用外部词典来删除该领域不相关的词语，实验表明，这种方法能持续提高精度，尤其是只能得到很少的训练样本时。 3.短语。短语比单词更能描述文本，用它来替换词，可能进一步提高描述的准确性。局限性：从文本中抽取个别关键词并赋权的方法有另外的局限，没有考虑到关键词的上下文，在某些情况下没有正确体现描述的“含义”。一般来说，我们假设出现在一篇文档中的词语通常是适合刻画文档，而不是在文档中出现“反语境”。 基于内容的相似度检索协同过滤可以被成为“推荐相似用户喜欢的物品”，基于内容的推荐是称为“推荐与用户过去喜欢的物品相似的物品”。从这里来看，推荐系统的任务还是（基于用户记录）来预测用户是否喜欢自己没有见过的物品。本节会介绍依赖向量——空间文档表示模型的最常见技术。 最近邻（还没写完）想要估计用户对某篇文档感兴趣的程度，最初的方法是查询用户过去是否喜欢相似的文档。这需要两类信息：1.用户对以前商品的“喜欢/不喜欢”的评价记录，其次，需要一个标准来衡量文档的相似度。一般地，使用余弦相似度方法来评价文档是否相似。 相关性反馈——R0cchio方法它也是一种基于向量模型的方法，曾用于信息检索系统SMART，它的特定是，用户不能只提交给系统基于关键词的查询词，还要反馈检索结果是否相关。 其他文本分类方法将这类问题看作是分类问题，应用机器学习中的有监督学习技术，就会自动决定用户是否对某篇文档感兴趣，有监督学习意味着算法依赖现成的训练数据。文中还介绍了基于概率模型的方法、其他线性分类器和机器学习、显示决策模型和特征选择。 讨论对比评估局限性]]></content>
       <categories>
         <category>读书</category>
       </categories>
@@ -985,9 +985,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[《推荐系统》读书笔记——协同过滤推荐]]></title>
-    <url>%2F2018%2F01%2F12%2Frecommendsys1%2F</url>
-    <content type="text"><![CDATA[协同过滤推荐的主要思想：利用已有用户群过去的行为或意见预测当前用户最可能喜欢哪些东西或对哪些东西感兴趣。 此类的系统在在线零售系统中成为对用户需求个性化定制内容的工具。 纯粹的协同过滤方法的输入数据只有给定的用户—物品评分矩阵，输出数据一般有以下几种类型： 1. 表示当前用户对物品喜欢或者不喜欢程度的预测数值， 2. n项推荐物品的列表。当然，这个TOP-N列表不会包含用户已经买过的物品。 推荐方法： 基于用户的最近邻推荐这是一种早期的推荐系统，它的主要思想：首先，给定一个评分数据集和当前用户的id作为输入，找出与当前用户过去有相似偏好的其他用户，这些用户有时也被称为对等用户或最近邻；然后对当前用户没有见过的每个物品p，利用其近邻对p的评分计算预测值。这种方法的假设是： 1. 如果用户过去有相同的偏好，则他们未来也有相似的偏好 2. 用户偏好不会随着时间变化而变化。 书中以Alice购物为例，利用Pearson系数来评估用户的相似性（如何计算，我会在单独一篇博文中讲述）。 在实际应用中，由于评分数据集非常大，我们需要考虑计算的复杂度。 此外，评分矩阵通常十分稀疏，每个用户只对所有有效的物品的小部分进行评分。 最后，我们给新用户推荐什么，如何处理没有评分的新物品。这些问题都要深入讨论。 其他用于评估用户相似度的方法：改进余弦相似度，spearman相关系数和均方差。 然而实验分析显示，对于基于用户的推荐系统，pearson的相关系数比其他的方法更为优秀。不过，后来发现的基于物品的推荐技术，利用余弦相似度方法比pearson系数推荐效果更好。 事实上，基于近邻的预测方法在遇到当前用户只有非常少的共同的物品评分时会出错，导致不准的预测。 于是，有专家学者就提出了重要性赋权的方法——基于线性化简相似度权值的方法。尽管简单，但是在评分物品少于50个的时候，准确预测的效率提升非常显著。但是还有问题需要解决：赋权方案和启发式决定阈值在现实中是否有效；评分数据集更小时，我们不能期望找到很多有50个共同评分物品的用户。 能通过精细调整预测权重来提高准确度的方法是样本拓展。它指的是强调那些接近1和-1的值，对原始数值乘以一个常量p来调整近邻的权值。 选择近邻为了减小计算量并且保证计算预测值，我们只包括了那些与当前用户有正向关联的用户。降低近邻集合规模的方法通常是为用户相似度定义一个具体的最小阈值，或者将规模大小限制为一个固定值，而且只考虑k个近邻。 但是这两种方法有潜在的问题：如果阈值过高，那么规模就会小很多，意味着很多商品无法预测。相反，阈值过低，那么规模就不会显著降低。 k取多少，是个问题，MOVIE LENS上的测试显示，在大多数情况下，20到50个近邻似乎比较合理。 基于物品的最近邻推荐在电子商务网站，大多采用的是基于物品的推荐。 这种推荐，比较适合做线下的预处理。因此，即使评分数据矩阵非常大，也能做到实时计算的推荐。 基于物品的推荐算法的思想是：利用物品之间的相似度来计算预测值。 还是以Alice购物为例，书中介绍的是利用余弦相似度来进行物品的相似度的计算。（如何利用余弦相似度来计算，我也会另开一篇来进行介绍说明） 不管是基于物品还是基于用户，当数量达到一定程度的时候，计算的实时性是达不到的。需要对数据进行预处理。 为了保证性能与精度，通常采用离线预计算数据。 思想：实现构造一个物品相似度矩阵，描述物品两两之间的相似度。运行时，通过确定与物品p最相似的物品并计算用户u对这些邻近物品的加权总和来得到用户u对物品的评分。近邻数量受限于当前用户评过分的物品个数。 除开这种模型上的预处理之外，还可以仅利用评分矩阵中的某一部分数据来降低复杂度。一种基本技术是二次抽样，这种技术可以随机选取数据的子集，或者忽略那些仅有少量评分或非常热门物品的用户记录。 一般地，可以利用这些技术来加速计算，但是由于用到的信息少了，系统做出的精准预判的能力可能会下降。 基于协同过滤的评分方法显式收集用户的观点：通常是5分或者7分制。通过记录用户的打分，来收集用户的评分数据集。 隐式收集用户的观点：跟踪用户的浏览记录，收集用户的浏览日志，对用户的浏览日志进行分析，推荐可能效果更为显著。 数据稀疏与冷启动的问题实际应用中，可能获取的用户评分数据十分少，因此。评分矩阵就是一个稀疏矩阵。这种情况下的挑战就是利用较少的数据来获得精准的预测。直接做法，利用用户的附加信息（年龄，性别，教育程度兴趣等）来辅助分类用户，这是借助外界的信息。 解决数据稀疏与冷启动的问题的一种方法——基于图的方法（后面单独拿出来讲解）主要思想：利用假定用户品味的传递性，并且是不变的（书中没有提到），并由此增强额外的信息矩阵。 矩阵因子分解Netflix的竞赛表明高等矩阵因子分解方法对提高推荐系统的预测准确率有很大的帮助。简单来说，推荐系统使用矩阵因子分解方法来从评分模式抽取一组潜在的因子，并通过这些因子向量来描述用户和物品。在电影领域，这些自动识别的因子，很有可能对应一部电影的常见标签，也有可能是无法解释的。当当前用户和物品在这些因子相似时，就会推荐物品。 在信息检索领域，SVD被用于发现文档中的潜在因子；这种潜在语义分析技术也被成为潜在语义索引。 关联规则挖掘（后面单独拿出来详细介绍）关联规则挖掘是一种在大规模交易中识别类似规则关系的技术。 典型案例：啤酒与尿布。 就是通过一系列购物篮分析，分析出购物篮里面的可能同时购买的商品。 推荐系统，也可以根据这个来做一个类似商品的推荐。如捆绑销售。 在实际生活中，如果去一趟超市，可能发现商品并不是按照这种购物篮的方式捆绑，而是可能约有可能一起买的商品，反而相隔了一定的距离，这也是超市为了让人待在超市里更久，增加销量。 基于概率分析的推荐方法还有一种预测用户会对某个物品进行评分的方法是利用概率论已有的形式体系。 用概率方法实现协同过滤，最初简单的实现是将预测问题看作分类问题，通常可以描述为“将一个对象分配给几个事先定义好的类别”的任务。 如邮件的推荐（将其划分为正常邮件和垃圾邮件），里面用到的贝叶斯分类器，可以将经过训练的数据来拟合邮件分类，来判断一封邮件是否是正常邮件。]]></content>
+    <title><![CDATA[《推荐系统》(蒋凡译)读书笔记——概览]]></title>
+    <url>%2F2018%2F01%2F12%2Frecommendsys0%2F</url>
+    <content type="text"><![CDATA[第一章 引言书中首先以在线书店为例，讲述了书店向特定用户推荐相关书籍的推荐系统，引申出推荐系统的类别——个性化推荐与热门推荐。在线书店是个性化推荐系统。每一个人由于其兴趣爱好不同，在系统中会看到不同的列表。当然也会有畅销书的推荐，而畅销书的推荐，显示的是当前用户群体，大众的关注热点，表示的是一种群体性推荐。 这本书重点讨论的是前面一种：也就是个性化的推荐系统。 提供个性化的推荐系统需要了解到用户的信息。它必须开发并维护一个用户模型或者用户记录来保存用户的偏好。以在线书店为例子，系统需要记住访客的浏览或者买过的书，从而预测他可能感兴趣的书。 尽管用户模型对推荐系统很重要，但是如何获取并利用这个信息，往往是取决于特定的推荐技术的。 用户的偏好可以通过监测用户行为隐式地获取，也可以通过询问访问者，显式地获取。 在获取用户的信息后，系统该如何利用，以及利用什么额外的信息。这些是推荐系统要解决的一部分问题。 目前已经在许多在线书店应用的方法：基于群体或协同的方法。 本书分为两部分：第一部分总结了几年来被广泛接受的推荐系统方面的研究成果，介绍了协同过滤、基于内容的过滤、基于知识的推荐和混合推荐方法的基本理论框架。此外，还包含了解释推荐物品的原因和评估推荐结果质量。 第二部分讨论了推荐系统的最近研究课题。如：如何因对外来攻击和操作推荐系统的做法、支持消费决策和可能的说服策略、社交和语义网背景下的推荐系统和所有领域应用推荐系统。第二部分可以看作是持续研究的参考。 本书的第一部分简介： 协同过滤的推荐这些推荐的思想是：如果用户在过去有相同的偏好，他们在未来也有相同的偏好。 基于协同过滤推荐下，一般需要回答几个问题： 我们如何发现与我们要推荐的用户有着相似的偏好的用户？ 如何衡量相似度？ 如何处理还没有购买经历的用户？ 如果只有很少的评分怎么办？ 除了利用相似的用户之外，还有哪些技术可以预测某个用户是否喜欢其他物品？ 其实，纯粹的协同过滤方法不会用到和要求任何和物品有关本身的知识的。 基于内容的推荐它的核心是：能够得到物品的描述，和这些特征的重要记录。 基于内容的推荐下，需要回答如下的问题： 系统如何获取并持续改进用户记录？ 如何决定哪个物品匹配或至少能接近、符合用户的兴趣？ 什么技术能自动抽取或学习物品的描述，减少人工标注？ 与不涉及内容的方法比较，基于内容的推荐有两大优点： 1.不需要大规模用户就可以达到适度的推荐精准度 2.一旦得到物品的属性就能立即推荐新物品。 基于知识的推荐如果我们把注意力投向其他领域，比如消费电子产品，就会涉及大量单次购买者。这意味着我们可能无法依赖购买记录，而这却是基于内容过滤和协同过滤的前提条件。即使如此，我们还是能够获取到更为精细化和结构化的内容，包括专业化的优质特征。 基于知识的推荐系统需要额外的因果关系知识生成推荐。在这种基于知识的方法中，推荐系统通常会用到有关当前用户和有效商品的额外信息。基于约束的推荐就是此类系统的例子（就类似与taobao，京东此类网站，需要用户设定条件，才能给你过滤，推荐产品） 基于知识的推荐系统要解决的问题如下： 什么机制可根据用户的特点来选择和排名物品？（为什么把某一个放在前面，把某一个放在后面） 哪种领域知识能表示成知识库？ 如何在没有购买记录的领域获取用户信息？ 如何处理用户直接给出的偏好信息？ 哪种交互方式能够用英语交互式推荐系统？ 设计对话时，要考虑哪些个性化因素才能保证获取用户的偏好信息？ 混合推荐由于问题的背景不同，每一种方法都有其优劣势。一种显而易见的方法就是组合不同技术产生更好或更精准的推荐。这种设计尤其适用于克服纯粹协同过滤方法的规模膨胀问题，并可以以来内容分析处理新物品或新用户。 在推荐系统中混合使用不同的方法时必须回答一下几个问题： 哪些方法能被组合，特定组合的前提是什么？ 两个或多个推荐算法是应该顺序计算，还是按照其他方法计算？ 不同的方法如何赋予权重，可以动态赋权吗？ 一般来说，推荐系统的目的有两个：一方面，推荐系统被用于激发用户去做某件事；另一方面，也可以看作是解决信息过载的工具。 因此，推荐系统也深深根植于信息检索和信息过滤的领域。 推荐系统的解释解释是未来让用户更容易理解推荐系统的推理脉络。 如何评估推荐系统？评估的方法有哪些？ 评估方法有：实验、半实验和非实验三种设计方法。需要回答的问题有： 哪些研究适用于评估推荐系统？ 如何利用历史数据实验评估推荐系统？ 用什么衡量来适应不同的评估目标？ 现有的评估技术的局限是什么？尤其是推荐系统的会话性或商业价值方面。]]></content>
       <categories>
         <category>读书</category>
       </categories>
@@ -998,8 +998,8 @@
   </entry>
   <entry>
     <title><![CDATA[《推荐系统》读书笔记——协同过滤推荐]]></title>
-    <url>%2F2018%2F01%2F12%2Frecommendsys2%2F</url>
-    <content type="text"><![CDATA[在应用协同过滤推荐技术时，除了用户评分数据，我们不需要额外的物品数据。 这样的好处是避免了付出很大的代价向系统提供详细而且实时更新的物品描述信息，但是这种仅基于纯粹的协同过滤的算法却无法根据物品的特性和用户的特殊偏好来客观选择推荐物品的。 本章中，将物品的特征描述为“内容”。因为后面章节部分介绍的大多技术的最初目的是推荐有意思的文本文档。此外，绝大多数的方法的假设是物品的特性能自动从文档内容本身或无结构的文本描述中提取。所以，基于内容的推荐系统的典型例子是比较候选文章的主要关键词和用户过去高度评价过的其他文章中出现的关键词来推荐新文章，而这些被推荐的物品，就常常指的是“文档”。 本章讨论的基于内容的推荐，关注的算法侧重于推荐文本描述的物品，并能自动“学习”用户记录（基于知识的推荐系统通常是显式询问用户的偏好）。 内容的表示与相似度描述物品目录最简单的方法就是维护每个物品的特征的详细列表（属性集、特征集或物品信息）。以推荐图书为例，可以把体裁、作者、出版社等信息保存在数据库中，根据不同的用户兴趣， 用这些特征来描述他们的偏好，而要做的就是将物品特征同用户偏好匹配起来。推荐系统需要收集用户的记录，直接的方法是明确询问用户ta所接受的范围和内容，间接的方式是让用户给一组物品进行评分，可以是整体评分，也可以是对不同维度进行评分。 基于内容的推荐系统的工作原理是，评估用户还没看到的物品与当前用户过去喜欢的物品的相似度。而衡量相似度的方法有两种：1.0/1衡量，就是将用户过去喜欢的物品，同其他ta没见过的物品n进行比较，如果n的类型在ta喜欢的类型中，则标为1，否则就为0；2.计算相关关键词的相似度或重叠度。典型的相似度系数会用到Dice系数，它比较适合多值特征组合。它是这样描述的：如果每本图书b由一组关键词k描述，那么Dice系数描述bi和bj为：2*（kbi∩kbj）/(|kbj|+|kbi|) 向量空间模型和TF-IDF严格来讲，图书的类别信息，并不算是图书的内容，而只能算是附加知识。基于内容的推荐方法不是去维护一组“元信息”特征，而是使用一列在文档中出现的相关关键词，它的主要思想是，能够从文档内容本身或没有限制的文字描述中自动生成列表。 文档内容可以用不同方法转换到这样的关键词列表中。首先，一种单纯的方法是将现在所有文档的词语设为一个列表，然后用布尔型向量描述每一个文档，1表示文档出现在文档中，0表示没有出现。如果用户记录用一个相似的列表描述，那么计算兴趣文档和文档的重合程度就可以匹配文档。 这个方法存在的问题很明显。首先是它假设每个词在文档中的重要性是相同的，此外，当文档比较长的时候，用户记录和文档的重叠几率自然就会大，所以，这样的推荐系统，往往更倾向于推荐长文档。 另一种方法是TF-IDF。它代表的是TF(term-frequence)-IDF(inverse documents frequence)，这种技术在信息检索领域应用广泛。 词频描述某个词在一篇文档中出现的频繁程度。为了阻止更长的文档得到更高的相关度的权值，必须对文档长度进行归一化处理，有几种方法是可行的。其中一种简单方法是将词出现的次数比上同文档中其他关键词出现的最多次数。假定：f是某词在文档中出现的频数，fj是其他关键词中最常出现的关键词的频数 TF=f/fj 反文档频率是组合了词频后的第二个衡量值，旨在降低所有文档中几乎都会出现的关键词的权重。其思想是，那些常见的词语对区分文档没有用，应该给那些仅出现在某些文档中的词更高的权值。N是所有可推荐的文档数量，ni是N中关键词i出现的数量。 IDF的计算方式：log (N/ni) 文档关键词的组合TF-IDF的权值可以计算为这两个子向量的乘积。 在TF-IDF模型中，文档不是表示为每个关键词的布尔值向量，而是算出的TF-IDF值向量。（这部分没弄懂，TF-IDF向量不是计算某一个次嘛？怎么来计算整篇文档的？所有关键词的TF-IDF再次相乘？） 其实，文档在处理之前，实际上还要去掉停用词，停用词的去除，对模型的效果可能更为明显。 TF-IDF的改进及局限TF-IDF向量一般很大并且很稀疏。可以使用其他技术来让它们更紧凑，并从向量中删除不相关的信息。 1.停用词和词干还原。一种直接的方法是删除所谓的停用词。在英语中，这类词一般是介词和冠词，这类词在文档中几乎都会出现，可以将他们从文档向量中删除。此外，另一种技术是词干还原或合并，目的是将相同的词语的不同变形替换成他们共同的词干（词根）。 这些技术进一步缩小了向量规模，与此同时，在用户记录中也用到词干来改进匹配过程。词干还原的实现方法包括：词形分析（后缀拆分法）和查字典法（wordnet）。尽管这些方法很强大，但是还是可能存在陷阱，如缩略语和双关语，会导致匹配不当的问题，词干还原法只用句法后缀拆分可能增加匹配不相关文档的风险。 2.精简规模。仅用n个信息量最大的词语来减少文档描述的规模，期望删除数据中的“噪声”。实验结果表明，如果挑选的关键词太少，一些重要文档特征就可能无法覆盖到；如果挑选的关键词太多，文档模型中用到关键词的重要性就有限，而且这些噪声反而使得推荐效果变差。原则上，特征选择技术也可以用于觉得信息量的关键词，然而这种基于学习的方法，不仅会增加模型复杂度，也有可能会倾向于过拟合描述训练数据的样本。也有人提出用外部词典来删除该领域不相关的词语，实验表明，这种方法能持续提高精度，尤其是只能得到很少的训练样本时。 3.短语。短语比单词更能描述文本，用它来替换词，可能进一步提高描述的准确性。局限性：从文本中抽取个别关键词并赋权的方法有另外的局限，没有考虑到关键词的上下文，在某些情况下没有正确体现描述的“含义”。一般来说，我们假设出现在一篇文档中的词语通常是适合刻画文档，而不是在文档中出现“反语境”。 基于内容的相似度检索协同过滤可以被成为“推荐相似用户喜欢的物品”，基于内容的推荐是称为“推荐与用户过去喜欢的物品相似的物品”。从这里来看，推荐系统的任务还是（基于用户记录）来预测用户是否喜欢自己没有见过的物品。本节会介绍依赖向量——空间文档表示模型的最常见技术。 最近邻（还没写完）想要估计用户对某篇文档感兴趣的程度，最初的方法是查询用户过去是否喜欢相似的文档。这需要两类信息：1.用户对以前商品的“喜欢/不喜欢”的评价记录，其次，需要一个标准来衡量文档的相似度。一般地，使用余弦相似度方法来评价文档是否相似。 相关性反馈——R0cchio方法它也是一种基于向量模型的方法，曾用于信息检索系统SMART，它的特定是，用户不能只提交给系统基于关键词的查询词，还要反馈检索结果是否相关。 其他文本分类方法将这类问题看作是分类问题，应用机器学习中的有监督学习技术，就会自动决定用户是否对某篇文档感兴趣，有监督学习意味着算法依赖现成的训练数据。文中还介绍了基于概率模型的方法、其他线性分类器和机器学习、显示决策模型和特征选择。 讨论对比评估局限性]]></content>
+    <url>%2F2018%2F01%2F12%2Frecommendsys1%2F</url>
+    <content type="text"><![CDATA[协同过滤推荐的主要思想：利用已有用户群过去的行为或意见预测当前用户最可能喜欢哪些东西或对哪些东西感兴趣。 此类的系统在在线零售系统中成为对用户需求个性化定制内容的工具。 纯粹的协同过滤方法的输入数据只有给定的用户—物品评分矩阵，输出数据一般有以下几种类型： 1. 表示当前用户对物品喜欢或者不喜欢程度的预测数值， 2. n项推荐物品的列表。当然，这个TOP-N列表不会包含用户已经买过的物品。 推荐方法： 基于用户的最近邻推荐这是一种早期的推荐系统，它的主要思想：首先，给定一个评分数据集和当前用户的id作为输入，找出与当前用户过去有相似偏好的其他用户，这些用户有时也被称为对等用户或最近邻；然后对当前用户没有见过的每个物品p，利用其近邻对p的评分计算预测值。这种方法的假设是： 1. 如果用户过去有相同的偏好，则他们未来也有相似的偏好 2. 用户偏好不会随着时间变化而变化。 书中以Alice购物为例，利用Pearson系数来评估用户的相似性（如何计算，我会在单独一篇博文中讲述）。 在实际应用中，由于评分数据集非常大，我们需要考虑计算的复杂度。 此外，评分矩阵通常十分稀疏，每个用户只对所有有效的物品的小部分进行评分。 最后，我们给新用户推荐什么，如何处理没有评分的新物品。这些问题都要深入讨论。 其他用于评估用户相似度的方法：改进余弦相似度，spearman相关系数和均方差。 然而实验分析显示，对于基于用户的推荐系统，pearson的相关系数比其他的方法更为优秀。不过，后来发现的基于物品的推荐技术，利用余弦相似度方法比pearson系数推荐效果更好。 事实上，基于近邻的预测方法在遇到当前用户只有非常少的共同的物品评分时会出错，导致不准的预测。 于是，有专家学者就提出了重要性赋权的方法——基于线性化简相似度权值的方法。尽管简单，但是在评分物品少于50个的时候，准确预测的效率提升非常显著。但是还有问题需要解决：赋权方案和启发式决定阈值在现实中是否有效；评分数据集更小时，我们不能期望找到很多有50个共同评分物品的用户。 能通过精细调整预测权重来提高准确度的方法是样本拓展。它指的是强调那些接近1和-1的值，对原始数值乘以一个常量p来调整近邻的权值。 选择近邻为了减小计算量并且保证计算预测值，我们只包括了那些与当前用户有正向关联的用户。降低近邻集合规模的方法通常是为用户相似度定义一个具体的最小阈值，或者将规模大小限制为一个固定值，而且只考虑k个近邻。 但是这两种方法有潜在的问题：如果阈值过高，那么规模就会小很多，意味着很多商品无法预测。相反，阈值过低，那么规模就不会显著降低。 k取多少，是个问题，MOVIE LENS上的测试显示，在大多数情况下，20到50个近邻似乎比较合理。 基于物品的最近邻推荐在电子商务网站，大多采用的是基于物品的推荐。 这种推荐，比较适合做线下的预处理。因此，即使评分数据矩阵非常大，也能做到实时计算的推荐。 基于物品的推荐算法的思想是：利用物品之间的相似度来计算预测值。 还是以Alice购物为例，书中介绍的是利用余弦相似度来进行物品的相似度的计算。（如何利用余弦相似度来计算，我也会另开一篇来进行介绍说明） 不管是基于物品还是基于用户，当数量达到一定程度的时候，计算的实时性是达不到的。需要对数据进行预处理。 为了保证性能与精度，通常采用离线预计算数据。 思想：实现构造一个物品相似度矩阵，描述物品两两之间的相似度。运行时，通过确定与物品p最相似的物品并计算用户u对这些邻近物品的加权总和来得到用户u对物品的评分。近邻数量受限于当前用户评过分的物品个数。 除开这种模型上的预处理之外，还可以仅利用评分矩阵中的某一部分数据来降低复杂度。一种基本技术是二次抽样，这种技术可以随机选取数据的子集，或者忽略那些仅有少量评分或非常热门物品的用户记录。 一般地，可以利用这些技术来加速计算，但是由于用到的信息少了，系统做出的精准预判的能力可能会下降。 基于协同过滤的评分方法显式收集用户的观点：通常是5分或者7分制。通过记录用户的打分，来收集用户的评分数据集。 隐式收集用户的观点：跟踪用户的浏览记录，收集用户的浏览日志，对用户的浏览日志进行分析，推荐可能效果更为显著。 数据稀疏与冷启动的问题实际应用中，可能获取的用户评分数据十分少，因此。评分矩阵就是一个稀疏矩阵。这种情况下的挑战就是利用较少的数据来获得精准的预测。直接做法，利用用户的附加信息（年龄，性别，教育程度兴趣等）来辅助分类用户，这是借助外界的信息。 解决数据稀疏与冷启动的问题的一种方法——基于图的方法（后面单独拿出来讲解）主要思想：利用假定用户品味的传递性，并且是不变的（书中没有提到），并由此增强额外的信息矩阵。 矩阵因子分解Netflix的竞赛表明高等矩阵因子分解方法对提高推荐系统的预测准确率有很大的帮助。简单来说，推荐系统使用矩阵因子分解方法来从评分模式抽取一组潜在的因子，并通过这些因子向量来描述用户和物品。在电影领域，这些自动识别的因子，很有可能对应一部电影的常见标签，也有可能是无法解释的。当当前用户和物品在这些因子相似时，就会推荐物品。 在信息检索领域，SVD被用于发现文档中的潜在因子；这种潜在语义分析技术也被成为潜在语义索引。 关联规则挖掘（后面单独拿出来详细介绍）关联规则挖掘是一种在大规模交易中识别类似规则关系的技术。 典型案例：啤酒与尿布。 就是通过一系列购物篮分析，分析出购物篮里面的可能同时购买的商品。 推荐系统，也可以根据这个来做一个类似商品的推荐。如捆绑销售。 在实际生活中，如果去一趟超市，可能发现商品并不是按照这种购物篮的方式捆绑，而是可能约有可能一起买的商品，反而相隔了一定的距离，这也是超市为了让人待在超市里更久，增加销量。 基于概率分析的推荐方法还有一种预测用户会对某个物品进行评分的方法是利用概率论已有的形式体系。 用概率方法实现协同过滤，最初简单的实现是将预测问题看作分类问题，通常可以描述为“将一个对象分配给几个事先定义好的类别”的任务。 如邮件的推荐（将其划分为正常邮件和垃圾邮件），里面用到的贝叶斯分类器，可以将经过训练的数据来拟合邮件分类，来判断一封邮件是否是正常邮件。]]></content>
       <categories>
         <category>读书</category>
       </categories>
